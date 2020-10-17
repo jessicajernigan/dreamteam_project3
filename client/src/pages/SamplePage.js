@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { typeOneAction, typeTwoAction } from '../../utils/actions';
+import { typeOneAction, typeTwoAction } from '../utils/actions';
 import './Sample.css';
 
-const Sample = () => {
+const SamplePage = () => {
 	// get Global state from Redux
 	const state = useSelector((state) => state);
 	console.log(state);
@@ -27,4 +27,4 @@ const Sample = () => {
 	);
 };
 
-export default Sample;
+export default SamplePage;
