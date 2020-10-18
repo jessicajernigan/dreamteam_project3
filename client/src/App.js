@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 
 // import Components
 
-import Nav from './components/Nav/Nav';
+import Navigation from './components/Navigation/Navigation';
 import Sample from './components/Sample/Sample';
 import SamplePage from './pages/SamplePage';
 // import Home from './pages/Home';
@@ -38,7 +38,7 @@ function App() {
 			<Router>
 				<div>
 					<Provider store={store}>
-						<Nav />
+						<Navigation />
             <Sample />
 						<Switch>
 							<Route exact path="/samplePage" component={SamplePage} />

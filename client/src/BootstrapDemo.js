@@ -19,7 +19,7 @@ const Users = () => <span>Users</span>;
 const App = () => (
   <BrowserRouter>
     <Container className="p-3">
-      <Jumbotron>
+      {/* <Jumbotron>
         <h1 className="header">Welcome To React-Bootstrap</h1>
         <h2>
           Current Page is{' '}
@@ -36,7 +36,7 @@ const App = () => (
           </Switch>
         </h2>
         <h2>
-          Navigate to{' '}
+          Navigate to{' '} */}
           <ButtonToolbar className="custom-btn-toolbar">
             <LinkContainer to="/">
               <Button>Home</Button>
@@ -48,8 +48,8 @@ const App = () => (
               <Button>Users</Button>
             </LinkContainer>
           </ButtonToolbar>
-        </h2>
-      </Jumbotron>
+        {/* </h2>
+      </Jumbotron> */}
     </Container>
   </BrowserRouter>
 );
