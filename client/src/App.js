@@ -41,7 +41,6 @@ function App() {
 						<Nav />
             <Sample />
 						<Switch>
-							
 							<Route exact path="/samplePage" component={SamplePage} />
 							{/* <Route exact path="/" component={Home} />
 							<Route exact path="/login" component={Login} />
