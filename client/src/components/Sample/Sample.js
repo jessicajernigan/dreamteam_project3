@@ -18,10 +18,10 @@ const Sample = () => {
 		<div>
 			<h2
 				onClick={() => {
-					handleClick(_id);
+					handleClick();
 				}}
 			>
-				Dispatch Action
+				Sample Component
 			</h2>
 		</div>
 	);

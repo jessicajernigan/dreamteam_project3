@@ -5,12 +5,15 @@ import ApolloClient from 'apollo-boost';
 import { Provider } from 'react-redux';
 
 // import Components
+
+import Nav from './components/Nav/Nav';
+import Sample from './components/Sample/Sample';
+import SamplePage from './pages/SamplePage';
 // import Home from './pages/Home';
 // import Detail from './pages/Detail';
 // import NoMatch from './pages/NoMatch';
 // import Login from './pages/Login';
 // import Signup from './pages/Signup';
-// import Nav from './components/Nav';
 // import OrderHistory from './pages/OrderHistory';
 // import Success from './pages/Success';
 
@@ -36,7 +39,10 @@ function App() {
 				<div>
 					<Provider store={store}>
 						<Nav />
+            <Sample />
 						<Switch>
+							
+							<Route exact path="/samplePage" component={SamplePage} />
 							{/* <Route exact path="/" component={Home} />
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/signup" component={Signup} />

@@ -1,5 +1,5 @@
 {
-  "name": "mixt",
+  "name": "buskr",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -20,3 +20,5 @@
     "concurrently": "^5.1.0"
   }
 }
+
+

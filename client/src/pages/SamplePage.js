@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { typeOneAction, typeTwoAction } from '../utils/actions';
-import './Sample.css';
 
 const SamplePage = () => {
 	// get Global state from Redux
@@ -18,10 +17,10 @@ const SamplePage = () => {
 		<div>
 			<h2
 				onClick={() => {
-					handleClick(_id);
+					handleClick();
 				}}
 			>
-				Dispatch Action
+				Sample Page
 			</h2>
 		</div>
 	);

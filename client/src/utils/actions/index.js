@@ -1,7 +1,7 @@
 import {
   TYPE_ONE,
   TYPE_TWO
-} from './types';
+} from '../types';
 
 // ACTION CREATORS -- functions that return actions.  now can dispatch()
 export const typeOneAction = (arg) => {

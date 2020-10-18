@@ -6,6 +6,7 @@ import './Nav.css'
 const Nav = () => {
   return (
     <div className="Nav">
+      <h2 className="Nav-title">Heading</h2>
       NAVIGATION
     </div>
   )
