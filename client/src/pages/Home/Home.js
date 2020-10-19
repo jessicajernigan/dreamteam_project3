@@ -1,21 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './Home.css';
 
-import Sidebar from '../../components/Sidebar/Sidebar'
-import SidebarMobile from '../../components/SidebarMobile/SidebarMobile'
+import Sidebar from '../../components/Sidebar/Sidebar';
+import SidebarMobile from '../../components/SidebarMobile/SidebarMobile';
 
 const Home = () => {
 	return (
 		<React.Fragment>
 			<Row>
-        <Sidebar />
-        <SidebarMobile />
+				<Sidebar />
+				<SidebarMobile />
 				<Col lg={10}>
 					<div className="artist-tiles-container">
 						{[ ...Array(24) ].map((_, i) => (
-							<div className="artist-tile" key={i} />
+							<Link to="/profile">
+								<div className="artist-tile" key={i}>
+									<img src="https://via.placeholder.com/300" />
+								</div>
+							</Link>
 						))}
 					</div>
 				</Col>
