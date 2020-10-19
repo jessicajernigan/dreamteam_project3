@@ -1,0 +1,9 @@
+/* NAVBAR */
+.Navbar {
+  /* being overridden by * selector in index.css */
+  color: var(--secondary);
+}
+
+.Navbar-brand-cst:hover {
+  cursor: pointer;
+}

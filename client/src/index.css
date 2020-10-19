@@ -1,1 +1,23 @@
 /* UNIVERSAL STYLES */
+/* GLOBAL */
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--tertiary);
+}
+
+:root {
+--primary: rgb(174, 185, 71);
+--secondary: #4761f3;
+--tertiary: rgb(34, 34, 34);
+}
+
+body {
+  max-width: 95%;
+  margin: auto;
+  color: var(--secondary);
+}
+
+a {
+  color: var(--secondary);
+}

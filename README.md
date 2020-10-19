@@ -39,6 +39,7 @@
       react-router-dom
       react-scripts
       redux
+      react-dropzone-uploader
 
 
 ## devDependencies 

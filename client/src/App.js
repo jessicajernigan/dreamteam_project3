@@ -7,15 +7,11 @@ import { Provider } from 'react-redux';
 // import Components
 
 import Navigation from './components/Navigation/Navigation';
-import Sample from './components/Sample/Sample';
-import SamplePage from './pages/SamplePage';
-// import Home from './pages/Home';
-// import Detail from './pages/Detail';
-// import NoMatch from './pages/NoMatch';
-// import Login from './pages/Login';
-// import Signup from './pages/Signup';
-// import OrderHistory from './pages/OrderHistory';
-// import Success from './pages/Success';
+import Home from './pages/Home/Home';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Uploader from './components/Uploader/Uploader';
+
 
 import store from './utils/store';
 // console.log(store.getState());
@@ -39,9 +35,14 @@ function App() {
 				<div>
 					<Provider store={store}>
 						<Navigation />
-            <Sample />
+            {/* <Sample /> */}
 						<Switch>
-							<Route exact path="/samplePage" component={SamplePage} />
+							<Route exact path="/" component={Home} />
+							<Route exact path="/signup" component={Signup} />
+							<Route exact path="/login" component={Login} />
+							<Route exact path="/upload" component={Uploader} />
+
+  
 							{/* <Route exact path="/" component={Home} />
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/signup" component={Signup} />

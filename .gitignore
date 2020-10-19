@@ -1,4 +1,6 @@
 node_modules/
+static_prototype/
 debug.log
 .env
 NOTES.txt
+.vscode/

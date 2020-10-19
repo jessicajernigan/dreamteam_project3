@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { typeOneAction, typeTwoAction } from '../../utils/actions';
+import { typeOneAction } from '../../utils/actions';
 import './Sample.css';
 
 const Sample = () => {
