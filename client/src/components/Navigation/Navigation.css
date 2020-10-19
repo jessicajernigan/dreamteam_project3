@@ -4,6 +4,6 @@
   color: var(--secondary);
 }
 
-.Navbar-brand-cst:hover {
-  cursor: pointer;
+.Navbar-brand-bskr {
+  font-size: 2rem;
 }

@@ -40,6 +40,7 @@
       react-scripts
       redux
       react-dropzone-uploader
+      react-h5-audio-player
 
 
 ## devDependencies 

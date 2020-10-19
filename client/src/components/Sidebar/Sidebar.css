@@ -1,0 +1,44 @@
+.sidebar {
+  padding: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* border: solid black; */
+  height: 60vh;
+  text-align: center;
+}
+
+#artist-search {
+  width: 90%;
+  margin: 20px 0 20px 0;
+}
+
+#browse {
+  width: 100%;
+}
+
+#now-playing {
+  width: 100%;
+  background-color: rgb(175, 175, 175);
+  border-radius: 5px;
+}
+
+#now-playing-text {
+  padding: 10px 10px 10px 10px;
+}
+
+#audio-controller {
+  margin: 0 0 0 0 !important;
+}
+
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 1048px) {
+  .sidebar {
+      display: none;
+  }
+  #now-playing {
+      display: none;
+  }
+}

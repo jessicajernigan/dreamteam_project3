@@ -21,3 +21,7 @@ body {
 a {
   color: var(--secondary);
 }
+
+a:hover {
+  text-decoration: none;
+}
