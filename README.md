@@ -41,6 +41,7 @@
       redux
       react-dropzone-uploader
       react-h5-audio-player
+      react-icons
 
 
 ## devDependencies 
@@ -49,10 +50,6 @@
         
         concurrently
 
-
-
-
-
 * server
 
-      nodemon
+         nodemon

@@ -1,5 +1,4 @@
 import React from 'react';
-// import { LinkContainer } from 'react-router-bootstrap';
 import { NavLink } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -22,7 +21,7 @@ const Navigation = () => {
 						{/* <NavLink exact to="/upload" className="btn mr-3">
 							<h4>Upload</h4>
 						</NavLink> */}
-						<NavLink exact to="/creator" activeStyle={activeStyle} className="mr-3">
+						<NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
 							Buskr Login
 						</NavLink>
 						<NavLink exact to="/cart" activeStyle={activeStyle} className="mr-3">

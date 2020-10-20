@@ -9,8 +9,8 @@ import { Provider } from 'react-redux';
 import Navigation from './components/Navigation/Navigation';
 import Home from './pages/Home/Home';
 import CreatorProfile from './pages/CreatorProfile/CreatorProfile';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
+import Signup from './pages/Signup/Signup';
+import Login from './pages/Login/Login';
 import Uploader from './components/Uploader/Uploader';
 
 
