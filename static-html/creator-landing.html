@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Buskr</title>
+</head>
+<body>
+
+    <header id="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="header-title-container col-lg 12">
+                <a class="navbar-brand" href="#">Buskr</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main" class="row">
+        <div class="creator-dashboard-left-panel col-lg-5">
+            <div class="photo-panel">
+                <div class="artist-tile">
+                </div>
+                <div class="form-group">
+                    <label for="photoupload">Profile Photo</label>
+                    <input type="file" class="form-control-file" id="photo-upload">
+                </div>
+            </div>
+            
+            <div class="bio-panel">
+                <div class="form-group">
+                    <label for="biographyinput">Biography</label>
+                    <textarea class="form-control" id="biography-input" rows="4"></textarea>
+                </div>
+            </div>
+            
+        </div>
+        <div class="creator-dashboard-right-panel col-lg-7">
+            <form id="signup-form">
+                <h4 class="form-title">Dashboard - Red Hot Chili Peppers</h4>
+                
+                <div class="form-group">
+                    <label for="stripeinput">Stripe Placeholder</label>
+                    <input type="stripe" class="form-control" id="stripe-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="musicupload">Music Files</label>
+                    <input type="file" class="form-control-file" id="music-upload">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </main>
+        
+    <footer class="footer">
+        <h6>&copy; dreamteam 2020</h6>
+    </footer>
+    
+</body>
+</html>
