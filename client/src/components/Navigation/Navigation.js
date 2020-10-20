@@ -10,11 +10,12 @@ const Navigation = () => {
     color: "pink"
   };
 	return (
-			<Navbar expand="lg" className="Navbar">
+			<Navbar expand="lg" className="Navigation">
        
-          <NavLink exact to="/" activeStyle={activeStyle} className="Navbar-brand-bskr">Buskr</NavLink>
+          <NavLink exact to="/" activeStyle={activeStyle} className="Navigation-brand-bskr">Buskr</NavLink>
     
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
+        {/* BS id, don't think we need, but could be for collapsing functionality */}
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ml-auto">
             {/* will need to be protected for creators only */}

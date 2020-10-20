@@ -36,23 +36,14 @@ function App() {
 				<div>
 					<Provider store={store}>
 						<Navigation />
-            {/* <Sample /> */}
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route exact path="/profile" component={CreatorProfile} />
-							{/* <Route exact path="/creator" component={Creator} /> */}
 							<Route exact path="/signup" component={Signup} />
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/upload" component={Uploader} />
-							{/* <Route exact path="/" component={Home} />
-							<Route exact path="/login" component={Login} />
-							<Route exact path="/signup" component={Signup} />
-							<Route exact path="/orderHistory" component={OrderHistory} />
-							<Route exact path="/products/:id" component={Detail} />
-							<Route exact path="/success" component={Success} />
-							<Route component={NoMatch} /> */}
 						</Switch>
-					</Provider>
+					</Provider>      
 				</div>
 			</Router>
 		</ApolloProvider>

@@ -1,4 +1,4 @@
-#artist-search-mobile {
+.Sidebar-artist-search-mobile {
   width: 70%;
   margin: 10px 0 10px 0 !important;
   display: flex;
@@ -7,7 +7,7 @@
 
 
 
-#browse-mobile {
+.SidebarMobile-browse-mobile {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -16,7 +16,7 @@
 
 
 
-#now-playing-mobile {
+.SidebarMobile-now-playing-mobile {
   width: 100%;
   background-color: rgb(175, 175, 175);
   border-radius: 5px;
@@ -29,10 +29,11 @@
 
 
 @media only screen and (min-width: 1048px) {
-  .sidebar-mobile {
+  .SidebarMobile {
       display: none;
   }
-  #now-playing-mobile {
+
+  .SidebarMobile-now-playing-mobile {
       display: none;
   }
 }

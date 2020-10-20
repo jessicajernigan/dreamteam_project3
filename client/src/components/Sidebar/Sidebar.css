@@ -1,4 +1,4 @@
-.sidebar {
+.Sidebar {
   padding: 10px 10px 10px 10px;
   display: flex;
   flex-direction: row;
@@ -9,36 +9,36 @@
   text-align: center;
 }
 
-#artist-search {
+.Sidebar-artist-search {
   width: 90%;
   margin: 20px 0 20px 0;
 }
 
-#browse {
+.Sidebar-browse {
   width: 100%;
 }
 
-#now-playing {
+.Sidebar-now-playing {
   width: 100%;
   background-color: rgb(175, 175, 175);
   border-radius: 5px;
 }
 
-#now-playing-text {
+.Sidebar-now-playing-text {
   padding: 10px 10px 10px 10px;
 }
 
-#audio-controller {
+.Sidebar-audio-controller {
   margin: 0 0 0 0 !important;
 }
 
 
 /* MEDIA QUERIES */
 @media only screen and (max-width: 1048px) {
-  .sidebar {
+  .Sidebar {
       display: none;
   }
-  #now-playing {
+  .Sidebar-now-playing {
       display: none;
   }
 }

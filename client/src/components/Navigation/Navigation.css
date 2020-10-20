@@ -1,9 +1,10 @@
 /* NAVBAR */
-.Navbar {
+.Navigation {
   /* being overridden by * selector in index.css */
   color: var(--secondary);
 }
 
-.Navbar-brand-bskr {
+.Navigation-brand-bskr {
+  font-family: Monoton;
   font-size: 2rem;
 }
