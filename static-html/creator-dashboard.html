@@ -12,49 +12,81 @@
 
     <header id="header">
         <nav class="navbar navbar-expand-lg">
-            <div class="header-title-container col-lg 12">
+            <div class="header-title-container col-lg 6">
                 <a class="navbar-brand" href="#">Buskr</a>
+            </div>
+            <div class="header-links-container col-lg-6">
+                <a class="nav-link" href="#">Log Out</a>
             </div>
         </nav>
     </header>
 
     <main id="main" class="row">
-        <h4 class="dashboard-title col-lg-12">Dashboard : [artist name]</h4>
+        <h4 class="dashboard-title col-lg-12 m-2 p-1">Dashboard : [artist name]</h4>
 
-        <div class="creator-dashboard-left-panel col-lg-7">
-            
-            <div class="w-100 d-flex flex-column justify-content-center">
-                <form id="photo-form"></form>
-                <div class="artist-tile">
+        <div class="creator-dashboard-main-panel rounded col-lg-5 m-1 p-1">
+            <div class="panel rounded m-2">
+                <div class="photo-placeholder m-2">
                 </div>
-                <button type="submit" class="btn btn-primary">Edit</button>
-                </form>
+                <div class="dropzone-placeholder rounded text-center m-2">
+                    Dropzone Placeholder
+                </div>
             </div>
-
-            <div class="w-100 d-flex flex-column justify-content-center"></div>
-                <form id="bio-form"></form>
-                    <div class="form-group">
-                        <label for="biographyinput">Biography</label>
-                        <textarea class="form-control" id="biography-input" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Edit</button>
-                </form>
+            <div class="panel rounded m-2 p-2 text-center">
+                <p class="m-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet tincidunt sapien, in finibus tortor iaculis quis. Vivamus convallis lacus neque, et porta felis ornare eget. Pellentesque sit amet congue erat. Sed ut eros sollicitudin, tristique lorem sit amet, pharetra lectus. Vestibulum porta cursus dignissim. Morbi nec orci mollis nisl malesuada fermentum ac vel augue.</p>
+                <button class="btn-save btn btn-primary btn-sm">Edit Bio</button>
+            </div>
+            <div class="panel rounded m-2 p-2">
+                <div class="vibe-tiles m-1 p-1">
+                    <ul class="list-group small d-flex flex-row flex-wrap justify-content-center text-center p-1 m-1">
+                        <li class="list-group-item rounded m-1">Rock</li>
+                        <li class="list-group-item rounded m-1">Rap</li>
+                        <li class="list-group-item rounded m-1">Reggae</li>
+                        <li class="list-group-item rounded m-1">Rock</li>
+                        <li class="list-group-item rounded m-1">Rap</li>
+                        <li class="list-group-item rounded m-1">Jazz</li>
+                    </ul>
+                </div>
+                <button class="btn-save btn btn-primary btn-sm">Edit Vibes</button>
             </div>
         </div>
 
-        <div class="creator-dashboard-right-panel col-lg-5 d-flex flex-column justify-content-center">  
-            <form id="music-form"></form>
-                <div class="artist-tile">
+        <div class="creator-dashboard-main-panel rounded col-lg-4 m-1 p-1">
+            <div class="panel rounded m-2 p-2">
+                Available Music
+                <div class="p-2">
+                    <audio controls>
+                        <source src="horse.ogg" type="audio/ogg">
+                        <source src="horse.mp3" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                    </audio>
                 </div>
-                <button type="submit" class="btn btn-primary">Edit</button>
-            </form>
-            <form id="vibe-form"></form>
-                <div class=></div>
-                <button type="submit" class="btn btn-primary">Edit Vibes</button>
-            </form>
-            <form id="stripe-form"></form>
-                <button type="submit" class="btn btn-primary">Enter Payment Info</button>
-            </form>
+                <div class="music-tiles w-100 m-1">
+                    <ul class="list-group row small d-flex flex-row text-center">
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Californication</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Under The Bridge</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Otherside</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Give It Away</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Dani California</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Californication</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Under The Bridge</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Otherside</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Give It Away</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Dani California</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Californication</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Under The Bridge</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Otherside</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Give It Away</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Otherside</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Give It Away</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Dani California</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Californication</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Under The Bridge</li>
+                        <li class="list-group-item col-md-6 border-0 bg-transparent">Otherside</li>
+                    </ul>
+                </div>
+                <button class="btn-save btn btn-primary btn-sm">Edit Available Music</button>
+            </div>
         </div>
 
     </main>
@@ -65,33 +97,3 @@
     
 </body>
 </html>
-<!-- 
-
-<div class="creator-dashboard-left-panel col-lg-7">
-    <div class="photo-panel">
-        
-        <div class="form-group text-center">
-            <label for="photoupload"></label>
-            <input type="file" class="form-control-file" id="photo-upload">
-        </div>
-    </div>
-
-    <div class="bio-panel">
-        <div class="form-group">
-            <label for="biographyinput">Biography</label>
-            <textarea class="form-control" id="biography-input" rows="4"></textarea>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="stripeinput">Stripe Placeholder</label>
-        <input type="stripe" class="form-control" id="stripe-input">
-    </div>
-    <button type="submit" class="btn btn-primary">Save Changes</button>
-</div>
-<div class="creator-dashboard-right-panel col-lg-5">   
-    <div class="form-group text-center">
-        <label for="musicupload">Music</label>
-        <input type="file" class="form-control-file" id="music-upload">
-    </div>
-</div> -->
