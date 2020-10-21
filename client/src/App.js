@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 
 import Navigation from './components/Navigation/Navigation';
 import Home from './pages/Home/Home';
+import CreatorDashBoard from './pages/CreatorDashboard/CreatorDashboard';
 import CreatorProfile from './pages/CreatorProfile/CreatorProfile';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
@@ -38,6 +39,7 @@ function App() {
 						<Navigation />
 						<Switch>
 							<Route exact path="/" component={Home} />
+							<Route exact path="/creator" component={CreatorDashBoard} />
 							<Route exact path="/profile" component={CreatorProfile} />
 							<Route exact path="/signup" component={Signup} />
 							<Route exact path="/login" component={Login} />

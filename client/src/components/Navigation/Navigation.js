@@ -21,6 +21,7 @@ const Navigation = () => {
 						{/* <NavLink exact to="/upload" className="btn mr-3">
 							<h4>Upload</h4>
 						</NavLink> */}
+            <ul></ul>
 						<NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
 							Buskr Login
 						</NavLink>
