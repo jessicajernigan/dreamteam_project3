@@ -194,10 +194,18 @@ a {
 /* CREATOR DASHBOARD */
 .creator-dashboard-main-panel {
     min-height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.creator-dashboard-music-panel {
+    min-height: 55vh;
     background-color: rgb(34, 34, 34, 0.6);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .dashboard-title {
@@ -211,7 +219,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgb(34, 34, 34, 0.6);
 }
 
 .photo-placeholder {
@@ -224,15 +232,6 @@ a {
     width: 60%;
     height: 10vh;
     border: dashed black;
-}
-
-.music-panel {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    align-items: center;
-    background-color: rgb(34, 34, 34, 0.6);
 }
 
 
@@ -287,6 +286,12 @@ a {
 @media only screen and (max-width: 375px) {
     .header-title-container {
         justify-content: center;
+    }
+    .dashboard-title {
+        font-size: 20px;
+    }
+    .bio-text {
+        font-size: 14px;
     }
 }
 
