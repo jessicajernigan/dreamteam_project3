@@ -17,72 +17,42 @@
             </div>
             <div class="header-links-container col-lg-6">
                 <a class="nav-link" href="#">Buskr Login</a>
-                <a class="nav-link" href="#">View Cart</a>
+                <a class="nav-link" id="view-cart" href="#exampleModal">View Cart</a>
                 
             </div>
         </nav>
     </header>
 
     <main id="main" class="row">
-        <div class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
 
-        <!-- <div class="cart">
-            <div className="close" onClick={toggleCart}>[close]</div>
-            <h2>Cart</h2>
-            {state.cart.length ? (
-              <div>
-                {state.cart.map(item => (
-                  <CartItem key={item._id} item={item} />
-                ))}
-        
-                <div className="flex-row space-between">
-                  <strong>Total: ${calculateTotal()}</strong>
-        
-                  {
-                    Auth.loggedIn() ?
-                      <button onClick={submitCheckout}>
-                        Checkout
-                    </button>
-                      :
-                      <span>(log in to check out)</span>
-                  }
-                </div>
-              </div>
-            ) : (
-                <h3>
-                  <span role="img" aria-label="shocked">
-                    😱
-                </span>
-                You haven't added anything to your cart yet!
-                </h3>
-              )}
-          </div> -->
+        <div class="cart text-center">
+            <div class="modal-header">
+                <h5 class="modal-title text-center">View Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p>(price) - (artist name) - (song name)</p>
+                <p>(price) - (artist name) - (song name)</p>
+                <p>(price) - (artist name) - (song name)</p>
+            </div>
+
+            <div class="modal-body text-right">
+                <h5>Total: (total price)</h5>
+                <button type="button" class="btn btn-primary">Check Out</button>
+            </div>
+                
+            </div>
+        </div>
 
     </main>
         
+
     <footer class="footer">
         <h6>&copy; dreamteam 2020</h6>
     </footer>
-    
+
 </body>
 </html>
-
-  
