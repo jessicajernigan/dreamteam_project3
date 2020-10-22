@@ -1,0 +1,13 @@
+/* CREATOR PROFILE */
+.CreatrProf ul {
+	padding: 0;
+}
+
+.CreatrProf li {
+	list-style: none;
+}
+
+.CreatrProf svg:hover {
+	cursor: pointer;
+	opacity: .5;
+}

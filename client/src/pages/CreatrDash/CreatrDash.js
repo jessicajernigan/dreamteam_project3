@@ -3,13 +3,13 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import Uploader from '../../components/Uploader/Uploader'
+import Uploader from '../../components/Uploader/Uploader';
 
-import './CreatorDashboard.css';
+import './CreatrDash.css';
 
-const CreatorDashboard = () => {
+const CreatrDash = () => {
 	return (
-		<main className="CreatorDashboard">
+		<main className="CreatrDash">
 			<Row>
 				<Col lg={12}>
 					<h2 className="text-center m-2 p-1">[Artist Name]</h2>
@@ -18,12 +18,12 @@ const CreatorDashboard = () => {
 			<Row className="d-flex justify-content-center">
 				<Col lg={5} className="rounded m-1 p-1">
 					<div class="d-flex flex-column justify-content-center align-items-center rounded m-2 mb-3 bg-gray">
-						<div class="CreatorDashboard-photo-container m-2">
-              <img src="https://via.placeholder.com/200" alt="Artist"/>
-            </div>
-						<div class="CreatorDashboard-dropzone-container rounded text-center m-2">
+						<div class="CreatrDash-photo-container m-2">
+							<img src="https://via.placeholder.com/200" alt="Artist" />
+						</div>
+						<div class="CreatrDash-dropzone-container rounded text-center m-2">
 							{/* Dropzone Placeholder */}
-              <Uploader />
+							<Uploader />
 						</div>
 					</div>
 					<div class="rounded m-2 mb-3 p-2 bg-gray text-center">
@@ -64,7 +64,7 @@ const CreatorDashboard = () => {
 								Your browser does not support the audio element.
 							</audio>
 						</div>
-						<div class="CreatorDashboard-music-tiles w-100 m-1">
+						<div class="CreatrDash-music-tiles w-100 m-1">
 							<ul class="list-group row small d-flex flex-row text-center">
 								<li class="list-group-item col-md-6 border-0 bg-transparent">
 									Californication
@@ -138,4 +138,4 @@ const CreatorDashboard = () => {
 	);
 };
 
-export default CreatorDashboard;
+export default CreatrDash;

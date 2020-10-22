@@ -4,20 +4,20 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
-import { BiPlay, BiPlusMedical } from "react-icons/bi";
+import { BiPlay, BiPlusMedical } from 'react-icons/bi';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
-import SidebarMobile from '../../components/SidebarMobile/SidebarMobile';
+import SidebarMob from '../../components/SidebarMob/SidebarMob';
 
-import './CreatorProfile.css';
+import './CreatrProf.css';
 
-const CreatorProfile = () => {
-  const songs = ['Song One', 'Song Two', 'Song Three', 'Song Four', 'Song Five' ]
+const CreatrProf = () => {
+	const songs = [ 'Song One', 'Song Two', 'Song Three', 'Song Four', 'Song Five' ];
 	return (
-		<div className="CreatorProfile">
+		<div className="CreatrProf">
 			<Row>
 				<Sidebar />
-				<SidebarMobile />
+				<SidebarMob />
 				<Col lg={10}>
 					<Row className="mt-4 flex align-items-center">
 						<Col lg={3}>
@@ -48,14 +48,14 @@ const CreatorProfile = () => {
 								veniam laborum quos eaque eveniet quibusdam natus
 								dignissimos corporis, consectetur doloribus! Quia?
 							</p>
-              <h4>Available Songs</h4>
-              <ul>
-                {songs.map((song, i) => (
-                  <li key={i}>
-                    <BiPlay/> <BiPlusMedical/> {song}
-                  </li>
-                ))}
-              </ul>
+							<h4>Available Songs</h4>
+							<ul>
+								{songs.map((song, i) => (
+									<li key={i}>
+										<BiPlay /> <BiPlusMedical /> {song}
+									</li>
+								))}
+							</ul>
 						</Col>
 					</Row>
 				</Col>
@@ -64,4 +64,4 @@ const CreatorProfile = () => {
 	);
 };
 
-export default CreatorProfile;
+export default CreatrProf;

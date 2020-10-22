@@ -3,17 +3,24 @@ import { createStore } from 'redux';
 // import reducer from './reducer';
 import allReducer from './reducers'
 
-// const initialState =   {
-//   products        : [],
-//   cart            : [],
-//   cartOpen        : false,
-//   categories      : [],
-//   currentCategory : ''
-// }
+const initialState =   {
+  first        : [],
+  second        : false,
+  vibes      : [ 
+    { name: 'Rock' },
+    { name: 'Hip Hop' },
+    { name: 'Reggae' },
+    { name: 'Jazz' },
+    { name: 'Country' },
+    { name: 'Disco' },
+    { name: 'Blues' },
+  ]
+}
 
 // const store = createStore(reducer,
 const store = createStore(allReducer,
-  // initialState
+  // TESTING
+  initialState,
 
   // jic placeholder for preloadedState so dev tools config line below won't be misconstrued
   // undefined,

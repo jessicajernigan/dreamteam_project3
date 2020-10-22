@@ -1,6 +1,7 @@
 import {
   TYPE_ONE,
-  TYPE_TWO
+  TYPE_TWO, 
+  HYDRATE_VIBES
 } from '../types';
 
 // ACTION CREATORS -- functions that return actions.  now can dispatch()
@@ -17,6 +18,15 @@ export const typeTwoAction = (arg) => {
 		arg
 	};
 };
+
+export const hydrateVibes = (arg) => {
+	return {
+		type       : HYDRATE_VIBES,
+		arg
+	};
+};
+
+
 
 
 

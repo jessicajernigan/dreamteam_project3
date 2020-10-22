@@ -8,15 +8,14 @@ import { Provider } from 'react-redux';
 
 import Navigation from './components/Navigation/Navigation';
 import Home from './pages/Home/Home';
-import CreatorDashBoard from './pages/CreatorDashboard/CreatorDashboard';
-import CreatorProfile from './pages/CreatorProfile/CreatorProfile';
+import CreatrDash from './pages/CreatrDash/CreatrDash';
+import CreatrProf from './pages/CreatrProf/CreatrProf';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 import Uploader from './components/Uploader/Uploader';
 
-
 import store from './utils/store';
-// console.log(store.getState());
+console.log("Redux store in App.js: ", store.getState());
 
 const client = new ApolloClient({
 	request : (operation) => {
@@ -39,13 +38,13 @@ function App() {
 						<Navigation />
 						<Switch>
 							<Route exact path="/" component={Home} />
-							<Route exact path="/creator" component={CreatorDashBoard} />
-							<Route exact path="/profile" component={CreatorProfile} />
+							<Route exact path="/creator" component={CreatrDash} />
+							<Route exact path="/profile" component={CreatrProf} />
 							<Route exact path="/signup" component={Signup} />
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/upload" component={Uploader} />
 						</Switch>
-					</Provider>      
+					</Provider>
 				</div>
 			</Router>
 		</ApolloProvider>
