@@ -4,7 +4,7 @@ import './Home.css';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
 import SidebarMob from '../../components/SidebarMob/SidebarMob';
-import ArtistGrid from '../../components/ArtistGrid/ArtistGrid';
+import CreatrGrid from '../../components/CreatrGrid/CreatrGrid';
 import Footer from '../../components/Footer/Footer';
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
 			<Row>
 				<Sidebar />
 				<SidebarMob />
-				<ArtistGrid />
+				<CreatrGrid />
 			</Row>
 			<Footer />
 		</React.Fragment>
