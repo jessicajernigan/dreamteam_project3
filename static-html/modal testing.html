@@ -17,47 +17,44 @@
             </div>
             <div class="header-links-container col-lg-6">
                 <a class="nav-link" href="#">Buskr Login</a>
-                <a class="nav-link" id="view-cart" data-toggle="modal" href="#cartModal" data-backdrop="false">View Cart</a>
-
+                <a class="nav-link" id="view-cart" href="#exampleModal">View Cart</a>
+                
             </div>
         </nav>
     </header>
 
-    <main id="main" class="row">
-        <div class="modal" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
-            <div class="modal-dialog cart-modal-dialog m-0" role="document">
-                <div class="modal-content p-3">
-
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="cartModalLabel">View Cart</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body m-2 p-2 text-left">
-                        <p class="cart-item">$0.99 - Red Hot Chili Peppers - Californication</p>
-                        <p class="cart-item">$0.99 - Red Hot Chili Peppers - Californication</p>
-                        <p class="cart-item">$0.99 - Red Hot Chili Peppers - Californication</p>
-                    </div>
-
-                    <div class="modal-body p-1 text-right">
-                        <h5 class="p-2">Total: $2.97</h5>
-                        <button type="button" class="btn btn-primary btn-sm p-2">Check Out</button>
-                    </div>
-
-                </div>
-            </div>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Edit Biography
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Your Biography</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-    </main>
+        <div class="modal-body">
+          <p>hihihi</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
         
+
     <footer class="footer">
         <h6>&copy; dreamteam 2020</h6>
     </footer>
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
-

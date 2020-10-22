@@ -156,9 +156,9 @@ a {
     margin: 0 auto 20px auto;
 }
 
-.btn {
+/* .btn {
     margin: 10px 0 10px 0;
-}
+} */
 
 .log-in-btn-grp-container {
     display: flex;
@@ -239,6 +239,38 @@ a {
 
 
 
+/* CREATOR DASHBOARD MODALS */
+.modal {
+    padding-top: 10%;
+}
+
+.cart-modal-dialog {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10040;
+    overflow: auto;
+    overflow-y: auto;
+}
+
+.modal-body {
+    padding: 0 15px 0 15px;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+    padding-top: 20px;
+}
+
+
+
+
+
+
 /* CART */
 .cart {
     position: fixed;
@@ -252,6 +284,10 @@ a {
     padding: .5rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
     border-bottom-left-radius: .5rem;
+}
+
+.cart-item {
+    font-size: 0.7rem;
 }
 
 
@@ -289,6 +325,9 @@ a {
     }
     .header-links-container {
         justify-content: center;
+    }
+    .modal {
+        padding-top: 50%;
     }
 }
 
