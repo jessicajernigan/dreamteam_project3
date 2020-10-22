@@ -26,6 +26,10 @@
 	/* background-color: rgb(219, 219, 219); */
 }
 
+.CreatrDash img {
+  height: 100%;
+}
+
 .CreatrDash-dropzone-container {
 	width: 60%;
 	height: 10vh;
