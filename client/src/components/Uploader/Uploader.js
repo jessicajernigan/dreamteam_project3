@@ -2,10 +2,13 @@ import React from 'react'
 import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
 
-import Container from 'react-bootstrap/Container'
+// import Container from 'react-bootstrap/Container'
 
+import './Uploader.css'
 
 const Uploader = () => {
+
+  
   // specify upload params and url for your files
   const getUploadParams = ({ meta }) => { return { url: 'https://httpbin.org/post' } }
   
@@ -19,14 +22,14 @@ const Uploader = () => {
   }
 
   return (
-    <Container>
+    // <Container>
       <Dropzone
         getUploadParams={getUploadParams}
         onChangeStatus={handleChangeStatus}
         onSubmit={handleSubmit}
         accept="image/*,audio/*,video/*"
       />
-    </Container>
+    // </Container>
   )
 }
 

@@ -7,11 +7,18 @@ import Button from 'react-bootstrap/Button';
 // import './Login.css';/
 
 const Login = () => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // handle login auth
+    window.location.assign('/creator');
+  }
+
 	return (
 		<React.Fragment>
 			<main className="Login vh-100 d-flex flex-column align-items-center mt-5 pt-5">
 				<h3 className="mb-5">Buskr Login</h3>
-				<Form className="w-25">
+				<Form className="w-25" onSubmit={handleSubmit}>
 					<Form.Group controlId="Login-username-input">
 						<Form.Label>Username</Form.Label>
 						<Form.Control placeholder="" />

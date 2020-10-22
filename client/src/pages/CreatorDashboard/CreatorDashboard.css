@@ -1,51 +1,44 @@
+
+/* TEMPORARY CUSTOM UTILITY CLASSES */
+.bg-gray {
+  background-color: rgb(34, 34, 34, 0.6);
+}
+
+.bg-light-gray {
+  background-color: rgb(219, 219, 219);
+}
+
 /* LEFT COLUMN */
-.CreatorDashboard-title {
-	text-align: center;
-	font-size: 2rem;
-	margin: 0 auto 30px auto;
+.CreatorDashboard {
+  padding-top: 5rem;
 }
 
-.CreatorDashboard-main-panel {
-	min-height: 55vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
+ /* Probably a better way to do this using props but maybe this is ok */
+ /* https://react-dropzone-uploader.js.org/docs/customization */
+ .CreatorDashboard .dzu-dropzone {
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
 }
 
-.CreatorDashboard-panel {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-color: rgb(34, 34, 34, 0.6);
-}
 
-.CreatorDashboard-photo-placeholder {
-	height: 200px;
+.CreatorDashboard-photo-container {
+  height: 200px;
 	width: 200px;
-	background-color: rgb(219, 219, 219);
+	/* background-color: rgb(219, 219, 219); */
 }
 
-.CreatorDashboard-dropzone-placeholder {
-	width: 60%;
+.CreatorDashboard-dropzone-container {
+  width: 60%;
 	height: 10vh;
-	border: dashed black;
 }
 
-/* RIGHT COLUMN */
-.CreatorDashboard-music-panel {
-	min-height: 55vh;
-	background-color: rgb(34, 34, 34, 0.6);
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	align-items: center;
-}
+
 
 /* MEDIA QUERIES */
-
+/* 
 @media only screen and (max-width: 375px) {
-	.CreatorDashboard-title {
+	.CreatorDashboard h2 {
 		font-size: 20px;
 	}
-}
+} */

@@ -5,11 +5,18 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const Signup = () => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // handle login auth
+    window.location.assign('/creator');
+  }
+
 	return (
 		<React.Fragment>
 			<main className="Signup vh-100 d-flex flex-column align-items-center mt-5 pt-5">
 				<h3 className="mb-5">Buskr Signup</h3>
-				<Form className="w-25 d-flex flex-column">
+				<Form className="w-25 d-flex flex-column" onSubmit={handleSubmit}>
 					<Form.Group controlId="Signup-email-input">
 						<Form.Label>Email Address</Form.Label>
 						<Form.Control type="email" placeholder="" />
@@ -25,7 +32,7 @@ const Signup = () => {
 						<Form.Control type="password" placeholder="" />
 					</Form.Group>
 
-					<Button className="w-25 align-self-center"variant="primary" type="submit">
+					<Button className="w-25 align-self-center" variant="primary" type="submit">
 						Sign Up
 					</Button>
 				</Form>
