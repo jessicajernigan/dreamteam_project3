@@ -1,7 +1,8 @@
 import {
 	TYPE_ONE,
 	TYPE_TWO,
-	HYDRATE_VIBES,
+  HYDRATE_VIBES,
+  UPDATE_CURRENT_VIBE,
   UPDATE_CREATORS,
   UPDATE_SONGS
 } from '../types';
@@ -28,16 +29,24 @@ export const hydrateVibes = (vibes) => {
 	};
 };
 
-export const updateCreators = (arg) => {
+export const updateCurrentVibe = (vibeId) => {
+  // console.log('vibeId from action creator', vibeId)
 	return {
-		type : UPDATE_CREATORS,
-		arg
+		type : UPDATE_CURRENT_VIBE,
+		vibeId
 	};
 };
 
-export const updateSongs = (arg) => {
-	return {
-		type : UPDATE_SONGS,
-		arg
-	};
-};
+// export const updateCreators = (arg) => {
+// 	return {
+// 		type : UPDATE_CREATORS,
+// 		arg
+// 	};
+// };
+
+// export const updateSongs = (arg) => {
+// 	return {
+// 		type : UPDATE_SONGS,
+// 		arg
+// 	};
+// };

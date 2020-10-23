@@ -1,10 +1,21 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { updateCurrentVibe } from '../../utils/actions';
 
 const VibeBtn = ({vibe}) => {
+
+  const dispatch = useDispatch()
+
+  const handleClick = (id) => {
+    console.log('vibe _id: ', id)
+		dispatch(updateCurrentVibe(id));
+	};
+
   return (
-    <a className="nav-link" href="/">
+    <button onClick={() => handleClick(vibe._id)}>
     {vibe.name}
-  </a>
+  </button>
   )
 }
 

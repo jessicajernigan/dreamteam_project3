@@ -15,7 +15,7 @@ import Login from './pages/Login/Login';
 import Uploader from './components/Uploader/Uploader';
 
 import store from './utils/store';
-console.log("Redux store in App.js: ", store.getState());
+// console.log("Redux store in App.js: ", store.getState());
 
 const client = new ApolloClient({
 	request : (operation) => {
