@@ -1,7 +1,21 @@
 const db = require('./connection');
-const { User, Product, Category } = require('../models');
+const { Vibe, User, Product, Category } = require('../models');
 
 db.once('open', async () => {
+  await Vibe.deleteMany();
+
+  const vibes = await Vibe.insertMany([
+    { name: 'Rock' },
+    { name: 'Hip Hop' },
+    { name: 'Reggae' },
+    { name: 'Jazz' },
+    { name: 'Country' },
+    { name: 'Disco' },
+    { name: 'Blues' },
+  ]);
+
+  console.log('vibes seeded', vibes);
+  
   await Category.deleteMany();
 
   const categories = await Category.insertMany([
@@ -44,7 +58,7 @@ db.once('open', async () => {
       price: 7.99,
       quantity: 20
     },
-    
+  ])
 
   console.log('products seeded');
 
