@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { Vibe, User, Product, Category } = require('../models');
+const { Vibe, Creator } = require('../models');
 
 db.once('open', async () => {
   await Vibe.deleteMany();
@@ -15,18 +15,89 @@ db.once('open', async () => {
   ]);
 
   console.log('vibes seeded', vibes);
+
+  // Rock: vibes[0]._id 
+  // Hip Hop: vibes[1]._id 
+  // Reggae: vibes[2]._id 
+  // Jazz: vibes[3]._id 
+  // Country: vibes[4]._id 
+  // Disco: vibes[5]._id 
+  // Blues: vibes[6]._id 
   
-  // await Category.deleteMany();
+  
 
-  // const categories = await Category.insertMany([
-  //   { name: 'Sample' },
-  //   { name: 'Sample' },
-  //   { name: 'Sample' },
-  //   { name: 'Sample' },
-  //   { name: 'Sample' }
-  // ]);
+  await Creator.deleteMany();
 
-  // console.log('categories seeded');
+  const creators = await Creator.insertMany([
+    { 
+      firstName: 'John', 
+      lastName: 'Doe',
+      email: 'test1@testmail.com',
+      password: 'password123',
+      bandName: 'Royal Trux',
+      imgUrl: 'https://source.unsplash.com/300x300/?musician',
+      location: 'Virginia',
+      bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
+      vibes: [ vibes[0]._id, vibes[3]._id, vibes[6]._id ]
+    },
+    { 
+      firstName: 'John', 
+      lastName: 'Doe',
+      email: 'test2@testmail.com',
+      password: 'password123',
+      bandName: 'Guided By Voices',
+      imgUrl: 'https://source.unsplash.com/300x300/?musician',
+      location: 'Ohio',
+      bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
+      vibes: [vibes[0]._id, vibes[6]._id ],
+    },
+    { 
+      firstName: 'John', 
+      lastName: 'Doe',
+      email: 'test3@testmail.com',
+      password: 'password123',
+      bandName: 'Lee Scratch Perry',
+      imgUrl: 'https://source.unsplash.com/300x300/?musician',
+      location: 'Jamaica',
+      bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
+      vibes: [ vibes[2]._id ],
+    },
+    { 
+      firstName: 'John', 
+      lastName: 'Doe',
+      email: 'test4@testmail.com',
+      password: 'password123',
+      bandName: 'Johnny Cash',
+      imgUrl: 'https://source.unsplash.com/300x300/?musician',
+      location: 'Austin, TX',
+      bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
+      vibes: [ vibes[4]._id, vibes[6]._id ],
+    },
+    { 
+      firstName: 'John', 
+      lastName: 'Doe',
+      email: 'test5@testmail.com',
+      password: 'password123',
+      bandName: 'Outkast',
+      imgUrl: 'https://source.unsplash.com/300x300/?musician',
+      location: 'Austin, TX',
+      bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
+      vibes: [ vibes[1]._id, vibes[3]._id ],
+    },
+    { 
+      firstName: 'John', 
+      lastName: 'Doe',
+      email: 'test6@testmail.com',
+      password: 'password123',
+      bandName: 'Miles Davis',
+      imgUrl: 'https://source.unsplash.com/300x300/?musician',
+      location: 'Austin, TX',
+      bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
+      vibes: [ vibes[3]._id, vibes[6]._id ],
+    },
+  ])
+
+  console.log('creators seeded', creators);
 
   // await Product.deleteMany();
 

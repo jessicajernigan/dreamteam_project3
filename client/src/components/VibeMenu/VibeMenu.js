@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_VIBES } from '../../utils/queries';
-import { hydrateVibes, updateCurrentVibe } from '../../utils/actions';
+import { hydrateVibes } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
 
 import VibeBtn from '../VibeBtn/VibeBtn'

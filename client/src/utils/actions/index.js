@@ -37,12 +37,12 @@ export const updateCurrentVibe = (vibeId) => {
 	};
 };
 
-// export const updateCreators = (arg) => {
-// 	return {
-// 		type : UPDATE_CREATORS,
-// 		arg
-// 	};
-// };
+export const updateCreators = (creators) => {
+	return {
+		type : UPDATE_CREATORS,
+		creators
+	};
+};
 
 // export const updateSongs = (arg) => {
 // 	return {
