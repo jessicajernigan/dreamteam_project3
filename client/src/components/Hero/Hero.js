@@ -9,7 +9,7 @@ import './Hero.css'
 
 const Hero = () => {
   return (
-    <Col lg={12}>
+    <Col lg={12} className="p-0">
         <Jumbotron className="Hero">
             <Image className="Hero-Image" src="./images/hero_image.jpg" fluid />
         </Jumbotron>

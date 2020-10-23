@@ -18,7 +18,6 @@ const Home = () => {
 			<Row>
 				<Sidebar />
 			</Row>
-			<Player />
 			<Row>
 				{/* <SidebarMob /> */}
 				<CreatrGrid />

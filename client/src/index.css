@@ -18,8 +18,7 @@
 }
 
 body {
-  max-width: 75%;
-  margin: auto;
+  margin: 0 auto 0 auto;
   color: white;
   background-color: var(--primary);
 }

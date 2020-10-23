@@ -1,6 +1,6 @@
 .Hero {
     height: 55vh;
-    padding: 0 0 0 0;
+    padding: 0;
     overflow: hidden;
     display: flex;
     justify-content: left;

@@ -45,8 +45,8 @@ const CreatrProf = () => {
 		<div className="CreatrProf">
 			<Row>
 				<Sidebar />
-				<SidebarMob />
-				<Col lg={10}>
+				{/* <SidebarMob /> */}
+				<Col lg={12}>
 					<Row className="mt-4 flex align-items-center">
 						<Col lg={3}>
 							<Card>
