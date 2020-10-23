@@ -7,7 +7,6 @@ import SidebarMob from '../../components/SidebarMob/SidebarMob';
 import CreatrGrid from '../../components/CreatrGrid/CreatrGrid';
 import Footer from '../../components/Footer/Footer';
 import Hero from '../../components/Hero/Hero';
-import Player from '../../components/Player/Player';
 
 const Home = () => {
 	return (

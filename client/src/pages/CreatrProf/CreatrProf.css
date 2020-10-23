@@ -1,4 +1,9 @@
 /* CREATOR PROFILE */
+.CreatrProf {
+	max-width: 80%;
+	margin: 0 auto 0 auto;
+}
+
 .CreatrProf ul {
 	padding: 0;
 }
