@@ -19,32 +19,31 @@ export const QUERY_CREATORS = gql`
       imgUrl
       location
       bio
-
+      vibes {
+          _id
+        }
 		}
 	}
 `;
 
-// vibes [
-//   {
+// export const QUERY_CREATORS = gql`
+// {
+//   creators {
 //     _id
+//     firstName
+//     lastName
+//     bandName
+//     imgUrl
+//     location
+//     bio
+//     vibes {
+//       _id
+//     }
 //   }
-// ] 
-
-// export const QUERY_PRODUCTS = gql`
-// 	query getProducts($category: ID) {
-// 		products(category: $category) {
-// 			_id
-// 			name
-// 			description
-// 			price
-// 			quantity
-// 			image
-// 			category {
-// 				_id
-// 			}
-// 		}
-// 	}
+// }
 // `;
+
+
 
 export const QUERY_ALL_PRODUCTS = gql`
 	{

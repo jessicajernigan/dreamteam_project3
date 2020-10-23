@@ -9,37 +9,27 @@ const resolvers = {
       return await Vibe.find();
     },
   
-    // optional parameters for search, otherwise return all
+    // // optional parameters for search, otherwise return all
     creators: async (parent, { vibe, bandName }) => {
       const params = {};
-
+      
       if (vibe) {
         params.vibe = vibe;
       }
-
+      
       if (bandName) {
         params.bandName = {
           $regex: bandName
         };
       }
-
-      return await Creator.find(params).populate('vibe');
+      
+      return await Creator.find(params).populate('vibes');
     },
-    // products: async (parent, { category, name }) => {
-    //   const params = {};
 
-    //   if (category) {
-    //     params.category = category;
-    //   }
-
-    //   if (name) {
-    //     params.name = {
-    //       $regex: name
-    //     };
-    //   }
-
-    //   return await Product.find(params).populate('category');
+    // creators: async () => {
+    //   return await Creator.find({}).populate('vibes');
     // },
+
     // product: async (parent, { _id }) => {
     //   return await Product.findById(_id).populate('category');
     // },

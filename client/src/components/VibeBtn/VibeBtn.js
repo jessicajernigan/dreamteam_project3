@@ -8,7 +8,7 @@ const VibeBtn = ({vibe}) => {
   const dispatch = useDispatch()
 
   const handleClick = (id) => {
-    console.log('vibe _id: ', id)
+    // console.log('vibe _id: ', id)
 		dispatch(updateCurrentVibe(id));
 	};
 

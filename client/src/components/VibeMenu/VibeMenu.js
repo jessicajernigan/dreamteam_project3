@@ -14,7 +14,7 @@ const VibeMenu = () => {
   const { vibes } = useSelector(state => state)
   const dispatch = useDispatch();
 
-  console.log('vibes: ', vibes)
+  // console.log('vibes: ', vibes)
 
   useEffect(
 		() => {
