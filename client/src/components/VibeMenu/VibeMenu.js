@@ -6,6 +6,7 @@ import { hydrateVibes } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
 
 import VibeBtn from '../VibeBtn/VibeBtn'
+import './VibeMenu.css'
 
 const VibeMenu = () => {
   	// get data from DB with Apollo
@@ -37,11 +38,13 @@ const VibeMenu = () => {
 
   return (
     <div className="VibeMenu">
-      <h5>Vibes</h5>
+      <h5 className="text-center">Choose your vibe</h5>
       {/* refactor to not have to pass props since we're using redux */}
-      {vibes.map((vibe, i) => (
+	  <div className="VibeButtonGrouping">
+	  {vibes.map((vibe, i) => (
         <VibeBtn key={i} vibe={vibe} />
       ))}
+	  </div>
     </div>
   )
 }

@@ -1,15 +1,14 @@
-.Sidebar {
+/* .Sidebar {
   padding: 10px 10px 10px 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  /* border: solid black; */
   height: 60vh;
   text-align: center;
-}
+} */
 
-.Sidebar-artist-search {
+/* .Sidebar-artist-search {
   width: 90%;
   margin: 20px 0 20px 0;
 }
@@ -26,15 +25,62 @@
 
 .Sidebar-audio-controller {
   margin: 0 0 0 0 !important;
-}
+} */
 
 
 /* MEDIA QUERIES */
-@media only screen and (max-width: 1048px) {
+/* @media only screen and (max-width: 1048px) {
   .Sidebar {
       display: none;
   }
   .Sidebar-now-playing {
       display: none;
   }
+} */
+
+
+
+
+
+.Sidebar-Top {
+  width: 100%;
 }
+
+
+
+
+
+.Sidebar-artist-search-mobile {
+	width: 70%;
+	margin: 10px 0 10px 0 !important;
+	display: flex;
+	justify-content: center;
+}
+
+.SidebarMob-browse-mobile {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 10px 0 10px 0;
+}
+
+.SidebarMob-now-playing-mobile {
+	width: 100%;
+	background-color: rgb(175, 175, 175);
+	border-radius: 5px;
+	position: fixed;
+	bottom: 0;
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+}
+
+/* @media only screen and (min-width: 1048px) {
+	.SidebarMob {
+		display: none;
+	}
+
+	.SidebarMob-now-playing-mobile {
+		display: none;
+	}
+} */

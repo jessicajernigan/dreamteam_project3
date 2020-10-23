@@ -3,8 +3,22 @@
   width: .6em;
 } */
 
-.rhap_repeat-button {}
+.rhap_container {
+  /* vertical bar on left side */
+  height: 10%;
+  right: 0;
+  position: fixed;
+  bottom: 0;
+  width: 15%;
+  z-index: 99999;
+  background-color: rgba(255, 255, 255, 0.7);
 
+  /* align items inside vertically centered */
+  align-items: center;
+  display: flex;
+}
+
+.rhap_repeat-button {}
 
 .rhap_main-controls-button {}
 

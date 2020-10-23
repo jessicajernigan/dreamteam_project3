@@ -6,7 +6,7 @@ import './Navigation.css';
 
 const Navigation = () => {
   const activeStyle = {
-    color: "pink"
+    color: "white"
   };
 	return (
 			<Navbar expand="lg" className="Navigation">
@@ -25,11 +25,11 @@ const Navigation = () => {
 						<NavLink exact to="/about" activeStyle={activeStyle} className="mr-3">
 							About Us
 						</NavLink>
-						<NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
-							Buskr Login
-						</NavLink>
 						<NavLink exact to="/cart" activeStyle={activeStyle} className="mr-3">
 							View Cart
+						</NavLink>
+						<NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
+							Buskr Login
 						</NavLink>
 					</Nav>
 				</Navbar.Collapse>

@@ -1,0 +1,14 @@
+.Hero {
+    height: 55vh;
+    padding: 0 0 0 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.Hero-Image {
+    min-width: 100%;
+    min-height: 100%;
+}

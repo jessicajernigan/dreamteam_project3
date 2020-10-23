@@ -1,7 +1,8 @@
 /* NAVBAR */
 .Navigation {
   /* being overridden by * selector in index.css */
-  color: var(--secondary);
+  /* color: var(--secondary); */
+  background-color: #7E7E81;
 }
 
 .Navigation-brand-bskr {

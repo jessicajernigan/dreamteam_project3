@@ -3,13 +3,12 @@
 * {
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-  color: var(--tertiary);
 }
 
 :root {
---primary: rgb(174, 185, 71);
+--primary: #39393E;
 --secondary: #4761f3;
---tertiary: rgb(34, 34, 34);
+--tertiary: white;
 --dark-bg: #39393E;
 --rose: #FFD9FF;
 --bg-pink: #F6AFF6;
@@ -19,16 +18,17 @@
 }
 
 body {
-  max-width: 95%;
+  max-width: 75%;
   margin: auto;
-  /* background-color: var(--dark-bg); */
-  color: var(--rose);
+  color: white;
+  background-color: var(--primary);
 }
 
 a {
-  color: var(--secondary);
+  color: var(--tertiary);
 }
 
 a:hover {
   text-decoration: none;
+  color: var(--tertiary);
 }

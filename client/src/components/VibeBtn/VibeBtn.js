@@ -1,10 +1,12 @@
 import React from 'react'
 
+import './VibeBtn.css'
+
 const VibeBtn = ({vibe}) => {
   return (
-    <a className="nav-link" href="/">
+    <button className="btn-save btn btn-primary btn-sm nav-link" href="/">
     {vibe.name}
-  </a>
+  </button>
   )
 }
 
