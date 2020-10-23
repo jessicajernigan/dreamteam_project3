@@ -2,13 +2,13 @@ export default {
   // first        : [],
   // second        : false,
   vibes      : [ 
-    { name: 'Rock' },
-    { name: 'Hip Hop' },
-    { name: 'Reggae' },
-    { name: 'Jazz' },
-    { name: 'Country' },
-    { name: 'Disco' },
-    { name: 'Blues' },
+    // { name: 'Rock' },
+    // { name: 'Hip Hop' },
+    // { name: 'Reggae' },
+    // { name: 'Jazz' },
+    // { name: 'Country' },
+    // { name: 'Disco' },
+    // { name: 'Blues' },
   ],
   creators: [
     { 

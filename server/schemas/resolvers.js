@@ -8,6 +8,7 @@ const resolvers = {
     vibes: async () => {
       return await Vibe.find();
     },
+    
     categories: async () => {
       return await Category.find();
     },

@@ -1,5 +1,14 @@
 import gql from 'graphql-tag';
 
+export const QUERY_VIBES = gql`
+	{
+		vibes {
+			_id
+			name
+		}
+	}
+`;
+
 export const QUERY_PRODUCTS = gql`
 	query getProducts($category: ID) {
 		products(category: $category) {

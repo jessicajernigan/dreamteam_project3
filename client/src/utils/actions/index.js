@@ -21,10 +21,10 @@ export const typeTwoAction = (arg) => {
 	};
 };
 
-export const hydrateVibes = (arg) => {
+export const hydrateVibes = (vibes) => {
 	return {
 		type : HYDRATE_VIBES,
-		arg
+		vibes
 	};
 };
 
