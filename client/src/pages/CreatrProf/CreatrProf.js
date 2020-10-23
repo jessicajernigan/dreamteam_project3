@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -17,14 +18,16 @@ const CreatrProf = () => {
   
   const playerRef = useRef(null)
 
-	const testId = 8633317975153281;
+  const { id } = useParams();
+  // console.log('params id: ', id)
+
 
 	const state = useSelector((state) => state);
 
-  const curCreatr = state.creators.filter((creator) => creator._id === testId);
-  const { name, imgUrl, location, bio } = curCreatr[0];
+  const curCreatr = state.creators.filter((creator) => creator._id === id);
+  const { bandName, imgUrl, location, bio } = curCreatr[0];
 
-  const curSongs = state.songs.filter(song => song.creatorId === testId)
+  const curSongs = state.songs.filter(song => song.creatorId === id)
 
   const handlePlaySong = (songUrl) => {
     // console.log("Play song", songUrl)
@@ -38,14 +41,12 @@ const CreatrProf = () => {
     });
   }
 
-  
-  
 
 	return (
 		<div className="CreatrProf">
 			<Row>
-				<Sidebar />
-				<SidebarMob />
+				{/* <Sidebar />
+				<SidebarMob /> */}
 				<Col lg={10}>
 					<Row className="mt-4 flex align-items-center">
 						<Col lg={3}>
@@ -57,7 +58,7 @@ const CreatrProf = () => {
 							</Card>
 						</Col>
 						<Col lg={9}>
-							<h2>{name}</h2>
+							<h2>{bandName}</h2>
 							<p>{bio}</p>
 							<h4>Available Songs</h4>
 							<ul>

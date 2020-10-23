@@ -39,7 +39,7 @@ function App() {
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route exact path="/creator" component={CreatrDash} />
-							<Route exact path="/profile" component={CreatrProf} />
+							<Route exact path="/profile/:id" component={CreatrProf} />
 							<Route exact path="/signup" component={Signup} />
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/upload" component={Uploader} />

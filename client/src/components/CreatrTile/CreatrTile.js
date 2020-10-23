@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import './CreatrTile.css';
 
-const CreatrTile = ({ bandName, imgUrl }) => {
+const CreatrTile = ({ _id, bandName, imgUrl }) => {
 	return (
-		<Link to="/profile" className="CreatrTile">
+		<Link to={`/profile/${_id}`} className="CreatrTile">
 			<div className="CreatrTile-tile">
 				{/* <img src="https://via.placeholder.com/300" alt="" /> */}
 				<img src={imgUrl} alt="" />

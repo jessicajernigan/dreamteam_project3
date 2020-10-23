@@ -22,7 +22,7 @@ const Sidebar = () => {
       />
     </InputGroup>
     <VibeMenu />
-    <div className="Sidebar-now-playing">
+    {/* <div className="Sidebar-now-playing">
       <div className="Sidebar-now-playing-text">
         <p>Red Hot Chili Peppers</p>
         <p>Californication</p>
@@ -30,7 +30,7 @@ const Sidebar = () => {
       <div className="Sidebar-audio-controller">
         <Player />
       </div>
-    </div>
+    </div> */}
   </Col>
   )
 }
