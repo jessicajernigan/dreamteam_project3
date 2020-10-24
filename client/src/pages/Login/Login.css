@@ -1,0 +1,30 @@
+.Need-Acct-Text {
+    font-size: 14px;
+}
+
+.Link-Text {
+    color: var(--tertiary);
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 1048px) {
+	.Login-Form {
+		width: 60% !important;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+    .Login-Btn {
+        width: 35% !important;
+    }
+	.Login-Form {
+		width: 65% !important;
+    }
+    .Need-Acct-Text {
+        font-size: 10px;
+        width: 65% !important;
+    }
+    .Link-Text {
+        font-size: 14px;
+    }
+}
