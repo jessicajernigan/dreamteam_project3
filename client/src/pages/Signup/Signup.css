@@ -1,0 +1,14 @@
+@media only screen and (max-width: 1048px) {
+	.Signup-Form {
+		width: 60% !important;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+    .Signup-Btn {
+        width: 40% !important;
+    }
+	.Signup-Form {
+		width: 65% !important;
+    }
+}
