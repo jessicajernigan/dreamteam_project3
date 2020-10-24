@@ -1,14 +1,12 @@
 import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
 import { BiPlay, BiPlusMedical } from 'react-icons/bi';
-
-import Sidebar from '../../components/Sidebar/Sidebar';
-import SidebarMob from '../../components/SidebarMob/SidebarMob';
 
 import './CreatrProf.css';
 
@@ -17,14 +15,16 @@ const CreatrProf = () => {
   
   const playerRef = useRef(null)
 
-	const testId = 8633317975153281;
+  const { id } = useParams();
+  // console.log('params id: ', id)
+
 
 	const state = useSelector((state) => state);
 
-  const curCreatr = state.creators.filter((creator) => creator._id === testId);
+  const curCreatr = state.creators.filter((creator) => creator._id === id);
   const { name, imgUrl, location, bio } = curCreatr[0];
 
-  const curSongs = state.songs.filter(song => song.creatorId === testId)
+  const curSongs = state.songs.filter(song => song.creatorId === id)
 
   const handlePlaySong = (songUrl) => {
     // console.log("Play song", songUrl)
@@ -38,14 +38,10 @@ const CreatrProf = () => {
     });
   }
 
-  
-  
 
 	return (
 		<div className="CreatrProf">
 			<Row>
-				<Sidebar />
-				<SidebarMob />
 				<Col lg={10}>
 					<Row className="mt-4 flex align-items-center">
 						<Col lg={3}>

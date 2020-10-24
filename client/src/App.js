@@ -15,7 +15,7 @@ import Login from './pages/Login/Login';
 import Uploader from './components/Uploader/Uploader';
 
 import store from './utils/store';
-console.log("Redux store in App.js: ", store.getState());
+// console.log("Redux store in App.js: ", store.getState());
 
 const client = new ApolloClient({
 	request : (operation) => {
@@ -38,8 +38,8 @@ function App() {
 						<Navigation />
 						<Switch>
 							<Route exact path="/" component={Home} />
-							<Route exact path="/creator" component={CreatrDash} />
-							<Route exact path="/profile" component={CreatrProf} />
+							<Route exact path="/creator/:id" component={CreatrDash} />
+							<Route exact path="/profile/:id" component={CreatrProf} />
 							<Route exact path="/signup" component={Signup} />
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/upload" component={Uploader} />

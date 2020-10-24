@@ -1,7 +1,6 @@
-const Vibe = require('./Vibe');
 const User = require('./User');
-const Product = require('./Product');
-const Category = require('./Category');
-const Order = require('./Order');
+const Vibe = require('./Vibe');
+const Creator = require('./Creator');
 
-module.exports = { Vibe, User, Product, Category, Order };
+
+module.exports = { User, Vibe, Creator };

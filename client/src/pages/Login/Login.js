@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/react-hooks'
+
+import { LOGIN } from '../../utils/mutations'
+import Auth from '../../utils/auth'
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -7,26 +11,45 @@ import Button from 'react-bootstrap/Button';
 // import './Login.css';/
 
 const Login = () => {
+  const [ formState, setFormState ] = useState({ email: '', password: '' });
+	const [ login, { error } ] = useMutation(LOGIN);
 
-  const handleSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     // handle login auth
-    window.location.assign('/creator');
+    try {
+			const mutationResponse = await login({
+				variables: { email: formState.email, password: formState.password }
+			});
+			const token = mutationResponse.data.login.token;
+			Auth.login(token);
+		} catch (e) {
+			console.log(e);
+		}
   }
+
+  const handleChange = (event) => {
+		const { name, value } = event.target;
+		setFormState({
+			...formState,
+			[name] : value
+		});
+	};
+
 
 	return (
 		<React.Fragment>
 			<main className="Login vh-100 d-flex flex-column align-items-center mt-5 pt-5">
-				<h3 className="mb-5">Buskr Login</h3>
-				<Form className="w-25" onSubmit={handleSubmit}>
-					<Form.Group controlId="Login-username-input">
-						<Form.Label>Username</Form.Label>
-						<Form.Control placeholder="" />
+				<h3 className="mb-5">Login</h3>
+				<Form className="w-25" onSubmit={handleFormSubmit}>
+					<Form.Group controlId="Login-email-input">
+						<Form.Label>Email</Form.Label>
+						<Form.Control name="email" placeholder="" onChange={handleChange} />
 					</Form.Group>
 
 					<Form.Group controlId="Login-password-input">
 						<Form.Label>Password</Form.Label>
-						<Form.Control type="password" placeholder="" />
+						<Form.Control name="password" type="password" placeholder="" onChange={handleChange}/>
 					</Form.Group>
 
 					<Form.Group controlId="Login-submit">
@@ -41,6 +64,13 @@ const Login = () => {
 							</Link>
 						</p>
 					</Form.Group>
+          {error ? (
+					<div>
+						<p className="text-danger">
+							The provided credentials are incorrect
+						</p>
+					</div>
+				) : null}
 				</Form>
 			</main>
 		</React.Fragment>

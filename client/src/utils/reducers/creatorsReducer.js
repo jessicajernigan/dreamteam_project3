@@ -4,7 +4,7 @@ const creatorsReducer = (state = [], action) => {
 	switch (action.type) {
 		case UPDATE_CREATORS:
 			// return array
-			return action;
+			return action.creators;
 
 		default:
 			return state;
