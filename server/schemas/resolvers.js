@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Vibe, Creator } = require('../models');
+const { Creator, Vibe } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -22,24 +22,41 @@ const resolvers = {
 
 		vibes    : async () => {
 			return await Vibe.find();
-		},
-
-		// // optional parameters for search, otherwise return all
-		creators : async (parent, { vibes, name }) => {
+    },
+    
+    		// // optional parameters for search, otherwise return all
+		creators : async (parent, { vibes, username }) => {
 			const params = {};
 
 			if (vibes) {
 				params.vibes = vibes;
 			}
 
-			if (name) {
-				params.name = {
-					$regex : name
+			if (username) {
+				params.username = {
+					$regex : username
 				};
 			}
 
 			return await Creator.find(params).populate('vibes');
 		}
+
+		// // // optional parameters for search, otherwise return all
+		// creators : async (parent, { vibes, name }) => {
+		// 	const params = {};
+
+		// 	if (vibes) {
+		// 		params.vibes = vibes;
+		// 	}
+
+		// 	if (name) {
+		// 		params.name = {
+		// 			$regex : name
+		// 		};
+		// 	}
+
+		// 	return await Creator.find(params).populate('vibes');
+		// }
 
 		// creators: async () => {
 		//   return await Creator.find({}).populate('vibes');
@@ -116,28 +133,28 @@ const resolvers = {
 		// }
 	},
 	Mutation : {
-		addUser : async (parent, args) => {
-			const user = await User.create(args);
-			const token = signToken(user);
+		addCreator : async (parent, args) => {
+			const creator = await Creator.create(args);
+			const token = signToken(creator);
 
-			return { token, user };
+			return { token, creator };
 		},
 		login   : async (parent, { email, password }) => {
 			const user = await User.findOne({ email });
 
-			if (!user) {
+			if (!creator) {
 				throw new AuthenticationError('Incorrect credentials');
 			}
 
-			const correctPw = await user.isCorrectPassword(password);
+			const correctPw = await creator.isCorrectPassword(password);
 
 			if (!correctPw) {
 				throw new AuthenticationError('Incorrect credentials');
 			}
 
-			const token = signToken(user);
+			const token = signToken(creator);
 
-			return { token, user };
+			return { token, creator };
 		}
 	}
 	// Mutation: {

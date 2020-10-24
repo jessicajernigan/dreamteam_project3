@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Order = require('./Order');
+// const Order = require('./Order');
 
 const userSchema = new Schema({
   username: {
@@ -20,6 +20,32 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
+  creatorName: {
+    type: String,
+    // required: true,
+    trim: true
+  },
+  imgUrl: {
+    type: String,
+    // required: true,
+    trim: true
+  },
+  location: {
+    type: String,
+    // required: true,
+    trim: true
+  },
+  bio: {
+    type: String,
+    // required: true,
+    trim: true
+  },
+  vibes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Vibe'
+    }
+  ]
   // orders: [Order.schema]
 });
 

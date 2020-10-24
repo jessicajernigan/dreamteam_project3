@@ -1,6 +1,5 @@
-const User = require('./User');
-const Vibe = require('./Vibe');
 const Creator = require('./Creator');
+const Vibe = require('./Vibe');
 
 
-module.exports = { User, Vibe, Creator };
+module.exports = { Creator, Vibe };

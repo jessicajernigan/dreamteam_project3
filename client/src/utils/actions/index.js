@@ -3,7 +3,7 @@ import {
 	TYPE_TWO,
   HYDRATE_VIBES,
   UPDATE_CURRENT_VIBE,
-  UPDATE_CREATORS,
+  UPDATE_USERS,
   UPDATE_SONGS
 } from '../types';
 
@@ -37,10 +37,10 @@ export const updateCurrentVibe = (vibeId) => {
 	};
 };
 
-export const updateCreators = (creators) => {
+export const updateUsers = (users) => {
 	return {
-		type : UPDATE_CREATORS,
-		creators
+		type : UPDATE_USERS,
+		users
 	};
 };
 
