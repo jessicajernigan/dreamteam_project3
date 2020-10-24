@@ -38,7 +38,7 @@ function App() {
 						<Navigation />
 						<Switch>
 							<Route exact path="/" component={Home} />
-							<Route exact path="/creator" component={CreatrDash} />
+							<Route exact path="/creator/:id" component={CreatrDash} />
 							<Route exact path="/profile/:id" component={CreatrProf} />
 							<Route exact path="/signup" component={Signup} />
 							<Route exact path="/login" component={Login} />

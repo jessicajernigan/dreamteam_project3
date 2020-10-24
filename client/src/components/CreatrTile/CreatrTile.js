@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 import './CreatrTile.css';
 
-const CreatrTile = ({ _id, bandName, imgUrl }) => {
+const CreatrTile = ({ _id, name, imgUrl }) => {
 	return (
 		<Link to={`/profile/${_id}`} className="CreatrTile">
 			<div className="CreatrTile-tile">
 				{/* <img src="https://via.placeholder.com/300" alt="" /> */}
 				<img src={imgUrl} alt="" />
-        <h3>{bandName}</h3>
+        <h3>{name}</h3>
 			</div>
 		</Link>
 	);

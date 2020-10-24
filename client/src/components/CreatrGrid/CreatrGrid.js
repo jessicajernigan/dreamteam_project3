@@ -25,7 +25,7 @@ const CreatrGrid = () => {
 		() => {
 			// if there's data to be stored
 			if (data) {
-        console.log('data from QUERY_CREATORS query', data)
+        // console.log('data from QUERY_CREATORS query', data)
 				// store it in the global state object
 				dispatch(updateCreators(data.creators));
 

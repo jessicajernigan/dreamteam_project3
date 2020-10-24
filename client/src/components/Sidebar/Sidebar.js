@@ -13,14 +13,14 @@ const Sidebar = () => {
 
   return (
     <Col lg={2} className="Sidebar sticky-top">
-    <InputGroup className="mb-3">
+    {/* <InputGroup className="mb-3">
       <FormControl
         className="Sidebar-artist-search"
         placeholder="Search for an artist"
         aria-label="Artist search"
         aria-describedby="basic-addon1"
       />
-    </InputGroup>
+    </InputGroup> */}
     <VibeMenu />
     {/* <div className="Sidebar-now-playing">
       <div className="Sidebar-now-playing-text">

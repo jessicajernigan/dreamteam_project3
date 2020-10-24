@@ -1,6 +1,12 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+  type User {
+      _id: ID
+      username: String
+      email: String
+    }
+
   type Vibe {
     _id: ID
     name: String
@@ -8,20 +14,28 @@ const typeDefs = gql`
 
   type Creator {
     _id: ID
-    firstName: String
-    lastName: String
-    email: String
-    bandName: String
+    name: String
     imgUrl: String
     location: String
     bio: String
     vibes: [Vibe]
   }
 
+  type Auth {
+  token: ID
+  user: User
+}
+
   type Query {
+    user: User
     vibes: [Vibe]
     creator: Creator
-    creators(vibe: ID, bandName: String): [Creator]
+    creators(vibe: ID, name: String): [Creator]
+  }
+
+  type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
   }
 
 
@@ -73,6 +87,7 @@ module.exports = typeDefs;
 // type Query {
 //   products(category: ID, name: String): [Product]
 //   product(_id: ID!): Product
+//   user: User
 //   order(_id: ID!): Order
 //   checkout(products: [ID]!): Checkout
 // }

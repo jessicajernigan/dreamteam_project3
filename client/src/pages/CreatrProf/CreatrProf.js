@@ -1,15 +1,12 @@
 import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
 import { BiPlay, BiPlusMedical } from 'react-icons/bi';
-
-import Sidebar from '../../components/Sidebar/Sidebar';
-import SidebarMob from '../../components/SidebarMob/SidebarMob';
 
 import './CreatrProf.css';
 
@@ -25,7 +22,7 @@ const CreatrProf = () => {
 	const state = useSelector((state) => state);
 
   const curCreatr = state.creators.filter((creator) => creator._id === id);
-  const { bandName, imgUrl, location, bio } = curCreatr[0];
+  const { name, imgUrl, location, bio } = curCreatr[0];
 
   const curSongs = state.songs.filter(song => song.creatorId === id)
 
@@ -45,8 +42,6 @@ const CreatrProf = () => {
 	return (
 		<div className="CreatrProf">
 			<Row>
-				{/* <Sidebar />
-				<SidebarMob /> */}
 				<Col lg={10}>
 					<Row className="mt-4 flex align-items-center">
 						<Col lg={3}>
@@ -58,7 +53,7 @@ const CreatrProf = () => {
 							</Card>
 						</Col>
 						<Col lg={9}>
-							<h2>{bandName}</h2>
+							<h2>{name}</h2>
 							<p>{bio}</p>
 							<h4>Available Songs</h4>
 							<ul>
