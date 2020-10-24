@@ -44,11 +44,6 @@
 	color: black;
 }
 
-/* .Songs-Panel {
-	display: flex;
-	justify-content: space-between;
-} */
-
 .Song {
 	background-color: var(--search-grey);
 }
@@ -68,6 +63,6 @@
 }
 
 .card-img-top {
-	width: 400px;
-	height: 400px;
+	width: 375px;
+	height: 375px;
 }

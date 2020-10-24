@@ -4,9 +4,10 @@ import { useSelector } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import Player from '../../components/Player/Player'
+import Player from '../../components/Player/Player';
+import Footer from '../../components/Footer/Footer';
 
-import { BiPlay, BiPlusMedical } from 'react-icons/bi';
+import { BiPlay, BiDownload } from 'react-icons/bi';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
 import SidebarMob from '../../components/SidebarMob/SidebarMob';
@@ -46,7 +47,7 @@ const CreatrProf = () => {
 	return (
 		<div className="CreatrProf">
 			<Row>
-			<h1 className="Artist-Name mt-5 mb-2 w-100 text-center">{name}</h1>
+			<h1 className="Artist-Name mt-5 mb-5 w-100 text-center">{name}</h1>
 				<Col lg={12}>
 					<Row className="m-2">
 						<Col lg={6}>
@@ -54,7 +55,7 @@ const CreatrProf = () => {
 								<Card>
 									<Card.Img variant="top" src={imgUrl} />
 									<Card.Body className="p-2">
-										<Card.Text className="w-100 text-center">Location: {location}</Card.Text>
+										<Card.Text className="w-100 text-center">{location}</Card.Text>
 									</Card.Body>
 								</Card>
 							</Row>
@@ -63,26 +64,28 @@ const CreatrProf = () => {
 							</Row>
 						</Col>
 						<Col lg={6}>
-							<Row className="Vibes-Panel d-flex justify-content-center align-items-center m-2">
-								<CreatrVibes />
-							</Row>
 							<Row className="Songs-Panel d-flex flex-column justify-content-center align-items-center m-2">
 								<h4 className="Text-Black w-75 text-center m-1">Available Songs</h4>
 								<ul className="w-75 text-left m-1">
 									{curSongs.map((song) => (
 										<li className="Text-Black Song rounded m-1" key={song._id}>
-											<BiPlay className="Play-Btn m-1" onClick={() => handlePlaySong(song.songUrl)} /> <BiPlusMedical className="Add-Btn m-1" /> {song.title}
+											<BiPlay className="Play-Btn m-1" onClick={() => handlePlaySong(song.songUrl)} /> <BiDownload className="Add-Btn m-1" /> {song.title}
 										</li>
 									))}
 								</ul>
 								<Player />
 							</Row>
+							<Row className="Vibes-Panel d-flex justify-content-center align-items-center m-2">
+								<CreatrVibes />
+							</Row>
 						</Col>
 					</Row>
 				</Col>
 			</Row>
+			<Footer />
 		</div>
 	);
 };
 
 export default CreatrProf;
+

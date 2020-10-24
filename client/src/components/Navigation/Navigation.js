@@ -10,7 +10,7 @@ const Navigation = () => {
   };
 	return (
 		<div className="Header row">
-		<Navbar expand="lg" className="Navigation">
+		<Navbar expand="lg" className="Navigation pt-0 pb-0">
        
 	   <NavLink exact to="/" activeStyle={activeStyle} className="Navigation-brand-bskr">Buskr</NavLink>
  

@@ -6,9 +6,9 @@
     justify-content: left;
     align-items: center;
     margin-bottom: 10px;
-}
-
-.Hero-Image {
-    min-width: 100%;
-    min-height: 100%;
+    background: url(/images/busker.jpg);
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
