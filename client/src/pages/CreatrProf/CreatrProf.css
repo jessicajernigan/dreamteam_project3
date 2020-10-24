@@ -1,7 +1,25 @@
 /* CREATOR PROFILE */
 .CreatrProf {
-	max-width: 80%;
+	max-width: 75%;
 	margin: 0 auto 0 auto;
+}
+
+.CreatrProf-1half-Container {
+	height: 50vh;
+}
+
+.CreatrProf-2half-Container {
+	height: 20vh;
+}
+
+.Vibes-Panel {
+	height: 15vh;
+}
+
+.Songs-Panel {
+	height: 55vh;
+	background-color: var(--secondary-grey);
+	border-radius: 5px;
 }
 
 .CreatrProf ul {
@@ -15,4 +33,41 @@
 .CreatrProf svg:hover {
 	cursor: pointer;
 	opacity: .5;
+}
+
+.Artist-Name {
+	font-family: Monoton;
+  	font-size: 2.8rem;
+}
+
+.Text-Black {
+	color: black;
+}
+
+/* .Songs-Panel {
+	display: flex;
+	justify-content: space-between;
+} */
+
+.Song {
+	background-color: var(--search-grey);
+}
+
+.Play-Btn {
+	font-size: 28px;
+}
+
+.Add-Btn {
+	font-size: 18px;
+	margin-right: 1rem !important;
+}
+
+.card {
+	background-color: rgba(255, 255, 255, 0);
+	border: none;
+}
+
+.card-img-top {
+	width: 400px;
+	height: 400px;
 }

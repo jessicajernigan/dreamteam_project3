@@ -1,33 +1,57 @@
-/* .rhap_controls-section svg {
-  height: .6em;
-  width: .6em;
-} */
+.rhap_controls-section svg {
+  color: black;
+}
+
+.rhap_main {
+  width: 60%;
+}
+
+.rhap_time {
+  color: black;
+}
+
+.rhap_progress-indicator {
+  background-color: black;
+}
+
+.rhap_volume-indicator {
+  background-color: black;
+}
 
 .rhap_container {
   /* vertical bar on left side */
-  height: 10%;
-  right: 0;
-  position: fixed;
-  bottom: 0;
-  width: 15%;
-  z-index: 99999;
-  background-color: rgba(255, 255, 255, 0.7);
+  /* height: 10%; */
+  /* top: 0; */
+  position: relative;
+  /* bottom: 0; */
+  /* width: 15%; */
+  /* z-index: 99999; */
+  background-color: rgba(0, 0, 0, 0);
+  margin: 10px auto 10px auto;
 
   /* align items inside vertically centered */
   align-items: center;
   display: flex;
+  box-shadow: none;
 }
 
-.rhap_repeat-button {}
+.rhap_repeat-button {
+}
 
-.rhap_main-controls-button {}
+.rhap_main-controls-button {
+}
 
-.rhap_rewind-button {}
+.rhap_rewind-button {
+}
 
-.rhap_play-pause-button {}
+.rhap_play-pause-button {
+}
 
-.rhap_forward-button {}
+.rhap_forward-button {
+}
 
-.rhap_volume-button {}
+.rhap_volume-button {
+}
 
-.rhap_volume-bar-area {}
+.rhap_volume-bar-area {
+}

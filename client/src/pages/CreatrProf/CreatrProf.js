@@ -4,11 +4,13 @@ import { useSelector } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Player from '../../components/Player/Player'
 
 import { BiPlay, BiPlusMedical } from 'react-icons/bi';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
 import SidebarMob from '../../components/SidebarMob/SidebarMob';
+import CreatrVibes from '../../components/CreatrVibes/CreatrVibes';
 
 import './CreatrProf.css';
 
@@ -44,30 +46,37 @@ const CreatrProf = () => {
 	return (
 		<div className="CreatrProf">
 			<Row>
-				<Sidebar />
-				{/* <SidebarMob /> */}
+			<h1 className="Artist-Name mt-5 mb-2 w-100 text-center">{name}</h1>
 				<Col lg={12}>
-					<Row className="mt-4 flex align-items-center">
-						<Col lg={3}>
-							<Card>
-								<Card.Img variant="top" src={imgUrl} />
-								<Card.Body>
-									<Card.Text>Location: {location}</Card.Text>
-								</Card.Body>
-							</Card>
+					<Row className="m-2">
+						<Col lg={6}>
+							<Row className="CreatrProf-1half-Container d-flex justify-content-center align-items-center m-2">
+								<Card>
+									<Card.Img variant="top" src={imgUrl} />
+									<Card.Body className="p-2">
+										<Card.Text className="w-100 text-center">Location: {location}</Card.Text>
+									</Card.Body>
+								</Card>
+							</Row>
+							<Row className="CreatrProf-2half-Container d-flex justify-content-center align-items-center m-2">
+							<p className="m-0">{bio}</p>
+							</Row>
 						</Col>
-						<Col lg={9}>
-							<h2>{name}</h2>
-							<p>{bio}</p>
-							<h4>Available Songs</h4>
-							<ul>
-								{curSongs.map((song) => (
-									<li key={song._id}>
-										<BiPlay onClick={() => handlePlaySong(song.songUrl)} /> <BiPlusMedical /> {song.title}
-									</li>
-								))}
-							</ul>
-            <div ref={playerRef} className="CreatrProf-player"></div>
+						<Col lg={6}>
+							<Row className="Vibes-Panel d-flex justify-content-center align-items-center m-2">
+								<CreatrVibes />
+							</Row>
+							<Row className="Songs-Panel d-flex flex-column justify-content-center align-items-center m-2">
+								<h4 className="Text-Black w-75 text-center m-1">Available Songs</h4>
+								<ul className="w-75 text-left m-1">
+									{curSongs.map((song) => (
+										<li className="Text-Black Song rounded m-1" key={song._id}>
+											<BiPlay className="Play-Btn m-1" onClick={() => handlePlaySong(song.songUrl)} /> <BiPlusMedical className="Add-Btn m-1" /> {song.title}
+										</li>
+									))}
+								</ul>
+								<Player />
+							</Row>
 						</Col>
 					</Row>
 				</Col>
