@@ -1,4 +1,30 @@
 /* TEMPORARY CUSTOM UTILITY CLASSES */
+.CreatrDash {
+	max-width: 80%;
+	margin: 0 auto 0 auto;
+}
+
+.CreatrDash-1half-Container {
+	height: 50vh;
+}
+
+.CreatrProf-2half-Container {
+	height: 20vh;
+}
+
+.card {
+	background-color: rgba(255, 255, 255, 0);
+	border: none;
+	width: 375px;
+	height: 375px;
+}
+
+/* .card-img-top {
+	width: 375px;
+	height: 375px;
+} */
+
+
 .bg-gray {
 	background-color: rgb(34, 34, 34, 0.6);
 }
@@ -8,32 +34,31 @@
 }
 
 /* LEFT COLUMN */
-.CreatrDash {
+/* .CreatrDash {
 	padding-top: 5rem;
-}
+} */
 
 /* Probably a better way to do this using props but maybe this is ok */
 /* https://react-dropzone-uploader.js.org/docs/customization */
-.CreatrDash .dzu-dropzone {
+/* .CreatrDash .dzu-dropzone {
 	height: 100%;
 	min-height: 100%;
 	overflow: hidden;
-}
+} */
 
-.CreatrDash-photo-container {
+/* .CreatrDash-photo-container {
 	height: 200px;
 	width: 200px;
-	/* background-color: rgb(219, 219, 219); */
-}
+} */
 
-.CreatrDash img {
+/* .CreatrDash img {
   height: 100%;
-}
+} */
 
-.CreatrDash-dropzone-container {
+/* .CreatrDash-dropzone-container {
 	width: 60%;
 	height: 10vh;
-}
+} */
 
 /* MEDIA QUERIES */
 /* 

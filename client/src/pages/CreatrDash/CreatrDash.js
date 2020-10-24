@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+
 
 import Uploader from '../../components/Uploader/Uploader';
 
@@ -14,7 +17,7 @@ const CreatrDash = () => {
 	const state = useSelector((state) => state);
 
 	const curCreatr = state.creators.filter((creator) => creator._id === testId);
-	const { _id, name, imgUrl, bio, vibes } = curCreatr[0];
+	const { name, imgUrl, location, bio, vibes } = curCreatr[0];
 
 	// console.log('Current vibes', vibes);
 
@@ -30,23 +33,34 @@ const CreatrDash = () => {
 
 
 	return (
-		<main className="CreatrDash">
+		<div className="CreatrDash">
 			<Row>
-				<Col lg={12}>
-					<h2 className="text-center m-2 p-1">{name}</h2>
-				</Col>
+					<h1 className="Artist-Name mt-2 mb-5 w-100 text-center">{name}</h1>
 			</Row>
-			<Row className="d-flex justify-content-center">
-				<Col lg={5} className="rounded m-1 p-1">
-					<div className="d-flex flex-column justify-content-center align-items-center rounded m-2 mb-3 bg-gray">
-						<div className="CreatrDash-photo-container m-2">
-							<img src={imgUrl} alt="Artist" />
-						</div>
-						<div className="CreatrDash-dropzone-container rounded text-center m-2">
+			<Row className="m-2">
+				<Col lg={6}>
+					{/* <div className="d-flex flex-column justify-content-center align-items-center rounded m-2 mb-3 bg-gray"> */}
+					<Row className="CreatrDash-1half-Container d-flex flex-column justify-content-center align-items-center m-2">
+						<Card>
+							<Card.Img variant="top" src={imgUrl} />
+							<Card.Body className="p-2 d-flex flex-row">
+								<Card.Text className="w-50 text-center">{location}</Card.Text>
+								<Button className="w-50 btn-sm" variant="primary" type="submit">
+									Edit Location
+								</Button>
+							</Card.Body>
+						</Card>
+					</Row>
+					<Row className="m-0 justify-content-center">
+						<button className="btn-save btn btn-primary btn-sm m-2">
+							Edit Profile Photo
+						</button>
+					</Row>
+						{/* <div className="CreatrDash-dropzone-container rounded text-center m-2"> */}
 							{/* Dropzone Placeholder */}
-							<Uploader />
-						</div>
-					</div>
+							{/* <Uploader /> */}
+						{/* </div> */}
+					{/* </div> */}
 					<div className="rounded m-2 mb-3 p-2 bg-gray text-center">
 						<p className="bio-text m-2">{bio}</p>
 						<button className="btn-save btn btn-primary btn-sm">
@@ -71,7 +85,7 @@ const CreatrDash = () => {
 						</button>
 					</div>
 				</Col>
-				<Col lg={5}>
+				<Col lg={6}>
 					<div className="d-flex flex-column justify-content-space-evenly align-items-center rounded m-3 p-5 bg-gray">
 						<h4>Available Music</h4>
 						<div className="p-2">
@@ -98,7 +112,7 @@ const CreatrDash = () => {
 					</div>
 				</Col>
 			</Row>
-		</main>
+		</div>
 	);
 };
 
