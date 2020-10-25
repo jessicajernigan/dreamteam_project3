@@ -32,16 +32,17 @@ const CreatrGrid = () => {
 				dispatch(updateCreators(data.creators));
 
 				// // also take each creator and save it to the IndexedDB using the helper function
-				data.creators.forEach((creator) => {
-					idbPromise('creators', 'put', creator);
-				});
+				// data.creators.forEach((creator) => {
+				// 	idbPromise('creators', 'put', creator);
+				// });
 				// add else if to check if 'loading' is undefined in 'useQuery()' hook. ie no internet connection to server
 			} else if (!loading) {
 				// since we're offline, get all of the data from the 'creators' store
-				idbPromise('creators', 'get').then((creators) => {
-					// use retrieved data to set global state for offline browsing
-					dispatch(updateCreators(creators));
-				});
+				// idbPromise('creators', 'get').then((creators) => {
+				// 	// use retrieved data to set global state for offline browsing
+				// 	dispatch(updateCreators(creators));
+        // });
+        console.log('you are offline');
 			}
 		},
 		[ data, loading, dispatch ]

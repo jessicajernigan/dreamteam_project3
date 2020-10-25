@@ -28,7 +28,6 @@ const CreatrDash = () => {
 
 	// console.log('Current vibes', vibes);
 
-  // const curSongs = state.songs.filter((song) => song.creatorId === creatorId);
 
   const playerRef = useRef(null);
   

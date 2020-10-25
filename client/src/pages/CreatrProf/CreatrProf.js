@@ -22,7 +22,7 @@ const CreatrProf = () => {
 
 	const curCreatr = state.creators.filter((creator) => creator._id === id);
 	// console.log('curCreatr from CreatrProf: ', curCreatr);
-	const { stageName, imgUrl, location, bio, songs } = curCreatr[0];
+	const { stageName, imgUrl, location, bio, songs } = curCreatr[0] 
 
 	// const curSongs = state.songs.filter(song => song.creatorId === id)
 
