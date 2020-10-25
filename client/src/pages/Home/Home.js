@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 import './Home.css';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
-import SidebarMob from '../../components/SidebarMob/SidebarMob';
+import Cart from '../../components/Cart/Cart';
 import CreatrGrid from '../../components/CreatrGrid/CreatrGrid';
 import Footer from '../../components/Footer/Footer';
 import Hero from '../../components/Hero/Hero';
@@ -11,6 +11,7 @@ import Hero from '../../components/Hero/Hero';
 const Home = () => {
 	return (
 		<React.Fragment>
+			{/* <Cart /> */}
 			<Row>
 				<Hero />
 			</Row>
@@ -18,7 +19,6 @@ const Home = () => {
 				<Sidebar />
 			</Row>
 			<Row>
-				{/* <SidebarMob /> */}
 				<CreatrGrid />
 			</Row>
 			<Footer />

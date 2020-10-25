@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import './Navigation.css';
+import Cart from '../../components/Cart/Cart';
 
 const Navigation = () => {
   const activeStyle = {
