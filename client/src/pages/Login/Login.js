@@ -20,7 +20,8 @@ const Login = () => {
     try {
 			const mutationResponse = await login({
 				variables: { email: formState.email, password: formState.password }
-			});
+      });
+      console.log('mutationResponse', mutationResponse)
 			const token = mutationResponse.data.login.token;
 			Auth.login(token);
 		} catch (e) {

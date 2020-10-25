@@ -22,7 +22,7 @@ const CreatrProf = () => {
 	const state = useSelector((state) => state);
 
   const curCreatr = state.creators.filter((creator) => creator._id === id);
-  const { name, imgUrl, location, bio } = curCreatr[0];
+  const { stageName, imgUrl, location, bio } = curCreatr[0];
 
   const curSongs = state.songs.filter(song => song.creatorId === id)
 
@@ -53,7 +53,7 @@ const CreatrProf = () => {
 							</Card>
 						</Col>
 						<Col lg={9}>
-							<h2>{name}</h2>
+							<h2>{stageName}</h2>
 							<p>{bio}</p>
 							<h4>Available Songs</h4>
 							<ul>

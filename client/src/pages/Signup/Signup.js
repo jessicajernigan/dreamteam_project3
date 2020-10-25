@@ -22,7 +22,7 @@ const Signup = () => {
 				password  : formState.password
 			}
 		});
-		const token = mutationResponse.data.addUser.token;
+		const token = mutationResponse.data.addCreator.token;
 		Auth.login(token);
   }
 

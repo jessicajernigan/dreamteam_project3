@@ -4,7 +4,7 @@ export const LOGIN = gql`
 	mutation login($email: String!, $password: String!) {
 		login(email: $email, password: $password) {
 			token
-			user {
+			creator {
 				_id
 			}
 		}
@@ -13,18 +13,18 @@ export const LOGIN = gql`
 
 
 export const ADD_USER = gql`
-mutation addUser(
+mutation addCreator(
   $username: String!
   $email: String!
   $password: String!
 	) {
-    addUser(
+    addCreator(
       username: $username
 			email: $email
 			password: $password
       ) {
         token
-        user {
+        creator {
           _id
         }
       }

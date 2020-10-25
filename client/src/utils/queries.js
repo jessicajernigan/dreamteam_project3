@@ -28,7 +28,8 @@ export const QUERY_CREATORS = gql`
 {
   creators {
     _id
-    name
+    email
+    stageName
     imgUrl
     location
     bio

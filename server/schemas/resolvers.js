@@ -138,18 +138,21 @@ const resolvers = {
 			const token = signToken(creator);
 
 			return { token, creator };
-		},
+    },
+    
 		login   : async (parent, { email, password }) => {
-			const user = await User.findOne({ email });
+			const creator = await Creator.findOne({ email });
 
 			if (!creator) {
-				throw new AuthenticationError('Incorrect credentials');
-			}
+				throw new AuthenticationError('Can not find creator');
+      }
+      
+      console.log('creator found!')
 
 			const correctPw = await creator.isCorrectPassword(password);
 
 			if (!correctPw) {
-				throw new AuthenticationError('Incorrect credentials');
+				throw new AuthenticationError('Sorry, incorrect credentials');
 			}
 
 			const token = signToken(creator);
