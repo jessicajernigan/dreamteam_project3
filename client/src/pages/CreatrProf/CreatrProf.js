@@ -19,9 +19,11 @@ const CreatrProf = () => {
   // console.log('params id: ', id)
 
 
-	const state = useSelector((state) => state);
+  const state = useSelector((state) => state);
+  console.log('state from CreatrProf', state)
 
   const curCreatr = state.creators.filter((creator) => creator._id === id);
+  console.log('curCreatr from CreatrProf: ', curCreatr)
   const { stageName, imgUrl, location, bio } = curCreatr[0];
 
   const curSongs = state.songs.filter(song => song.creatorId === id)
