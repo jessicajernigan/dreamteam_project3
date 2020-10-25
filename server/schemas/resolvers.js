@@ -28,7 +28,8 @@ const resolvers = {
 		// 	return await Creator.find(params).populate('vibes');
     // }
     creators : async () => {
-    		return await Creator.find({}).populate('vibes')
+    		// return await Creator.find({}).populate('vibes')
+    		return await Creator.find({}).populate('songs')
 		}
 
 	
