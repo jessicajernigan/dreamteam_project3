@@ -1,36 +1,40 @@
 /* UNIVERSAL STYLES */
 /* GLOBAL */
 * {
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
 }
 
 :root {
---primary: white;
---secondary: #346085;
---tertiary: #C09D1D;
---dark-bg: #39393E;
---search-grey: #9C9C9E;
---secondary-grey: #7E7E81;
---player-btn-purple: #652CB3;
+	--primary: white;
+	--secondary: #346085;
+	--tertiary: #c09d1d;
+	--dark-bg: #39393e;
+	--search-grey: #9c9c9e;
+	--secondary-grey: #7e7e81;
+	--player-btn-purple: #652cb3;
 }
 
 body {
-  margin: 0 auto 0 auto;
-  color: white;
-  background-color: var(--dark-bg);
+	margin: 0 auto 0 auto;
+	color: white;
+	background-color: var(--dark-bg);
 }
 
 a {
-  color: var(--primary);
+	color: var(--primary);
 }
 
 a:hover {
-  text-decoration: none;
-  color: var(--primary);
+	text-decoration: none;
+	color: var(--primary);
 }
 
 .btn {
-  background-color: #346085;
-  border: none;
+	background-color: #346085;
+	border: none;
+}
+
+li {
+	list-style: none;
 }
