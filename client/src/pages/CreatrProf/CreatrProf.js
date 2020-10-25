@@ -21,7 +21,7 @@ const CreatrProf = () => {
 
 	const curCreatr = state.creators.filter((creator) => creator._id === id);
 	// console.log('curCreatr from CreatrProf: ', curCreatr);
-	const { stageName, imgUrl, location, bio, songs } = curCreatr[0];
+	const { stageName, imgUrl, location, bio, songs, vibes } = curCreatr[0];
 
 	// const curSongs = state.songs.filter(song => song.creatorId === id)
 
@@ -32,39 +32,85 @@ const CreatrProf = () => {
 	};
 
 	return (
-		<div className="CreatrProf">
-      <h1 className="w-100 my-5 text-center">{stageName}</h1>
-					<Row className="mt-4 flex align-items-center">
-						<Col lg={6}>
-							<Card>
-								<Card.Img variant="top" src={imgUrl} />
-								<Card.Body>
-									<Card.Text className="text-white">Location: {location}</Card.Text>
-								</Card.Body>
-							</Card>
-              <p>{bio}</p>
-						</Col>
-						<Col lg={6}>
-							<h4>Available Songs</h4>
-							<ul>
-								{songs.map((song) => (
-									<li key={song._id}>
-										<BiPlay
-											onClick={() => handlePlaySong(song.songUrl)}
-										/>{' '}
-										<BiPlusMedical /> {song.title}
-									</li>
-								))}
-							</ul>
-							<div className="p-2">
-								<audio ref={playerRef} controls>
-									Your browser does not support the audio element.
-								</audio>
-							</div>
-						</Col>
-					</Row>
-
-
+		// <div className="CreatrProf">
+		//   <h1 className="w-100 my-5 text-center">{stageName}</h1>
+		// 			<Row className="mt-4 flex align-items-center">
+		// 				<Col lg={6}>
+		// 					<Card>
+		// 						<Card.Img variant="top" src={imgUrl} />
+		// 						<Card.Body>
+		// 							<Card.Text className="text-white">Location: {location}</Card.Text>
+		// 						</Card.Body>
+		// 					</Card>
+		//           <p>{bio}</p>
+		// 				</Col>
+		// 				<Col lg={6}>
+		// 					<h4>Available Songs</h4>
+		// 					<ul>
+		// 						{songs.map((song) => (
+		// 							<li key={song._id}>
+		// 								<BiPlay
+		// 									onClick={() => handlePlaySong(song.songUrl)}
+		// 								/>{' '}
+		// 								<BiPlusMedical /> {song.title}
+		// 							</li>
+		// 						))}
+		// 					</ul>
+		// 					<div className="p-2">
+		// 						<audio ref={playerRef} controls>
+		// 							Your browser does not support the audio element.
+		// 						</audio>
+		// 					</div>
+		// 				</Col>
+		// 			</Row>
+		// </div>
+		<div className="CreatrProf vh-100">
+			<h1 className="w-100 my-5 text-center">{stageName}</h1>
+			<Row className="mt-4 d-flex justify-content-center align-items-center">
+				<Col lg={5}>
+					<Card className="w-75 mx-auto bskr-bg-dark">
+						<Card.Img variant="top" src="/images/busker-gal-1.jpg" />
+						<Card.Body>
+							<Card.Text className="text-white text-center">
+								{location}
+							</Card.Text>
+						</Card.Body>
+					</Card>
+					<p>{bio}</p>
+				</Col>
+				<Col lg={5} className="d-flex flex-column align-items-center">
+					<div className="d-flex flex-column align-items-center">
+						<h5>Vibes</h5>
+						<ul>
+							{vibes.map((vibe) => (
+								<button key={vibe._id} className="btn mx-1">{vibe.name}</button>
+							))}
+						</ul>
+					</div>
+					<div className="bskr-bg-secondary d-flex flex-column align-items-center p-5 rounded">
+						<h4 className="text-dark">Available Tunes</h4>
+						<ul className="w-100">
+							{songs.map((song) => (
+								<li
+									key={song._id}
+									className="bskr-bg-search w-100 m-2 p-2 rounded text-dark"
+								>
+									<BiPlay
+										className="fs-3"
+										onClick={() => handlePlaySong(song.songUrl)}
+									/>{' '}
+									<BiPlusMedical className="mr-1" /> {song.title}
+								</li>
+							))}
+						</ul>
+						<div className="p-2">
+							<audio ref={playerRef} controls>
+								Your browser does not support the audio element.
+							</audio>
+						</div>
+					</div>
+				</Col>
+			</Row>
 		</div>
 	);
 };

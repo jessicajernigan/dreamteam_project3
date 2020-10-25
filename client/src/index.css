@@ -36,21 +36,38 @@ a:hover {
 }
 
 ul {
-  padding: 0;
+	padding: 0;
 }
 
 li {
 	list-style: none;
 }
 
+/* CUSTOM UTILITIES */
 .bskr-bg-dark {
-  background-color: var(--dark-bg)
+	background-color: var(--dark-bg);
 }
 
 .bskr-bg-secondary {
-  background-color: var(--secondary-grey)
+	background-color: var(--secondary-grey);
 }
 
 .bskr-bg-search {
-  background-color: var(--search-grey);
+	background-color: var(--search-grey);
+}
+
+.fs-1 {
+	font-size: 1rem;
+}
+.fs-2 {
+	font-size: 1.5rem;
+}
+.fs-3 {
+	font-size: 2rem;
+}
+.fs-4 {
+	font-size: 2.5rem;
+}
+.fs-5 {
+	font-size: 3rem;
 }

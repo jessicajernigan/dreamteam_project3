@@ -9,9 +9,8 @@
 } */
 
 .CreatrProf .card {
-  border: 0;
+	border: 0;
 }
-
 
 .CreatrProf svg:hover {
 	cursor: pointer;

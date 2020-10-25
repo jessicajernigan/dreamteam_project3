@@ -39,7 +39,7 @@ const CreatrProf = () => {
 	};
 
 	return (
-		<div className="CreatrProf">
+		<div className="CreatrProf vh-100">
 			<h1 className="w-100 my-5 text-center">Royal Trux</h1>
 			<Row className="mt-4 d-flex justify-content-center align-items-center">
 				<Col lg={5}>
@@ -68,12 +68,12 @@ const CreatrProf = () => {
             </ul>
           </div>
 					<div className="bskr-bg-secondary d-flex flex-column align-items-center p-5 rounded">
-						<h4>Available Tunes</h4>
+						<h4 className="text-dark">Available Tunes</h4>
 						<ul className="w-100">
 							{songs.map((song, i) => (
 								<li key={i} className="bskr-bg-search w-100 m-2 p-2 rounded text-dark">
-									<BiPlay onClick={() => handlePlaySong()} />{' '}
-									<BiPlusMedical /> {song}
+									<BiPlay className="fs-3" onClick={() => handlePlaySong()} />{' '}
+									<BiPlusMedical className="mr-1" /> {song}
 								</li>
 							))}
 						</ul>
