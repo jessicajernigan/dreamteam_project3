@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import CreatrVibes from '../../components/CreatrVibes/CreatrVibes';
 import Player from '../../components/Player/Player';
 import Footer from '../../components/Footer/Footer';
+import Cart from '../../components/Cart/Cart';
 
 import Uploader from '../../components/Uploader/Uploader';
 import { BiPlay, BiDownload } from 'react-icons/bi';

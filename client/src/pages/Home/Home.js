@@ -11,7 +11,6 @@ import Hero from '../../components/Hero/Hero';
 const Home = () => {
 	return (
 		<React.Fragment>
-			{/* <Cart /> */}
 			<Row>
 				<Hero />
 			</Row>

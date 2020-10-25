@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import './Navigation.css';
 import Cart from '../../components/Cart/Cart';
+import Button from 'react-bootstrap/Button';
 
 const Navigation = () => {
   const activeStyle = {
@@ -27,7 +28,7 @@ const Navigation = () => {
 					 <NavLink exact to="/about" activeStyle={activeStyle} className="mr-3">
 						 About Us
 					 </NavLink>
-					 <NavLink exact to="/cart" activeStyle={activeStyle} className="mr-3">
+					 <NavLink to="/cart" activeStyle={activeStyle} className="mr-3">
 						 View Cart
 					 </NavLink>
 					 <NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">

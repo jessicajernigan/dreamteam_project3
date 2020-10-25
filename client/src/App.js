@@ -13,6 +13,7 @@ import CreatrProf from './pages/CreatrProf/CreatrProf';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 import Uploader from './components/Uploader/Uploader';
+import Cart from './components/Cart/Cart';
 
 import store from './utils/store';
 console.log("Redux store in App.js: ", store.getState());
@@ -43,6 +44,7 @@ function App() {
 							<Route exact path="/signup" component={Signup} />
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/upload" component={Uploader} />
+							<Route path="/cart" component={Cart} />
 						</Switch>
 					</Provider>
 				</div>
