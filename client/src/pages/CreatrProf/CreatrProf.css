@@ -22,6 +22,15 @@
 	border-radius: 5px;
 }
 
+.Songs-List {
+	width: 80%;
+}
+
+.rhap_container {
+	position: absolute;
+	bottom: 0;
+}
+
 .CreatrProf ul {
 	padding: 0;
 }

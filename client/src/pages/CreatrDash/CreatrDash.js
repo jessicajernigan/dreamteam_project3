@@ -5,9 +5,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-
+import CreatrVibes from '../../components/CreatrVibes/CreatrVibes';
+import Player from '../../components/Player/Player';
+import Footer from '../../components/Footer/Footer';
 
 import Uploader from '../../components/Uploader/Uploader';
+import { BiPlay, BiDownload } from 'react-icons/bi';
 
 import './CreatrDash.css';
 
@@ -26,92 +29,76 @@ const CreatrDash = () => {
 
   const playerRef = useRef(null);
   
-  const handleSongPlay = (songUrl) => {
-    playerRef.current.setAttribute('src', songUrl )
-    playerRef.current.play();
+  const handlePlaySong = (songUrl) => {
+    // console.log("Play song", songUrl)
+    const songPlayer = new Audio(songUrl);
+    songPlayer.setAttribute('controls', true);
+    songPlayer.setAttribute('controlsList', "nodownload");
+    songPlayer.addEventListener("canplaythrough", event => {
+      /* the audio is now playable; play it if permissions allow */
+      playerRef.current.appendChild(songPlayer);
+      songPlayer.play();
+    });
   }
 
 
 	return (
-		<div className="CreatrDash">
+		<div className="CreatrProf">
 			<Row>
-					<h1 className="Artist-Name mt-2 mb-5 w-100 text-center">{name}</h1>
-			</Row>
-			<Row className="m-2">
-				<Col lg={6}>
-					{/* <div className="d-flex flex-column justify-content-center align-items-center rounded m-2 mb-3 bg-gray"> */}
-					<Row className="CreatrDash-1half-Container d-flex flex-column justify-content-center align-items-center m-2">
-						<Card>
-							<Card.Img variant="top" src={imgUrl} />
-							<Card.Body className="p-2 d-flex flex-row">
-								<Card.Text className="w-50 text-center">{location}</Card.Text>
-								<Button className="w-50 btn-sm" variant="primary" type="submit">
-									Edit Location
+			<h1 className="Artist-Name mt-5 mb-5 w-100 text-center">{name}</h1>
+				<Col lg={12}>
+					<Row className="m-2">
+						<Col lg={6}>
+							<Row className="CreatrDash-1half-Container d-flex justify-content-center align-items-center p-2 rounded">
+								<Card className="d-flex justify-content-center">
+									<Card.Img variant="top" src={imgUrl} />
+								</Card>
+								{/* <Row className="d-flex justify-content-center mb-4"> */}
+								<Button className="Edit-Btn w-50 btn-sm mt-2" variant="primary" type="submit">
+									edit profile photo
 								</Button>
-							</Card.Body>
-						</Card>
+								{/* </Row> */}
+							</Row>
+							
+							{/* <Row className="d-flex justify-content-center m-0">
+								<p className="m-0 w-50">{location}</p>
+								<Button className="Edit-Btn w-50 btn-sm" variant="primary" type="submit">
+									edit bio
+								</Button>
+							</Row> */}
+							<Row className="CreatrDash-2half-Container d-flex justify-content-center align-items-center rounded p-2 mt-4">
+								<p className="m-0">{bio}</p>
+								<Button className="Edit-Btn w-50 btn-sm" variant="primary" type="submit">
+									edit bio
+								</Button>
+							</Row>
+						</Col>
+						<Col lg={6}>
+							<Row className="CreatrDash-Vibes-Panel d-flex justify-content-center align-items-center rounded mb-2 ml-2 mr-2 p-2">
+								<CreatrVibes />
+								<Button className="Edit-Btn w-50 btn-sm" variant="primary" type="submit">
+									edit vibes
+								</Button>
+							</Row>
+							<Row className="CreatrDash-Songs-Panel d-flex flex-column justify-content-start align-items-center rounded ml-2 mr-2 mt-4">
+								<h4 className="Text-Black w-75 text-center mt-3">Available Tunes</h4>
+								<ul className="w-75 text-left m-1">
+									{curSongs.map((song) => (
+										<li className="Text-Black Song rounded m-1" key={song._id}>
+											<BiPlay className="Play-Btn m-1" onClick={() => handlePlaySong(song.songUrl)} /> {song.title}
+										</li>
+									))}
+								</ul>
+								<Button className="Edit-Btn w-50 btn-sm" variant="primary" type="submit">
+									edit tunes
+								</Button>
+								<Player className="CreatrDash-Player"/>
+							</Row>
+						</Col>
 					</Row>
-					<Row className="m-0 justify-content-center">
-						<button className="btn-save btn btn-primary btn-sm m-2">
-							Edit Profile Photo
-						</button>
-					</Row>
-						{/* <div className="CreatrDash-dropzone-container rounded text-center m-2"> */}
-							{/* Dropzone Placeholder */}
-							{/* <Uploader /> */}
-						{/* </div> */}
-					{/* </div> */}
-					<div className="rounded m-2 mb-3 p-2 bg-gray text-center">
-						<p className="bio-text m-2">{bio}</p>
-						<button className="btn-save btn btn-primary btn-sm">
-							Edit Bio
-						</button>
-					</div>
-					<div className="d-flex flex-column align-items-center rounded m-2 mb-2 p-2 bg-gray">
-						<div className="vibe-tiles m-1 mb-2 p-1">
-							<ul className="list-group small d-flex flex-row flex-wrap justify-content-center text-center p-1 m-1">
-								{vibes.map((vibe) => (
-									<li
-										key={vibe}
-										className="list-group-item rounded m-1"
-									>
-										{vibe}
-									</li>
-								))}
-							</ul>
-						</div>
-						<button className="btn-save btn btn-primary btn-sm">
-							Edit Vibes
-						</button>
-					</div>
-				</Col>
-				<Col lg={6}>
-					<div className="d-flex flex-column justify-content-space-evenly align-items-center rounded m-3 p-5 bg-gray">
-						<h4>Available Music</h4>
-						<div className="p-2">
-							<audio ref={playerRef} controls>
-								Your browser does not support the audio element.
-							</audio>
-						</div>
-						<div className="CreatrDash-music-tiles w-100 m-1">
-							<ul className="list-group row small d-flex flex-row text-center">
-								{curSongs.map((song) => (
-									<li
-										key={song._id}
-                    className="list-group-item col-md-6 border-0 bg-transparent"
-                    onClick={() => handleSongPlay(song.songUrl)}
-									>
-										{song.title}
-									</li>
-								))}
-							</ul>
-						</div>
-						<button className="btn-save btn btn-primary btn-sm">
-							Edit Available Music
-						</button>
-					</div>
 				</Col>
 			</Row>
+			<Footer />
 		</div>
 	);
 };

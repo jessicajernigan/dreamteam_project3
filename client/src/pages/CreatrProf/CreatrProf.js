@@ -64,9 +64,12 @@ const CreatrProf = () => {
 							</Row>
 						</Col>
 						<Col lg={6}>
-							<Row className="Songs-Panel d-flex flex-column justify-content-center align-items-center m-2">
-								<h4 className="Text-Black w-75 text-center m-1">Available Songs</h4>
-								<ul className="w-75 text-left m-1">
+							<Row className="Vibes-Panel d-flex justify-content-center align-items-center m-2">
+								<CreatrVibes />
+							</Row>
+							<Row className="Songs-Panel d-flex flex-column justify-content-start align-items-center rounded m-2">
+								<h4 className="Text-Black w-75 text-center m-1">Available Tunes</h4>
+								<ul className="Songs-List text-left m-1">
 									{curSongs.map((song) => (
 										<li className="Text-Black Song rounded m-1" key={song._id}>
 											<BiPlay className="Play-Btn m-1" onClick={() => handlePlaySong(song.songUrl)} /> <BiDownload className="Add-Btn m-1" /> {song.title}
@@ -74,9 +77,6 @@ const CreatrProf = () => {
 									))}
 								</ul>
 								<Player />
-							</Row>
-							<Row className="Vibes-Panel d-flex justify-content-center align-items-center m-2">
-								<CreatrVibes />
 							</Row>
 						</Col>
 					</Row>

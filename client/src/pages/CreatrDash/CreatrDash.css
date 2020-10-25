@@ -5,11 +5,28 @@
 }
 
 .CreatrDash-1half-Container {
-	height: 50vh;
+	height: 46vh;
+	background-color: var(--secondary-grey);
 }
 
-.CreatrProf-2half-Container {
-	height: 20vh;
+.CreatrDash-2half-Container {
+	height: 24vh;
+	background-color: var(--secondary-grey);
+}
+
+.CreatrDash-Vibes-Panel {
+	background-color: var(--secondary-grey);
+	height: 18vh;
+}
+
+.CreatrDash-Songs-Panel {
+	background-color: var(--secondary-grey);
+	height: 53vh;
+}
+
+.rhap_container {
+	position: absolute;
+	bottom: 0;
 }
 
 .card {
@@ -19,11 +36,9 @@
 	height: 375px;
 }
 
-/* .card-img-top {
-	width: 375px;
-	height: 375px;
-} */
-
+.Edit-Btn {
+	background-color: var(--player-btn-purple);
+}
 
 .bg-gray {
 	background-color: rgb(34, 34, 34, 0.6);
@@ -32,38 +47,3 @@
 .bg-light-gray {
 	background-color: rgb(219, 219, 219);
 }
-
-/* LEFT COLUMN */
-/* .CreatrDash {
-	padding-top: 5rem;
-} */
-
-/* Probably a better way to do this using props but maybe this is ok */
-/* https://react-dropzone-uploader.js.org/docs/customization */
-/* .CreatrDash .dzu-dropzone {
-	height: 100%;
-	min-height: 100%;
-	overflow: hidden;
-} */
-
-/* .CreatrDash-photo-container {
-	height: 200px;
-	width: 200px;
-} */
-
-/* .CreatrDash img {
-  height: 100%;
-} */
-
-/* .CreatrDash-dropzone-container {
-	width: 60%;
-	height: 10vh;
-} */
-
-/* MEDIA QUERIES */
-/* 
-@media only screen and (max-width: 375px) {
-	.CreatrDash h2 {
-		font-size: 20px;
-	}
-} */
