@@ -10,6 +10,7 @@ import Navigation from './components/Navigation/Navigation';
 import Home from './pages/Home/Home';
 import CreatrDash from './pages/CreatrDash/CreatrDash';
 import CreatrProf from './pages/CreatrProf/CreatrProf';
+import CreatrProfTest from './pages/CreatrProfTest/CreatrProfTest';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 import Uploader from './components/Uploader/Uploader';
@@ -40,6 +41,7 @@ function App() {
 							<Route exact path="/" component={Home} />
 							<Route exact path="/creator/:id" component={CreatrDash} />
 							<Route exact path="/profile/:id" component={CreatrProf} />
+							<Route exact path="/profileTest" component={CreatrProfTest} />
 							<Route exact path="/signup" component={Signup} />
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/upload" component={Uploader} />

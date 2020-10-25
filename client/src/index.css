@@ -35,6 +35,22 @@ a:hover {
 	border: none;
 }
 
+ul {
+  padding: 0;
+}
+
 li {
 	list-style: none;
+}
+
+.bskr-bg-dark {
+  background-color: var(--dark-bg)
+}
+
+.bskr-bg-secondary {
+  background-color: var(--secondary-grey)
+}
+
+.bskr-bg-search {
+  background-color: var(--search-grey);
 }

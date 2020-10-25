@@ -4,10 +4,13 @@
 	font-size: 2.8rem;
 }
 
-.CreatrProf .card-body {
+/* .CreatrProf .card-body {
 	background-color: var(--dark-bg);
-}
+} */
 
+.CreatrProf .card {
+  border: 0;
+}
 
 
 .CreatrProf svg:hover {
