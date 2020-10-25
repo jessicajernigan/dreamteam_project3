@@ -2,21 +2,25 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
 import { BiTrash } from 'react-icons/bi';
+import { NavLink } from 'react-router-dom';
 
 import './Cart.css'
 
-function Cart( location ) {
+function Cart() {
 	const [show, setShow] = useState(false);
 
   	const handleClose = () => setShow(false);
   	const handleShow = () => setShow(true);
 	return (
 		<>
-		<Button variant="primary" onClick={handleShow}>
-			Launch demo modal
-		</Button>
+		<a className="ViewCartBtn" onClick={handleShow}>
+			View Cart
+		</a>
+		{/* <Button className="ViewCartBtn p-0" variant="primary" onClick={handleShow}>
+        	View Cart
+      	</Button> */}
 
-		<Modal className="m-4" show={show} onHide={handleClose} animation={false} backdrop={false}>
+		<Modal show={show} onHide={handleClose} animation={false} backdrop={false}>
 			<Modal.Header closeButton>
 			<Modal.Title>View Cart</Modal.Title>
 			</Modal.Header>

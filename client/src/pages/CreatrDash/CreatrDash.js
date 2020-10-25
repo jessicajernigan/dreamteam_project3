@@ -9,6 +9,7 @@ import CreatrVibes from '../../components/CreatrVibes/CreatrVibes';
 import Player from '../../components/Player/Player';
 import Footer from '../../components/Footer/Footer';
 import Cart from '../../components/Cart/Cart';
+import EditPhoto from '../../components/EditPhoto/EditPhoto';
 
 import Uploader from '../../components/Uploader/Uploader';
 import { BiPlay, BiDownload } from 'react-icons/bi';
@@ -55,6 +56,7 @@ const CreatrDash = () => {
 									<Card.Img variant="top" src={imgUrl} />
 								</Card>
 								{/* <Row className="d-flex justify-content-center mb-4"> */}
+								{/* <EditPhoto /> */}
 								<Button className="Edit-Btn w-50 btn-sm mt-2" variant="primary" type="submit">
 									edit profile photo
 								</Button>

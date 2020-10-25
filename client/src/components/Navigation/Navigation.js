@@ -28,9 +28,7 @@ const Navigation = () => {
 					 <NavLink exact to="/about" activeStyle={activeStyle} className="mr-3">
 						 About Us
 					 </NavLink>
-					 <NavLink to="/cart" activeStyle={activeStyle} className="mr-3">
-						 View Cart
-					 </NavLink>
+					 <Cart />
 					 <NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
 						 Buskr Login
 					 </NavLink>

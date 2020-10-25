@@ -1,12 +1,21 @@
+/* Edit Photo */
+.EditPhotoBtn {
+    background-color: var(--player-btn-purple);
+    color: white;
+}
+
+.EditPhotoModal {
+    position: relative;
+}
+
+
+
+
 /* Cart */
 .modal-content {
     color: black;
-    min-width: 15%;
-    max-width: 22%;
-    max-height: 60%;
-    position: fixed;
-    top: 0;
-    right: 0;
+    /* position: relative;
+    min-width: 50%; */
 }
 
 /* .modal {
@@ -22,25 +31,11 @@
     border: none;
 }
 
-.ViewCartBtn {
-    background: none;
-    color: white;
-    margin-right: 1rem;
-    border: none;
-    cursor: pointer;
-}
-
-.ViewCartBtn:hover {
-    background: none;
-    color: white;
-    cursor: pointer;
-}
-
 .cart-item {
     font-size: .7rem;
 }
 
-@media only screen and (max-width: 1048px) {
+/* @media only screen and (max-width: 1048px) {
     .modal-content {
         min-width: 15%;
         max-width: 42%;
@@ -61,13 +56,12 @@
     .cart-item {
         font-size: 11px;
     }
-}
+} */
 
-@media only screen and (max-width: 400px) {
+/* @media only screen and (max-width: 400px) {
     .modal-content {
         position: fixed;
         top: 0;
-        /* right: 0; */
         min-width: 15%;
         max-width: 70%;
         max-height: 60%;
@@ -80,4 +74,4 @@
     .modal-title {
         font-size: 1rem;
     }
-}
+} */

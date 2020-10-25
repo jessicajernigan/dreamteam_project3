@@ -44,7 +44,7 @@ function App() {
 							<Route exact path="/signup" component={Signup} />
 							<Route exact path="/login" component={Login} />
 							<Route exact path="/upload" component={Uploader} />
-							<Route path="/cart" component={Cart} />
+							{/* <Route path="/cart" component={Cart} /> */}
 						</Switch>
 					</Provider>
 				</div>
