@@ -19,6 +19,7 @@ const CreatrGrid = () => {
   
 
   const { creators, currentVibe } = useSelector((state) => state);
+  console.log('creators from CreatrGrid redux state: ', creators)
   const dispatch = useDispatch()
 
 	useEffect(

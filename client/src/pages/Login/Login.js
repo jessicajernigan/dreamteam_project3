@@ -21,9 +21,11 @@ const Login = () => {
 			const mutationResponse = await login({
 				variables: { email: formState.email, password: formState.password }
       });
-      console.log('mutationResponse', mutationResponse)
-			const token = mutationResponse.data.login.token;
-			Auth.login(token);
+      // console.log('mutationResponse', mutationResponse)
+      const token = mutationResponse.data.login.token;
+      const creatorId = mutationResponse.data.login.creator._id
+      // console.log(token, creatorId)
+			Auth.login(creatorId, token);
 		} catch (e) {
 			console.log(e);
 		}

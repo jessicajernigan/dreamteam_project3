@@ -147,7 +147,7 @@ const resolvers = {
 				throw new AuthenticationError('Can not find creator');
       }
       
-      console.log('creator found!')
+      // console.log('creator found!')
 
 			const correctPw = await creator.isCorrectPassword(password);
 

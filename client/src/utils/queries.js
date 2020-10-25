@@ -35,6 +35,7 @@ export const QUERY_CREATORS = gql`
     bio
     vibes {
       _id
+      name
     }
   }
 }

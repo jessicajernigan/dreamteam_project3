@@ -15,10 +15,11 @@ const Navigation = () => {
 
 	const showNavigation = () => {
 		if (Auth.loggedIn()) {
+      const creatorId = Auth.getCreatorId();
 			return (
 				<React.Fragment>
           {/* how to get creator id to add as param so i can get to the correct creator dashboard */}
-					<NavLink to={`/creator`} className="mr-3">Dashboard</NavLink>
+					<NavLink to={`/creator/${creatorId}`} className="mr-3">Dashboard</NavLink>
 					<NavLink to="/orderHistory" className="mr-3">Order History</NavLink>
 					<a href="/" className="mr-3" onClick={() => Auth.logout()}>
 						Logout

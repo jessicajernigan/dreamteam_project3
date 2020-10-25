@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 
+import Auth from '../../utils/auth';
+
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -9,17 +11,24 @@ import Uploader from '../../components/Uploader/Uploader';
 import './CreatrDash.css';
 
 const CreatrDash = () => {
-	const testId = 8633317975153281;
+
+  // need to get the creator from state, who is logged in (ie their _id is found in LS), then display their info
+  
+  const creatorId = Auth.getCreatorId();
+  console.log("creatorId from LS: ", creatorId)
 
 	const state = useSelector((state) => state);
 
-	const curCreatr = state.creators.filter((creator) => creator._id === testId);
-	const { _id, name, imgUrl, bio, vibes } = curCreatr[0];
+  console.log('creators from CreatrDash redux state: ', state)
+
+  const curCreatr = state.creators.filter((creator) => creator._id === creatorId);
+  console.log('curCreatr from CreatrDAsh filter: ', curCreatr)
+
+  const { stageName, imgUrl, bio, vibes } = curCreatr[0] 
 
 	// console.log('Current vibes', vibes);
 
-	// const curSongs = state.songs.filter(song => song.creatorId === _id )
-  const curSongs = state.songs.filter((song) => song.creatorId === testId);
+  const curSongs = state.songs.filter((song) => song.creatorId === creatorId);
 
   const playerRef = useRef(null);
   
@@ -33,7 +42,7 @@ const CreatrDash = () => {
 		<main className="CreatrDash">
 			<Row>
 				<Col lg={12}>
-					<h2 className="text-center m-2 p-1">{name}</h2>
+					<h2 className="text-center m-2 p-1">{stageName}</h2>
 				</Col>
 			</Row>
 			<Row className="d-flex justify-content-center">
@@ -43,7 +52,6 @@ const CreatrDash = () => {
 							<img src={imgUrl} alt="Artist" />
 						</div>
 						<div className="CreatrDash-dropzone-container rounded text-center m-2">
-							{/* Dropzone Placeholder */}
 							<Uploader />
 						</div>
 					</div>
@@ -58,10 +66,10 @@ const CreatrDash = () => {
 							<ul className="list-group small d-flex flex-row flex-wrap justify-content-center text-center p-1 m-1">
 								{vibes.map((vibe) => (
 									<li
-										key={vibe}
-										className="list-group-item rounded m-1"
+										key={vibe._id}
+										className="list-group-item rounded m-1 text-primary"
 									>
-										{vibe}
+										{vibe.name}
 									</li>
 								))}
 							</ul>
