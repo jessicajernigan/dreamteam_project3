@@ -24,9 +24,9 @@ const CreatrProf = () => {
 
   const curCreatr = state.creators.filter((creator) => creator._id === id);
   console.log('curCreatr from CreatrProf: ', curCreatr)
-  const { stageName, imgUrl, location, bio } = curCreatr[0];
+  const { stageName, imgUrl, location, bio, songs } = curCreatr[0];
 
-  const curSongs = state.songs.filter(song => song.creatorId === id)
+  // const curSongs = state.songs.filter(song => song.creatorId === id)
 
   const handlePlaySong = (songUrl) => {
     // console.log("Play song", songUrl)
@@ -59,7 +59,7 @@ const CreatrProf = () => {
 							<p>{bio}</p>
 							<h4>Available Songs</h4>
 							<ul>
-								{curSongs.map((song) => (
+								{songs.map((song) => (
 									<li key={song._id}>
 										<BiPlay onClick={() => handlePlaySong(song.songUrl)} /> <BiPlusMedical /> {song.title}
 									</li>

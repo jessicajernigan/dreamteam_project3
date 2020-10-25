@@ -47,8 +47,8 @@ const CreatrGrid = () => {
 	);
 
 	function filterCreators() {
-    // console.log('current vibe: ', currentVibe);
-    // console.log('creators', creators)
+    console.log('current vibe: ', currentVibe);
+    console.log('creators', creators)
 
 		if (!currentVibe) {
 			return creators;

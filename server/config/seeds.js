@@ -1,5 +1,6 @@
 const db = require('./connection');
 const { Vibe, Creator } = require('../models');
+const Song = require('../models/Song');
 
 db.once('open', async () => {
 	await Vibe.deleteMany();
@@ -14,20 +15,61 @@ db.once('open', async () => {
 		{ name: 'Blues' }
 	]);
 
-	console.log('vibes seeded', vibes);
-
-	// Rock: vibes[0]._id
+  // Rock: vibes[0]._id
 	// Hip Hop: vibes[1]._id
 	// Reggae: vibes[2]._id
 	// Jazz: vibes[3]._id
 	// Country: vibes[4]._id
 	// Disco: vibes[5]._id
-	// Blues: vibes[6]._id
+  // Blues: vibes[6]._id
+
+	console.log('vibes seeded', vibes);
+
+
+  await Song.deleteMany();
+
+  const songs = await Song.insertMany([
+    {
+      title: 'Song Zero', 
+      songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+    },
+    {
+      title: 'Song One', 
+      songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+    },
+    {
+      title: 'Song Two', 
+      songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+    },
+    {
+      title: 'Song Three', 
+      songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+    },
+    {
+      title: 'Song Four', 
+      songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+    },
+    {
+      title: 'Song Five', 
+      songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+    },
+    {
+      title: 'Song Six', 
+      songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+    },
+    {
+      title: 'Song Seven', 
+      songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+    },
+  ])
+  
+  console.log('songs seeded: ', songs)
+
 
 	await Creator.deleteMany();
 
   // need to .create() one at a time instead of .insertMany() or password validation does not work
-	await Creator.create({
+	const rtx = await Creator.create({
 		username  : 'Royal Trux',
 		email     : 'test1@gmail.com',
 		password  : 'password123',
@@ -36,7 +78,8 @@ db.once('open', async () => {
 		location  : 'Virginia',
 		bio       :
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes     : [ vibes[0]._id, vibes[3]._id, vibes[6]._id ]
+    vibes     : [ vibes[0]._id, vibes[3]._id, vibes[6]._id ],
+    songs: [ songs[0], songs[1]]
 	});
 
 	await Creator.create({
@@ -48,7 +91,8 @@ db.once('open', async () => {
 		location  : 'Ohio',
 		bio       :
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes     : [ vibes[0]._id, vibes[6]._id ]
+    vibes     : [ vibes[0]._id, vibes[6]._id ],
+    songs: [ songs[2], songs[3]]
 	});
 	await Creator.create({
 		username  : 'Lee Scratch Perry',
@@ -59,7 +103,8 @@ db.once('open', async () => {
 		location  : 'Jamaica',
 		bio       :
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes     : [ vibes[2]._id ]
+    vibes     : [ vibes[2]._id ],
+    songs: [ songs[4], songs[5]]
 	});
 	await Creator.create({
 		username  : 'Johnny Cash',
@@ -70,7 +115,8 @@ db.once('open', async () => {
 		location  : 'Austin, TX',
 		bio       :
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes     : [ vibes[4]._id, vibes[6]._id ]
+    vibes     : [ vibes[4]._id, vibes[6]._id ],
+    songs: [ songs[6], songs[7]]
 	});
 	await Creator.create({
 		username  : 'Outkast',
@@ -95,7 +141,7 @@ db.once('open', async () => {
 		vibes     : [ vibes[3]._id, vibes[6]._id ]
 	});
 
-	console.log('creators seeded');
+	console.log('creators seeded.  rtx example: ', rtx);
 
 	
 

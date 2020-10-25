@@ -15,12 +15,18 @@ const typeDefs = gql`
     location: String
     bio: String
     vibes: [Vibe]
+    songs: [Song]
+  }
+
+  type Song {
+    _id: ID
+    title: String
   }
 
   type Auth {
   token: ID
   creator: Creator
-}
+  }
 
   type Query {
     creator: Creator

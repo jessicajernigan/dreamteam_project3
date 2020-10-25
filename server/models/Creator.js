@@ -45,6 +45,12 @@ const creatorSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Vibe'
     }
+  ],
+  songs: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Song'
+    }
   ]
   // orders: [Order.schema]
 });
