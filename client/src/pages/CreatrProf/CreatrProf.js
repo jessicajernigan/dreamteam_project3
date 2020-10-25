@@ -11,35 +11,27 @@ import { BiPlay, BiPlusMedical } from 'react-icons/bi';
 import './CreatrProf.css';
 
 const CreatrProf = () => {
-  // const songs = [ 'Song One', 'Song Two', 'Song Three', 'Song Four', 'Song Five' ];
-  
-  const playerRef = useRef(null)
+	// const songs = [ 'Song One', 'Song Two', 'Song Three', 'Song Four', 'Song Five' ];
 
-  const { id } = useParams();
-  // console.log('params id: ', id)
+	const playerRef = useRef(null);
 
+	const { id } = useParams();
+	// console.log('params id: ', id)
 
-  const state = useSelector((state) => state);
-  console.log('state from CreatrProf', state)
+	const state = useSelector((state) => state);
+	console.log('state from CreatrProf', state);
 
-  const curCreatr = state.creators.filter((creator) => creator._id === id);
-  console.log('curCreatr from CreatrProf: ', curCreatr)
-  const { stageName, imgUrl, location, bio, songs } = curCreatr[0];
+	const curCreatr = state.creators.filter((creator) => creator._id === id);
+	console.log('curCreatr from CreatrProf: ', curCreatr);
+	const { stageName, imgUrl, location, bio, songs } = curCreatr[0];
 
-  // const curSongs = state.songs.filter(song => song.creatorId === id)
+	// const curSongs = state.songs.filter(song => song.creatorId === id)
 
-  const handlePlaySong = (songUrl) => {
-    // console.log("Play song", songUrl)
-    const songPlayer = new Audio(songUrl);
-    songPlayer.setAttribute('controls', true);
-    songPlayer.setAttribute('controlsList', "nodownload");
-    songPlayer.addEventListener("canplaythrough", event => {
-      /* the audio is now playable; play it if permissions allow */
-      playerRef.current.appendChild(songPlayer);
-      songPlayer.play();
-    });
-  }
-
+	const handlePlaySong = (songUrl) => {
+		// console.log("Play song", songUrl)
+		playerRef.current.setAttribute('src', songUrl);
+		playerRef.current.play();
+	};
 
 	return (
 		<div className="CreatrProf">
@@ -61,11 +53,19 @@ const CreatrProf = () => {
 							<ul>
 								{songs.map((song) => (
 									<li key={song._id}>
-										<BiPlay onClick={() => handlePlaySong(song.songUrl)} /> <BiPlusMedical /> {song.title}
+										<BiPlay
+											onClick={() => handlePlaySong(song.songUrl)}
+										/>{' '}
+										<BiPlusMedical /> {song.title}
 									</li>
 								))}
 							</ul>
-            <div ref={playerRef} className="CreatrProf-player"></div>
+							<div className="p-2">
+								<audio ref={playerRef} controls>
+									Your browser does not support the audio element.
+								</audio>
+							</div>
+							{/* <div ref={playerRef} className="CreatrProf-player"></div> */}
 						</Col>
 					</Row>
 				</Col>

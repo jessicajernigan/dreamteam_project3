@@ -60,30 +60,30 @@ export default {
   //     vibes: [ "5f922f80d55b3165680d014b", "5f922f80d55b3165680d0148" ],
   //   },
   // ],
-  songs: [
-    {
-      _id: +Math.random().toString().split('').splice(2).join(''),
-      creatorId: 8633317975153281,
-      title: 'Song One', 
-      songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
-    },
-    {
-      _id: +Math.random().toString().split('').splice(2).join(''),
-      creatorId: 8633317975153281,
-      title: 'Song Two', 
-      songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
-    },
-    {
-      _id: +Math.random().toString().split('').splice(2).join(''),
-      creatorId: 8633317975153281,
-      title: 'Song Three', 
-      songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
-    },
-    {
-      _id: +Math.random().toString().split('').splice(2).join(''),
-      creatorId: 8633317975153281,
-      title: 'Song Four', 
-      songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
-    },
-  ]
+  // songs: [
+  //   {
+  //     _id: +Math.random().toString().split('').splice(2).join(''),
+  //     creatorId: 8633317975153281,
+  //     title: 'Song One', 
+  //     songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+  //   },
+  //   {
+  //     _id: +Math.random().toString().split('').splice(2).join(''),
+  //     creatorId: 8633317975153281,
+  //     title: 'Song Two', 
+  //     songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+  //   },
+  //   {
+  //     _id: +Math.random().toString().split('').splice(2).join(''),
+  //     creatorId: 8633317975153281,
+  //     title: 'Song Three', 
+  //     songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+  //   },
+  //   {
+  //     _id: +Math.random().toString().split('').splice(2).join(''),
+  //     creatorId: 8633317975153281,
+  //     title: 'Song Four', 
+  //     songUrl: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3'
+  //   },
+  // ]
 }

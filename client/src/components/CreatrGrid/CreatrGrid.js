@@ -16,7 +16,7 @@ import spinner from '../../assets/cool_spinner.gif';
 const CreatrGrid = () => {
 	// query db for creators
   const { loading, data } = useQuery(QUERY_CREATORS);
-  
+  console.log('data from QUERY_CREATORS: ', data)
 
   const { creators, currentVibe } = useSelector((state) => state);
   // console.log('creators from CreatrGrid redux state: ', creators)

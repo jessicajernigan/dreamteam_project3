@@ -21,6 +21,7 @@ const typeDefs = gql`
   type Song {
     _id: ID
     title: String
+    songUrl: String
   }
 
   type Auth {

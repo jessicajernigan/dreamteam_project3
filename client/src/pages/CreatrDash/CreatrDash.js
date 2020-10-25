@@ -24,11 +24,11 @@ const CreatrDash = () => {
   const curCreatr = state.creators.filter((creator) => creator._id === creatorId);
   console.log('curCreatr from CreatrDAsh filter: ', curCreatr)
 
-  const { stageName, imgUrl, bio, vibes } = curCreatr[0] 
+  const { stageName, imgUrl, bio, vibes, songs } = curCreatr[0] 
 
 	// console.log('Current vibes', vibes);
 
-  const curSongs = state.songs.filter((song) => song.creatorId === creatorId);
+  // const curSongs = state.songs.filter((song) => song.creatorId === creatorId);
 
   const playerRef = useRef(null);
   
@@ -89,7 +89,7 @@ const CreatrDash = () => {
 						</div>
 						<div className="CreatrDash-music-tiles w-100 m-1">
 							<ul className="list-group row small d-flex flex-row text-center">
-								{curSongs.map((song) => (
+								{songs.map((song) => (
 									<li
 										key={song._id}
                     className="list-group-item col-md-6 border-0 bg-transparent"

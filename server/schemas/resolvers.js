@@ -10,27 +10,27 @@ const resolvers = {
 			return await Vibe.find();
     },
     
-    // // optional parameters for search, otherwise return all
-		// creators : async (parent, { vibes, username }) => {
-		// 	const params = {};
+    // optional parameters for search, otherwise return all
+		creators : async (parent, { vibes, username }) => {
+			const params = {};
 
-		// 	if (vibes) {
-		// 		params.vibes = vibes;
-		// 	}
+			if (vibes) {
+				params.vibes = vibes;
+			}
 
-		// 	if (username) {
-		// 		params.username = {
-		// 			$regex : username
-		// 		};
-		// 	}
+			if (username) {
+				params.username = {
+					$regex : username
+				};
+			}
 
-    //   // remove populate?
-		// 	return await Creator.find(params).populate('vibes');
-    // }
-    creators : async () => {
-    		// return await Creator.find({}).populate('vibes')
-    		return await Creator.find({}).populate('songs')
-		}
+      // remove populate?
+			return await Creator.find(params).populate('vibes').populate('songs');
+    }
+    // creators : async () => {
+    // 		// return await Creator.find({}).populate('vibes')
+    // 		return await Creator.find({}).populate('songs')
+		// }
 
 	
 
