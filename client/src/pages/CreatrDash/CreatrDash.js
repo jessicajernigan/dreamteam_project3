@@ -15,14 +15,14 @@ const CreatrDash = () => {
   // need to get the creator from state, who is logged in (ie their _id is found in LS), then display their info
   
   const creatorId = Auth.getCreatorId();
-  console.log("creatorId from LS: ", creatorId)
+  // console.log("creatorId from LS: ", creatorId)
 
 	const state = useSelector((state) => state);
 
-  console.log('creators from CreatrDash redux state: ', state)
+  // console.log('creators from CreatrDash redux state: ', state)
 
   const curCreatr = state.creators.filter((creator) => creator._id === creatorId);
-  console.log('curCreatr from CreatrDAsh filter: ', curCreatr)
+  // console.log('curCreatr from CreatrDAsh filter: ', curCreatr)
 
   const { stageName, imgUrl, bio, vibes, songs } = curCreatr[0] 
 

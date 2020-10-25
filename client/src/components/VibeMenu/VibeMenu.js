@@ -37,15 +37,9 @@ const VibeMenu = () => {
 		[ vibeData, loading, dispatch ]
   );
   
-  // const handleClick = (id) => {
-  //   console.log(id)
-	// 	// dispatch(updateCurrentVibe(id));
-	// };
-
   return (
     <div className="VibeMenu">
       <h5>Vibes</h5>
-      {/* refactor to not have to pass props since we're using redux */}
       {vibes.map((vibe) => (
         <VibeBtn key={vibe._id} vibe={vibe}  />
       ))}

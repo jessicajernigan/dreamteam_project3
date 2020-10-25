@@ -25,6 +25,7 @@ const Login = () => {
       const token = mutationResponse.data.login.token;
       const creatorId = mutationResponse.data.login.creator._id
       // console.log(token, creatorId)
+      // store creator id in LS also so we have it available as param and filter for dashboard
 			Auth.login(creatorId, token);
 		} catch (e) {
 			console.log(e);

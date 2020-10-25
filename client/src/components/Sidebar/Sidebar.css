@@ -4,37 +4,13 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  /* border: solid black; */
-  height: 60vh;
+  /* height: 60vh; */
   text-align: center;
-}
-
-.Sidebar-artist-search {
-  width: 90%;
-  margin: 20px 0 20px 0;
-}
-
-.Sidebar-now-playing {
-  width: 100%;
-  background-color: rgb(175, 175, 175);
-  border-radius: 5px;
-}
-
-.Sidebar-now-playing-text {
-  padding: 10px 10px 10px 10px;
-}
-
-.Sidebar-audio-controller {
-  margin: 0 0 0 0 !important;
 }
 
 
 /* MEDIA QUERIES */
 @media only screen and (max-width: 1048px) {
-  .Sidebar {
-      display: none;
-  }
-  .Sidebar-now-playing {
-      display: none;
-  }
+
+
 }

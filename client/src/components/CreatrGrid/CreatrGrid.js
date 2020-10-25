@@ -16,7 +16,7 @@ import spinner from '../../assets/cool_spinner.gif';
 const CreatrGrid = () => {
 	// query db for creators
   const { loading, data } = useQuery(QUERY_CREATORS);
-  console.log('data from QUERY_CREATORS: ', data)
+  // console.log('data from QUERY_CREATORS: ', data)
 
   const { creators, currentVibe } = useSelector((state) => state);
   // console.log('creators from CreatrGrid redux state: ', creators)
@@ -27,6 +27,7 @@ const CreatrGrid = () => {
 			// if there's data to be stored
 			if (data) {
         // console.log('data from QUERY_CREATORS query', data)
+
 				// store it in the global state object
 				dispatch(updateCreators(data.creators));
 
@@ -47,8 +48,8 @@ const CreatrGrid = () => {
 	);
 
 	function filterCreators() {
-    console.log('current vibe: ', currentVibe);
-    console.log('creators', creators)
+    // console.log('current vibe: ', currentVibe);
+    // console.log('creators', creators)
 
 		if (!currentVibe) {
 			return creators;

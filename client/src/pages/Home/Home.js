@@ -3,7 +3,6 @@ import Row from 'react-bootstrap/Row';
 import './Home.css';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
-import SidebarMob from '../../components/SidebarMob/SidebarMob';
 import CreatrGrid from '../../components/CreatrGrid/CreatrGrid';
 import Footer from '../../components/Footer/Footer';
 
@@ -12,7 +11,6 @@ const Home = () => {
 		<React.Fragment>
 			<Row>
 				<Sidebar />
-				<SidebarMob />
 				<CreatrGrid />
 			</Row>
 			<Footer />

@@ -11,7 +11,6 @@ import { BiPlay, BiPlusMedical } from 'react-icons/bi';
 import './CreatrProf.css';
 
 const CreatrProf = () => {
-	// const songs = [ 'Song One', 'Song Two', 'Song Three', 'Song Four', 'Song Five' ];
 
 	const playerRef = useRef(null);
 
@@ -19,10 +18,10 @@ const CreatrProf = () => {
 	// console.log('params id: ', id)
 
 	const state = useSelector((state) => state);
-	console.log('state from CreatrProf', state);
+	// console.log('state from CreatrProf', state);
 
 	const curCreatr = state.creators.filter((creator) => creator._id === id);
-	console.log('curCreatr from CreatrProf: ', curCreatr);
+	// console.log('curCreatr from CreatrProf: ', curCreatr);
 	const { stageName, imgUrl, location, bio, songs } = curCreatr[0];
 
 	// const curSongs = state.songs.filter(song => song.creatorId === id)
@@ -65,7 +64,6 @@ const CreatrProf = () => {
 									Your browser does not support the audio element.
 								</audio>
 							</div>
-							{/* <div ref={playerRef} className="CreatrProf-player"></div> */}
 						</Col>
 					</Row>
 				</Col>
