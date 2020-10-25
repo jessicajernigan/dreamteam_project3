@@ -10,7 +10,7 @@ import './Navigation.css';
 
 const Navigation = () => {
 	const activeStyle = {
-		color : 'pink'
+		color : 'white'
 	};
 
 	const showNavigation = () => {

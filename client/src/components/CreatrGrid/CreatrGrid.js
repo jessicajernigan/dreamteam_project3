@@ -65,8 +65,8 @@ const CreatrGrid = () => {
 	}
 
 	return (
-		<Col lg={10} className="CreatrGrid">
-			<div className="CreatrGrid-tiles-container">
+		<Col lg={12} className="CreatrGrid">
+			<div className="CreatrGrid-tiles-container d-flex justify-content-center flex-wrap mx-auto">
 				{creators.length ? (
 					filterCreators().map((creator) => (
 						<CreatrTile {...creator} key={creator._id} />

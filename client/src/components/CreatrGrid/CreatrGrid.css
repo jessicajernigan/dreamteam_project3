@@ -1,6 +1,9 @@
 .CreatrGrid-tiles-container {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
+  max-width: 80%;
+}
+
+@media only screen and (max-width: 1048px) {
+	.CreatrGrid-tiles-container {
+		max-width: 90%;
+	}
 }

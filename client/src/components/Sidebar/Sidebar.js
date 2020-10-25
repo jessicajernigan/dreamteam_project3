@@ -10,7 +10,7 @@ import './Sidebar.css'
 const Sidebar = () => {
 
   return (
-    <Col lg={2} className="Sidebar">
+    <Col lg={12} className="Sidebar w-100 d-flex justify-content-center text-center">
     <VibeMenu />
   </Col>
   )
