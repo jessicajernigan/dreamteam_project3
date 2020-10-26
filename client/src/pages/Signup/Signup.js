@@ -22,8 +22,9 @@ const Signup = () => {
 				password  : formState.password
 			}
 		});
-		const token = mutationResponse.data.addCreator.token;
-		Auth.login(token);
+    const token = mutationResponse.data.addCreator.token;
+    const creatorId = mutationResponse.data.login.creator._id
+		Auth.login(creatorId, token);
   }
 
   const handleChange = (event) => {

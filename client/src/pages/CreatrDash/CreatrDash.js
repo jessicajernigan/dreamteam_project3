@@ -18,6 +18,11 @@ import './CreatrDash.css';
 import spinner from '../../assets/cool_spinner.gif';
 
 const CreatrDash = () => {
+  const imgDefault = 'Please add a picture to your profile';
+	const bioDefault = 'Please tell us a little about yourself';
+	const vibesDefault = 'Please select your vibes';
+  const tunesDefault = 'Please add some tunes';
+  
 	const state = useSelector((state) => state);
 	const { creators } = state;
 	const dispatch = useDispatch();
@@ -25,7 +30,8 @@ const CreatrDash = () => {
 	// get current creator's id from url
 	const { id } = useParams();
 
-	const [ curCreatr, setCurCreatr ] = useState({});
+  const [ curCreatr, setCurCreatr ] = useState({});
+  const [ bioInput, setBioInput ] = useState(bioDefault)
 
 	const { loading, data } = useQuery(QUERY_CREATORS);
 
@@ -53,7 +59,14 @@ const CreatrDash = () => {
 	const handlePlaySong = (songUrl) => {
 		playerRef.current.setAttribute('src', songUrl);
 		playerRef.current.play();
-	};
+  };
+  
+  const handleBioSubmit = (e) => {
+    e.preventDefault();
+    console.log('Bio form submitted');
+  }
+
+
 
 	return (
 		<React.Fragment>
@@ -64,7 +77,15 @@ const CreatrDash = () => {
 						<Col lg={5}>
 							<div className="w-100 bskr-bg-secondary pt-2 mb-3 rounded">
 								<Card className="w-75 mx-auto bskr-bg-secondary">
-									<Card.Img variant="top" className="w-75 mx-auto rounded" src={curCreatr.imgUrl} />
+									{curCreatr.imgUrl ? (
+										<Card.Img
+											variant="top"
+											className="w-75 mx-auto rounded"
+											src={curCreatr.imgUrl}
+										/>
+									) : (
+										<p className="text-center">{imgDefault}</p>
+									)}
 									<Card.Body className="text-center">
 										{/* <Card.Text className="text-white text-center">
                   {curCreatr.location}
@@ -76,35 +97,51 @@ const CreatrDash = () => {
 								</Card>
 							</div>
 							<div className="bskr-bg-secondary rounded p-4 text-center">
-								<p className="text-left">{curCreatr.bio}</p>
-								<Button className="w-50 btn-sm bskr-btn-purple">
-									edit bio
-								</Button>
+								{curCreatr.bio ? (
+									<React.Fragment>
+										<p className="text-left">{curCreatr.bio}</p>
+										<Button className="w-50 btn-sm bskr-btn-purple">
+											edit bio
+										</Button>
+									</React.Fragment>
+								) : (
+									<form className="d-flex flex-column align-items-center" onSubmit={(e) => handleBioSubmit(e)} >
+                    <textarea className="mb-2 p-3" rows={5} cols={30} value={bioInput} onChange={(e) => setBioInput(e.target.value)}/>
+										<Button type="submit" className="w-50 btn-sm d-block bskr-btn-purple">
+											edit bio
+										</Button>
+									</form>
+									// <p className="text-center">{bioDefault}</p>
+								)}
 							</div>
 						</Col>
 						<Col lg={5} className="d-flex flex-column align-items-center">
 							<div className="bskr-bg-secondary w-100 mb-3 py-5 rounded d-flex flex-column align-items-center">
 								<h5 className="text-dark">Vibes</h5>
-								<ul>
-									{curCreatr.vibes &&
-										curCreatr.vibes.map((vibe) => (
+								{curCreatr.vibes && curCreatr.vibes.length ? (
+									<ul>
+										{curCreatr.vibes.map((vibe) => (
 											<span
 												key={vibe._id}
-												className="bskr-vibe-btn-static btn-sm mx-1 text-white"
+												className="bskr-vibe-btn-static d-inline-block text-center btn-sm mx-1 text-white"
 											>
 												{vibe.name}
 											</span>
 										))}
-								</ul>
+									</ul>
+								) : (
+									<p>{vibesDefault}</p>
+								)}
+
 								<Button className="w-50 btn-sm bskr-btn-purple">
 									edit vibes
 								</Button>
 							</div>
 							<div className="bskr-bg-secondary w-100 p-5 d-flex flex-column align-items-center rounded">
 								<h4 className="text-dark">Available Tunes</h4>
-								<ul className="w-100">
-									{curCreatr.songs &&
-										curCreatr.songs.map((song) => (
+								{curCreatr.songs && curCreatr.songs.length ? (
+									<ul className="w-100">
+										{curCreatr.songs.map((song) => (
 											<li
 												key={song._id}
 												className="bskr-bg-search w-100 m-2 p-2 rounded text-dark"
@@ -118,15 +155,21 @@ const CreatrDash = () => {
 												{song.title}
 											</li>
 										))}
-								</ul>
+									</ul>
+								) : (
+									<p>{tunesDefault}</p>
+								)}
 								<Button className="w-50 btn-sm bskr-btn-purple mb-5">
 									edit tunes
 								</Button>
-								<div className="">
-									<audio ref={playerRef} controls>
-										Your browser does not support the audio element.
-									</audio>
-								</div>
+								{curCreatr.songs && curCreatr.songs.length ? (
+									<div>
+										<audio ref={playerRef} controls>
+											Your browser does not support the audio
+											element.
+										</audio>
+									</div>
+								) : null}
 							</div>
 						</Col>
 					</Row>
@@ -138,3 +181,37 @@ const CreatrDash = () => {
 };
 
 export default CreatrDash;
+
+{
+	/* 
+<ul>
+  {curCreatr.vibes &&
+    curCreatr.vibes.map((vibe) => (
+      <span
+        key={vibe._id}
+        className="bskr-vibe-btn-static btn-sm mx-1 text-white"
+      >
+        {vibe.name}
+      </span>
+    ))}
+</ul> */
+}
+
+{
+	/* 
+{curCreatr.songs &&
+  curCreatr.songs.map((song) => (
+    <li
+      key={song._id}
+      className="bskr-bg-search w-100 m-2 p-2 rounded text-dark"
+    >
+      <BiPlay
+        className="fs-3"
+        onClick={() =>
+          handlePlaySong(song.songUrl)}
+      />{' '}
+      <BiPlusMedical className="mr-1" />{' '}
+      {song.title}
+    </li>
+  ))} */
+}
