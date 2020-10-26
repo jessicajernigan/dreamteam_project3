@@ -12,7 +12,7 @@ const EditTunes = () => {
     const handleShow = () => setShow(true);
     return (
         <>
-        <Button className="w-50 btn-sm bskr-btn-purple" variant="primary" onClick={handleShow}>
+        <Button className="w-50 btn-sm mb-5 bskr-btn-purple" variant="primary" onClick={handleShow}>
           edit your tunes
         </Button>
   
