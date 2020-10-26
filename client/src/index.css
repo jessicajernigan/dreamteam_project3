@@ -56,8 +56,9 @@ li {
 
 /* BUTTONS */
 .bskr-vibe-btn {
-	background-color: var(--vibe-btn-blue);
-	border: none;
+  background-color: var(--vibe-btn-blue);
+  min-width: 6rem;
+  border: none;
 }
 
 .bskr-vibe-btn:hover {

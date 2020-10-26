@@ -20,6 +20,7 @@ const CreatrGrid = () => {
 
 	const { creators, currentVibe } = useSelector((state) => state);
 	// console.log('creators from CreatrGrid redux state: ', creators)
+	console.log('currentVibe from CreatrGrid redux state: ', currentVibe)
 	const dispatch = useDispatch();
 
 	useEffect(
@@ -60,10 +61,6 @@ const CreatrGrid = () => {
 			return actualCreators;
     }
     
-    // TODO...GET ALL BUTTON TO WORK
-    // if (currentVibe === ?) {
-    //   return actualCreators
-    // }
 
 		// we have an array of creators.  each creator has an array of vibes.  we need to return a new array of creators, based on their array of vibes containing a certain value (currentVibe which is the vibe's _id)
 
