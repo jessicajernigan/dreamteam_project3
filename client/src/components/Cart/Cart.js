@@ -16,7 +16,7 @@ function Cart() {
 			View Cart
 		</a>
 
-		<Modal className="ViewCartModal" tabindex="0" show={show} onHide={handleClose} animation={false} backdrop={false} scrollable={false}>
+		<Modal className="ViewCartModal" tabIndex="0" show={show} onHide={handleClose} animation={false} backdrop={false} scrollable={false}>
 			<Modal.Header closeButton>
 			<Modal.Title>View Cart</Modal.Title>
 			</Modal.Header>
