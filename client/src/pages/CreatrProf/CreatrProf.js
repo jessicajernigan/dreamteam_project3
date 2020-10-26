@@ -19,6 +19,7 @@ const CreatrProf = () => {
 	const state = useSelector((state) => state);
 	console.log('state from CreatrProf', state);
 
+  // REFACTOR TO USE .FIND()
 	const curCreatr = state.creators.filter((creator) => creator._id === id);
 	// console.log('curCreatr from CreatrProf: ', curCreatr);
 	const { stageName, imgUrl, location, bio, songs, vibes } = curCreatr[0];

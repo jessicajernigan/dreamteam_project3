@@ -66,7 +66,8 @@ const CreatrGrid = () => {
 
 		// return creators.filter((creator) =>
 		// 	creator.vibes.some((vibe) => vibe._id === currentVibe)
-		// );
+    // );
+    // REFACTOR TO USE .FIND()
 		return nonCreators.filter((creator) =>
 			creator.vibes.some((vibe) => vibe._id === currentVibe)
 		);
