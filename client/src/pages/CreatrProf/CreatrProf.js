@@ -139,7 +139,7 @@ const CreatrProf = () => {
           <Col lg={5}>
             <div className="w-100 bskr-bg-secondary pt-2 mb-3 rounded">
               <Card className="w-75 mx-auto bskr-bg-secondary">
-                <Card.Img variant="top" src={curCreatr.imgUrl} />
+			  	<Card.Img variant="top" className="w-75 mx-auto rounded"src={curCreatr.imgUrl} />
                 <Card.Body className="text-center">
                   <Card.Text className="text-white text-center">
                 {curCreatr.location}

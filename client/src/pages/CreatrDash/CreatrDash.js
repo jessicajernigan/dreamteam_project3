@@ -14,6 +14,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import EditPhoto from '../../components/EditPhoto/EditPhoto';
+import EditBio from '../../components/EditBio/EditBio';
+import EditTunes from '../../components/EditTunes/EditTunes';
 
 import { BiPlay, BiPlusMedical } from 'react-icons/bi';
 
@@ -141,22 +144,18 @@ const CreatrDash = () => {
 						<Col lg={5}>
 							<div className="w-100 bskr-bg-secondary pt-2 mb-3 rounded">
 								<Card className="w-75 mx-auto bskr-bg-secondary">
-									<Card.Img variant="top" src={curCreatr.imgUrl} />
+									<Card.Img variant="top" className="w-75 mx-auto rounded"src={curCreatr.imgUrl} />
 									<Card.Body className="text-center">
 										{/* <Card.Text className="text-white text-center">
                   {curCreatr.location}
                 </Card.Text> */}
-										<Button className="w-75 btn-sm bskr-btn-purple">
-											edit profile photo
-										</Button>
+										<EditPhoto />
 									</Card.Body>
 								</Card>
 							</div>
 							<div className="bskr-bg-secondary rounded p-4 text-center">
 								<p className="text-left">{curCreatr.bio}</p>
-								<Button className="w-50 btn-sm bskr-btn-purple">
-									edit bio
-								</Button>
+								<EditBio />
 							</div>
 						</Col>
 						<Col lg={5} className="d-flex flex-column align-items-center">
@@ -196,9 +195,7 @@ const CreatrDash = () => {
 											</li>
 										))}
 								</ul>
-								<Button className="w-50 btn-sm bskr-btn-purple mb-5">
-									edit tunes
-								</Button>
+								<EditTunes />
 								<div className="">
 									<audio ref={playerRef} controls>
 										Your browser does not support the audio element.
