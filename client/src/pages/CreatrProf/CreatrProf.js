@@ -17,54 +17,56 @@ import './CreatrProf.css';
 import spinner from '../../assets/cool_spinner.gif';
 
 const CreatrProf = () => {
+	// cache redux store
 	const state = useSelector((state) => state);
+	// destructure required variable
 	const { creators } = state;
-	// console.log('global state from CreatrProf', state);
-
+	// cache redux method to update store
 	const dispatch = useDispatch();
 
+	// get creatpr id from url which was appended by Link wrapping CreatrTile components
 	const { id } = useParams();
-	// console.log('params id: ', id)
 
+	// initialize ref to audio player
 	const playerRef = useRef(null);
 
-	// REFACTOR TO USE .FIND()
-	// const curCreatr = state.creators.filter((creator) => creator._id === id);
-	// const { stageName, imgUrl, location, bio, songs, vibes } = curCreatr[0];
+	// initiate component level state to keep track of current creator
+	const [ curCreatr, setCurCreatr ] = useState({});
 
-	// const curCreatr = state.creators.find((creator) => creator._id === id);
-	// const { stageName, imgUrl, location, bio, songs, vibes } = curCreatr;
-
-  const [ curCreatr, setCurCreatr ] = useState({});
-  // console.log("curCreatr: ", curCreatr);
-
+	// make db query to get all creators, in case page is refreshed or user has not first visited landing page to initiate redux store from db
 	const { loading, data } = useQuery(QUERY_CREATORS);
 
+	// this will be called after initial render and each time one of the values in the dependency array (creators, data, loading, dispatch, id, curCreatr) changes. checking the redux store first
 	useEffect(
 		() => {
+			// if creators are already in global store
 			if (creators.length) {
-        setCurCreatr(creators.find((creator) => creator._id === id));
+				// update component level state of curCreatr to be the creator object from the redux store whose id matches the one from the url
+				setCurCreatr(creators.find((creator) => creator._id === id));
 			} else if (data) {
+				// if nothing was in global store, if there is any data retrieved from db on server, dispatch the action to update the creators in the global store with the data from the db
 				dispatch(updateCreators(data.creators));
-
+				// also, cache the products from the db in indexedDb
 				data.creators.forEach((creator) => {
 					idbPromise('creators', 'put', creator);
 				});
 			} else if (!loading) {
+				// otherwise, if there is nothing in the redux store, and there is no internet connection (hence 'loading' is undefined in the useQuery() hook) get all the data from the cache in idb
 				idbPromise('creators', 'get').then((indexedCreators) => {
+					// use data from indexedDb to update redux global store for offline browsing
 					dispatch(updateCreators(indexedCreators));
 				});
 			}
 		},
-		[ creators, data, loading, dispatch, id, curCreatr ]
+		// [ creators, data, loading, dispatch, id, curCreatr(?) ]
+		[ creators, data, loading, dispatch, id ]
 	);
 
 	const handlePlaySong = (songUrl) => {
-		// console.log("Play song", songUrl)
 		playerRef.current.setAttribute('controlsList', 'nodownload');
 		playerRef.current.setAttribute('src', songUrl);
 		playerRef.current.play();
-  };
+	};
 
 	return (
 		<React.Fragment>
@@ -87,33 +89,35 @@ const CreatrProf = () => {
 							<div className="d-flex flex-column align-items-center">
 								<h5>Vibes</h5>
 								<ul>
-									{curCreatr.vibes && curCreatr.vibes.map((vibe) => (
-										<span
-											key={vibe._id}
-											className="btn mx-1 text-white"
-										>
-											{vibe.name}
-										</span>
-									))}
+									{curCreatr.vibes &&
+										curCreatr.vibes.map((vibe) => (
+											<span
+												key={vibe._id}
+												className="btn mx-1 text-white"
+											>
+												{vibe.name}
+											</span>
+										))}
 								</ul>
 							</div>
 							<div className="bskr-bg-secondary d-flex flex-column align-items-center p-5 rounded">
 								<h4 className="text-dark">Available Tunes</h4>
 								<ul className="w-100">
-									{curCreatr.songs && curCreatr.songs.map((song) => (
-										<li
-											key={song._id}
-											className="bskr-bg-search w-100 m-2 p-2 rounded text-dark"
-										>
-											<BiPlay
-												className="fs-3"
-												onClick={() =>
-													handlePlaySong(song.songUrl)}
-											/>{' '}
-											<BiPlusMedical className="mr-1" />{' '}
-											{song.title}
-										</li>
-									))}
+									{curCreatr.songs &&
+										curCreatr.songs.map((song) => (
+											<li
+												key={song._id}
+												className="bskr-bg-search w-100 m-2 p-2 rounded text-dark"
+											>
+												<BiPlay
+													className="fs-3"
+													onClick={() =>
+														handlePlaySong(song.songUrl)}
+												/>{' '}
+												<BiPlusMedical className="mr-1" />{' '}
+												{song.title}
+											</li>
+										))}
 								</ul>
 								<div className="p-2">
 									<audio ref={playerRef} controls>

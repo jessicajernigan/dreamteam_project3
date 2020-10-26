@@ -26,7 +26,6 @@ const CreatrGrid = () => {
 		() => {
 			// if there's data to be stored
 			if (data) {
-				// console.log('data from QUERY_CREATORS query', data)
 
 				// store it in the global state object
 				dispatch(updateCreators(data.creators));
@@ -49,15 +48,14 @@ const CreatrGrid = () => {
 	);
 
 	function filterCreators() {
-		// console.log('current vibe: ', currentVibe);
-		// console.log('creators', creators)
 
-		// filter out creators who have not posted a song
+		// filter out creators who have not posted a song.  **keep in place until we refactor User from Creator models
 		const nonCreators = creators.filter((creator) => creator.songs.length > 0);
 
 		// if (!currentVibe) {
-		// 	return creators;
-		// }
+      // 	return creators;
+      // }
+    // ** ditto
 		if (!currentVibe) {
 			return nonCreators;
 		}
@@ -67,7 +65,7 @@ const CreatrGrid = () => {
 		// return creators.filter((creator) =>
 		// 	creator.vibes.some((vibe) => vibe._id === currentVibe)
     // );
-    // REFACTOR TO USE .FIND()
+    // ** ditto
 		return nonCreators.filter((creator) =>
 			creator.vibes.some((vibe) => vibe._id === currentVibe)
 		);

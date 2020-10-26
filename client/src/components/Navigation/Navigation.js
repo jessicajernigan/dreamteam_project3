@@ -15,10 +15,13 @@ const Navigation = () => {
 
 	const showNavigation = () => {
 		if (Auth.loggedIn()) {
-      const creatorId = Auth.getCreatorId();
+			// could also get this from redux store curCreatr, possibly
+			const creatorId = Auth.getCreatorId();
 			return (
 				<React.Fragment>
-					<NavLink to={`/creator/${creatorId}`} className="mr-3">Dashboard</NavLink>
+					<NavLink to={`/creator/${creatorId}`} className="mr-3">
+						Dashboard
+					</NavLink>
 					{/* <NavLink to="/orderHistory" className="mr-3">Order History</NavLink> */}
 					<a href="/" className="mr-3" onClick={() => Auth.logout()}>
 						Logout
@@ -57,7 +60,7 @@ const Navigation = () => {
 					<NavLink exact to="/about" activeStyle={activeStyle} className="mr-3">
 						About Us
 					</NavLink>
-          {showNavigation()}
+					{showNavigation()}
 					<NavLink exact to="/cart" activeStyle={activeStyle} className="mr-3">
 						View Cart
 					</NavLink>
