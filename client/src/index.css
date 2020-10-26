@@ -13,6 +13,9 @@
 	--search-grey: #9c9c9e;
 	--secondary-grey: #7e7e81;
 	--player-btn-purple: #652cb3;
+	--player-btn-purple-hover: #774bb4;
+	--vibe-btn-blue: #346085;
+	--vibe-btn-blue-hover: #476a86;
 }
 
 body {
@@ -28,11 +31,6 @@ a {
 a:hover {
 	text-decoration: none;
 	color: var(--primary);
-}
-
-.btn {
-	background-color: #346085;
-	border: none;
 }
 
 ul {
@@ -54,6 +52,33 @@ li {
 
 .bskr-bg-search {
 	background-color: var(--search-grey);
+}
+
+/* BUTTONS */
+.bskr-vibe-btn {
+	background-color: var(--vibe-btn-blue);
+	border: none;
+}
+
+.bskr-vibe-btn:hover {
+	background-color: #476a86;
+}
+
+.bskr-vibe-btn-static {
+	background-color: var(--vibe-btn-blue);
+	border: none;
+}
+.bskr-vibe-btn-static:hover {
+	cursor: default;
+}
+
+.bskr-btn-purple {
+	background-color: var(--player-btn-purple);
+	border: none;
+}
+
+.bskr-btn-purple:hover {
+	background-color: var(--player-btn-purple-hover);
 }
 
 .fs-1 {

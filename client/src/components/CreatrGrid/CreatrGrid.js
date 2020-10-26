@@ -50,15 +50,20 @@ const CreatrGrid = () => {
 	function filterCreators() {
 
 		// filter out creators who have not posted a song.  **keep in place until we refactor User from Creator models
-		const nonCreators = creators.filter((creator) => creator.songs.length > 0);
+		const actualCreators = creators.filter((creator) => creator.songs.length > 0);
 
 		// if (!currentVibe) {
       // 	return creators;
       // }
     // ** ditto
 		if (!currentVibe) {
-			return nonCreators;
-		}
+			return actualCreators;
+    }
+    
+    // TODO...GET ALL BUTTON TO WORK
+    // if (currentVibe === ?) {
+    //   return actualCreators
+    // }
 
 		// we have an array of creators.  each creator has an array of vibes.  we need to return a new array of creators, based on their array of vibes containing a certain value (currentVibe which is the vibe's _id)
 
@@ -66,7 +71,7 @@ const CreatrGrid = () => {
 		// 	creator.vibes.some((vibe) => vibe._id === currentVibe)
     // );
     // ** ditto
-		return nonCreators.filter((creator) =>
+		return actualCreators.filter((creator) =>
 			creator.vibes.some((vibe) => vibe._id === currentVibe)
 		);
 	}

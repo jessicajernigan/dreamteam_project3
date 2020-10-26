@@ -15,7 +15,7 @@ const VibeBtn = ({vibe}) => {
 	};
 
   return (
-    <button className="btn text-white p-2 m-2"onClick={() => handleClick(vibe._id)}>
+    <button className="bskr-vibe-btn text-white p-2 m-2"onClick={() => handleClick(vibe._id)}>
     {vibe.name}
   </button>
   )

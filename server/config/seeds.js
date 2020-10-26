@@ -6,6 +6,7 @@ db.once('open', async () => {
 	await Vibe.deleteMany();
 
 	const vibes = await Vibe.insertMany([
+		{ name: 'All' },
 		{ name: 'Rock' },
 		{ name: 'Hip Hop' },
 		{ name: 'Reggae' },
@@ -15,13 +16,13 @@ db.once('open', async () => {
 		{ name: 'Blues' }
 	]);
 
-  // Rock: vibes[0]._id
-	// Hip Hop: vibes[1]._id
-	// Reggae: vibes[2]._id
-	// Jazz: vibes[3]._id
-	// Country: vibes[4]._id
-	// Disco: vibes[5]._id
-  // Blues: vibes[6]._id
+  // Rock: vibes[1]._id
+	// Hip Hop: vibes[2]._id
+	// Reggae: vibes[3]._id
+	// Jazz: vibes[4]._id
+	// Country: vibes[5]._id
+	// Disco: vibes[6]._id
+  // Blues: vibes[7]._id
 
 	console.log('vibes seeded', vibes);
 
@@ -78,7 +79,7 @@ db.once('open', async () => {
 		location  : 'Virginia',
 		bio       :
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-    vibes     : [ vibes[0]._id, vibes[3]._id, vibes[6]._id ],
+    vibes     : [ vibes[1]._id, vibes[4]._id, vibes[7]._id ],
     songs: [ songs[0], songs[1]]
 	});
 
@@ -91,7 +92,7 @@ db.once('open', async () => {
 		location  : 'Ohio',
 		bio       :
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-    vibes     : [ vibes[0]._id, vibes[6]._id ],
+    vibes     : [ vibes[1]._id, vibes[7]._id ],
     songs: [ songs[2], songs[3]]
 	});
 	await Creator.create({
@@ -103,7 +104,7 @@ db.once('open', async () => {
 		location  : 'Jamaica',
 		bio       :
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-    vibes     : [ vibes[2]._id ],
+    vibes     : [ vibes[3]._id ],
     songs: [ songs[4], songs[5]]
 	});
 	await Creator.create({
@@ -115,7 +116,7 @@ db.once('open', async () => {
 		location  : 'Austin, TX',
 		bio       :
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-    vibes     : [ vibes[4]._id, vibes[6]._id ],
+    vibes     : [ vibes[5]._id, vibes[7]._id ],
     songs: [ songs[6], songs[7]]
 	});
 	await Creator.create({
@@ -127,7 +128,7 @@ db.once('open', async () => {
 		location  : 'Austin, TX',
 		bio       :
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes     : [ vibes[1]._id, vibes[3]._id ]
+		vibes     : [ vibes[2]._id, vibes[4]._id ]
 	});
 	await Creator.create({
 		username  : 'Miles Davis',
@@ -138,7 +139,7 @@ db.once('open', async () => {
 		location  : 'Austin, TX',
 		bio       :
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes     : [ vibes[3]._id, vibes[6]._id ]
+		vibes     : [ vibes[4]._id, vibes[7]._id ]
 	});
 
 	console.log('creators seeded.  rtx example: ', rtx);
