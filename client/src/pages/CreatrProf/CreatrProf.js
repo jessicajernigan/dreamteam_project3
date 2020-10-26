@@ -26,50 +26,19 @@ const CreatrProf = () => {
 	// const curSongs = state.songs.filter(song => song.creatorId === id)
 
 	const handlePlaySong = (songUrl) => {
-		// console.log("Play song", songUrl)
+    // console.log("Play song", songUrl)
+    playerRef.current.setAttribute('controlsList', "nodownload");
 		playerRef.current.setAttribute('src', songUrl);
 		playerRef.current.play();
 	};
 
 	return (
-		// <div className="CreatrProf">
-		//   <h1 className="w-100 my-5 text-center">{stageName}</h1>
-		// 			<Row className="mt-4 flex align-items-center">
-		// 				<Col lg={6}>
-		// 					<Card>
-		// 						<Card.Img variant="top" src={imgUrl} />
-		// 						<Card.Body>
-		// 							<Card.Text className="text-white">Location: {location}</Card.Text>
-		// 						</Card.Body>
-		// 					</Card>
-		//           <p>{bio}</p>
-		// 				</Col>
-		// 				<Col lg={6}>
-		// 					<h4>Available Songs</h4>
-		// 					<ul>
-		// 						{songs.map((song) => (
-		// 							<li key={song._id}>
-		// 								<BiPlay
-		// 									onClick={() => handlePlaySong(song.songUrl)}
-		// 								/>{' '}
-		// 								<BiPlusMedical /> {song.title}
-		// 							</li>
-		// 						))}
-		// 					</ul>
-		// 					<div className="p-2">
-		// 						<audio ref={playerRef} controls>
-		// 							Your browser does not support the audio element.
-		// 						</audio>
-		// 					</div>
-		// 				</Col>
-		// 			</Row>
-		// </div>
 		<div className="CreatrProf vh-100">
 			<h1 className="w-100 my-5 text-center">{stageName}</h1>
 			<Row className="mt-4 d-flex justify-content-center align-items-center">
 				<Col lg={5}>
 					<Card className="w-75 mx-auto bskr-bg-dark">
-						<Card.Img variant="top" src="/images/busker-gal-1.jpg" />
+						<Card.Img variant="top" src={imgUrl} />
 						<Card.Body>
 							<Card.Text className="text-white text-center">
 								{location}
@@ -83,7 +52,7 @@ const CreatrProf = () => {
 						<h5>Vibes</h5>
 						<ul>
 							{vibes.map((vibe) => (
-								<button key={vibe._id} className="btn mx-1">{vibe.name}</button>
+								<span key={vibe._id} className="btn mx-1 text-white">{vibe.name}</span>
 							))}
 						</ul>
 					</div>

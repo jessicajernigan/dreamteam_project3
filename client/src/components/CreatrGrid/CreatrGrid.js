@@ -48,18 +48,29 @@ const CreatrGrid = () => {
 		[ data, loading, dispatch ]
 	);
 
+
+  
+
 	function filterCreators() {
     // console.log('current vibe: ', currentVibe);
     // console.log('creators', creators)
 
+    // filter out creators who have not posted a song
+    const nonCreators = creators.filter(creator => creator.songs.length > 0)
+
+		// if (!currentVibe) {
+		// 	return creators;
+		// }
 		if (!currentVibe) {
-			return creators;
+			return nonCreators;
 		}
 
 		// we have an array of creators.  each creator has an array of vibes.  we need to return a new array of creators, based on their array of vibes containing a certain value (currentVibe which is the vibe's _id)
 
-		// return creators.filter((creator) => creator.vibes.some(vibe => vibe === 'Reggae'))
-		return creators.filter((creator) =>
+		// return creators.filter((creator) =>
+		// 	creator.vibes.some((vibe) => vibe._id === currentVibe)
+		// );
+		return nonCreators.filter((creator) =>
 			creator.vibes.some((vibe) => vibe._id === currentVibe)
 		);
 	}
