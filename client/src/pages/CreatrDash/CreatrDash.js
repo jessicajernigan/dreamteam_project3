@@ -17,6 +17,7 @@ import Button from 'react-bootstrap/Button';
 import EditPhoto from '../../components/EditPhoto/EditPhoto';
 import EditBio from '../../components/EditBio/EditBio';
 import EditTunes from '../../components/EditTunes/EditTunes';
+import EditVibes from '../../components/EditVibes/EditVibes';
 
 import { BiPlay, BiPlusMedical } from 'react-icons/bi';
 
@@ -172,9 +173,7 @@ const CreatrDash = () => {
 											</span>
 										))}
 								</ul>
-								<Button className="w-50 btn-sm bskr-btn-purple">
-									edit vibes
-								</Button>
+								<EditVibes />
 							</div>
 							<div className="bskr-bg-secondary w-100 p-5 d-flex flex-column align-items-center rounded">
 								<h4 className="text-dark">Available Tunes</h4>
@@ -196,7 +195,7 @@ const CreatrDash = () => {
 										))}
 								</ul>
 								<EditTunes />
-								<div className="">
+								<div className="mt-4">
 									<audio ref={playerRef} controls>
 										Your browser does not support the audio element.
 									</audio>

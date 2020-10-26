@@ -12,7 +12,7 @@ const EditPhoto = () => {
     const handleShow = () => setShow(true);
     return (
         <>
-        <Button className="w-75 btn-sm bskr-btn-purple" variant="primary" onClick={handleShow}>
+        <Button className="w-50 btn-sm bskr-btn-purple" variant="primary" onClick={handleShow}>
           edit profile photo
         </Button>
   
