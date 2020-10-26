@@ -1,0 +1,68 @@
+.ViewCartModal .modal-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  min-width: 15%;
+  max-width: 20%;
+  max-height: 60%;
+}
+
+.ViewCartModal .modal-header {
+  color: black;
+}
+
+.ViewCartModal .modal-body {
+  font-size: .7rem;
+}
+
+.RemoveFromCart {
+  color: var(--secondary);
+  background-color: transparent;
+  border: none;
+}
+
+.RemoveFromCart:hover {
+  background-color: transparent;
+  color: black;
+}
+
+.ViewCartBtn {
+  color: white !important;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.CheckOutBtn {
+  background-color: var(--secondary);
+  border: none;
+}
+
+@media only screen and (max-width: 1048px) {
+	.ViewCartModal .modal-content {
+    min-width: 15%;
+    max-width: 35%;
+    max-height: 60%;
+  }
+}
+
+@media only screen and (max-width: 788px) {
+	.ViewCartModal .modal-content {
+    min-width: 15%;
+    max-width: 40%;
+    max-height: 60%;
+  }
+  .ViewCartModal .modal-body {
+    font-size: .6rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+	.ViewCartModal .modal-content {
+    min-width: 15%;
+    max-width: 65%;
+    max-height: 60%;
+  }
+  .ViewCartModal .modal-body {
+    font-size: .45rem;
+  }
+}
