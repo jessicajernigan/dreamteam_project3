@@ -15,48 +15,45 @@ import spinner from '../../assets/cool_spinner.gif';
 
 const CreatrGrid = () => {
 	// query db for creators
-  const { loading, data } = useQuery(QUERY_CREATORS);
-  // console.log('data from QUERY_CREATORS: ', data)
+	const { loading, data } = useQuery(QUERY_CREATORS);
+	// console.log('data from QUERY_CREATORS: ', data)
 
-  const { creators, currentVibe } = useSelector((state) => state);
-  // console.log('creators from CreatrGrid redux state: ', creators)
-  const dispatch = useDispatch()
+	const { creators, currentVibe } = useSelector((state) => state);
+	// console.log('creators from CreatrGrid redux state: ', creators)
+	const dispatch = useDispatch();
 
 	useEffect(
 		() => {
 			// if there's data to be stored
 			if (data) {
-        // console.log('data from QUERY_CREATORS query', data)
+				// console.log('data from QUERY_CREATORS query', data)
 
 				// store it in the global state object
 				dispatch(updateCreators(data.creators));
 
 				// // also take each creator and save it to the IndexedDB using the helper function
-				// data.creators.forEach((creator) => {
-				// 	idbPromise('creators', 'put', creator);
-				// });
+				data.creators.forEach((creator) => {
+					idbPromise('creators', 'put', creator);
+				});
 				// add else if to check if 'loading' is undefined in 'useQuery()' hook. ie no internet connection to server
 			} else if (!loading) {
 				// since we're offline, get all of the data from the 'creators' store
-				// idbPromise('creators', 'get').then((creators) => {
-				// 	// use retrieved data to set global state for offline browsing
-				// 	dispatch(updateCreators(creators));
-        // });
-        console.log('you are offline');
+				idbPromise('creators', 'get').then((creators) => {
+					// use retrieved data to set global state for offline browsing
+					dispatch(updateCreators(creators));
+				});
+				console.log('you are offline');
 			}
 		},
 		[ data, loading, dispatch ]
 	);
 
-
-  
-
 	function filterCreators() {
-    // console.log('current vibe: ', currentVibe);
-    // console.log('creators', creators)
+		// console.log('current vibe: ', currentVibe);
+		// console.log('creators', creators)
 
-    // filter out creators who have not posted a song
-    const nonCreators = creators.filter(creator => creator.songs.length > 0)
+		// filter out creators who have not posted a song
+		const nonCreators = creators.filter((creator) => creator.songs.length > 0);
 
 		// if (!currentVibe) {
 		// 	return creators;
@@ -86,15 +83,13 @@ const CreatrGrid = () => {
 					<h3>No Creators yet...</h3>
 				)}
 			</div>
-      {loading ? <img src={spinner} alt="loading" /> : null}
+			{loading ? <img src={spinner} alt="loading" /> : null}
 		</Col>
 	);
 };
 
 export default CreatrGrid;
 
-
-	/* {[ ...Array(24) ].map((_, i) => (
+/* {[ ...Array(24) ].map((_, i) => (
   <CreatrTile key={i} />
 ))} */
-

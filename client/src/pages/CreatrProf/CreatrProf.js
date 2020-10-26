@@ -17,7 +17,7 @@ const CreatrProf = () => {
 	// console.log('params id: ', id)
 
 	const state = useSelector((state) => state);
-	// console.log('state from CreatrProf', state);
+	console.log('state from CreatrProf', state);
 
 	const curCreatr = state.creators.filter((creator) => creator._id === id);
 	// console.log('curCreatr from CreatrProf: ', curCreatr);
