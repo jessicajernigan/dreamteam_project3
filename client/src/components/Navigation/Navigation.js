@@ -5,6 +5,7 @@ import Auth from '../../utils/auth';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Cart from '../../components/Cart/Cart';
 
 import './Navigation.css';
 
@@ -23,9 +24,7 @@ const Navigation = () => {
 						Dashboard
 					</NavLink>
 					{/* <NavLink to="/orderHistory" className="mr-3">Order History</NavLink> */}
-					<a href="/" className="mr-3" onClick={() => Auth.logout()}>
-						Logout
-					</a>
+					<Cart />
 				</React.Fragment>
 			);
 		} else {
@@ -61,9 +60,9 @@ const Navigation = () => {
 						About Us
 					</NavLink>
 					{showNavigation()}
-					<NavLink exact to="/cart" activeStyle={activeStyle} className="mr-3">
+					{/* <NavLink exact to="/cart" activeStyle={activeStyle} className="mr-3">
 						View Cart
-					</NavLink>
+					</NavLink> */}
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>
