@@ -10,7 +10,7 @@ import FormControl from 'react-bootstrap/FormControl';
 
 import './EditBio.css';
 
-const EditBio = ({curBio}) => {
+const EditBio = ({curBio, modalOpen, handleModalOpen}) => {
 	// MODAL FLAG
 	const [ show, setShow ] = useState(false);
 	const [ formState, setFormState ] = useState(curBio);
@@ -41,7 +41,8 @@ const EditBio = ({curBio}) => {
 				bio : formState
 			}
 		});
-		console.log('mutationResponse', mutationResponse);
+    console.log('mutationResponse', mutationResponse);
+    // EditBio modal is child component of CreatrDash.  when the db is mutated by the editBio modal child, the parent needs to rerender so updated value is shown
 	};
 
 	// MODAL DISPLAY

@@ -33,7 +33,7 @@ const CreatrDash = () => {
 	// get current creator's id from url
 	const { id } = useParams();
 
-	const [ curCreatr, setCurCreatr ] = useState({});
+  const [ curCreatr, setCurCreatr ] = useState({});
 
 	const { loading, data } = useQuery(QUERY_CREATORS);
 
@@ -118,7 +118,7 @@ const CreatrDash = () => {
 									<p>{vibesDefault}</p>
 								)}
 
-								<EditVibes />
+								<EditVibes curVibes={curCreatr.vibes} />
 							</div>
 							<div className="bskr-bg-secondary w-100 p-5 d-flex flex-column align-items-center rounded">
 								<h4 className="text-dark">Available Tunes</h4>
