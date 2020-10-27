@@ -1,0 +1,328 @@
+/* GLOBAL */
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--tertiary);
+}
+
+:root {
+--primary: rgb(174, 185, 71);
+--secondary: #4761f3;
+--tertiary: rgb(34, 34, 34);
+}
+
+body {
+  max-width: 100%;
+  margin: auto;
+  color: var(--secondary);
+}
+
+a {
+  color: var(--secondary);
+}
+
+
+
+
+
+
+
+
+
+
+/* HEADER */
+.navbar {
+  padding: 10px 0 10px 0;
+}
+
+.header-title-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.header-links-container {
+  display: inline-flex;
+  justify-content: flex-end;
+}
+
+.navbar-brand {
+  font-size: 3rem;
+  text-decoration: none;
+}
+
+.navbar-brand:hover {
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+/* MAIN */
+#main {
+  padding: 50px 0 100px 0;
+  max-width: 95%;
+  margin: 0 auto 0 auto;
+  justify-content: center;
+}
+
+.sidebar {
+  padding: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* border: solid black; */
+  height: 60vh;
+  text-align: center;
+}
+
+#artist-search {
+  width: 90%;
+  margin: 20px 0 20px 0;
+}
+
+#artist-search-mobile {
+  width: 70%;
+  margin: 10px 0 10px 0 !important;
+  display: flex;
+  justify-content: center;
+}
+
+#browse {
+  width: 100%;
+}
+
+#browse-mobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px 0 10px 0;
+}
+
+#now-playing {
+  width: 100%;
+  background-color: rgb(175, 175, 175);
+  border-radius: 5px;
+}
+
+#now-playing-mobile {
+  width: 100%;
+  background-color: rgb(175, 175, 175);
+  border-radius: 5px;
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+}
+
+#now-playing-text {
+  padding: 10px 10px 10px 10px;
+}
+
+#audio-controller {
+  margin: 0 0 0 0 !important;
+}
+
+.artist-tiles-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.artist-tile {
+  width: 300px;
+  height: 300px;
+  background-color: grey;
+  margin: 10px 10px 10px 10px;
+}
+
+#signup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+}
+
+.form-title {
+  text-align: center;
+  margin: 0 auto 20px auto;
+}
+
+.btn {
+  margin: 10px 0 10px 0;
+}
+
+.log-in-btn-grp-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 0 0;
+  flex-wrap: wrap;
+}
+
+.sign-up-prompt {
+  margin: 5px 10px 5px 10px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.sign-up-link {
+  font-size: 1.1rem;
+}
+
+.login-btn {
+  width: 20%;
+  padding: 10px 10px 10px 10px;
+  margin: 5px 10px 5px 10px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+}
+
+/* CREATOR DASHBOARD */
+.creator-dashboard-main-panel {
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.creator-dashboard-music-panel {
+  min-height: 55vh;
+  background-color: rgb(34, 34, 34, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0 auto 30px auto;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(34, 34, 34, 0.6);
+}
+
+.photo-placeholder {
+  height: 200px;
+  width: 200px;
+  background-color: rgb(219, 219, 219);
+}
+
+.dropzone-placeholder {
+  width: 60%;
+  height: 10vh;
+  border: dashed black;
+}
+
+
+
+
+
+
+/* CART */
+.cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  min-width: 20%;
+  max-width: 30%;
+  max-height: 60%;
+  background-color: var(--light);
+  overflow: auto;
+  padding: .5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
+  border-bottom-left-radius: .5rem;
+}
+
+
+
+
+
+
+
+
+/* FOOTER */
+.footer {
+  height: 5vh;
+  margin: 0 0 0 0 !important;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+/* MEDIA QUERIES */
+/* SIDEBAR AND MOBILE SIDEBAR */
+@media only screen and (max-width: 1048px) {
+  .sidebar {
+      display: none;
+  }
+  #now-playing {
+      display: none;
+  }
+  .header-links-container {
+      justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 1048px) {
+.sidebar-mobile {
+  display: none;
+}
+#now-playing-mobile {
+  display: none;
+}
+}
+
+
+/* LOGIN/SIGNUP PAGES */
+@media only screen and (max-width: 375px) {
+  .header-title-container {
+      justify-content: center;
+  }
+  .dashboard-title {
+      font-size: 20px;
+  }
+  .bio-text {
+      font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .login-btn {
+      width: 40%;
+  }
+  #login-form {
+      width: 70%;
+  }
+  #main {
+      padding: 25px 0 50px 0;
+  }
+}
