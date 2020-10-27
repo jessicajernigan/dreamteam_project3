@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks'
 
 import Auth from '../../utils/auth'
-import { ADD_USER } from '../../utils/mutations'
+import { ADD_CREATOR } from '../../utils/mutations'
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const Signup = () => {
   const [ formState, setFormState ] = useState({ email: '', password: '' });
-  const [ addUser ] = useMutation(ADD_USER)
+  const [ addCreator ] = useMutation(ADD_CREATOR)
 
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     // handle signup auth
-    const mutationResponse = await addUser({
+    const mutationResponse = await addCreator({
 			variables : {
 				username : formState.username,
 				email     : formState.email,
@@ -23,9 +23,9 @@ const Signup = () => {
 			}
 		});
     const token = mutationResponse.data.addCreator.token;
-    // const creatorId = mutationResponse.data.login.creator._id
-		// Auth.login(creatorId, token);
-		Auth.login(token);
+    const creatorId = mutationResponse.data.addCreator.creator._id
+		Auth.login(creatorId, token);
+		// Auth.login(token);
   }
 
   const handleChange = (event) => {
