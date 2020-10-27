@@ -1,18 +1,25 @@
-.ViewCartModal .modal-content {
+.Cart {
   position: fixed;
   top: 0;
   right: 0;
-  min-width: 15%;
-  max-width: 20%;
+  min-width: 18%;
+  max-width: 25%;
   max-height: 60%;
-}
-
-.ViewCartModal .modal-header {
+  background-color: white;
   color: black;
+  z-index: 9999;
 }
 
-.ViewCartModal .modal-body {
+.modal-content {
+  border: none;
+}
+
+.cart-contents {
   font-size: .7rem;
+}
+
+.close-modal-btn {
+  cursor: pointer;
 }
 
 .RemoveFromCart {
@@ -35,10 +42,11 @@
 .CheckOutBtn {
   background-color: var(--secondary);
   border: none;
+  color: white;
 }
 
 @media only screen and (max-width: 1048px) {
-	.ViewCartModal .modal-content {
+  .Cart {
     min-width: 15%;
     max-width: 35%;
     max-height: 60%;
@@ -46,23 +54,29 @@
 }
 
 @media only screen and (max-width: 788px) {
-	.ViewCartModal .modal-content {
-    min-width: 15%;
-    max-width: 40%;
+  .Cart {
+    min-width: 20%;
+    max-width: 50%;
     max-height: 60%;
   }
-  .ViewCartModal .modal-body {
+  .cart-contents {
     font-size: .6rem;
   }
 }
 
 @media only screen and (max-width: 400px) {
-	.ViewCartModal .modal-content {
-    min-width: 15%;
-    max-width: 65%;
+  .Cart {
+    min-width: 60%;
+    max-width: 75%;
     max-height: 60%;
   }
-  .ViewCartModal .modal-body {
-    font-size: .45rem;
+  .cart-contents {
+    font-size: .5rem;
+  }
+  .modal-title {
+    font-size: 1rem;
+  }
+  .total {
+    font-size: 1rem;
   }
 }
