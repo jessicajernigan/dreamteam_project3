@@ -59,8 +59,24 @@ const resolvers = {
 			const token = signToken(creator);
 
 			return { token, creator };
-		}
+    },
+    
+    updateCreatorBio: async (parent, {bio} , context) => {
+      if (context.creator) {
+        return await Creator.findByIdAndUpdate(context.creator._id, {bio}, { new: true })
+      }
+
+      throw new AuthenticationError('Not logged in')
+    }
 	}
 };
 
 module.exports = resolvers;
+
+// updateUser: async (parent, args, context) => {
+//   if (context.user) {
+//     return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+//   }
+
+//   throw new AuthenticationError('Not logged in');
+// },

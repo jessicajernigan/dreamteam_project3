@@ -23,8 +23,9 @@ const Signup = () => {
 			}
 		});
     const token = mutationResponse.data.addCreator.token;
-    const creatorId = mutationResponse.data.login.creator._id
-		Auth.login(creatorId, token);
+    // const creatorId = mutationResponse.data.login.creator._id
+		// Auth.login(creatorId, token);
+		Auth.login(token);
   }
 
   const handleChange = (event) => {

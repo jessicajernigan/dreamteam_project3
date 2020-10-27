@@ -30,14 +30,14 @@ const typeDefs = gql`
   }
 
   type Query {
-    creator: Creator
     vibes: [Vibe]
-    creators(vibe: ID, name: String): [Creator]
+    creators: [Creator]
   }
 
   type Mutation {
     addCreator(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    updateCreatorBio(bio: String!): Creator
   }
 
 

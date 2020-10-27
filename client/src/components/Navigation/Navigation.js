@@ -54,9 +54,12 @@ const Navigation = () => {
 			);
 		} else {
 			return (
-				<NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
+				<>
+        <NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
 					Login
 				</NavLink>
+        <Cart />
+        </>
 			);
 		}
 	};
