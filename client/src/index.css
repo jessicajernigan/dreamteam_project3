@@ -96,3 +96,5 @@ li {
 .fs-5 {
 	font-size: 3rem;
 }
+
+.modal-open { overflow-y: scroll }
