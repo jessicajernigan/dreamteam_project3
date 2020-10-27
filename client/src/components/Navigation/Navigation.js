@@ -24,20 +24,22 @@ const Navigation = () => {
 						Dashboard
 					</NavLink>
 					{/* <NavLink to="/orderHistory" className="mr-3">Order History</NavLink> */}
-					<Cart />
 				</React.Fragment>
 			);
 		} else {
 			return (
+				<>
 				<NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
 					Login
 				</NavLink>
+				<Cart />
+				</>
 			);
 		}
 	};
 
 	return (
-		<Navbar expand="lg" className="Navigation">
+		<Navbar expand="lg" className="Navigation" animation="false">
 			<NavLink
 				exact
 				to="/"

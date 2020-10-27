@@ -30,8 +30,8 @@ function Cart() {
 		</a>
 
 		{isOpen ? (
-			<div className="Cart" ref={node}>
-				<div className="modal-header">
+			<div className="Cart p-2" ref={node}>
+				<div className="modal-header p-1">
 					<h4 className="">View Cart</h4>
 					<span className="close-modal-btn" onClick={() => setIsOpen(!isOpen)}>x</span>
 				</div>
