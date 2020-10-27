@@ -10,7 +10,6 @@ import { idbPromise } from '../../utils/helpers';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import EditPhoto from '../../components/EditPhoto/EditPhoto';
 import EditBio from '../../components/EditBio/EditBio';
 import EditVibes from '../../components/EditVibes/EditVibes';
@@ -35,7 +34,6 @@ const CreatrDash = () => {
 	const { id } = useParams();
 
 	const [ curCreatr, setCurCreatr ] = useState({});
-	const [ bioInput, setBioInput ] = useState(bioDefault);
 
 	const { loading, data } = useQuery(QUERY_CREATORS);
 
@@ -55,7 +53,7 @@ const CreatrDash = () => {
 				});
 			}
 		},
-		[ creators, data, loading, dispatch, id, curCreatr ]
+		[ creators, data, loading, dispatch, id ]
 	);
 
 	const playerRef = useRef(null);
@@ -63,11 +61,6 @@ const CreatrDash = () => {
 	const handlePlaySong = (songUrl) => {
 		playerRef.current.setAttribute('src', songUrl);
 		playerRef.current.play();
-	};
-
-	const handleBioSubmit = (e) => {
-		e.preventDefault();
-		console.log('Bio form submitted');
 	};
 
 	return (
@@ -96,33 +89,15 @@ const CreatrDash = () => {
 											<EditPhoto />
 										</Card.Body>
 									)}
-
-									{/* <Card.Body className="text-center">
-										<Button className="w-75 btn-sm bskr-btn-purple">
-											edit profile photo
-										</Button>
-									</Card.Body> */}
 								</Card>
 							</div>
 							<div className="bskr-bg-secondary rounded p-4 text-center">
 								{curCreatr.bio ? (
 									<p className="text-left">{curCreatr.bio}</p>
 								) : (
-									// <Button className="w-50 btn-sm bskr-btn-purple">
-									// 	edit bio
-									// </Button>
-
 									<p className="mb-3">{bioDefault}</p>
-
-									// <form className="d-flex flex-column align-items-center" onSubmit={(e) => handleBioSubmit(e)} >
-									//   <textarea className="mb-2 p-3" rows={5} cols={30} value={bioInput} onChange={(e) => setBioInput(e.target.value)}/>
-									// 	<Button type="submit" className="w-50 btn-sm d-block bskr-btn-purple">
-									// 		edit bio
-									// 	</Button>
-									// </form>
-									// <p className="text-center">{bioDefault}</p>
 								)}
-								<EditBio />
+								<EditBio curBio={curCreatr.bio} />
 							</div>
 						</Col>
 						<Col lg={5} className="d-flex flex-column align-items-center">
@@ -144,9 +119,6 @@ const CreatrDash = () => {
 								)}
 
 								<EditVibes />
-								{/* <Button className="w-50 btn-sm bskr-btn-purple">
-									edit vibes
-								</Button> */}
 							</div>
 							<div className="bskr-bg-secondary w-100 p-5 d-flex flex-column align-items-center rounded">
 								<h4 className="text-dark">Available Tunes</h4>
@@ -171,9 +143,6 @@ const CreatrDash = () => {
 									<p>{tunesDefault}</p>
 								)}
 								<EditTunes/>
-								{/* <Button className="w-50 btn-sm bskr-btn-purple mb-5">
-									edit tunes
-								</Button> */}
 								{curCreatr.songs && curCreatr.songs.length ? (
 									<div>
 										<audio ref={playerRef} controls>
@@ -194,36 +163,3 @@ const CreatrDash = () => {
 
 export default CreatrDash;
 
-{
-	/* 
-<ul>
-  {curCreatr.vibes &&
-    curCreatr.vibes.map((vibe) => (
-      <span
-        key={vibe._id}
-        className="bskr-vibe-btn-static btn-sm mx-1 text-white"
-      >
-        {vibe.name}
-      </span>
-    ))}
-</ul> */
-}
-
-{
-	/* 
-{curCreatr.songs &&
-  curCreatr.songs.map((song) => (
-    <li
-      key={song._id}
-      className="bskr-bg-search w-100 m-2 p-2 rounded text-dark"
-    >
-      <BiPlay
-        className="fs-3"
-        onClick={() =>
-          handlePlaySong(song.songUrl)}
-      />{' '}
-      <BiPlusMedical className="mr-1" />{' '}
-      {song.title}
-    </li>
-  ))} */
-}
