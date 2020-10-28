@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/react-hooks';
 
 import { UPDATE_CREATOR_BIO } from '../../utils/mutations';
-import { QUERY_CREATORS } from '../../utils/queries';
+// import { QUERY_CREATORS } from '../../utils/queries';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';

@@ -25,22 +25,37 @@ export const ADD_CREATOR = gql`
 export const UPDATE_CREATOR_BIO = gql`
 	mutation updateCreatorBio($bio: String!) {
 		updateCreatorBio(bio: $bio) {
-      _id
-      username
-      email
-      stageName
-      imgUrl
-      location
-      bio
-      vibes {
-        _id
-        name
-      }
-      songs {
-        _id
-        title
-        songUrl
-      }
+			_id
+			username
+			email
+			stageName
+			imgUrl
+			location
+			bio
+			vibes {
+				_id
+				name
+			}
+			songs {
+				_id
+				title
+				songUrl
+			}
+		}
+	}
+`;
+
+export const UPDATE_CREATOR_VIBES = gql`
+	mutation updateCreatorVibes($vibes: [ID]!) {
+		updateCreatorVibes(vibes: $vibes) {
+			_id
+			username
+			email
+			bio
+			vibes {
+				_id
+				name
+			}
 		}
 	}
 `;

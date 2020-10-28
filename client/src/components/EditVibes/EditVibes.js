@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useMutation, useQuery } from '@apollo/react-hooks';
+
+import { QUERY_VIBES } from '../../utils/queries';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -7,26 +10,57 @@ import Form from 'react-bootstrap/Form';
 
 import './EditVibes.css';
 
+// destructure vibe objects of current creator from props
 const EditVibes = ({ curVibes }) => {
-	console.log('curVibes: ', curVibes);
 
-	const curVibesNames = curVibes?.map(vibe => vibe.name);
+  // const [ allVibesIds, setAllVibesIds ] = useState([]);
+  // console.log("allVibesIds", allVibesIds)
+  const [ allVibes, setAllVibes ] = useState([]);
+  console.log("allVibes", allVibes)
+ 
 
-	// const testVibes = ['Rock', 'Jazz', 'Blues']
-	// const curVibesIds = curVibes?.map(vibe => vibe._id)
-	// const curVibesNames = curVibes?.map(vibe => vibe.name)
+  // map an array of the names of current vibes 
+  const curVibesNames = curVibes?.map(vibe => vibe.name);
+  
+  const { loading, data } = useQuery(QUERY_VIBES);
 
+  useEffect(() => {
+    if (data) {
+      // data.vibes.map(vibe => vibe._id)
+      // setAllVibesIds(data.vibes.map(vibe => vibe._id))
+      setAllVibes(data)
+    }
+  }, [ data ]
+  )
+
+
+  // MODAL FUNCTIONALITY
 	const [ show, setShow ] = useState(false);
-
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
   // can i get this from global state or is it worth it for a db query?
-	const allVibes = [ 'Rock', 'Hip Hop', 'Reggae', 'Jazz', 'Country', 'Disco', 'Blues' ];
+  const alllllllVibes = [ 'Rock', 'Hip Hop', 'Reggae', 'Jazz', 'Country', 'Disco', 'Blues' ];
+  
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // handleClose();
+    // array-like iterable (RadioNodeList) of all checkbox els
+    const vibes = e.target.elements['updatedVibes'];
+    // initialize array of updated vibes
+    let updatedVibes = [];
+    // iterate over RadioNodeList and push the value (vibe name) of each checked box into the array
+    for ( let i = 0; i < vibes.length; i++) {
+      vibes[i].checked && updatedVibes.push(vibes[i].value)
+    }
+    console.log('updated vibes: ', updatedVibes)
+  }
 
 	return (
 		<React.Fragment>
-			<Button
+      {allVibes ? (
+        <React.Fragment>
+<Button
 				className="w-50 btn-sm bskr-btn-purple"
 				variant="primary"
 				onClick={handleShow}
@@ -45,35 +79,35 @@ const EditVibes = ({ curVibes }) => {
 					<Modal.Title>edit your vibes</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<Form>
+					<Form onSubmit={handleFormSubmit}>
 						<Form.Group>
-							{/* <Form.Control as="select" multiple>
-                <option>Rock</option>
-                <option>Hip Hop</option>
-                <option>Reggae</option>
-                <option>Jazz</option>
-                <option>Blues</option>
-              </Form.Control> */}
 							{allVibes.map((vibe) => (
 								<div key={vibe} className="mb-3">
 									<Form.Check
-										type="checkbox"
-										label={vibe}
+                    // type="checkbox"
+                    name="updatedVibes"
+                    label={vibe}
+                    value={vibe}
 										defaultChecked={curVibesNames?.includes(vibe)}
 									/>
-									{/* <Form.Check type="checkbox" label={vibe} defaultChecked={testVibes.includes(vibe)} /> */}
 								</div>
 							))}
 						</Form.Group>
 						<Button
 							variant="primary btn-sm bskr-btn-purple"
-							onClick={handleClose}
+              // onClick={handleClose}
+              type="submit"
 						>
 							save
 						</Button>
 					</Form>
 				</Modal.Body>
 			</Modal>
+        </React.Fragment>
+      ) : null}
+
+
+			
 		</React.Fragment>
 	);
 };

@@ -27,7 +27,7 @@ const CreatrDash = () => {
 	const tunesDefault = 'Please add some tunes';
 
   const state = useSelector((state) => state);
-  console.log('CreatrDash state: ', state)
+  // console.log('CreatrDash state: ', state)
 	const { creators } = state;
 	const dispatch = useDispatch();
 
