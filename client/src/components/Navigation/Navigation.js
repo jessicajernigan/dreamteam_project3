@@ -60,7 +60,7 @@ const Navigation = () => {
 				<NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
 					Login
 				</NavLink>
-				<Cart />
+				{/* <Cart /> */}
 				</>
 			);
 		}
