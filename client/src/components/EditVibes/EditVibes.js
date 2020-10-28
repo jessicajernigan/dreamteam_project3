@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import './EditVibes.css';
+import spinner from '../../assets/cool_spinner.gif';
 
 // destructure vibe objects of current creator from props
 const EditVibes = ({ curVibes }) => {
@@ -16,21 +17,24 @@ const EditVibes = ({ curVibes }) => {
   // const [ allVibesIds, setAllVibesIds ] = useState([]);
   // console.log("allVibesIds", allVibesIds)
   const [ allVibes, setAllVibes ] = useState([]);
+  const [ allVibesIds, setAllVibesIds ] = useState([]);
+  const [ allVibesNames, setAllVibesNames ] = useState([]);
   console.log("allVibes", allVibes)
  
 
   // map an array of the names of current vibes 
   const curVibesNames = curVibes?.map(vibe => vibe.name);
+  const curVibesIds = curVibes?.map(vibe => vibe._id);
   
   const { loading, data } = useQuery(QUERY_VIBES);
 
   useEffect(() => {
     if (data) {
-      // data.vibes.map(vibe => vibe._id)
-      // setAllVibesIds(data.vibes.map(vibe => vibe._id))
+      setAllVibesIds(data.vibes.map(vibe => vibe._id))
+      setAllVibesNames(data.vibes.map(vibe => vibe.name))
       setAllVibes(data)
     }
-  }, [ data ]
+  }, [ data, loading ]
   )
 
 
@@ -39,12 +43,11 @@ const EditVibes = ({ curVibes }) => {
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
-  // can i get this from global state or is it worth it for a db query?
-  const alllllllVibes = [ 'Rock', 'Hip Hop', 'Reggae', 'Jazz', 'Country', 'Disco', 'Blues' ];
+  const allVibesHardCoded = [ 'Rock', 'Hip Hop', 'Reggae', 'Jazz', 'Country', 'Disco', 'Blues' ];
   
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // handleClose();
+    handleClose();
     // array-like iterable (RadioNodeList) of all checkbox els
     const vibes = e.target.elements['updatedVibes'];
     // initialize array of updated vibes
@@ -54,13 +57,15 @@ const EditVibes = ({ curVibes }) => {
       vibes[i].checked && updatedVibes.push(vibes[i].value)
     }
     console.log('updated vibes: ', updatedVibes)
+    // need to map array of updated names to ids
+    
   }
 
 	return (
 		<React.Fragment>
       {allVibes ? (
         <React.Fragment>
-<Button
+      <Button
 				className="w-50 btn-sm bskr-btn-purple"
 				variant="primary"
 				onClick={handleShow}
@@ -81,7 +86,7 @@ const EditVibes = ({ curVibes }) => {
 				<Modal.Body>
 					<Form onSubmit={handleFormSubmit}>
 						<Form.Group>
-							{allVibes.map((vibe) => (
+							{ allVibesHardCoded.map((vibe) => (
 								<div key={vibe} className="mb-3">
 									<Form.Check
                     // type="checkbox"
@@ -92,6 +97,18 @@ const EditVibes = ({ curVibes }) => {
 									/>
 								</div>
 							))}
+              {/* can't get this to work so using hardcoded vibes.  keep getting error allVibes.map is not a function (since allVibes is undefined when rendered) */}
+							{/* { allVibes.length && allVibes.map((vibe) => (
+								<div key={vibe._id} className="mb-3">
+									<Form.Check
+                    // type="checkbox"
+                    name="updatedVibes"
+                    label={vibe.name}
+                    value={vibe.name}
+										defaultChecked={curVibesIds?.includes(vibe._id)}
+									/>
+								</div>
+							))} */}
 						</Form.Group>
 						<Button
 							variant="primary btn-sm bskr-btn-purple"
@@ -105,6 +122,7 @@ const EditVibes = ({ curVibes }) => {
 			</Modal>
         </React.Fragment>
       ) : null}
+      		{loading ? <img src={spinner} alt="loading" /> : null}
 
 
 			
