@@ -49,17 +49,19 @@ const Navigation = () => {
 					<a href="/" className="mr-3" onClick={() => Auth.logout()}>
 						Logout
 					</a>
-          <Cart />
 				</React.Fragment>
 			);
 		} else {
 			return (
 				<>
-        <NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
+				<NavLink exact to="/about" activeStyle={activeStyle} className="mr-3">
+					About Us
+				</NavLink>
+				<NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
 					Login
 				</NavLink>
-        <Cart />
-        </>
+				<Cart />
+				</>
 			);
 		}
 	};
@@ -84,9 +86,9 @@ const Navigation = () => {
 							<h4>Upload</h4>
 						</NavLink> */}
 					{/* <ul></ul> */}
-					<NavLink exact to="/about" activeStyle={activeStyle} className="mr-3">
+					{/* <NavLink exact to="/about" activeStyle={activeStyle} className="mr-3">
 						About Us
-					</NavLink>
+					</NavLink> */}
 					{showNavigation()}
 					{/* <NavLink exact to="/cart" activeStyle={activeStyle} className="mr-3">
 						View Cart

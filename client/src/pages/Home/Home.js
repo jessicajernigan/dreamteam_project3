@@ -10,9 +10,9 @@ import Footer from '../../components/Footer/Footer';
 const Home = () => {
 	return (
 		<React.Fragment>
-			<Row>
+			{/* <Row> */}
 				<Hero />
-			</Row>
+			{/* </Row> */}
 			<Row>
 				<Sidebar />
 			</Row>
