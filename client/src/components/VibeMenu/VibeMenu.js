@@ -7,6 +7,8 @@ import { idbPromise } from '../../utils/helpers';
 
 import VibeBtn from '../VibeBtn/VibeBtn'
 
+import './VibeMenu.css';
+
 const VibeMenu = () => {
   	// get data from DB with Apollo
 	const { loading, data: vibeData } = useQuery(QUERY_VIBES);
