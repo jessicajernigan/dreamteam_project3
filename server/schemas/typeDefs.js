@@ -38,6 +38,7 @@ const typeDefs = gql`
     addCreator(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     updateCreatorBio(bio: String!): Creator
+    updateCreatorVibes(vibes: [ID]!): Creator
   }
 
 

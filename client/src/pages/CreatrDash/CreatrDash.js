@@ -26,7 +26,8 @@ const CreatrDash = () => {
 	const vibesDefault = 'Please select your vibes';
 	const tunesDefault = 'Please add some tunes';
 
-	const state = useSelector((state) => state);
+  const state = useSelector((state) => state);
+  console.log('CreatrDash state: ', state)
 	const { creators } = state;
 	const dispatch = useDispatch();
 
@@ -118,7 +119,7 @@ const CreatrDash = () => {
 									<p>{vibesDefault}</p>
 								)}
 
-								<EditVibes curVibes={curCreatr.vibes} />
+								<EditVibes curVibes={curCreatr.vibes}  />
 							</div>
 							<div className="bskr-bg-secondary w-100 p-5 d-flex flex-column align-items-center rounded">
 								<h4 className="text-dark">Available Tunes</h4>
