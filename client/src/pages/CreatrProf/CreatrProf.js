@@ -130,6 +130,11 @@ const CreatrProf = () => {
                 </audio>
               </div>
             </div>
+
+            <div className="bskr-bg-secondary w-100 mt-3 py-5 rounded d-flex flex-column align-items-center">
+              <h5 className="text-dark">Stripe</h5>
+            </div>
+
           </Col>
         </Row>
       </div>
