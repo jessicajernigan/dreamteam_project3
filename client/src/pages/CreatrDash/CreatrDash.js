@@ -106,8 +106,9 @@ const CreatrDash = () => {
 								<h5 className="text-dark">Vibes</h5>
 								{curCreatr.vibes && curCreatr.vibes.length ? (
 									<ul>
-										{curCreatr.vibes.map((vibe) => (
-											<span
+                   {/* {curCreatr.vibes.map((vibe) => ( */}
+										{curCreatr.vibes.filter(vibe => vibe.name !== 'All').map((vibe) => (
+                      <span
 												key={vibe._id}
 												className="bskr-vibe-btn-static d-inline-block text-center btn-sm mx-1 text-white"
 											>

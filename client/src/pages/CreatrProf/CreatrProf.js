@@ -94,7 +94,8 @@ const CreatrProf = () => {
               <h5 className="text-dark">Vibes</h5>
               <ul>
                 {curCreatr.vibes &&
-                  curCreatr.vibes.map((vibe) => (
+                  // curCreatr.vibes.map((vibe) => (
+                    curCreatr.vibes.filter(vibe => vibe.name !== 'All').map((vibe) => (
                     <span
                       key={vibe._id}
                       className="bskr-vibe-btn-static  btn-sm mx-1 text-white"
