@@ -107,6 +107,7 @@ const CreatrDash = () => {
 								{curCreatr.vibes && curCreatr.vibes.length ? (
 									<ul>
                    {/* {curCreatr.vibes.map((vibe) => ( */}
+                   {/* remove All vibe from display until refactor of All filter on CreatrGrid */}
 										{curCreatr.vibes.filter(vibe => vibe.name !== 'All').map((vibe) => (
                       <span
 												key={vibe._id}

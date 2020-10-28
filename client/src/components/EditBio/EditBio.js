@@ -11,39 +11,37 @@ import FormControl from 'react-bootstrap/FormControl';
 
 import './EditBio.css';
 
-const EditBio = ({curBio}) => {
+const EditBio = ({ curBio }) => {
 	// MODAL FLAG
-  const [ show, setShow ] = useState(false);
-  
+	const [ show, setShow ] = useState(false);
+
 	const [ formState, setFormState ] = useState(curBio);
-  // const { refetch } = useQuery(QUERY_CREATORS)
+	// const { refetch } = useQuery(QUERY_CREATORS)
 	// MUTATION ON FORM SUBMIT
-  const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO);
-  // const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO, {
-  //   update(cache, { data: { updateCreatorBio } }) {
-  //     const { creators } = cache.readQuery({ query: QUERY_CREATORS })
-  //     cache.writeQuery({
-  //       query: QUERY_CREATORS,
-  //       data: { creators: [ ...creators, updateCreatorBio ]}
-  //     })
-  //   },
-  //   refetchQueries: [{query: QUERY_CREATORS }],
+	const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO);
+	// const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO, {
+	//   update(cache, { data: { updateCreatorBio } }) {
+	//     const { creators } = cache.readQuery({ query: QUERY_CREATORS })
+	//     cache.writeQuery({
+	//       query: QUERY_CREATORS,
+	//       data: { creators: [ ...creators, updateCreatorBio ]}
+	//     })
+	//   },
+	//   refetchQueries: [{query: QUERY_CREATORS }],
 
-  // });
-  
-  
-  // const [ saveBook ] = useMutation(SAVE_BOOK, {
-  //   update(cache, { data: { saveBook } }) {
-  //     const { me } = cache.readQuery({ query: GET_ME });
-  //     cache.writeQuery({
-  //       query: GET_ME,
-  //       data: { me: { ...me, savedBooks: [...me.savedBooks, saveBook]}}
-  //     })
-  //   }
-  // });
+	// });
 
+	// const [ saveBook ] = useMutation(SAVE_BOOK, {
+	//   update(cache, { data: { saveBook } }) {
+	//     const { me } = cache.readQuery({ query: GET_ME });
+	//     cache.writeQuery({
+	//       query: GET_ME,
+	//       data: { me: { ...me, savedBooks: [...me.savedBooks, saveBook]}}
+	//     })
+	//   }
+	// });
 
-  // initialize form state from props
+	// initialize form state from props
 	useEffect(
 		() => {
 			setFormState(curBio);
@@ -55,39 +53,36 @@ const EditBio = ({curBio}) => {
 		setFormState(e.target.value);
 	};
 
+	// currently this is successfully mutating the data in db but not causing re-render in parent CreatrDash component to reflect the update.  new dispatch?
 	const handleFormSubmit = async (e) => {
 		// close modal
 		handleClose();
 		e.preventDefault();
 		console.log('bio form submitted');
-		// handle signup auth
+
+		// try/catch?
 		const mutationResponse = await updateCreatorBio({
 			variables : {
 				bio : formState
-      },
-      // refetchQueries: [ { query: QUERY_CREATORS } ]
-    });
-    // refetch()
-    console.log('mutationResponse', mutationResponse);
-    // EditBio modal is child component of CreatrDash.  when the db is mutated by the editBio modal child, the parent needs to rerender so updated value is shown
-    
-  //   try {
-  //     await saveBook({
-  //       variables: {book: bookToSave}  
-  //     })
+			}
+			// refetchQueries: [ { query: QUERY_CREATORS } ]
+		});
+		// refetch()
+		console.log('mutationResponse', mutationResponse);
+		// EditBio modal is child component of CreatrDash.  when the db is mutated by the editBio modal child, the parent needs to rerender so updated value is shown
 
-  //     // if book successfully saves to user's account, save book id to state
-  //     setSavedBookIds([...savedBookIds, bookToSave.bookId]);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+		//   try {
+		//     await saveBook({
+		//       variables: {book: bookToSave}
+		//     })
 
-
-  };
-  
-
-
+		//     // if book successfully saves to user's account, save book id to state
+		//     setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+		//   } catch (err) {
+		//     console.error(err);
+		//   }
+		// };
+	};
 
 	// MODAL DISPLAY
 	const handleClose = () => setShow(false);

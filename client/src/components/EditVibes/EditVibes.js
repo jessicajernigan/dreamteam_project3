@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 
 import { QUERY_VIBES } from '../../utils/queries';
@@ -14,26 +13,23 @@ import spinner from '../../assets/cool_spinner.gif';
 
 // destructure vibe objects of current creator from props
 const EditVibes = ({ curVibes }) => {
-	// const [ allVibesIds, setAllVibesIds ] = useState([]);
-	// console.log("allVibesIds", allVibesIds)
-	const [ allVibes, setAllVibes ] = useState([]);
-	const [ allVibesIds, setAllVibesIds ] = useState([]);
-	const [ allVibesNames, setAllVibesNames ] = useState([]);
-	console.log('allVibes', allVibes.vibes?.map((vibe) => console.log(vibe)));
 
-	// map an array of the names of current vibes
-	const curVibesNames = curVibes?.map(vibe => vibe.name);
+	const [ allVibes, setAllVibes ] = useState([]);
+	// console.log('allVibes', allVibes.vibes?.map((vibe) => console.log(vibe)));
+
+	// map an array of the ids of current vibes to set defaultChecked of checkboxes for matched ids
 	const curVibesIds = curVibes?.map(vibe => vibe._id);
 
-  const { loading, data } = useQuery(QUERY_VIBES);
-  
-  const [ updateCreatorVibes] = useMutation(UPDATE_CREATOR_VIBES);
+  // query to get all vibes
+	const { loading, data } = useQuery(QUERY_VIBES);
 
+  // initialize mutation function to update creator vibes
+	const [ updateCreatorVibes ] = useMutation(UPDATE_CREATOR_VIBES);
+
+  // update component state when data arrives from db query
 	useEffect(
 		() => {
 			if (data) {
-				setAllVibesIds(data.vibes.map((vibe) => vibe._id));
-				setAllVibesNames(data.vibes.map((vibe) => vibe.name));
 				setAllVibes(data);
 			}
 		},
@@ -45,18 +41,10 @@ const EditVibes = ({ curVibes }) => {
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
-	const allVibesHardCoded = [
-		'Rock',
-		'Hip Hop',
-		'Reggae',
-		'Jazz',
-		'Country',
-		'Disco',
-		'Blues'
-	];
-
+  // call mutation function with array of updated vibe id's
 	const handleFormSubmit = async (e) => {
-		e.preventDefault();
+    e.preventDefault();
+    // close modal
 		handleClose();
 		// array-like iterable (RadioNodeList) of all checkbox els
 		const vibes = e.target.elements['updatedVibes'];
@@ -66,18 +54,15 @@ const EditVibes = ({ curVibes }) => {
 		for (let i = 0; i < vibes.length; i++) {
 			vibes[i].checked && updatedVibes.push(vibes[i].value);
 		}
-		// need to map array of updated names to ids
-    // console.log('all names: ', allVibes.vibes.map(vibe => vibe.name))
-    // allVibes && updatedVibes.unshift(allVibes[0]?._id)
-    console.log('updated vibes: ', updatedVibes);
-    
-    const mutationResponse = await updateCreatorVibes({
+
+    // try/catch?
+		const mutationResponse = await updateCreatorVibes({
 			variables : {
-			  vibes : updatedVibes
-      }
-    });
-    
-    console.log('mutationResponse', mutationResponse);
+				vibes : updatedVibes
+			}
+		});
+
+		console.log('mutationResponse', mutationResponse);
 	};
 
 	return (
@@ -105,35 +90,21 @@ const EditVibes = ({ curVibes }) => {
 						<Modal.Body>
 							<Form onSubmit={handleFormSubmit}>
 								<Form.Group>
-									{/* { allVibesHardCoded.map((vibe) => (
-								<div key={vibe} className="mb-3">
-									<Form.Check
-                    // type="checkbox"
-                    name="updatedVibes"
-                    label={vibe}
-                    value={vibe}
-										defaultChecked={curVibesNames?.includes(vibe)}
-									/>
-								</div>
-							))} */}
-									{/* can't get this to work so using hardcoded vibes.  keep getting error allVibes.map is not a function (since allVibes is undefined when rendered) */}
-									{
-										allVibes.vibes?.map((vibe) => (
-											<div key={vibe._id} className="mb-3">
-												<Form.Check
-													// type="checkbox"
-													name="updatedVibes"
-													label={vibe.name}
-													value={vibe._id}
-													defaultChecked={curVibesIds?.includes(vibe._id)}
-												/>
-											</div>
-										))
-									}
+                  {/* All is included until refactor of All filter on CreatrGrid */}
+									{allVibes.vibes?.map((vibe) => (
+									<div key={vibe._id} className="mb-3">
+										<Form.Check
+											// type="checkbox"
+											name="updatedVibes"
+											label={vibe.name}
+											value={vibe._id}
+											defaultChecked={curVibesIds?.includes(vibe._id)}
+										/>
+									</div>
+									))}
 								</Form.Group>
 								<Button
 									variant="primary btn-sm bskr-btn-purple"
-									// onClick={handleClose}
 									type="submit"
 								>
 									save
