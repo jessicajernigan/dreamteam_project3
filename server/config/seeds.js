@@ -358,7 +358,7 @@ db.once('open', async () => {
 	});
 
 	await Creator.create({
-		username: 'musharraf',
+		username: 'musharraf', 
 		email: 'ghamza.italya.12v@swapinsta.com',
 		password: 'sdfkjn',
 		stageName: 'Musharraf Shaughnessy',
