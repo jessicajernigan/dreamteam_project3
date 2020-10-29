@@ -6,7 +6,7 @@ import { QUERY_CREATORS } from '../../utils/queries';
 import { updateCreators } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
 
-import {Elements} from '@stripe/react-stripe-js';
+// import {Elements} from '@stripe/react-stripe-js';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

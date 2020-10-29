@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/react-hooks';
+import { useDispatch } from 'react-redux';
 
 import { UPDATE_CREATOR_BIO } from '../../utils/mutations';
 // import { QUERY_CREATORS } from '../../utils/queries';
+import { updateCreatorBio } from '../../utils/actions';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -16,6 +18,9 @@ const EditBio = ({ curBio }) => {
 	const [ show, setShow ] = useState(false);
 
 	const [ formState, setFormState ] = useState(curBio);
+
+	const dispatch = useDispatch();
+
 	// const { refetch } = useQuery(QUERY_CREATORS)
 	// MUTATION ON FORM SUBMIT
 	const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO);
@@ -58,30 +63,24 @@ const EditBio = ({ curBio }) => {
 		// close modal
 		handleClose();
 		e.preventDefault();
-		console.log('bio form submitted');
 
 		// try/catch?
-		const mutationResponse = await updateCreatorBio({
-			variables : {
-				bio : formState
-			}
-			// refetchQueries: [ { query: QUERY_CREATORS } ]
-		});
-		// refetch()
-		console.log('mutationResponse', mutationResponse);
-		// EditBio modal is child component of CreatrDash.  when the db is mutated by the editBio modal child, the parent needs to rerender so updated value is shown
+		try {
+			const mutationResponse = await updateCreatorBio({
+				variables : {
+					bio : formState
+				}
+				// refetchQueries: [ { query: QUERY_CREATORS } ]
+			});
+			// refetch()
+			console.log('mutationResponse', mutationResponse);
+			console.log('updated creatr: ', mutationResponse.data.updateCreatorBio);
+			const updatedCreatr = mutationResponse.data.updateCreatorBio;
 
-		//   try {
-		//     await saveBook({
-		//       variables: {book: bookToSave}
-		//     })
-
-		//     // if book successfully saves to user's account, save book id to state
-		//     setSavedBookIds([...savedBookIds, bookToSave.bookId]);
-		//   } catch (err) {
-		//     console.error(err);
-		//   }
-		// };
+			dispatch(updateCreatorBio(updatedCreatr));
+		} catch (err) {
+			console.error(err);
+		}
 	};
 
 	// MODAL DISPLAY
