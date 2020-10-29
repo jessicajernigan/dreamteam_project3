@@ -64,7 +64,7 @@ const resolvers = {
     
     updateCreatorBio: async (parent, { bio } , context) => {
       if (context.creator) {
-        return await Creator.findByIdAndUpdate(context.creator._id, {bio}, { new: true })
+        return await Creator.findByIdAndUpdate(context.creator._id, {bio}, { new: true }).populate('vibes')
       }
 
       throw new AuthenticationError('Not logged in')
