@@ -6,21 +6,22 @@ db.once('open', async () => {
 	await Vibe.deleteMany();
 
 	const vibes = await Vibe.insertMany([
-		{ name: 'Rock' }, // 0
-		{ name: 'Hip Hop' }, // 1
-		{ name: 'Reggae' }, // 2
-		{ name: 'Jazzy' }, // 3
-		{ name: 'Country' }, // 4
-		{ name: 'Smooth' }, // 5
-		{ name: 'Mellow' }, // 6
-		{ name: 'Melodious' }, // 7
-		{ name: 'Punk' },  // 8
-		{ name: 'Romantic' }, // 9
-		{ name: 'R & B' }, // 10
-		{ name: 'Soul' }, // 11
-		{ name: 'Indie' }, // 12
-		{ name: 'Folksy' }, // 13
-		{ name: 'Trap' } // 14
+		{ name: 'All' }, //0
+		{ name: 'Rock' }, // 1
+		{ name: 'Hip Hop' }, // 2
+		{ name: 'Reggae' }, // 3
+		{ name: 'Jazzy' }, // 4
+		{ name: 'Country' }, // 5
+		{ name: 'Smooth' }, // 6
+		{ name: 'Mellow' }, // 7
+		{ name: 'Melodious' }, // 8
+		{ name: 'Punk' },  // 9
+		{ name: 'Romantic' }, // 10
+		{ name: 'R & B' }, // 11
+		{ name: 'Soul' }, // 12
+		{ name: 'Indie' }, // 13
+		{ name: 'Folksy' }, // 14
+		{ name: 'Trap' } // 15
 	]);
 
 	// Rock: vibes[1]._id
@@ -171,7 +172,7 @@ db.once('open', async () => {
 		location: 'Virginia',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[0]._id, vibes[1]._id, vibes[4]._id, vibes[7]._id],
+		vibes: [vibes[0]._id,vibes[1]._id, vibes[2]._id, vibes[5]._id, vibes[8]._id],
 		songs: [songs[0], songs[1]]
 	});
 
@@ -184,7 +185,7 @@ db.once('open', async () => {
 		location: 'Austin, TX',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[3]._id, vibes[6]._id, vibes[1]._id],
+		vibes: [vibes[0]._id,vibes[4]._id, vibes[7]._id, vibes[2]._id],
 		songs: [songs[0], songs[1], songs[2]]
 	});
 
@@ -197,7 +198,7 @@ db.once('open', async () => {
 		location: 'Austin, TX',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[3]._id, vibes[2]._id],
+		vibes: [vibes[0]._id, vibes[4]._id, vibes[3]._id],
 		songs: [songs[3], songs[4]]
 	});
 
@@ -210,7 +211,7 @@ db.once('open', async () => {
 		location: 'Austin, TX',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[8]._id, vibes[9]._id],
+		vibes: [vibes[0]._id, vibes[9]._id, vibes[10]._id],
 		songs: [songs[5], songs[6]]
 	});
 
@@ -223,7 +224,7 @@ db.once('open', async () => {
 		location: 'Austin, TX',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[11]._id, vibes[3]._id],
+		vibes: [vibes[0]._id, vibes[12]._id, vibes[4]._id],
 		songs: [songs[7], songs[8]]
 	});
 
@@ -236,7 +237,7 @@ db.once('open', async () => {
 		location: 'Austin, TX',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[3]._id],
+		vibes: [vibes[0]._id, vibes[4]._id],
 		songs: [songs[9]]
 	});
 
@@ -249,7 +250,7 @@ db.once('open', async () => {
 		location: 'Ft. Worth, TX',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[11]._id, vibes[3]._id],
+		vibes: [vibes[0]._id, vibes[12]._id, vibes[4]._id],
 		songs: [songs[10], songs[11]]
 	});
 
@@ -262,7 +263,7 @@ db.once('open', async () => {
 		location: 'Austin, TX',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[7]._id, vibes[3]._id, vibes[10]._id],
+		vibes: [vibes[0]._id, vibes[8]._id, vibes[4]._id, vibes[11]._id],
 		songs: [songs[12], songs[13], songs[14]]
 	});
 
@@ -275,7 +276,7 @@ db.once('open', async () => {
 		location: 'Seneca, SC',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[13]._id, vibes[15]._id, vibes[0]._id],
+		vibes: [vibes[0]._id, vibes[14]._id, vibes[15]._id, vibes[1]._id],
 		songs: [songs[15], songs[16], songs[17]]
 	});
 
@@ -288,7 +289,7 @@ db.once('open', async () => {
 		location: 'Austin, TX',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[3]._id],
+		vibes: [vibes[0]._id, vibes[4]._id],
 		songs: [songs[18], songs[19]]
 	});
 
@@ -301,7 +302,7 @@ db.once('open', async () => {
 		location: 'Spokane, WA',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[3]._id],
+		vibes: [vibes[0]._id, vibes[4]._id],
 		songs: [songs[20]]
 	});
 
@@ -314,7 +315,7 @@ db.once('open', async () => {
 		location: 'Spokane, WA',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[14]._id],
+		vibes: [vibes[0]._id, vibes[15]._id],
 		songs: [songs[21]]
 	});
 
@@ -327,7 +328,7 @@ db.once('open', async () => {
 		location: 'Boston, MA',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[11]._id],
+		vibes: [vibes[0]._id, vibes[12]._id],
 		songs: [songs[22]]
 	});
 
@@ -340,7 +341,7 @@ db.once('open', async () => {
 		location: 'Austin, TX',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[2]._id],
+		vibes: [vibes[0]._id, vibes[3]._id],
 		songs: [songs[23]]
 	});
 
@@ -353,7 +354,7 @@ db.once('open', async () => {
 		location: 'Albany, NY',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[13]._id],
+		vibes: [vibes[0]._id, vibes[14]._id],
 		songs: [songs[24]]
 	});
 
@@ -366,7 +367,7 @@ db.once('open', async () => {
 		location: 'Cleveland, TN',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[3]._id],
+		vibes: [vibes[0]._id, vibes[4]._id],
 		songs: [songs[25], songs[26]]
 	});
 
@@ -379,7 +380,7 @@ db.once('open', async () => {
 		location: 'Chattanooga, TN',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[4]._id],
+		vibes: [vibes[0]._id, vibes[5]._id],
 		songs: [songs[27]]
 	});
 
@@ -392,7 +393,7 @@ db.once('open', async () => {
 		location: 'Austin, TX',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
-		vibes: [vibes[3]._id],
+		vibes: [vibes[0]._id, vibes[4]._id],
 		songs: [songs[28]]
 	});
 
