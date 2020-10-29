@@ -93,7 +93,7 @@ const CreatrDash = () => {
 									)}
 								</Card>
 							</div>
-							<div className="bskr-bg-secondary rounded p-4 text-center">
+							<div className="bskr-bg-secondary rounded w-100 p-4 text-center">
 								{curCreatr.bio ? (
 									<p className="text-left">{curCreatr.bio}</p>
 								) : (
