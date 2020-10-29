@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-
 import { QUERY_CREATORS } from '../../utils/queries';
 import { updateCreators } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
+
+import {Elements} from '@stripe/react-stripe-js';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -70,7 +71,7 @@ const CreatrDash = () => {
 				<div className="CreatrDash vh-100">
 					<h1 className="w-100 my-5 text-center">{curCreatr.stageName}</h1>
 					<Row className="mt-4 d-flex justify-content-center ">
-						<Col lg={5}>
+						<Col lg={5} className="d-flex flex-column align-items-center justify-content-center">
 							<div className="w-100 bskr-bg-secondary pt-2 mb-3 rounded">
 								<Card className="w-75 mx-auto bskr-bg-secondary">
 									{curCreatr.imgUrl ? (
@@ -101,17 +102,17 @@ const CreatrDash = () => {
 								<EditBio curBio={curCreatr.bio} />
 							</div>
 						</Col>
-						<Col lg={5} className="d-flex flex-column align-items-center">
-							<div className="bskr-bg-secondary w-100 mb-3 py-5 rounded d-flex flex-column align-items-center">
+						<Col lg={5} className="d-flex flex-column align-items-center justify-content-center mt-3 mb-3">
+							<div className="bskr-bg-secondary w-100 mb-3 p-2 rounded d-flex flex-column justify-content-center align-items-center">
 								<h5 className="text-dark">Vibes</h5>
 								{curCreatr.vibes && curCreatr.vibes.length ? (
-									<ul>
+									<ul className="d-flex flex-row flex-wrap m-1">
                    {/* {curCreatr.vibes.map((vibe) => ( */}
                    {/* remove All vibe from display until refactor of All filter on CreatrGrid */}
 										{curCreatr.vibes.filter(vibe => vibe.name !== 'All').map((vibe) => (
                       <span
 												key={vibe._id}
-												className="bskr-vibe-btn-static d-inline-block text-center btn-sm mx-1 text-white"
+												className="bskr-vibe-btn-static d-inline-block text-center btn-sm m-1 text-white"
 											>
 												{vibe.name}
 											</span>

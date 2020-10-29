@@ -13,6 +13,10 @@
 	opacity: .5;
 }
 
+.donate-text {
+	font-size: 12px;
+}
+
 /* need to do this since we are using .btn class to style...should refactor */
 /* .CreatrProf span:hover {
   cursor: default !important;

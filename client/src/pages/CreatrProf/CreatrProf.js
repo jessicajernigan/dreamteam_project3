@@ -10,6 +10,7 @@ import { idbPromise } from '../../utils/helpers';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Stripe from '../../components/Stripe/Stripe';
 
 import { BiPlay, BiPlusMedical } from 'react-icons/bi';
 
@@ -66,15 +67,15 @@ const CreatrProf = () => {
 		playerRef.current.setAttribute('controlsList', 'nodownload');
 		playerRef.current.setAttribute('src', songUrl);
 		playerRef.current.play();
-	};
-
+  };
+  
 	return (
     <React.Fragment>
     {curCreatr ? (
       <div className="CreatrProf vh-100">
         <h1 className="w-100 my-5 text-center">{curCreatr.stageName}</h1>
         <Row className="mt-4 d-flex justify-content-center ">
-          <Col lg={5}>
+          <Col lg={5} className="d-flex flex-column justify-content-center align-items-center">
             <div className="w-100 bskr-bg-secondary pt-2 mb-3 rounded">
               <Card className="w-75 mx-auto bskr-bg-secondary">
                 <Card.Img variant="top" className="w-75 mx-auto rounded"src={curCreatr.imgUrl} />
@@ -86,11 +87,12 @@ const CreatrProf = () => {
               </Card>
             </div>
             <div className="bskr-bg-secondary rounded p-4 text-center">
+              <h5 className="text-dark">Bio</h5>
               <p className="text-left">{curCreatr.bio}</p>
             </div>
           </Col>
-          <Col lg={5} className="d-flex flex-column align-items-center">
-            <div className="bskr-bg-secondary w-100 mb-3 py-5 rounded d-flex flex-column align-items-center">
+          <Col lg={5} className="d-flex flex-column align-items-center justify-content-center mb-3">
+            <div className="bskr-bg-secondary w-100 mt-3 mb-3 py-5 rounded d-flex flex-column align-items-center">
               <h5 className="text-dark">Vibes</h5>
               <ul>
                 {curCreatr.vibes &&
@@ -106,7 +108,11 @@ const CreatrProf = () => {
               </ul>
             </div>
             <div className="bskr-bg-secondary w-100 p-5 d-flex flex-column align-items-center rounded">
-              <h4 className="text-dark">Available Tunes</h4>
+              <h4 className="text-dark mb-2">Available Tunes</h4>
+              {/* <div className="w-100 m-2 text-center"> */}
+                  <p className="donate-text text-dark mb-1">Please consider donating to the buskr while enjoying their tunes!</p>
+                  <Stripe />
+              {/* </div> */}
               <ul className="w-100">
                 {curCreatr.songs &&
                   curCreatr.songs.map((song) => (
@@ -119,7 +125,7 @@ const CreatrProf = () => {
                         onClick={() =>
                           handlePlaySong(song.songUrl)}
                       />{' '}
-                      <BiPlusMedical className="mr-1" />{' '}
+                      {/* <BiPlusMedical className="mr-1" />{' '} */}
                       {song.title}
                     </li>
                   ))}

@@ -8,7 +8,7 @@ import Auth from '../../utils/auth'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-// import './Login.css';/
+import './Login.css';
 
 const Login = () => {
   const [ formState, setFormState ] = useState({ email: '', password: '' });
@@ -45,7 +45,7 @@ const Login = () => {
 		<React.Fragment>
 			<main className="Login vh-100 d-flex flex-column align-items-center mt-5 pt-5">
 				<h3 className="mb-5">Login</h3>
-				<Form className="w-25" onSubmit={handleFormSubmit}>
+				<Form className="Login-form" onSubmit={handleFormSubmit}>
 					<Form.Group controlId="Login-email-input">
 						<Form.Label>Email</Form.Label>
 						<Form.Control name="email" placeholder="" onChange={handleChange} />
@@ -60,11 +60,11 @@ const Login = () => {
 						<Button className="mr-3" variant="primary" type="submit">
 							Log In
 						</Button>
-						<p className="d-inline ">
+						<p className="d-inline">
 							Don't have an account?{' '}
 							<Link to="/signup" >
 								{' '}
-								Sign Up
+								<span className="signup-link-text">Sign Up</span>
 							</Link>
 						</p>
 					</Form.Group>
