@@ -25,6 +25,7 @@ const resolvers = {
 			}
 
       // remove populate?
+			// return await Creator.find(params).populate('vibes');
 			return await Creator.find(params).populate('vibes').populate('songs');
     }
     // creators : async () => {
@@ -61,12 +62,18 @@ const resolvers = {
 			return { token, creator };
     },
     
-    updateCreatorBio: async (parent, {bio} , context) => {
+    updateCreatorBio: async (parent, { bio } , context) => {
       if (context.creator) {
         return await Creator.findByIdAndUpdate(context.creator._id, {bio}, { new: true })
       }
 
       throw new AuthenticationError('Not logged in')
+    }, 
+
+    updateCreatorVibes: async (parent, { vibes }, context) => {
+      if (context.creator) {
+        return await Creator.findByIdAndUpdate(context.creator._id, {vibes}, { new: true } ).populate('vibes')
+      }
     }
 	}
 };

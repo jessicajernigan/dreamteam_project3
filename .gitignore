@@ -1,4 +1,10 @@
 node_modules/
+static_prototype/
 debug.log
 .env
 NOTES.txt
+.vscode/
+NOTES-AND-QUESTIONS.txt
+CreatrProf-withQuery.js
+CreatrProfTest/
+

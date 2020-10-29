@@ -2,20 +2,22 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks'
 
 import Auth from '../../utils/auth'
-import { ADD_USER } from '../../utils/mutations'
+import { ADD_CREATOR } from '../../utils/mutations'
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+import './Signup.css';
+
 const Signup = () => {
   const [ formState, setFormState ] = useState({ email: '', password: '' });
-  const [ addUser ] = useMutation(ADD_USER)
+  const [ addCreator ] = useMutation(ADD_CREATOR)
 
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     // handle signup auth
-    const mutationResponse = await addUser({
+    const mutationResponse = await addCreator({
 			variables : {
 				username : formState.username,
 				email     : formState.email,
@@ -23,8 +25,9 @@ const Signup = () => {
 			}
 		});
     const token = mutationResponse.data.addCreator.token;
-    const creatorId = mutationResponse.data.login.creator._id
+    const creatorId = mutationResponse.data.addCreator.creator._id
 		Auth.login(creatorId, token);
+		// Auth.login(token);
   }
 
   const handleChange = (event) => {
@@ -39,7 +42,7 @@ const Signup = () => {
 		<React.Fragment>
 			<main className="Signup vh-100 d-flex flex-column align-items-center mt-5 pt-5">
 				<h3 className="mb-5">Signup</h3>
-				<Form className="w-25 d-flex flex-column" onSubmit={handleFormSubmit}>
+				<Form className="signup-form d-flex flex-column" onSubmit={handleFormSubmit}>
           
 					<Form.Group controlId="Signup-username-input">
 						<Form.Label>Username</Form.Label>
@@ -57,7 +60,7 @@ const Signup = () => {
 						<Form.Control type="password" name="password" placeholder="" onChange={handleChange}/>
 					</Form.Group>
 
-					<Button className="w-25 align-self-center" variant="primary" type="submit">
+					<Button className="signup-btn align-self-center" variant="primary" type="submit">
 						Sign Up
 					</Button>
 				</Form>

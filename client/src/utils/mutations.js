@@ -11,7 +11,7 @@ export const LOGIN = gql`
 	}
 `;
 
-export const ADD_USER = gql`
+export const ADD_CREATOR = gql`
 	mutation addCreator($username: String!, $email: String!, $password: String!) {
 		addCreator(username: $username, email: $email, password: $password) {
 			token
@@ -27,7 +27,35 @@ export const UPDATE_CREATOR_BIO = gql`
 		updateCreatorBio(bio: $bio) {
 			_id
 			username
+			email
+			stageName
+			imgUrl
+			location
 			bio
+			vibes {
+				_id
+				name
+			}
+			songs {
+				_id
+				title
+				songUrl
+			}
+		}
+	}
+`;
+
+export const UPDATE_CREATOR_VIBES = gql`
+	mutation updateCreatorVibes($vibes: [ID]!) {
+		updateCreatorVibes(vibes: $vibes) {
+			_id
+			username
+			email
+			bio
+			vibes {
+				_id
+				name
+			}
 		}
 	}
 `;
