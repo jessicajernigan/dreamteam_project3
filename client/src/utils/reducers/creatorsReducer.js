@@ -1,4 +1,3 @@
-import { UPDATE_CREATOR_BIO } from '../mutations';
 import { UPDATE_CREATORS } from '../types';
 
 const creatorsReducer = (state = [], action) => {
