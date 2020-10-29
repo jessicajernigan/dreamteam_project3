@@ -13,6 +13,7 @@ export const QUERY_CREATORS = gql`
 {
   creators {
     _id
+    username
     email
     stageName
     imgUrl

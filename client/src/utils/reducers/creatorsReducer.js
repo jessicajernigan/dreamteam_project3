@@ -14,11 +14,23 @@ const creatorsReducer = (state = [], action) => {
     case UPDATE_CREATOR_BIO: 
       // action creator needs to send the current creator that includes the updated bio for that creator.  we will make a copy of the current state and update the user whose id matches the one in the action
 
-      // const curCreatr = state.find(creator => creator._id = action.curCreatr._id )
+      // find current creeator from store
+      let curCreatr = state.find(creator => creator._id = action.curCreatr._id)
+      console.log('curCreatr from store in creatorsReducer: ', curCreatr)
+
+      // update current creator with data from action
+      curCreatr = {
+        ...action.curCreatr,
+        bio: action.curCreatr.bio
+      }
+
+      console.log('curCreatr from store updated by action: ', curCreatr)
+
 
       return [
-        ...state,
-        // curCreatr
+        ...state
+        
+
       ]
 
 		default:

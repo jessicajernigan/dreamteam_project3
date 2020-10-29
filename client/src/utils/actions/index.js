@@ -31,11 +31,14 @@ export const updateCreators = (creators) => {
 };
 
 export const updateCreatorBio = (curCreatr) => {
+  console.log("curCreatr from the action creator: ", curCreatr)
+
   return {
     type : UPDATE_CREATOR_BIO,
     curCreatr
   };
 };
+
 // export const updateSongs = (arg) => {
 // 	return {
 // 		type : UPDATE_SONGS,

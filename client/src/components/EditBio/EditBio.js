@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { UPDATE_CREATOR_BIO } from '../../utils/mutations';
 // import { QUERY_CREATORS } from '../../utils/queries';
-import { updateCreatorBio } from '../../utils/actions';
+import { updateCreatorBio as updateCreatorBioRedux } from '../../utils/actions';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -73,11 +73,11 @@ const EditBio = ({ curBio }) => {
 				// refetchQueries: [ { query: QUERY_CREATORS } ]
 			});
 			// refetch()
-			console.log('mutationResponse', mutationResponse);
-			console.log('updated creatr: ', mutationResponse.data.updateCreatorBio);
+			// console.log('mutationResponse', mutationResponse);
+			// console.log('updated creatr: ', mutationResponse.data.updateCreatorBio);
 			const updatedCreatr = mutationResponse.data.updateCreatorBio;
 
-			dispatch(updateCreatorBio(updatedCreatr));
+			dispatch(updateCreatorBioRedux(updatedCreatr));
 		} catch (err) {
 			console.error(err);
 		}
