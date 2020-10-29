@@ -1,0 +1,21 @@
+.CreatrDash h1 {
+	font-family: Monoton;
+	font-size: 2.8rem;
+}
+
+
+.CreatrDash .card {
+	border: 0;
+}
+
+.CreatrDash span:hover {
+  cursor: default !important;
+}
+
+/* MEDIA QUERIES */
+/* 
+@media only screen and (max-width: 375px) {
+	.CreatrDash h2 {
+		font-size: 20px;
+	}
+} */

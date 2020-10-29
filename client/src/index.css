@@ -1,0 +1,106 @@
+/* UNIVERSAL STYLES */
+/* GLOBAL */
+* {
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+	--primary: white;
+	--secondary: #346085;
+	--tertiary: #c09d1d;
+	--dark-bg: #39393e;
+	--search-grey: #9c9c9e;
+	--secondary-grey: #7e7e81;
+	--player-btn-purple: #652cb3;
+	--player-btn-purple-hover: #774bb4;
+	--vibe-btn-blue: #346085;
+	--vibe-btn-blue-hover: #476a86;
+}
+
+body {
+	margin: 0 auto 0 auto;
+	color: white;
+	background-color: var(--dark-bg);
+}
+
+a {
+	color: var(--primary);
+}
+
+a:hover {
+	text-decoration: none;
+	color: var(--primary);
+}
+
+ul {
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+.row {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* CUSTOM UTILITIES */
+.bskr-bg-dark {
+	background-color: var(--dark-bg);
+}
+
+.bskr-bg-secondary {
+	background-color: var(--secondary-grey);
+}
+
+.bskr-bg-search {
+	background-color: var(--search-grey);
+}
+
+/* BUTTONS */
+.bskr-vibe-btn, .bskr-vibe-btn-static {
+  background-color: var(--vibe-btn-blue);
+  min-width: 6rem;
+  border: none;
+}
+
+.bskr-vibe-btn:hover {
+	background-color: #476a86;
+}
+
+.bskr-vibe-btn-static {
+  background-color: var(--vibe-btn-blue);
+  min-width: 6rem;
+	border: none;
+}
+
+.bskr-vibe-btn-static:hover {
+	cursor: default;
+}
+
+.bskr-btn-purple {
+	background-color: var(--player-btn-purple);
+	border: none;
+}
+
+.bskr-btn-purple:hover {
+	background-color: var(--player-btn-purple-hover);
+}
+
+.fs-1 {
+	font-size: 1rem;
+}
+.fs-2 {
+	font-size: 1.5rem;
+}
+.fs-3 {
+	font-size: 2rem;
+}
+.fs-4 {
+	font-size: 2.5rem;
+}
+.fs-5 {
+	font-size: 3rem;
+}

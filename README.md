@@ -39,7 +39,9 @@
       react-router-dom
       react-scripts
       redux
-      react-router-bootstrap
+      react-icons
+
+
 
 
 ## devDependencies 
@@ -49,9 +51,8 @@
         concurrently
 
 
-
-
-
 * server
 
-      nodemon
+         nodemon
+
+

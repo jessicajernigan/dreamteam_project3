@@ -1,0 +1,82 @@
+.Cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  min-width: 18%;
+  max-width: 25%;
+  max-height: 60%;
+  background-color: white;
+  color: black;
+  z-index: 9999;
+}
+
+.modal-content {
+  border: none;
+}
+
+.cart-contents {
+  font-size: .7rem;
+}
+
+.close-modal-btn {
+  cursor: pointer;
+}
+
+.RemoveFromCart {
+  color: var(--secondary);
+  background-color: transparent;
+  border: none;
+}
+
+.RemoveFromCart:hover {
+  background-color: transparent;
+  color: black;
+}
+
+.ViewCartBtn {
+  color: white !important;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.CheckOutBtn {
+  background-color: var(--secondary);
+  border: none;
+  color: white;
+}
+
+@media only screen and (max-width: 1048px) {
+  .Cart {
+    min-width: 15%;
+    max-width: 35%;
+    max-height: 60%;
+  }
+}
+
+@media only screen and (max-width: 788px) {
+  .Cart {
+    min-width: 20%;
+    max-width: 50%;
+    max-height: 60%;
+  }
+  .cart-contents {
+    font-size: .6rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .Cart {
+    min-width: 60%;
+    max-width: 75%;
+    max-height: 60%;
+  }
+  .cart-contents {
+    font-size: .5rem;
+  }
+  .modal-title {
+    font-size: 1rem;
+  }
+  .total {
+    font-size: 1rem;
+  }
+}
