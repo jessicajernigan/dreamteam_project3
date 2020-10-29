@@ -57,10 +57,10 @@ const Login = () => {
 					</Form.Group>
 
 					<Form.Group controlId="Login-submit">
-						<Button className="mr-3" variant="primary" type="submit">
+						<Button className="mr-3 mb-3" variant="primary" type="submit">
 							Log In
 						</Button>
-						<p className="d-inline">
+						<p className="">
 							Don't have an account?{' '}
 							<Link to="/signup" >
 								{' '}

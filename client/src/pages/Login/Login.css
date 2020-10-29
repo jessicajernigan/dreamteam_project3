@@ -1,10 +1,15 @@
+.signup-link-text {
+  color: var(--tertiary);
+}
+
 /* MEDIA QUERIES */
 @media only screen and (min-width: 1048px) {
     .Login-form {
         width: 25%;
     }
     .signup-link-text {
-        font-size: 22px;
+        /* font-size: 22px; */
+        font-size: 1.2rem;
     }
 }
 
