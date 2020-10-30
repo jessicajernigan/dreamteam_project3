@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { useDispatch } from 'react-redux';
 
 import { UPDATE_CREATOR_BIO } from '../../utils/mutations';
-// import { QUERY_CREATORS } from '../../utils/queries';
+import { QUERY_CREATORS } from '../../utils/queries';
 import { updateCreatorBio as updateCreatorBioRedux } from '../../utils/actions';
 
 import Modal from 'react-bootstrap/Modal';
@@ -23,28 +23,28 @@ const EditBio = ({ curBio }) => {
 
 	// const { refetch } = useQuery(QUERY_CREATORS)
 	// MUTATION ON FORM SUBMIT
-	const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO);
-	// const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO, {
-	//   update(cache, { data: { updateCreatorBio } }) {
-	//     const { creators } = cache.readQuery({ query: QUERY_CREATORS })
-	//     cache.writeQuery({
-	//       query: QUERY_CREATORS,
-	//       data: { creators: [ ...creators, updateCreatorBio ]}
-	//     })
-	//   },
+	// const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO);
+	const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO, {
+	  update(cache, { data: { updateCreatorBio } }) {
+      const { creators } = cache.readQuery({ query: QUERY_CREATORS })
+	    cache.writeQuery({
+	      query: QUERY_CREATORS,
+	      // data: { creators: [ ...creators, updateCreatorBio ]}
+	      data: { creators: creators }
+	    })
+	  }
 	//   refetchQueries: [{query: QUERY_CREATORS }],
 
-	// });
+  });
 
-	// const [ saveBook ] = useMutation(SAVE_BOOK, {
-	//   update(cache, { data: { saveBook } }) {
-	//     const { me } = cache.readQuery({ query: GET_ME });
-	//     cache.writeQuery({
-	//       query: GET_ME,
-	//       data: { me: { ...me, savedBooks: [...me.savedBooks, saveBook]}}
-	//     })
-	//   }
-	// });
+  // see module lesson 21.6.5 re Apollo caching
+  // also https://www.apollographql.com/docs/react/data/mutations/#updating-the-cache-after-a-mutation
+  
+  // for (var i of creators) {
+  //   if (creators[i].bio ===  curBio){
+  //     creators[i] = updatedCreatrBio.data.updateCreatorBio
+  //   }
+  // }
 
 	// initialize form state from props
 	useEffect(
@@ -77,7 +77,8 @@ const EditBio = ({ curBio }) => {
 			// console.log('updated creatr: ', mutationResponse.data.updateCreatorBio);
 			const updatedCreatr = mutationResponse.data.updateCreatorBio;
 
-			dispatch(updateCreatorBioRedux(updatedCreatr));
+      // window.location.reload()
+			// dispatch(updateCreatorBioRedux(updatedCreatr));
 		} catch (err) {
 			console.error(err);
 		}
