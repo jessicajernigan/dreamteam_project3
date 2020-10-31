@@ -25,26 +25,32 @@ const EditBio = ({ curBio }) => {
 	// MUTATION ON FORM SUBMIT
 	// const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO);
 	const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO, {
-	  update(cache, { data: { updateCreatorBio } }) {
-      const { creators } = cache.readQuery({ query: QUERY_CREATORS })
-	    cache.writeQuery({
-	      query: QUERY_CREATORS,
-	      // data: { creators: [ ...creators, updateCreatorBio ]}
-	      data: { creators: creators }
-	    })
-	  }
-	//   refetchQueries: [{query: QUERY_CREATORS }],
+		update(cache, { data: { updateCreatorBio } }) {
+      const { creators } = cache.readQuery({ query: QUERY_CREATORS });
+      
+      console.log('creators before : ', creators)
 
-  });
+      if (creators) {
+        for (var i of creators) {
+          if (creators[i]?.bio === curBio) {
+            creators[i].bio = formState
+          }
+        }
+        
+        console.log('creators after : ', creators)
+      }
 
-  // see module lesson 21.6.5 re Apollo caching
-  // also https://www.apollographql.com/docs/react/data/mutations/#updating-the-cache-after-a-mutation
-  
-  // for (var i of creators) {
-  //   if (creators[i].bio ===  curBio){
-  //     creators[i] = updatedCreatrBio.data.updateCreatorBio
-  //   }
-  // }
+			cache.writeQuery({
+				query : QUERY_CREATORS,
+				// data: { creators: [ ...creators, updateCreatorBio ]}
+				data  : { creators: creators }
+			});
+		}
+		//   refetchQueries: [{query: QUERY_CREATORS }],
+	});
+
+	// see module lesson 21.6.5 re Apollo caching
+	// also https://www.apollographql.com/docs/react/data/mutations/#updating-the-cache-after-a-mutation
 
 	// initialize form state from props
 	useEffect(
@@ -77,7 +83,7 @@ const EditBio = ({ curBio }) => {
 			// console.log('updated creatr: ', mutationResponse.data.updateCreatorBio);
 			const updatedCreatr = mutationResponse.data.updateCreatorBio;
 
-      // window.location.reload()
+			// window.location.reload()
 			// dispatch(updateCreatorBioRedux(updatedCreatr));
 		} catch (err) {
 			console.error(err);

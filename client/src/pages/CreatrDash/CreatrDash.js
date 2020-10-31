@@ -82,13 +82,13 @@ const CreatrDash = () => {
 												src={curCreatr.imgUrl}
 											/>
 											<Card.Body className="text-center">
-												<EditPhoto />
+												<EditPhoto curCreatr={curCreatr} />
 											</Card.Body>
 										</React.Fragment>
 									) : (
 										<Card.Body className="text-center">
 											<p className="text-center">{imgDefault}</p>
-											<EditPhoto />
+											<EditPhoto curCreatr={curCreatr}/>
 										</Card.Body>
 									)}
 								</Card>

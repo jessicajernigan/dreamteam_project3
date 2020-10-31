@@ -60,20 +60,26 @@ export const UPDATE_CREATOR_VIBES = gql`
 	}
 `;
 
-// export const ADD_ORDER = gql`
-// 	mutation addOrder($products: [ID]!) {
-// 		addOrder(products: $products) {
-// 			purchaseDate
-// 			products {
-// 				_id
-// 				name
-// 				description
-// 				price
-// 				quantity
-// 				category {
-// 					name
-// 				}
-// 			}
-// 		}
-// 	}
-// `;
+
+export const UPDATE_CREATOR_IMG = gql`
+	mutation updateCreatorImg($imgUrl: String!) {
+		updateCreatorImg(imgUrl: $imgUrl) {
+			_id
+			username
+			email
+			stageName
+			imgUrl
+			location
+			bio
+			vibes {
+				_id
+				name
+			}
+			songs {
+				_id
+				title
+				songUrl
+			}
+		}
+	}
+`;
