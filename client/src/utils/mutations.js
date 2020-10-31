@@ -83,3 +83,26 @@ export const UPDATE_CREATOR_IMG = gql`
 		}
 	}
 `;
+
+export const UPDATE_CREATOR_TUNE = gql`
+	mutation updateCreatorTune($title: String!, $songUrl: String!) {
+		updateCreatorTune(title: $title, songUrl: $songUrl) {
+			_id
+			username
+			email
+			stageName
+			imgUrl
+			location
+			bio
+			vibes {
+				_id
+				name
+			}
+			songs {
+				_id
+				title
+				songUrl
+			}
+		}
+	}
+`;

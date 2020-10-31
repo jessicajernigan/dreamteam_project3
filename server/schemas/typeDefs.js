@@ -40,6 +40,7 @@ const typeDefs = gql`
     updateCreatorBio(bio: String!): Creator
     updateCreatorVibes(vibes: [ID]!): Creator
     updateCreatorImg(imgUrl: String!): Creator
+    updateCreatorTune(title: String!, songUrl: String!): Creator
   }
 
 
