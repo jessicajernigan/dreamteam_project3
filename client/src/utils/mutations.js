@@ -59,3 +59,27 @@ export const UPDATE_CREATOR_VIBES = gql`
 		}
 	}
 `;
+
+
+export const UPDATE_CREATOR_IMG = gql`
+	mutation updateCreatorImg($imgUrl: String!) {
+		updateCreatorImg(imgUrl: $imgUrl) {
+			_id
+			username
+			email
+			stageName
+			imgUrl
+			location
+			bio
+			vibes {
+				_id
+				name
+			}
+			songs {
+				_id
+				title
+				songUrl
+			}
+		}
+	}
+`;

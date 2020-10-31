@@ -6,7 +6,7 @@ import { QUERY_CREATORS } from '../../utils/queries';
 import { updateCreators } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
 
-import {Elements} from '@stripe/react-stripe-js';
+// import {Elements} from '@stripe/react-stripe-js';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -82,13 +82,13 @@ const CreatrDash = () => {
 												src={curCreatr.imgUrl}
 											/>
 											<Card.Body className="text-center">
-												<EditPhoto />
+												<EditPhoto curCreatr={curCreatr} />
 											</Card.Body>
 										</React.Fragment>
 									) : (
 										<Card.Body className="text-center">
 											<p className="text-center">{imgDefault}</p>
-											<EditPhoto />
+											<EditPhoto curCreatr={curCreatr}/>
 										</Card.Body>
 									)}
 								</Card>

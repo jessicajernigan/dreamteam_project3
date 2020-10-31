@@ -2,6 +2,7 @@ import {
   HYDRATE_VIBES,
   UPDATE_CURRENT_VIBE,
   UPDATE_CREATORS,
+  UPDATE_CREATOR_BIO
   // UPDATE_SONGS
 } from '../types';
 
@@ -22,10 +23,19 @@ export const updateCurrentVibe = (vibeId) => {
 };
 
 export const updateCreators = (creators) => {
-	return {
-		type : UPDATE_CREATORS,
+  return {
+    type : UPDATE_CREATORS,
 		creators
 	};
+};
+
+export const updateCreatorBio = (curCreatr) => {
+  console.log("curCreatr from the action creator: ", curCreatr)
+
+  return {
+    type : UPDATE_CREATOR_BIO,
+    curCreatr
+  };
 };
 
 // export const updateSongs = (arg) => {

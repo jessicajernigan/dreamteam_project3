@@ -60,7 +60,9 @@ const EditVibes = ({ curVibes }) => {
 			variables : {
 				vibes : updatedVibes
 			}
-		});
+    });
+    
+    window.location.reload();
 
 		console.log('mutationResponse', mutationResponse);
 	};
