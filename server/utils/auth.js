@@ -19,7 +19,6 @@ module.exports = {
         .trim();
     }
 
-    console.log("token", token)
 
 
     if (!token) {

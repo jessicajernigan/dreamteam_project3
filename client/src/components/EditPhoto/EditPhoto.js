@@ -136,6 +136,7 @@ const EditPhoto = ({curCreatr}) => {
 
 
     return (
+      
         <React.Fragment>
         <Button className="w-50 btn-sm bskr-btn-purple" variant="primary" onClick={handleShow}>
           edit profile photo

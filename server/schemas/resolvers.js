@@ -93,29 +93,64 @@ const resolvers = {
 			}
 
 			throw new AuthenticationError('Not logged in');
-    },
+    },    
+    
+    
+    // addOrder: async (parent, { products }, context) => {
+    //   console.log(context);
+    //   if (context.user) {
+    //     const order = new Order({ products });
+
+    //     await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+
+    //     return order;
+    //   }
+
+    //   throw new AuthenticationError('Not logged in');
+    // },
+
+
    
     updateCreatorTune : async (parent, args, context) => {
 			if (context.creator) {
         console.log('context.creator: ', context.creator)
         console.log('args from resolver: ', args)
 
-        // const song = new Song(args);
-        const song = await new Song(args);
+        const song = new Song(args);
         console.log('new song object with args: ', song)
+
 
         // put back after testing
 				// return await Creator.findByIdAndUpdate(
 				const createTuneResponse = await Creator.findByIdAndUpdate(
 					context.creator._id,
-					{ $push: { songs: song } },
+					{ $push: { songs: song} },
 					{ new: true }
         ).populate('vibes').populate('songs')
         
         console.log('createTuneResponse: ', createTuneResponse)
+        return createTuneResponse
+
+        // const newSong = new Song(args);
+        // console.log('new song object with args: ', newSong)
+
+				// let newSongs = await Creator.findById(
+        //   context.creator._id,
+        //   { new: true }
+        // ).populate('songs')
+        // console.log('newSongs: ', newSongs)
+       
+        // newSongs.songs.push(newSong)
+        // console.log('newSongs: ', newSongs)
+
+        // return await Creator.findByIdAndUpdate(	context.creator._id,
+        //   	{ songs: newSongs },
+        //   	{ new: true }
+        //   ).populate('vibes').populate('songs')
+
 			}
 
-			throw new AuthenticationError('Not logged in');
+      throw new AuthenticationError('Not logged in CreatorTune');
     },
     
     updateCreatorBio: async (parent, { bio } , context) => {
