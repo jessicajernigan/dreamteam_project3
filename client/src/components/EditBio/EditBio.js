@@ -83,7 +83,7 @@ const EditBio = ({ curBio }) => {
 			// console.log('updated creatr: ', mutationResponse.data.updateCreatorBio);
 			const updatedCreatr = mutationResponse.data.updateCreatorBio;
 
-			// window.location.reload()
+			window.location.reload()
 			// dispatch(updateCreatorBioRedux(updatedCreatr));
 		} catch (err) {
 			console.error(err);

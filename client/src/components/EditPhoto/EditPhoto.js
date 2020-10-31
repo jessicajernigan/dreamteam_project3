@@ -121,8 +121,8 @@ const EditPhoto = ({curCreatr}) => {
       if (curCreatr.imgUrl) {
 
         // join('').splice(36)
-        // const photoKey = curCreatr.imgUrl.slice(44)
-        const photoKey = curCreatr.imgUrl.slice(curCreatr.imgUrl.indexOf(curCreatr.username))
+        const photoKey = curCreatr.imgUrl.slice(44)
+        // const photoKey = curCreatr.imgUrl.slice(curCreatr.imgUrl.indexOf(curCreatr.username))
         console.log('photoKey: ', photoKey)
         deletePhotoS3(curCreatr.imgUrl)
       }
