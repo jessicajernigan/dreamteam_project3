@@ -25,40 +25,84 @@ export const ADD_CREATOR = gql`
 export const UPDATE_CREATOR_BIO = gql`
 	mutation updateCreatorBio($bio: String!) {
 		updateCreatorBio(bio: $bio) {
-      _id
-      username
-      email
-      stageName
-      imgUrl
-      location
-      bio
-      vibes {
-        _id
-        name
-      }
-      songs {
-        _id
-        title
-        songUrl
-      }
+			_id
+			username
+			email
+			stageName
+			imgUrl
+			location
+			bio
+			vibes {
+				_id
+				name
+			}
+			songs {
+				_id
+				title
+				songUrl
+			}
 		}
 	}
 `;
 
-// export const ADD_ORDER = gql`
-// 	mutation addOrder($products: [ID]!) {
-// 		addOrder(products: $products) {
-// 			purchaseDate
-// 			products {
-// 				_id
-// 				name
-// 				description
-// 				price
-// 				quantity
-// 				category {
-// 					name
-// 				}
-// 			}
-// 		}
-// 	}
-// `;
+export const UPDATE_CREATOR_VIBES = gql`
+	mutation updateCreatorVibes($vibes: [ID]!) {
+		updateCreatorVibes(vibes: $vibes) {
+			_id
+			username
+			email
+			bio
+			vibes {
+				_id
+				name
+			}
+		}
+	}
+`;
+
+
+export const UPDATE_CREATOR_IMG = gql`
+	mutation updateCreatorImg($imgUrl: String!) {
+		updateCreatorImg(imgUrl: $imgUrl) {
+			_id
+			username
+			email
+			stageName
+			imgUrl
+			location
+			bio
+			vibes {
+				_id
+				name
+			}
+			songs {
+				_id
+				title
+				songUrl
+			}
+		}
+	}
+`;
+
+export const UPDATE_CREATOR_TUNE = gql`
+	mutation updateCreatorTune($title: String!, $songUrl: String!) {
+		updateCreatorTune(title: $title, songUrl: $songUrl) {
+			_id
+			username
+			email
+			stageName
+			imgUrl
+			location
+			bio
+			vibes {
+				_id
+				name
+			}
+			songs {
+				_id
+				title
+				songUrl
+			}
+		}
+	}
+`;

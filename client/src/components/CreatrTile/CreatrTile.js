@@ -13,10 +13,8 @@ const CreatrTile = ({ _id, stageName, imgUrl }) => {
 	};
 	return (
 		<Link to={`/profile/${_id}`} className="CreatrTile">
-			<div className="CreatrTile-tile">
-				{/* <img src="https://via.placeholder.com/300" alt="" /> */}
-				<img className="Creatr-image" style={tileStyle} alt="" />
-        <h3>{stageName}</h3>
+			<div className="CreatrTile-tile m-2" style={tileStyle}>
+        		<h3>{stageName}</h3>
 			</div>
 		</Link>
 	);

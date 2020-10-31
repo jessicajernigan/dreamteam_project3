@@ -6,7 +6,7 @@ import { QUERY_CREATORS } from '../../utils/queries';
 import { updateCreators } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
 
-import {Elements} from '@stripe/react-stripe-js';
+// import {Elements} from '@stripe/react-stripe-js';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -28,7 +28,7 @@ const CreatrDash = () => {
 	const tunesDefault = 'Please add some tunes';
 
   const state = useSelector((state) => state);
-  console.log('CreatrDash state: ', state)
+  // console.log('CreatrDash state: ', state)
 	const { creators } = state;
 	const dispatch = useDispatch();
 
@@ -36,6 +36,7 @@ const CreatrDash = () => {
 	const { id } = useParams();
 
   const [ curCreatr, setCurCreatr ] = useState({});
+  console.log('curCreatr: ', curCreatr)
 
 	const { loading, data } = useQuery(QUERY_CREATORS);
 
@@ -82,18 +83,18 @@ const CreatrDash = () => {
 												src={curCreatr.imgUrl}
 											/>
 											<Card.Body className="text-center">
-												<EditPhoto />
+												<EditPhoto curCreatr={curCreatr} />
 											</Card.Body>
 										</React.Fragment>
 									) : (
 										<Card.Body className="text-center">
 											<p className="text-center">{imgDefault}</p>
-											<EditPhoto />
+											<EditPhoto curCreatr={curCreatr}/>
 										</Card.Body>
 									)}
 								</Card>
 							</div>
-							<div className="bskr-bg-secondary rounded p-4 text-center">
+							<div className="bskr-bg-secondary rounded w-100 p-4 text-center">
 								{curCreatr.bio ? (
 									<p className="text-left">{curCreatr.bio}</p>
 								) : (
@@ -108,6 +109,7 @@ const CreatrDash = () => {
 								{curCreatr.vibes && curCreatr.vibes.length ? (
 									<ul className="d-flex flex-row flex-wrap m-1">
                    {/* {curCreatr.vibes.map((vibe) => ( */}
+                   {/* remove All vibe from display until refactor of All filter on CreatrGrid */}
 										{curCreatr.vibes.filter(vibe => vibe.name !== 'All').map((vibe) => (
                       <span
 												key={vibe._id}
@@ -145,7 +147,7 @@ const CreatrDash = () => {
 								) : (
 									<p>{tunesDefault}</p>
 								)}
-								<EditTunes/>
+								<EditTunes curCreatr={curCreatr}/>
 								{curCreatr.songs && curCreatr.songs.length ? (
 									<div>
 										<audio ref={playerRef} controls>

@@ -24,7 +24,8 @@ const client = new ApolloClient({
 				authorization : token ? `Bearer ${token}` : ''
 			}
 		});
-	},
+  },
+  // this connects the React front-end to the graphql server
 	uri     : '/graphql'
 });
 

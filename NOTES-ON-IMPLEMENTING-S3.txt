@@ -1,0 +1,34 @@
+QUESTIONS WE'LL NEED TO ANSWER
+what data do we need to store and what is it's form?	
+
+
+do we need an http client (axios)?
+
+from where in the Component do we need to make the remote request?
+	regular submit handler function? 
+	inside of a particular hook  
+
+how will this remote request relate to the useMutation request we are making to our db via apollo?
+
+how to handle the async of all these requests and processing the responses.
+
+apollo
+	datasources config? 
+
+it may be possible to have our apollo client interact directly with s3 db, but that would require a good amount of research and time
+
+
+
+NOTES FROM ARTICLE
+https://medium.com/@enespalaz/file-upload-with-graphql-9a4927775ef7
+
+ steps to create a GraphQL server that can handle file upload mutations sent from a React application with Apollo Client. GraphQL server is going to have 2 different capabilities; saving file into file system and streaming it into an S3 bucket.
+
+
+ 1. React application with Apollo Client package
+2. GraphQL server that uses Apollo Server package
+Our GraphQL server will have capabilities to save uploaded files into a file system and stream received streams into a S3 Bucket on AWS. For this, we will have 2 queries (mutation queries, that is); singleUpload and singleUploadStream.
+
+
+
+These mutations take Upload scalar type that comes as default in the Apollo Server 2.0 so its resolution is done by the apollo server itself. Apollo Server maps multipart request form to this Upload scalar and generate a promise for the file. Both of these mutation return File type that consists of filename, mimetype and encoding fields, while this doesn’t fit into a real life schedule but return of correct fields for a file indicates proper uploading of the file to the GraphQL server.

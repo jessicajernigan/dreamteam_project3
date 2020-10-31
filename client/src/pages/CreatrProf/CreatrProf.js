@@ -86,7 +86,7 @@ const CreatrProf = () => {
                 </Card.Body>
               </Card>
             </div>
-            <div className="bskr-bg-secondary rounded p-4 text-center">
+            <div className="bskr-bg-secondary w-100 rounded p-4 text-center">
               <h5 className="text-dark">Bio</h5>
               <p className="text-left">{curCreatr.bio}</p>
             </div>

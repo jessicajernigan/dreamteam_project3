@@ -39,6 +39,8 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     updateCreatorBio(bio: String!): Creator
     updateCreatorVibes(vibes: [ID]!): Creator
+    updateCreatorImg(imgUrl: String!): Creator
+    updateCreatorTune(title: String!, songUrl: String!): Creator
   }
 
 

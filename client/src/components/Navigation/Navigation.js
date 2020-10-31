@@ -54,9 +54,9 @@ const Navigation = () => {
 		} else {
 			return (
 				<>
-				<NavLink exact to="/about" activeStyle={activeStyle} className="mr-3">
+				{/* <NavLink exact to="/about" activeStyle={activeStyle} className="mr-3">
 					About Us
-				</NavLink>
+				</NavLink> */}
 				<NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
 					Login
 				</NavLink>
