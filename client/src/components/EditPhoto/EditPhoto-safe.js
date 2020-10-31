@@ -14,12 +14,12 @@ import './EditPhoto.css'
 
 require('dotenv').config();
 
-const bucketName = 'buskr-data'
+const bucketName = ''
 
 console.log("bucketName", bucketName)
 // const bucketRegion = process.env.BUCKET_REGION;
-const bucketRegion = 'us-east-2'
-const poolId = 'us-east-2:26947c37-5bb0-4ae6-b4a5-4ed2a9275c9f'
+const bucketRegion = ''
+const poolId = ''
 
 AWS.config.update({
   region: bucketRegion,

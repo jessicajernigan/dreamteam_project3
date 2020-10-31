@@ -37,7 +37,8 @@ class AuthService {
 		localStorage.setItem('creator_id', creatorId);
 		localStorage.setItem('id_token', idToken);
 
-		// window.location.assign('/');
+    // window.location.assign('/');
+    console.log('creatorId: ', creatorId)
 		window.location.assign(`/creator/${creatorId}`);
 	}
 
