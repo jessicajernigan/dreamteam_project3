@@ -10,12 +10,12 @@ import './Signup.css';
 
 import AWS from 'aws-sdk'
 require('dotenv').config();
-const bucketName = ''
+const bucketName = 'buskr-data'
 
 console.log("bucketName", bucketName)
 // const bucketRegion = process.env.BUCKET_REGION;
-const bucketRegion = ''
-const poolId = ''
+const bucketRegion = 'us-east-2'
+const poolId = 'us-east-2:26947c37-5bb0-4ae6-b4a5-4ed2a9275c9f'
 
 AWS.config.update({
   region: bucketRegion,
@@ -44,6 +44,12 @@ const Signup = () => {
     }
     var creatrDirKey = encodeURIComponent(username) + '/';
     console.log('creatrDirKey: ', creatrDirKey)
+
+
+
+    // There was an error creating your album: Expected uri parameter to have length >= 1, but found "" for params.Bucket
+
+
 
     // s3.headObject({ Key: creatrDirKey }, function (err, data) {
     //   if (!err) {

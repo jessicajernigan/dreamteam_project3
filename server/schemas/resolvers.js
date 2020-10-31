@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Creator, Vibe } = require('../models');
+const { Creator, Vibe, Song } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -83,12 +83,36 @@ const resolvers = {
     },
 
     updateCreatorImg : async (parent, { imgUrl }, context) => {
+      console.log('context.creator: ', context.creator)
 			if (context.creator) {
 				return await Creator.findByIdAndUpdate(
 					context.creator._id,
 					{ imgUrl },
 					{ new: true }
 				).populate('vibes').populate('songs')
+			}
+
+			throw new AuthenticationError('Not logged in');
+    },
+   
+    updateCreatorTune : async (parent, args, context) => {
+			if (context.creator) {
+        console.log('context.creator: ', context.creator)
+        console.log('args from resolver: ', args)
+
+        // const song = new Song(args);
+        const song = await new Song(args);
+        console.log('new song object with args: ', song)
+
+        // put back after testing
+				// return await Creator.findByIdAndUpdate(
+				const createTuneResponse = await Creator.findByIdAndUpdate(
+					context.creator._id,
+					{ $push: { songs: song } },
+					{ new: true }
+        ).populate('vibes').populate('songs')
+        
+        console.log('createTuneResponse: ', createTuneResponse)
 			}
 
 			throw new AuthenticationError('Not logged in');

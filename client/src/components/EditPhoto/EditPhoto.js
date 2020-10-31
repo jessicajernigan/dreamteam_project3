@@ -12,7 +12,7 @@ import AWS from 'aws-sdk'
 
 import './EditPhoto.css'
 
-require('dotenv').config();
+// require('dotenv').config();
 
 const bucketName = 'buskr-data'
 
@@ -121,10 +121,10 @@ const EditPhoto = ({curCreatr}) => {
       if (curCreatr.imgUrl) {
 
         // join('').splice(36)
-        const photoKey = curCreatr.imgUrl.slice(44)
-        // const photoKey = curCreatr.imgUrl.slice(curCreatr.imgUrl.indexOf(curCreatr.username))
-        console.log('photoKey: ', photoKey)
-        deletePhotoS3(curCreatr.imgUrl)
+        // const photoKey = curCreatr.imgUrl.slice(44)
+        const photoKey = curCreatr.imgUrl.slice(curCreatr.imgUrl.indexOf(curCreatr.username))
+        // console.log('photoKey: ', photoKey)
+        deletePhotoS3(photoKey)
       }
 
       addPhotoS3(curCreatr.username)

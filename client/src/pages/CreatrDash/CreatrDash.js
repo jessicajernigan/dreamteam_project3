@@ -36,6 +36,7 @@ const CreatrDash = () => {
 	const { id } = useParams();
 
   const [ curCreatr, setCurCreatr ] = useState({});
+  console.log('curCreatr: ', curCreatr)
 
 	const { loading, data } = useQuery(QUERY_CREATORS);
 
@@ -146,7 +147,7 @@ const CreatrDash = () => {
 								) : (
 									<p>{tunesDefault}</p>
 								)}
-								<EditTunes/>
+								<EditTunes curCreatr={curCreatr}/>
 								{curCreatr.songs && curCreatr.songs.length ? (
 									<div>
 										<audio ref={playerRef} controls>
