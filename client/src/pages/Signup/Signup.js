@@ -45,6 +45,12 @@ const Signup = () => {
     var creatrDirKey = encodeURIComponent(username) + '/';
     console.log('creatrDirKey: ', creatrDirKey)
 
+
+
+    // There was an error creating your album: Expected uri parameter to have length >= 1, but found "" for params.Bucket
+
+
+
     // s3.headObject({ Key: creatrDirKey }, function (err, data) {
     //   if (!err) {
     //     return alert("Album already exists.");
