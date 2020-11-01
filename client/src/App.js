@@ -12,7 +12,7 @@ import CreatrDash from './pages/CreatrDash/CreatrDash';
 import CreatrProf from './pages/CreatrProf/CreatrProf';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
-
+import About from './pages/About/About';
 import store from './utils/store';
 // console.log("Redux store in App.js: ", store.getState());
 
@@ -41,6 +41,7 @@ function App() {
 							<Route exact path="/profile/:id" component={CreatrProf} />
 							<Route exact path="/signup" component={Signup} />
 							<Route exact path="/login" component={Login} />
+							<Route exact path="/about" component={About} />
 						</Switch>
 					</Provider>
 				</div>

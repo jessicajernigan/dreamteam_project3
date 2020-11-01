@@ -74,9 +74,9 @@ const CreatrProf = () => {
     {curCreatr ? (
       <div className="CreatrProf vh-100">
         <h1 className="w-100 my-5 text-center">{curCreatr.stageName}</h1>
-        <Row className="mt-4 d-flex justify-content-center ">
-          <Col lg={5} className="d-flex flex-column justify-content-center align-items-center">
-            <div className="w-100 bskr-bg-secondary pt-2 mb-3 rounded">
+        <Row className="d-flex justify-content-center ">
+          <Col lg={5} className="d-flex flex-column justify-content-start align-items-start mt-1 mb-2">
+            <div className="w-100 bskr-bg-secondary pt-2 mt-1 mb-3 rounded">
               <Card className="w-75 mx-auto bskr-bg-secondary">
                 <Card.Img variant="top" className="w-75 mx-auto rounded"src={curCreatr.imgUrl} />
                 <Card.Body className="text-center">
@@ -91,8 +91,8 @@ const CreatrProf = () => {
               <p className="text-left">{curCreatr.bio}</p>
             </div>
           </Col>
-          <Col lg={5} className="d-flex flex-column align-items-center justify-content-center mb-3">
-            <div className="bskr-bg-secondary w-100 mt-3 mb-3 py-5 rounded d-flex flex-column align-items-center">
+          <Col lg={5} className="d-flex flex-column align-items-center justify-content-start mt-1 mb-3">
+            <div className="bskr-bg-secondary w-100 mt-1 mb-3 py-5 rounded d-flex flex-column align-items-center">
               <h5 className="text-dark">Vibes</h5>
               <ul>
                 {curCreatr.vibes &&
