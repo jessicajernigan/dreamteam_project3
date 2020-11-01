@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
-import { UPDATE_CREATOR_BIO } from '../../utils/mutations';
+import { UPDATE_CREATOR_STAGE_NAME } from '../../utils/mutations';
 // import { QUERY_CREATORS } from '../../utils/queries';
 
 import Modal from 'react-bootstrap/Modal';
@@ -18,7 +18,7 @@ const EditStageName = ({ curBio }) => {
 	const [ formState, setFormState ] = useState(curBio);
 	// const { refetch } = useQuery(QUERY_CREATORS)
 	// MUTATION ON FORM SUBMIT
-	const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO);
+	const [ updateCreatorStageName ] = useMutation(UPDATE_CREATOR_STAGE_NAME);
 	// const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO, {
 	//   update(cache, { data: { updateCreatorBio } }) {
 	//     const { creators } = cache.readQuery({ query: QUERY_CREATORS })
@@ -61,9 +61,9 @@ const EditStageName = ({ curBio }) => {
 		// console.log('bio form submitted');
 
 		// try/catch?
-		const mutationResponse = await updateCreatorBio({
+		const mutationResponse = await updateCreatorStageName({
 			variables : {
-				bio : formState
+				stageName : formState
 			}
 			// refetchQueries: [ { query: QUERY_CREATORS } ]
 		});

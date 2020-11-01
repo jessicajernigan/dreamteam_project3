@@ -104,7 +104,7 @@ const CreatrDash = () => {
 										<p className="mb-3">{bioDefault}</p>
 									)} */}
 										<p>{curCreatr.stageName}</p>
-										<EditStageName curBio={curCreatr.bio} />
+										<EditStageName curBio={curCreatr.stageName} />
 								</div>
 								<div className="bskr-bg-secondary rounded w-50 m-2 mb-3 text-center">
 									{/* {curCreatr.bio ? (
