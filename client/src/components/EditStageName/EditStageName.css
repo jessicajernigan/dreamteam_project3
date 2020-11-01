@@ -1,0 +1,9 @@
+.EditStageName .modal-title, .modal-body {
+    color: black;
+}
+
+@media only screen and (max-width: 1048px) {
+	.EditStageName-Btn {
+		width: 75% !important;
+	}
+}

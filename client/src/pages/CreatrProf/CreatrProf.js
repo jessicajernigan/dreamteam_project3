@@ -100,7 +100,7 @@ const CreatrProf = () => {
                     curCreatr.vibes.filter(vibe => vibe.name !== 'All').map((vibe) => (
                     <span
                       key={vibe._id}
-                      className="bskr-vibe-btn-static  btn-sm mx-1 text-white"
+                      className="bskr-vibe-btn-static  btn-sm m-1 text-white"
                     >
                       {vibe.name}
                     </span>

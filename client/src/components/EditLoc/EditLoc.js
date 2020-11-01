@@ -9,9 +9,9 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 
-import './EditBio.css';
+import './EditLoc.css';
 
-const EditBio = ({ curBio }) => {
+const EditLoc = ({ curBio }) => {
 	// MODAL FLAG
 	const [ show, setShow ] = useState(false);
 
@@ -58,7 +58,7 @@ const EditBio = ({ curBio }) => {
 		// close modal
 		handleClose();
 		e.preventDefault();
-		console.log('bio form submitted');
+		// console.log('bio form submitted');
 
 		// try/catch?
 		const mutationResponse = await updateCreatorBio({
@@ -90,30 +90,28 @@ const EditBio = ({ curBio }) => {
 	return (
 		<React.Fragment>
 			<Button
-				className="w-50 btn-sm bskr-btn-purple"
+				className="EditLoc-Btn p-2 w-50 btn-sm bskr-btn-purple"
 				variant="primary"
 				onClick={handleShow}
 			>
-				edit your bio
+				edit your location
 			</Button>
 
 			<Modal
-				className="EditBio "
+				className="EditLoc "
 				centered
 				show={show}
 				onHide={handleClose}
 				animation={false}
 			>
 				<Modal.Header closeButton>
-					<Modal.Title>edit your bio</Modal.Title>
+					<Modal.Title>edit your location <span className="city-span">(e.g. Austin, TX)</span></Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<Form onSubmit={handleFormSubmit}>
 						<FormControl
-							name="bio"
-							rows="5"
-							as="textarea"
-							aria-label="With textarea"
+							name="loc"
+							aria-label="With input"
 							onChange={handleChange}
 							value={formState}
 							placeholder={formState}
@@ -135,4 +133,4 @@ const EditBio = ({ curBio }) => {
 	);
 };
 
-export default EditBio;
+export default EditLoc;
