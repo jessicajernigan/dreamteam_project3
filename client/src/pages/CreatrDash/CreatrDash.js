@@ -15,6 +15,8 @@ import EditPhoto from '../../components/EditPhoto/EditPhoto';
 import EditBio from '../../components/EditBio/EditBio';
 import EditVibes from '../../components/EditVibes/EditVibes';
 import EditTunes from '../../components/EditTunes/EditTunes';
+import EditLoc from '../../components/EditLoc/EditLoc';
+import EditStageName from '../../components/EditStageName/EditStageName';
 
 import { BiPlay, BiPlusMedical } from 'react-icons/bi';
 
@@ -71,8 +73,8 @@ const CreatrDash = () => {
 				<div className="CreatrDash vh-100">
 					<h1 className="w-100 my-5 text-center">{curCreatr.stageName}</h1>
 					<Row className="mt-4 d-flex justify-content-center ">
-						<Col lg={5} className="d-flex flex-column align-items-center justify-content-center">
-							<div className="w-100 bskr-bg-secondary pt-2 mb-3 rounded">
+						<Col lg={5} className="d-flex flex-column align-items-center justify-content-start">
+							<div className="w-100 bskr-bg-secondary pt-2 mb-2 rounded">
 								<Card className="w-75 mx-auto bskr-bg-secondary">
 									{curCreatr.imgUrl ? (
 										<React.Fragment>
@@ -93,7 +95,28 @@ const CreatrDash = () => {
 									)}
 								</Card>
 							</div>
-							<div className="bskr-bg-secondary rounded w-100 p-4 text-center">
+							
+							<div className="bskr-bg-secondary rounded d-flex flex-row w-100 p-4 m-2">
+								<div className="bskr-bg-secondary rounded w-50 m-2 text-center">
+									{/* {curCreatr.bio ? (
+										<p className="text-left">{curCreatr.bio}</p>
+									) : (
+										<p className="mb-3">{bioDefault}</p>
+									)} */}
+										<p>{curCreatr.stageName}</p>
+										<EditStageName curBio={curCreatr.bio} />
+								</div>
+								<div className="bskr-bg-secondary rounded w-50 m-2 mb-3 text-center">
+									{/* {curCreatr.bio ? (
+										<p className="text-left">{curCreatr.bio}</p>
+									) : (
+										<p className="mb-3">{bioDefault}</p>
+									)} */}
+										<p>{curCreatr.location}</p>
+										<EditLoc curBio={curCreatr.bio} />
+								</div>
+							</div>
+							<div className="bskr-bg-secondary rounded w-100 m-2 mb-3 p-4 text-center">
 								{curCreatr.bio ? (
 									<p className="text-left">{curCreatr.bio}</p>
 								) : (
@@ -102,11 +125,11 @@ const CreatrDash = () => {
 								<EditBio curBio={curCreatr.bio} />
 							</div>
 						</Col>
-						<Col lg={5} className="d-flex flex-column align-items-center justify-content-center mt-3 mb-3">
+						<Col lg={5} className="d-flex flex-column align-items-center justify-content-start mt-0 mb-3">
 							<div className="bskr-bg-secondary w-100 mb-3 p-2 rounded d-flex flex-column justify-content-center align-items-center">
 								<h5 className="text-dark">Vibes</h5>
 								{curCreatr.vibes && curCreatr.vibes.length ? (
-									<ul className="d-flex flex-row flex-wrap m-1">
+									<ul className="d-flex flex-row flex-wrap justify-content-center mt-2 mb-3">
                    {/* {curCreatr.vibes.map((vibe) => ( */}
                    {/* remove All vibe from display until refactor of All filter on CreatrGrid */}
 										{curCreatr.vibes.filter(vibe => vibe.name !== 'All').map((vibe) => (
@@ -138,7 +161,6 @@ const CreatrDash = () => {
 													onClick={() =>
 														handlePlaySong(song.songUrl)}
 												/>{' '}
-												<BiPlusMedical className="mr-1" />{' '}
 												{song.title}
 											</li>
 										))}
