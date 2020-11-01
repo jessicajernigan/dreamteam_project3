@@ -60,15 +60,34 @@ const EditStageName = ({ curBio }) => {
 		e.preventDefault();
 		// console.log('bio form submitted');
 
-		// try/catch?
-		const mutationResponse = await updateCreatorStageName({
-			variables : {
-				stageName : formState
-			}
-			// refetchQueries: [ { query: QUERY_CREATORS } ]
-		});
-		// refetch()
-		console.log('mutationResponse', mutationResponse);
+    // try/catch?
+    try {
+			const mutationResponse = await updateCreatorStageName({
+				variables : {
+					stageName : formState
+				}
+				// refetchQueries: [ { query: QUERY_CREATORS } ]
+			});
+			// refetch()
+			// console.log('mutationResponse', mutationResponse);
+			// console.log('updated creatr: ', mutationResponse.data.updateCreatorBio);
+      const updatedCreatr = mutationResponse.data.updateCreatorBio;
+      console.log('mutationResponse', mutationResponse);
+
+			window.location.reload()
+			// dispatch(updateCreatorBioRedux(updatedCreatr));
+		} catch (err) {
+			console.error(err);
+		}    
+
+		// const mutationResponse = await updateCreatorStageName({
+		// 	variables : {
+		// 		stageName : formState
+		// 	}
+		// 	// refetchQueries: [ { query: QUERY_CREATORS } ]
+		// });
+		// // refetch()
+		// console.log('mutationResponse', mutationResponse);
 		// EditBio modal is child component of CreatrDash.  when the db is mutated by the editBio modal child, the parent needs to rerender so updated value is shown
 
 		//   try {
