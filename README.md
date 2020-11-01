@@ -3,7 +3,8 @@ UT Coding Bootcamp | Project 3
 
 ## Table of Contents
 * [Links](#links)
-* [Description](#description)
+* [Concept](#concept)
+* [Technologies Used](#technologies)
 * [Installation](#installation)  
 * [Usage](#usage)
 * [Questions](#questions)
@@ -14,8 +15,27 @@ UT Coding Bootcamp | Project 3
 [Pitch Deck](https://www.beautiful.ai/player/-ML31umLSLWPo5aGBVmk)
 
 
-## Description
-Buskr provides a platform for musicians to showcase their songs to music fans who are interested in breaking free from the global trendscape in order to discover local acts performing nearby. 
+## Concept
+Buskr provides a platform for musicians to showcase their songs to music fans who are interested in breaking free from the global trendscape in order to discover local acts performing nearby.  
+  
+  - Creators generate a profile featuring a photo, bio, location and music files
+  - Consumers can filter musicians by "vibe" to find interesting new music
+  - Consumers can listen to tracks while they peruse a creator's profile
+  - Consumers can donate to creators using Stripe  
+    
+
+### User Stories  
+I. As a **busker** looking for increased visibility in a socially distant world, I want an app that allows me to showcase my music alongside my location.  
+
+II. As a **busker** looking to showcase myself online, I need an app that performs even with intermittent connectivity.
+
+III. As a **music fan** starved for live shows during COVID-ian lockdown, I want a music app that showcases obscure performers near me.
+
+IV. As a **music fan**, I don't just want to access the same old favorites, so I want an app that is geared toward discovery.
+
+
+## Technologies Used
+![tech](client/public/images/tech.png) 
 
 
 ## Installation
