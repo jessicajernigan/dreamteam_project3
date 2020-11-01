@@ -56,13 +56,30 @@ const EditVibes = ({ curVibes }) => {
 		}
 
     // try/catch?
-		const mutationResponse = await updateCreatorVibes({
-			variables : {
-				vibes : updatedVibes
-			}
-		});
+    try {
+      const mutationResponse = await updateCreatorVibes({
+        variables : {
+          vibes : updatedVibes
+        }
+			});
+			// console.log('mutationResponse', mutationResponse);
+			// console.log('updated creatr: ', mutationResponse.data.updateCreatorBio);
+      const updatedCreatr = mutationResponse.data.updateCreatorBio;
+      console.log('mutationResponse', mutationResponse);
 
-		console.log('mutationResponse', mutationResponse);
+			window.location.reload()
+			// dispatch(updateCreatorBioRedux(updatedCreatr));
+		} catch (err) {
+			console.error(err);
+		}    
+
+		// const mutationResponse = await updateCreatorVibes({
+		// 	variables : {
+		// 		vibes : updatedVibes
+		// 	}
+		// });
+
+		// console.log('mutationResponse', mutationResponse);
 	};
 
 	return (
