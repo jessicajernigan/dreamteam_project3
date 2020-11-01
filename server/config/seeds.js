@@ -168,7 +168,8 @@ db.once('open', async () => {
 		email: 'test1@gmail.com',
 		password: 'password123',
 		stageName: 'Royal Trux',
-		imgUrl: 'https://source.unsplash.com/300x300/?musician',
+		imgUrl: 'https://i.ytimg.com/vi/TtsbkrzSZ08/maxresdefault.jpg',
+		// imgUrl: 'https://source.unsplash.com/300x300/?musician',
 		location: 'Virginia',
 		bio:
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
