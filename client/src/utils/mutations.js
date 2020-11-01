@@ -68,6 +68,29 @@ export const UPDATE_CREATOR_STAGE_NAME = gql`
 	}
 `;
 
+export const UPDATE_CREATOR_LOCATION = gql`
+	mutation updateCreatorLocation($location: String!) {
+		updateCreatorLocation(location: $location) {
+			_id
+			username
+			email
+			stageName
+			imgUrl
+			location
+			bio
+			vibes {
+				_id
+				name
+			}
+			songs {
+				_id
+				title
+				songUrl
+			}
+		}
+	}
+`;
+
 export const UPDATE_CREATOR_VIBES = gql`
 	mutation updateCreatorVibes($vibes: [ID]!) {
 		updateCreatorVibes(vibes: $vibes) {

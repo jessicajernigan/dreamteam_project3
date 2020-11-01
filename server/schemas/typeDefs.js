@@ -40,6 +40,7 @@ const typeDefs = gql`
     updateCreatorBio(bio: String!): Creator
     updateCreatorVibes(vibes: [ID]!): Creator
     updateCreatorStageName(stageName: String!): Creator
+    updateCreatorLocation(location: String!): Creator
   }
 
 

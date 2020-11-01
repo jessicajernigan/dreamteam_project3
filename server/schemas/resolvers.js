@@ -78,6 +78,14 @@ const resolvers = {
       throw new AuthenticationError('Not logged in')
     }, 
 
+    updateCreatorLocation: async (parent, { location } , context) => {
+      if (context.creator) {
+        return await Creator.findByIdAndUpdate(context.creator._id, {location}, { new: true }).populate('vibes').populate('songs')
+      }
+
+      throw new AuthenticationError('Not logged in')
+    }, 
+
     updateCreatorVibes: async (parent, { vibes }, context) => {
       if (context.creator) {
         return await Creator.findByIdAndUpdate(context.creator._id, {vibes}, { new: true } ).populate('vibes').populate('songs')

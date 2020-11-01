@@ -113,7 +113,7 @@ const CreatrDash = () => {
 										<p className="mb-3">{bioDefault}</p>
 									)} */}
 										<p>{curCreatr.location}</p>
-										<EditLoc curBio={curCreatr.bio} />
+										<EditLoc curBio={curCreatr.location} />
 								</div>
 							</div>
 							<div className="bskr-bg-secondary rounded w-100 m-2 mb-3 p-4 text-center">
