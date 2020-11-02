@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
 import { UPDATE_CREATOR_BIO } from '../../utils/mutations';
+
 // import { QUERY_CREATORS } from '../../utils/queries';
 
 import Modal from 'react-bootstrap/Modal';
@@ -11,32 +12,24 @@ import FormControl from 'react-bootstrap/FormControl';
 
 import './EditBio.css';
 
+// this component is successfully mutating the db, but is not able to refresh view in parent CreatrDash with updated data.  Currently this is being handled by reloading the page which is not an optimal solution, obviously.  Our first solution should be to update the Apollo cache in a way which will cause a rerender of the parent.  Failing this, we may try dispatching an action creator to update the Redux store.  Trial code for each option is in place but not currently working due to issues with constructing the data to insert in a way that integrates into the existing data structure, being mindful of immutability concerns in Redux.  All other form components on the CreatrDash have the same issue.
+
 const EditBio = ({ curBio }) => {
 	// MODAL FLAG
 	const [ show, setShow ] = useState(false);
 
 	const [ formState, setFormState ] = useState(curBio);
-	// const { refetch } = useQuery(QUERY_CREATORS)
+
 	// MUTATION ON FORM SUBMIT
 	const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO);
+	// need to update apollo cache after successful mutation so view in parent is rerendered based on updated data from this child
 	// const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO, {
 	//   update(cache, { data: { updateCreatorBio } }) {
 	//     const { creators } = cache.readQuery({ query: QUERY_CREATORS })
 	//     cache.writeQuery({
 	//       query: QUERY_CREATORS,
+	//       // how to insert updated creator object into creators array?
 	//       data: { creators: [ ...creators, updateCreatorBio ]}
-	//     })
-	//   },
-	//   refetchQueries: [{query: QUERY_CREATORS }],
-
-	// });
-
-	// const [ saveBook ] = useMutation(SAVE_BOOK, {
-	//   update(cache, { data: { saveBook } }) {
-	//     const { me } = cache.readQuery({ query: GET_ME });
-	//     cache.writeQuery({
-	//       query: GET_ME,
-	//       data: { me: { ...me, savedBooks: [...me.savedBooks, saveBook]}}
 	//     })
 	//   }
 	// });
@@ -58,41 +51,28 @@ const EditBio = ({ curBio }) => {
 		// close modal
 		handleClose();
 		e.preventDefault();
-		console.log('bio form submitted');
 
-    // try/catch?
-    try {
+		try {
 			const mutationResponse = await updateCreatorBio({
 				variables : {
 					bio : formState
 				}
-				// refetchQueries: [ { query: QUERY_CREATORS } ]
 			});
-			// refetch()
-			// console.log('mutationResponse', mutationResponse);
-			// console.log('updated creatr: ', mutationResponse.data.updateCreatorBio);
-      const updatedCreatr = mutationResponse.data.updateCreatorBio;
-      console.log('mutationResponse', mutationResponse);
+			// const updatedCreatr = mutationResponse.data.updateCreatorBio;
+			console.log('mutationResponse', mutationResponse);
 
-			window.location.reload()
+			// reload window until cache update works to cause rerender with updated data
+			window.location.reload();
 			// dispatch(updateCreatorBioRedux(updatedCreatr));
 		} catch (err) {
 			console.error(err);
 		}
-		// const mutationResponse = await updateCreatorBio({
-		// 	variables : {
-		// 		bio : formState
-		// 	}
-		// 	// refetchQueries: [ { query: QUERY_CREATORS } ]
-		// });
-		// refetch()
-		
-
 	};
 
 	// MODAL DISPLAY
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
 	return (
 		<React.Fragment>
 			<Button
@@ -128,14 +108,11 @@ const EditBio = ({ curBio }) => {
 							className="mt-3"
 							type="submit"
 							variant="primary btn-sm bskr-btn-purple"
-							// onClick={handleClose}
 						>
 							save
 						</Button>
 					</Form>
 				</Modal.Body>
-				{/* <Modal.Footer>
-          </Modal.Footer> */}
 			</Modal>
 		</React.Fragment>
 	);

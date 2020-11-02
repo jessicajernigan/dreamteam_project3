@@ -2,15 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
+
 import { QUERY_CREATORS } from '../../utils/queries';
 import { updateCreators } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
 
-import {Elements} from '@stripe/react-stripe-js';
-
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+
 import EditPhoto from '../../components/EditPhoto/EditPhoto';
 import EditBio from '../../components/EditBio/EditBio';
 import EditVibes from '../../components/EditVibes/EditVibes';
@@ -18,10 +18,10 @@ import EditTunes from '../../components/EditTunes/EditTunes';
 import EditLoc from '../../components/EditLoc/EditLoc';
 import EditStageName from '../../components/EditStageName/EditStageName';
 
-import { BiPlay, BiPlusMedical } from 'react-icons/bi';
+import { BiPlay } from 'react-icons/bi';
 
 import './CreatrDash.css';
-import spinner from '../../assets/cool_spinner.gif';
+import spinner from '../../assets/loading-spinner.gif';
 
 const CreatrDash = () => {
 	const imgDefault = 'Please add a picture to your profile';
@@ -29,15 +29,14 @@ const CreatrDash = () => {
 	const vibesDefault = 'Please select your vibes';
 	const tunesDefault = 'Please add some tunes';
 
-  const state = useSelector((state) => state);
-  // console.log('CreatrDash state: ', state)
+	const state = useSelector((state) => state);
 	const { creators } = state;
 	const dispatch = useDispatch();
 
 	// get current creator's id from url
 	const { id } = useParams();
 
-  const [ curCreatr, setCurCreatr ] = useState({});
+	const [ curCreatr, setCurCreatr ] = useState({});
 
 	const { loading, data } = useQuery(QUERY_CREATORS);
 
@@ -73,7 +72,10 @@ const CreatrDash = () => {
 				<div className="CreatrDash vh-100">
 					<h1 className="w-100 my-5 text-center">{curCreatr.stageName}</h1>
 					<Row className="mt-4 d-flex justify-content-center ">
-						<Col lg={5} className="d-flex flex-column align-items-center justify-content-start">
+						<Col
+							lg={5}
+							className="d-flex flex-column align-items-center justify-content-start"
+						>
 							<div className="w-100 bskr-bg-secondary pt-2 mb-2 rounded">
 								<Card className="w-75 mx-auto bskr-bg-secondary">
 									{curCreatr.imgUrl ? (
@@ -95,25 +97,15 @@ const CreatrDash = () => {
 									)}
 								</Card>
 							</div>
-							
+
 							<div className="bskr-bg-secondary rounded d-flex flex-row w-100 p-4 m-2">
 								<div className="bskr-bg-secondary rounded w-50 m-2 text-center">
-									{/* {curCreatr.bio ? (
-										<p className="text-left">{curCreatr.bio}</p>
-									) : (
-										<p className="mb-3">{bioDefault}</p>
-									)} */}
-										<p>{curCreatr.stageName}</p>
-										<EditStageName curBio={curCreatr.stageName} />
+									<p>{curCreatr.stageName}</p>
+									<EditStageName curBio={curCreatr.stageName} />
 								</div>
 								<div className="bskr-bg-secondary rounded w-50 m-2 mb-3 text-center">
-									{/* {curCreatr.bio ? (
-										<p className="text-left">{curCreatr.bio}</p>
-									) : (
-										<p className="mb-3">{bioDefault}</p>
-									)} */}
-										<p>{curCreatr.location}</p>
-										<EditLoc curBio={curCreatr.location} />
+									<p>{curCreatr.location}</p>
+									<EditLoc curBio={curCreatr.location} />
 								</div>
 							</div>
 							<div className="bskr-bg-secondary rounded w-100 m-2 mb-3 p-4 text-center">
@@ -125,27 +117,32 @@ const CreatrDash = () => {
 								<EditBio curBio={curCreatr.bio} />
 							</div>
 						</Col>
-						<Col lg={5} className="d-flex flex-column align-items-center justify-content-start mt-0 mb-3">
+						<Col
+							lg={5}
+							className="d-flex flex-column align-items-center justify-content-start mt-0 mb-3"
+						>
 							<div className="bskr-bg-secondary w-100 mb-3 p-2 rounded d-flex flex-column justify-content-center align-items-center">
 								<h5 className="text-dark">Vibes</h5>
 								{curCreatr.vibes && curCreatr.vibes.length ? (
 									<ul className="d-flex flex-row flex-wrap justify-content-center mt-2 mb-3">
-                   {/* {curCreatr.vibes.map((vibe) => ( */}
-                   {/* remove All vibe from display until refactor of All filter on CreatrGrid */}
-										{curCreatr.vibes.filter(vibe => vibe.name !== 'All').map((vibe) => (
-                      <span
-												key={vibe._id}
-												className="bskr-vibe-btn-static d-inline-block text-center btn-sm m-1 text-white"
-											>
-												{vibe.name}
-											</span>
-										))}
+										{/* {curCreatr.vibes.map((vibe) => ( */}
+										{/* remove All vibe from display until refactor of All filter on CreatrGrid */}
+										{curCreatr.vibes
+											.filter((vibe) => vibe.name !== 'All')
+											.map((vibe) => (
+												<span
+													key={vibe._id}
+													className="bskr-vibe-btn-static d-inline-block text-center btn-sm m-1 text-white"
+												>
+													{vibe.name}
+												</span>
+											))}
 									</ul>
 								) : (
 									<p>{vibesDefault}</p>
 								)}
 
-								<EditVibes curVibes={curCreatr.vibes}  />
+								<EditVibes curVibes={curCreatr.vibes} />
 							</div>
 							<div className="bskr-bg-secondary w-100 p-5 d-flex flex-column align-items-center rounded">
 								<h4 className="text-dark">Available Tunes</h4>
@@ -168,7 +165,7 @@ const CreatrDash = () => {
 								) : (
 									<p>{tunesDefault}</p>
 								)}
-								<EditTunes/>
+								<EditTunes />
 								{curCreatr.songs && curCreatr.songs.length ? (
 									<div>
 										<audio ref={playerRef} controls>
@@ -188,4 +185,3 @@ const CreatrDash = () => {
 };
 
 export default CreatrDash;
-

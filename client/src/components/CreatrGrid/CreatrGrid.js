@@ -11,23 +11,22 @@ import CreatrTile from '../CreatrTile/CreatrTile';
 import Col from 'react-bootstrap/Col';
 
 import './CreatrGrid.css';
-import spinner from '../../assets/cool_spinner.gif';
+import spinner from '../../assets/loading-spinner.gif'
+
+// SEE COMMENT IN EditBio.js CONCERNING ALL THE MODAL FORM UPDATE COMPONENTS RENDERED AS CHILDREN OF THIS COMPONENT 
 
 const CreatrGrid = () => {
 	// query db for creators
 	const { loading, data } = useQuery(QUERY_CREATORS);
-	// console.log('data from QUERY_CREATORS: ', data)
 
 	const { creators, currentVibe } = useSelector((state) => state);
-	// console.log('creators from CreatrGrid redux state: ', creators)
-	console.log('currentVibe from CreatrGrid redux state: ', currentVibe)
+
 	const dispatch = useDispatch();
 
 	useEffect(
 		() => {
 			// if there's data to be stored
 			if (data) {
-
 				// store it in the global state object
 				dispatch(updateCreators(data.creators));
 
@@ -49,25 +48,23 @@ const CreatrGrid = () => {
 	);
 
 	function filterCreators() {
-
 		// filter out creators who have not posted a song.  **keep in place until we refactor User from Creator models
 		const actualCreators = creators.filter((creator) => creator.songs.length > 0);
 
 		// if (!currentVibe) {
-      // 	return creators;
-      // }
-    // ** ditto
+		// 	return creators;
+		// }
+		// ** ditto
 		if (!currentVibe) {
 			return actualCreators;
-    }
-    
+		}
 
 		// we have an array of creators.  each creator has an array of vibes.  we need to return a new array of creators, based on their array of vibes containing a certain value (currentVibe which is the vibe's _id)
 
 		// return creators.filter((creator) =>
 		// 	creator.vibes.some((vibe) => vibe._id === currentVibe)
-    // );
-    // ** ditto
+		// );
+		// ** ditto
 		return actualCreators.filter((creator) =>
 			creator.vibes.some((vibe) => vibe._id === currentVibe)
 		);
@@ -81,16 +78,13 @@ const CreatrGrid = () => {
 						<CreatrTile {...creator} key={creator._id} />
 					))
 				) : (
-					<h3>No Creators yet...</h3>
+          // <h3>No Creators yet...</h3>
+          loading ? <img className="CreatrGrid-spinner" src={spinner} alt="loading" /> : null
 				)}
 			</div>
-			{loading ? <img src={spinner} alt="loading" /> : null}
+			{/* {loading ? <img className="CreatrGrid-spinner" src={spinner} alt="loading" /> : null} */}
 		</Col>
 	);
 };
 
 export default CreatrGrid;
-
-/* {[ ...Array(24) ].map((_, i) => (
-  <CreatrTile key={i} />
-))} */

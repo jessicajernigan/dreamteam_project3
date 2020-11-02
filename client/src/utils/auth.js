@@ -25,19 +25,17 @@ class AuthService {
 	getToken() {
 		// Retrieves the user token from localStorage
 		return localStorage.getItem('id_token');
-  }
-  
-  getCreatorId() {
-    return localStorage.getItem('creator_id')
-  }
+	}
 
-	// login(idToken) {
+	getCreatorId() {
+		return localStorage.getItem('creator_id');
+	}
+
 	login(creatorId, idToken) {
 		// Saves user token to localStorage
 		localStorage.setItem('creator_id', creatorId);
 		localStorage.setItem('id_token', idToken);
 
-		// window.location.assign('/');
 		window.location.assign(`/creator/${creatorId}`);
 	}
 

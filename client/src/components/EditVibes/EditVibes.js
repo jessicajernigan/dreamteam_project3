@@ -9,13 +9,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import './EditVibes.css';
-import spinner from '../../assets/cool_spinner.gif';
+import spinner from '../../assets/loading-spinner.gif';
 
 // destructure vibe objects of current creator from props
 const EditVibes = ({ curVibes }) => {
 
 	const [ allVibes, setAllVibes ] = useState([]);
-	// console.log('allVibes', allVibes.vibes?.map((vibe) => console.log(vibe)));
 
 	// map an array of the ids of current vibes to set defaultChecked of checkboxes for matched ids
 	const curVibesIds = curVibes?.map(vibe => vibe._id);
@@ -55,31 +54,18 @@ const EditVibes = ({ curVibes }) => {
 			vibes[i].checked && updatedVibes.push(vibes[i].value);
 		}
 
-    // try/catch?
     try {
       const mutationResponse = await updateCreatorVibes({
         variables : {
           vibes : updatedVibes
         }
 			});
-			// console.log('mutationResponse', mutationResponse);
-			// console.log('updated creatr: ', mutationResponse.data.updateCreatorBio);
-      const updatedCreatr = mutationResponse.data.updateCreatorBio;
       console.log('mutationResponse', mutationResponse);
 
 			window.location.reload()
-			// dispatch(updateCreatorBioRedux(updatedCreatr));
 		} catch (err) {
 			console.error(err);
 		}    
-
-		// const mutationResponse = await updateCreatorVibes({
-		// 	variables : {
-		// 		vibes : updatedVibes
-		// 	}
-		// });
-
-		// console.log('mutationResponse', mutationResponse);
 	};
 
 	return (
@@ -95,7 +81,7 @@ const EditVibes = ({ curVibes }) => {
 					</Button>
 
 					<Modal
-						className="EditTunesModal"
+						className="EditVibesModal"
 						centered
 						show={show}
 						onHide={handleClose}

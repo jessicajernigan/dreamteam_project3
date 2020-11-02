@@ -10,23 +10,23 @@ export const QUERY_VIBES = gql`
 `;
 
 export const QUERY_CREATORS = gql`
-{
-  creators {
-    _id
-    email
-    stageName
-    imgUrl
-    location
-    bio
-    vibes {
-      _id
-      name
-    }
-    songs {
-      _id
-      title
-      songUrl
-    }
-  }
-}
+	{
+		creators {
+			_id
+			email
+			stageName
+			imgUrl
+			location
+			bio
+			vibes {
+				_id
+				name
+			}
+			songs {
+				_id
+				title
+				songUrl
+			}
+		}
+	}
 `;

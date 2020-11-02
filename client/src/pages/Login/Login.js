@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks';
 
-import { LOGIN } from '../../utils/mutations'
-import Auth from '../../utils/auth'
+import { LOGIN } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -11,35 +11,32 @@ import Button from 'react-bootstrap/Button';
 import './Login.css';
 
 const Login = () => {
-  const [ formState, setFormState ] = useState({ email: '', password: '' });
+	const [ formState, setFormState ] = useState({ email: '', password: '' });
 	const [ login, { error } ] = useMutation(LOGIN);
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    // handle login auth
-    try {
+	const handleFormSubmit = async (e) => {
+		e.preventDefault();
+		// handle login auth
+		try {
 			const mutationResponse = await login({
-				variables: { email: formState.email, password: formState.password }
-      });
-      // console.log('mutationResponse', mutationResponse)
-      const token = mutationResponse.data.login.token;
-      const creatorId = mutationResponse.data.login.creator._id
-      // console.log(token, creatorId)
-      // store creator id in LS also so we have it available as param and filter for dashboard
+				variables : { email: formState.email, password: formState.password }
+			});
+			const token = mutationResponse.data.login.token;
+			const creatorId = mutationResponse.data.login.creator._id;
+			// store creator id in LS also so we have it available as param and filter for dashboard
 			Auth.login(creatorId, token);
 		} catch (e) {
 			console.log(e);
 		}
-  }
+	};
 
-  const handleChange = (event) => {
+	const handleChange = (event) => {
 		const { name, value } = event.target;
 		setFormState({
 			...formState,
 			[name] : value
 		});
 	};
-
 
 	return (
 		<React.Fragment>
@@ -48,12 +45,21 @@ const Login = () => {
 				<Form className="Login-form" onSubmit={handleFormSubmit}>
 					<Form.Group controlId="Login-email-input">
 						<Form.Label>Email</Form.Label>
-						<Form.Control name="email" placeholder="" onChange={handleChange} />
+						<Form.Control
+							name="email"
+							placeholder=""
+							onChange={handleChange}
+						/>
 					</Form.Group>
 
 					<Form.Group controlId="Login-password-input">
 						<Form.Label>Password</Form.Label>
-						<Form.Control name="password" type="password" placeholder="" onChange={handleChange}/>
+						<Form.Control
+							name="password"
+							type="password"
+							placeholder=""
+							onChange={handleChange}
+						/>
 					</Form.Group>
 
 					<Form.Group controlId="Login-submit">
@@ -62,19 +68,19 @@ const Login = () => {
 						</Button>
 						<p className="">
 							Don't have an account?{' '}
-							<Link to="/signup" >
+							<Link to="/signup">
 								{' '}
 								<span className="signup-link-text">Sign Up</span>
 							</Link>
 						</p>
 					</Form.Group>
-          {error ? (
-					<div>
-						<p className="text-danger">
-							The provided credentials are incorrect
-						</p>
-					</div>
-				) : null}
+					{error ? (
+						<div>
+							<p className="text-danger">
+								The provided credentials are incorrect
+							</p>
+						</div>
+					) : null}
 				</Form>
 			</main>
 		</React.Fragment>

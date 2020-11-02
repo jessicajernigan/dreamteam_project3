@@ -42,3 +42,35 @@ same for artist tile?
 ACTUALLY IT'S DONE THAT WAY IN THE MODULE SO IT APPEARS TO BE AN ACCEPTABLE PATTERN
 
 
+CLEANED CODE 
+server/config/
+server/models/
+server/schemas/
+server/utils/
+
+client/public/
+client/src/components/CreatrGrid/
+client/src/components/CreatrTile/
+client/src/components/EditBio/
+client/src/components/EditLoc/
+client/src/components/EditPhoto/
+client/src/components/EditStageName/
+client/src/components/EditTunes/
+client/src/components/EditVibes/
+client/src/components/Footer/
+client/src/components/Hero/
+client/src/components/Navigation/
+client/src/components/SideBarTop/
+client/src/components/Stripe/
+client/src/components/VibeBtn/
+client/src/components/VibeMenu/
+
+client/src/pages/About/
+client/src/pages/CreatrDash/
+client/src/pages/CreatrProf/
+client/src/pages/Home/
+client/src/pages/Login/
+client/src/pages/Signup/
+client/src/utils/actions/
+client/src/utils/reducers/
+client/src/utils/

@@ -3,18 +3,16 @@ import Row from 'react-bootstrap/Row';
 import './Home.css';
 
 import Hero from '../../components/Hero/Hero';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import SidebarTop from '../../components/SidebarTop/SidebarTop';
 import CreatrGrid from '../../components/CreatrGrid/CreatrGrid';
 import Footer from '../../components/Footer/Footer';
 
 const Home = () => {
 	return (
 		<React.Fragment>
-			{/* <Row> */}
-				<Hero />
-			{/* </Row> */}
+			<Hero />
 			<Row>
-				<Sidebar />
+				<SidebarTop />
 			</Row>
 			<Row>
 				<CreatrGrid />

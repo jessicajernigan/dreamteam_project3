@@ -12,10 +12,10 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Stripe from '../../components/Stripe/Stripe';
 
-import { BiPlay, BiPlusMedical } from 'react-icons/bi';
+import { BiPlay } from 'react-icons/bi';
 
 import './CreatrProf.css';
-import spinner from '../../assets/cool_spinner.gif';
+import spinner from '../../assets/loading-spinner.gif';
 
 const CreatrProf = () => {
 	// cache redux store
@@ -59,7 +59,6 @@ const CreatrProf = () => {
 				});
 			}
 		},
-		// [ creators, data, loading, dispatch, id, curCreatr(?) ]
 		[ creators, data, loading, dispatch, id ]
 	);
 
@@ -67,81 +66,93 @@ const CreatrProf = () => {
 		playerRef.current.setAttribute('controlsList', 'nodownload');
 		playerRef.current.setAttribute('src', songUrl);
 		playerRef.current.play();
-  };
-  
+	};
+
 	return (
-    <React.Fragment>
-    {curCreatr ? (
-      <div className="CreatrProf vh-100">
-        <h1 className="w-100 my-5 text-center">{curCreatr.stageName}</h1>
-        <Row className="d-flex justify-content-center ">
-          <Col lg={5} className="d-flex flex-column justify-content-start align-items-start mt-1 mb-2">
-            <div className="w-100 bskr-bg-secondary pt-2 mt-1 mb-3 rounded">
-              <Card className="w-75 mx-auto bskr-bg-secondary">
-                <Card.Img variant="top" className="w-75 mx-auto rounded"src={curCreatr.imgUrl} />
-                <Card.Body className="text-center">
-                  <Card.Text className="text-white text-center">
-                {curCreatr.location}
-              </Card.Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div className="bskr-bg-secondary w-100 rounded p-4 text-center">
-              <h5 className="text-dark">Bio</h5>
-              <p className="text-left">{curCreatr.bio}</p>
-            </div>
-          </Col>
-          <Col lg={5} className="d-flex flex-column align-items-center justify-content-start mt-1 mb-3">
-            <div className="bskr-bg-secondary w-100 mt-1 mb-3 py-5 rounded d-flex flex-column align-items-center">
-              <h5 className="text-dark">Vibes</h5>
-              <ul>
-                {curCreatr.vibes &&
-                  // curCreatr.vibes.map((vibe) => (
-                    curCreatr.vibes.filter(vibe => vibe.name !== 'All').map((vibe) => (
-                    <span
-                      key={vibe._id}
-                      className="bskr-vibe-btn-static btn-sm m-1 text-white"
-                    >
-                      {vibe.name}
-                    </span>
-                  ))}
-              </ul>
-            </div>
-            <div className="bskr-bg-secondary w-100 p-5 d-flex flex-column align-items-center rounded">
-              <h4 className="text-dark mb-2">Available Tunes</h4>
-              {/* <div className="w-100 m-2 text-center"> */}
-                  <p className="donate-text text-dark mb-1">Please consider donating to the buskr while enjoying their tunes!</p>
-                  <Stripe />
-              {/* </div> */}
-              <ul className="w-100">
-                {curCreatr.songs &&
-                  curCreatr.songs.map((song) => (
-                    <li
-                      key={song._id}
-                      className="bskr-bg-search w-100 m-2 p-2 rounded text-dark"
-                    >
-                      <BiPlay
-                        className="fs-3"
-                        onClick={() =>
-                          handlePlaySong(song.songUrl)}
-                      />{' '}
-                      {/* <BiPlusMedical className="mr-1" />{' '} */}
-                      {song.title}
-                    </li>
-                  ))}
-              </ul>
-              <div className="">
-                <audio ref={playerRef} controls>
-                  Your browser does not support the audio element.
-                </audio>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </div>
-    ) : null}
-    {loading ? <img src={spinner} alt="loading" /> : null}
-  </React.Fragment>
+		<React.Fragment>
+			{curCreatr ? (
+				<div className="CreatrProf vh-100">
+					<h1 className="w-100 my-5 text-center">{curCreatr.stageName}</h1>
+					<Row className="d-flex justify-content-center ">
+						<Col
+							lg={5}
+							className="d-flex flex-column justify-content-start align-items-start mt-1 mb-2"
+						>
+							<div className="w-100 bskr-bg-secondary pt-2 mt-1 mb-3 rounded">
+								<Card className="w-75 mx-auto bskr-bg-secondary">
+									<Card.Img
+										variant="top"
+										className="w-75 mx-auto rounded"
+										src={curCreatr.imgUrl}
+									/>
+									<Card.Body className="text-center">
+										<Card.Text className="text-white text-center">
+											{curCreatr.location}
+										</Card.Text>
+									</Card.Body>
+								</Card>
+							</div>
+							<div className="bskr-bg-secondary w-100 rounded p-4 text-center">
+								<h5 className="text-dark">Bio</h5>
+								<p className="text-left">{curCreatr.bio}</p>
+							</div>
+						</Col>
+						<Col
+							lg={5}
+							className="d-flex flex-column align-items-center justify-content-start mt-1 mb-3"
+						>
+							<div className="bskr-bg-secondary w-100 mt-1 mb-3 py-5 rounded d-flex flex-column align-items-center">
+								<h5 className="text-dark">Vibes</h5>
+								<ul>
+									{curCreatr.vibes &&
+										// curCreatr.vibes.map((vibe) => (
+										curCreatr.vibes
+											.filter((vibe) => vibe.name !== 'All')
+											.map((vibe) => (
+												<span
+													key={vibe._id}
+													className="bskr-vibe-btn-static btn-sm m-1 text-white"
+												>
+													{vibe.name}
+												</span>
+											))}
+								</ul>
+							</div>
+							<div className="bskr-bg-secondary w-100 p-5 d-flex flex-column align-items-center rounded">
+								<h4 className="text-dark mb-2">Available Tunes</h4>
+								<p className="donate-text text-dark mb-1">
+									Please consider donating to the buskr while enjoying
+									their tunes!
+								</p>
+								<Stripe />
+								<ul className="w-100">
+									{curCreatr.songs &&
+										curCreatr.songs.map((song) => (
+											<li
+												key={song._id}
+												className="bskr-bg-search w-100 m-2 p-2 rounded text-dark"
+											>
+												<BiPlay
+													className="fs-3"
+													onClick={() =>
+														handlePlaySong(song.songUrl)}
+												/>{' '}
+												{song.title}
+											</li>
+										))}
+								</ul>
+								<div className="">
+									<audio ref={playerRef} controls>
+										Your browser does not support the audio element.
+									</audio>
+								</div>
+							</div>
+						</Col>
+					</Row>
+				</div>
+			) : null}
+			{loading ? <img src={spinner} alt="loading" /> : null}
+		</React.Fragment>
 	);
 };
 

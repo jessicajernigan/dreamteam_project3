@@ -5,16 +5,16 @@ import './CreatrTile.css';
 
 const CreatrTile = ({ _id, stageName, imgUrl }) => {
 	let tileStyle = {
-		backgroundImage: "url(" + imgUrl + ")",
-		position: 'relative',
-    	backgroundRepeat: 'no-repeat',
-    	backgroundSize: 'cover',
-    	backgroundPosition: 'center'
+		backgroundImage    : 'url(' + imgUrl + ')',
+		position           : 'relative',
+		backgroundRepeat   : 'no-repeat',
+		backgroundSize     : 'cover',
+		backgroundPosition : 'center'
 	};
 	return (
 		<Link to={`/profile/${_id}`} className="CreatrTile">
 			<div className="CreatrTile-tile m-2" style={tileStyle}>
-        		<h3>{stageName}</h3>
+				<h3>{stageName}</h3>
 			</div>
 		</Link>
 	);

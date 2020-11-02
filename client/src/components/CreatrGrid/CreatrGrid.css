@@ -1,6 +1,17 @@
-.CreatrGrid-tiles-container {
-  max-width: 80%;
+.CreatrGrid {
+  position: relative;
 }
+
+.CreatrGrid-tiles-container {
+	max-width: 80%;
+}
+
+/* .CreatrGrid-spinner {
+  position: absolute;
+  top: center;
+  left: 50%;
+  translate: transformX(-50%);
+} */
 
 @media only screen and (max-width: 1048px) {
 	.CreatrGrid-tiles-container {

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
-import { UPDATE_CREATOR_LOCATION  } from '../../utils/mutations';
-// import { QUERY_CREATORS } from '../../utils/queries';
+import { UPDATE_CREATOR_LOCATION } from '../../utils/mutations';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -16,30 +15,8 @@ const EditLoc = ({ curBio }) => {
 	const [ show, setShow ] = useState(false);
 
 	const [ formState, setFormState ] = useState(curBio);
-	// const { refetch } = useQuery(QUERY_CREATORS)
 	// MUTATION ON FORM SUBMIT
-	const [ updateCreatorLocation ] = useMutation(UPDATE_CREATOR_LOCATION );
-	// const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_LOCATION , {
-	//   update(cache, { data: { updateCreatorBio } }) {
-	//     const { creators } = cache.readQuery({ query: QUERY_CREATORS })
-	//     cache.writeQuery({
-	//       query: QUERY_CREATORS,
-	//       data: { creators: [ ...creators, updateCreatorBio ]}
-	//     })
-	//   },
-	//   refetchQueries: [{query: QUERY_CREATORS }],
-
-	// });
-
-	// const [ saveBook ] = useMutation(SAVE_BOOK, {
-	//   update(cache, { data: { saveBook } }) {
-	//     const { me } = cache.readQuery({ query: GET_ME });
-	//     cache.writeQuery({
-	//       query: GET_ME,
-	//       data: { me: { ...me, savedBooks: [...me.savedBooks, saveBook]}}
-	//     })
-	//   }
-	// });
+	const [ updateCreatorLocation ] = useMutation(UPDATE_CREATOR_LOCATION);
 
 	// initialize form state from props
 	useEffect(
@@ -53,63 +30,29 @@ const EditLoc = ({ curBio }) => {
 		setFormState(e.target.value);
 	};
 
-	// currently this is successfully mutating the data in db but not causing re-render in parent CreatrDash component to reflect the update.  new dispatch?
 	const handleFormSubmit = async (e) => {
 		// close modal
 		handleClose();
 		e.preventDefault();
-		// console.log('bio form submitted');
 
-    // try/catch?
-    try {
+		try {
 			const mutationResponse = await updateCreatorLocation({
 				variables : {
 					location : formState
 				}
-				// refetchQueries: [ { query: QUERY_CREATORS } ]
 			});
-			// refetch()
-			// console.log('mutationResponse', mutationResponse);
-			// console.log('updated creatr: ', mutationResponse.data.updateCreatorBio);
-      const updatedCreatr = mutationResponse.data.updateCreatorBio;
-      console.log('mutationResponse', mutationResponse);
+			console.log('mutationResponse', mutationResponse);
 
-			window.location.reload()
-			// dispatch(updateCreatorBioRedux(updatedCreatr));
+			window.location.reload();
 		} catch (err) {
 			console.error(err);
 		}
-    // const mutationResponse = await updateCreatorVibes({
-		// 	variables : {
-		// 		vibes : updatedVibes
-		// 	}
-		// });
-		// const mutationResponse = await updateCreatorBio({
-		// 	variables : {
-		// 		bio : formState
-		// 	}
-		// 	// refetchQueries: [ { query: QUERY_CREATORS } ]
-		// });
-		// // refetch()
-		// console.log('mutationResponse', mutationResponse);
-		// EditBio modal is child component of CreatrDash.  when the db is mutated by the editBio modal child, the parent needs to rerender so updated value is shown
-
-		//   try {
-		//     await saveBook({
-		//       variables: {book: bookToSave}
-		//     })
-
-		//     // if book successfully saves to user's account, save book id to state
-		//     setSavedBookIds([...savedBookIds, bookToSave.bookId]);
-		//   } catch (err) {
-		//     console.error(err);
-		//   }
-		// };
 	};
 
 	// MODAL DISPLAY
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
 	return (
 		<React.Fragment>
 			<Button
@@ -128,7 +71,10 @@ const EditLoc = ({ curBio }) => {
 				animation={false}
 			>
 				<Modal.Header closeButton>
-					<Modal.Title>edit your location <span className="city-span">(e.g. Austin, TX)</span></Modal.Title>
+					<Modal.Title>
+						edit your location{' '}
+						<span className="city-span">(e.g. Austin, TX)</span>
+					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<Form onSubmit={handleFormSubmit}>
@@ -143,14 +89,11 @@ const EditLoc = ({ curBio }) => {
 							className="mt-3"
 							type="submit"
 							variant="primary btn-sm bskr-btn-purple"
-							// onClick={handleClose}
 						>
 							save
 						</Button>
 					</Form>
 				</Modal.Body>
-				{/* <Modal.Footer>
-          </Modal.Footer> */}
 			</Modal>
 		</React.Fragment>
 	);
