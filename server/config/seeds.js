@@ -167,7 +167,7 @@ db.once('open', async () => {
 		username: 'Royal Trux',
 		email: 'test1@gmail.com',
 		password: 'password123',
-		stageName: 'Royal Trux',
+		stageName: 'Thee Royal Trax',
 		imgUrl: 'https://i.ytimg.com/vi/TtsbkrzSZ08/maxresdefault.jpg',
 		// imgUrl: 'https://source.unsplash.com/300x300/?musician',
 		location: 'Virginia',
