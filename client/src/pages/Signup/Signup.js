@@ -6,28 +6,10 @@ import { ADD_CREATOR } from '../../utils/mutations'
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+
+import  AWSService  from '../../utils/AWS.js';
+
 import './Signup.css';
-
-import AWS from 'aws-sdk'
-require('dotenv').config();
-const bucketName = 'buskr-data'
-
-console.log("bucketName", bucketName)
-// const bucketRegion = process.env.BUCKET_REGION;
-const bucketRegion = 'us-east-2'
-const poolId = 'us-east-2:26947c37-5bb0-4ae6-b4a5-4ed2a9275c9f'
-
-AWS.config.update({
-  region: bucketRegion,
-  credentials: new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: poolId
-  })
-});
-const s3 = new AWS.S3({
-  apiVersion: "2006-03-01",
-  params: { Bucket: bucketName }
-});
-
 
 const Signup = () => {
   const [ formState, setFormState ] = useState({ email: '', password: '' });
@@ -45,42 +27,12 @@ const Signup = () => {
     var creatrDirKey = encodeURIComponent(username) + '/';
     console.log('creatrDirKey: ', creatrDirKey)
 
-
-
-    // There was an error creating your album: Expected uri parameter to have length >= 1, but found "" for params.Bucket
-
-
-
-    // s3.headObject({ Key: creatrDirKey }, function (err, data) {
-    //   if (!err) {
-    //     return alert("Album already exists.");
-    //   }
-    //   if (err.code !== "NotFound") {
-    //     return alert("There was an error creating your album: " + err.message);
-    //   }
-    //   s3.putObject({ Key: creatrDirKey }, function (err, data) {
-    //     if (err) {
-    //       return alert("There was an error creating your album: " + err.message);
-    //     }
-    //     alert("Successfully created album.");
+    AWSService.signup(creatrDirKey);
         
-    //   });
-    // });
-
-    s3.putObject({ Key: creatrDirKey }, function (err, data) {
-      if (err) {
-        return alert("There was an error creating your album: " + err.message);
-      }
-      alert("Successfully created album.");
-      
-    });
   }
-
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
-
 
     createCreatorDir(formState.username)
 

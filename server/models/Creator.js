@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 // const Order = require('./Order');
+const Song = require('./Song');
 
 const creatorSchema = new Schema({
   username: {
@@ -47,12 +48,7 @@ const creatorSchema = new Schema({
       ref: 'Vibe'
     }
   ],
-  songs: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Song'
-    }
-  ]
+  songs: [Song.schema]
   // orders: [Order.schema]
 });
 
