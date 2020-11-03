@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
+import { useToggle, useInputState } from '../../hooks';
 import { UPDATE_CREATOR_LOCATION } from '../../utils/mutations';
 
 import Modal from 'react-bootstrap/Modal';
@@ -10,35 +11,25 @@ import FormControl from 'react-bootstrap/FormControl';
 
 import './EditLoc.css';
 
-const EditLoc = ({ curBio }) => {
-	// MODAL FLAG
-	const [ show, setShow ] = useState(false);
+const EditLoc = ({ curLoc }) => {
+	// MODAL TOGGLE
+	const [ show, toggleShow ] = useToggle(false);
 
-	const [ formState, setFormState ] = useState(curBio);
+	const [ location, setLocation ] = useInputState(curLoc);
+
 	// MUTATION ON FORM SUBMIT
 	const [ updateCreatorLocation ] = useMutation(UPDATE_CREATOR_LOCATION);
-
-	// initialize form state from props
-	useEffect(
-		() => {
-			setFormState(curBio);
-		},
-		[ curBio ]
-	);
-
-	const handleChange = (e) => {
-		setFormState(e.target.value);
-	};
 
 	const handleFormSubmit = async (e) => {
 		// close modal
 		handleClose();
 		e.preventDefault();
 
+		// update database with new location
 		try {
 			const mutationResponse = await updateCreatorLocation({
 				variables : {
-					location : formState
+					location
 				}
 			});
 			console.log('mutationResponse', mutationResponse);
@@ -50,11 +41,11 @@ const EditLoc = ({ curBio }) => {
 	};
 
 	// MODAL DISPLAY
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	const handleClose = () => toggleShow();
+	const handleShow = () => toggleShow();
 
 	return (
-		<React.Fragment>
+		<>
 			<Button
 				className="EditLoc-Btn p-2 w-50 btn-sm bskr-btn-purple"
 				variant="primary"
@@ -81,9 +72,9 @@ const EditLoc = ({ curBio }) => {
 						<FormControl
 							name="loc"
 							aria-label="With input"
-							onChange={handleChange}
-							value={formState}
-							placeholder={formState}
+							onChange={setLocation}
+							value={location}
+							placeholder={curLoc}
 						/>
 						<Button
 							className="mt-3"
@@ -95,7 +86,7 @@ const EditLoc = ({ curBio }) => {
 					</Form>
 				</Modal.Body>
 			</Modal>
-		</React.Fragment>
+		</>
 	);
 };
 

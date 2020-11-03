@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image';
 
 const About = () => {
 	return (
-		<React.Fragment>
+		<>
 			<Col lg={12} className="p-0">
 				<Jumbotron className="AbtHero">
 					<Image />
@@ -32,7 +32,7 @@ const About = () => {
 					</p>
 				</div>
 			</main>
-		</React.Fragment>
+		</>
 	);
 };
 

@@ -67,7 +67,7 @@ const CreatrDash = () => {
 	};
 
 	return (
-		<React.Fragment>
+		<>
 			{curCreatr ? (
 				<div className="CreatrDash vh-100">
 					<h1 className="w-100 my-5 text-center">{curCreatr.stageName}</h1>
@@ -79,7 +79,7 @@ const CreatrDash = () => {
 							<div className="w-100 bskr-bg-secondary pt-2 mb-2 rounded">
 								<Card className="w-75 mx-auto bskr-bg-secondary">
 									{curCreatr.imgUrl ? (
-										<React.Fragment>
+										<>
 											<Card.Img
 												variant="top"
 												className="w-75 mx-auto rounded"
@@ -88,7 +88,7 @@ const CreatrDash = () => {
 											<Card.Body className="text-center">
 												<EditPhoto />
 											</Card.Body>
-										</React.Fragment>
+										</>
 									) : (
 										<Card.Body className="text-center">
 											<p className="text-center">{imgDefault}</p>
@@ -101,13 +101,15 @@ const CreatrDash = () => {
 							<div className="bskr-bg-secondary rounded d-flex flex-row w-100 p-4 m-2">
 								<div className="bskr-bg-secondary rounded w-50 m-2 text-center">
 									<p>{curCreatr.stageName}</p>
-									<EditStageName curBio={curCreatr.stageName} />
+									<EditStageName curStageName={curCreatr.stageName} />
 								</div>
+
 								<div className="bskr-bg-secondary rounded w-50 m-2 mb-3 text-center">
 									<p>{curCreatr.location}</p>
-									<EditLoc curBio={curCreatr.location} />
+									<EditLoc curLoc={curCreatr.location} />
 								</div>
 							</div>
+
 							<div className="bskr-bg-secondary rounded w-100 m-2 mb-3 p-4 text-center">
 								{curCreatr.bio ? (
 									<p className="text-left">{curCreatr.bio}</p>
@@ -116,6 +118,7 @@ const CreatrDash = () => {
 								)}
 								<EditBio curBio={curCreatr.bio} />
 							</div>
+
 						</Col>
 						<Col
 							lg={5}
@@ -180,7 +183,7 @@ const CreatrDash = () => {
 				</div>
 			) : null}
 			{loading ? <img src={spinner} alt="loading" /> : null}
-		</React.Fragment>
+		</>
 	);
 };
 

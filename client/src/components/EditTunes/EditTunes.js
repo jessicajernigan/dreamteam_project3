@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { useToggle } from '../../hooks'
+
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -6,12 +9,14 @@ import Form from 'react-bootstrap/Form';
 import './EditTunes.css';
 
 const EditTunes = () => {
-	const [ show, setShow ] = useState(false);
+	// MODAL TOGGLE
+  const [ show, toggleShow ] = useToggle(false);
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	const handleClose = () => toggleShow();
+  const handleShow = () => toggleShow();
+  
 	return (
-		<React.Fragment>
+		<>
 			<Button
 				className="w-50 btn-sm mb-5 bskr-btn-purple"
 				variant="primary"
@@ -46,7 +51,7 @@ const EditTunes = () => {
 					</Button>
 				</Modal.Footer>
 			</Modal>
-		</React.Fragment>
+		</>
 	);
 };
 

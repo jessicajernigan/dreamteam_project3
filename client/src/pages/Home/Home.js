@@ -9,7 +9,7 @@ import Footer from '../../components/Footer/Footer';
 
 const Home = () => {
 	return (
-		<React.Fragment>
+		<>
 			<Hero />
 			<Row>
 				<SidebarTop />
@@ -18,7 +18,7 @@ const Home = () => {
 				<CreatrGrid />
 			</Row>
 			<Footer />
-		</React.Fragment>
+		</>
 	);
 };
 

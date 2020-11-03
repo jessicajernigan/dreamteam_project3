@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
+import { useToggle, useInputState } from '../../hooks';
 import { UPDATE_CREATOR_STAGE_NAME } from '../../utils/mutations';
 
 import Modal from 'react-bootstrap/Modal';
@@ -10,25 +11,14 @@ import FormControl from 'react-bootstrap/FormControl';
 
 import './EditStageName.css';
 
-const EditStageName = ({ curBio }) => {
-	// MODAL FLAG
-	const [ show, setShow ] = useState(false);
+const EditStageName = ({ curStageName }) => {
+	// MODAL TOGGLE
+	const [ show, toggleShow ] = useToggle(false);
 
-	const [ formState, setFormState ] = useState(curBio);
-	// MUTATION ON FORM SUBMIT
+	const [ stageName, setStageName ] = useInputState(curStageName);
+
+	// DESTRUCTURE MUTATION FUNCTION FOR USE ON FORM SUBMIT
 	const [ updateCreatorStageName ] = useMutation(UPDATE_CREATOR_STAGE_NAME);
-
-	// initialize form state from props
-	useEffect(
-		() => {
-			setFormState(curBio);
-		},
-		[ curBio ]
-	);
-
-	const handleChange = (e) => {
-		setFormState(e.target.value);
-	};
 
 	const handleFormSubmit = async (e) => {
 		// close modal
@@ -38,7 +28,7 @@ const EditStageName = ({ curBio }) => {
 		try {
 			const mutationResponse = await updateCreatorStageName({
 				variables : {
-					stageName : formState
+					stageName
 				}
 			});
 			console.log('mutationResponse', mutationResponse);
@@ -50,10 +40,11 @@ const EditStageName = ({ curBio }) => {
 	};
 
 	// MODAL DISPLAY
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	const handleClose = () => toggleShow();
+	const handleShow = () => toggleShow();
+
 	return (
-		<React.Fragment>
+		<>
 			<Button
 				className="EditStageName-Btn p-2 w-50 btn-sm bskr-btn-purple"
 				variant="primary"
@@ -77,9 +68,9 @@ const EditStageName = ({ curBio }) => {
 						<FormControl
 							name="loc"
 							aria-label="With input"
-							onChange={handleChange}
-							value={formState}
-							placeholder={formState}
+							onChange={setStageName}
+							value={stageName}
+							placeholder={curStageName}
 						/>
 						<Button
 							className="mt-3"
@@ -91,7 +82,7 @@ const EditStageName = ({ curBio }) => {
 					</Form>
 				</Modal.Body>
 			</Modal>
-		</React.Fragment>
+		</>
 	);
 };
 

@@ -69,7 +69,7 @@ const CreatrProf = () => {
 	};
 
 	return (
-		<React.Fragment>
+		<>
 			{curCreatr ? (
 				<div className="CreatrProf vh-100">
 					<h1 className="w-100 my-5 text-center">{curCreatr.stageName}</h1>
@@ -152,7 +152,7 @@ const CreatrProf = () => {
 				</div>
 			) : null}
 			{loading ? <img src={spinner} alt="loading" /> : null}
-		</React.Fragment>
+		</>
 	);
 };
 
