@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 
+import useToggle from '../../hooks/useToggle'
 import { QUERY_VIBES } from '../../utils/queries';
 import { UPDATE_CREATOR_VIBES } from '../../utils/mutations';
 
@@ -13,6 +14,8 @@ import spinner from '../../assets/loading-spinner.gif';
 
 // destructure vibe objects of current creator from props
 const EditVibes = ({ curVibes }) => {
+  	// MODAL TOGGLE
+    const [ show, toggleShow ] = useToggle(false);
 
 	const [ allVibes, setAllVibes ] = useState([]);
 
@@ -36,9 +39,8 @@ const EditVibes = ({ curVibes }) => {
 	);
 
 	// MODAL FUNCTIONALITY
-	const [ show, setShow ] = useState(false);
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	const handleClose = () => toggleShow();
+	const handleShow = () => toggleShow();
 
   // call mutation function with array of updated vibe id's
 	const handleFormSubmit = async (e) => {

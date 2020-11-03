@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
+import useToggle from '../../hooks/useToggle'
 import { UPDATE_CREATOR_STAGE_NAME } from '../../utils/mutations';
 
 import Modal from 'react-bootstrap/Modal';
@@ -11,8 +12,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import './EditStageName.css';
 
 const EditStageName = ({ curBio }) => {
-	// MODAL FLAG
-	const [ show, setShow ] = useState(false);
+	// MODAL TOGGLE
+  const [ show, toggleShow ] = useToggle(false);
 
 	const [ formState, setFormState ] = useState(curBio);
 	// MUTATION ON FORM SUBMIT
@@ -50,8 +51,9 @@ const EditStageName = ({ curBio }) => {
 	};
 
 	// MODAL DISPLAY
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	const handleClose = () => toggleShow();
+  const handleShow = () => toggleShow();
+  
 	return (
 		<React.Fragment>
 			<Button

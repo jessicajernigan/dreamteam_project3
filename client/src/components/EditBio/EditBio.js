@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
+import { useToggle, useInputState } from '../../hooks'
+// import useInputState from '../../hooks/useInputState'
 import { UPDATE_CREATOR_BIO } from '../../utils/mutations';
 
 // import { QUERY_CREATORS } from '../../utils/queries';
@@ -15,10 +17,10 @@ import './EditBio.css';
 // this component is successfully mutating the db, but is not able to refresh view in parent CreatrDash with updated data.  Currently this is being handled by reloading the page which is not an optimal solution, obviously.  Our first solution should be to update the Apollo cache in a way which will cause a rerender of the parent.  Failing this, we may try dispatching an action creator to update the Redux store.  Trial code for each option is in place but not currently working due to issues with constructing the data to insert in a way that integrates into the existing data structure, being mindful of immutability concerns in Redux.  All other form components on the CreatrDash have the same issue.
 
 const EditBio = ({ curBio }) => {
-	// MODAL FLAG
-	const [ show, setShow ] = useState(false);
+	// MODAL TOGGLE
+  const [ show, toggleShow ] = useToggle(false);
 
-	const [ formState, setFormState ] = useState(curBio);
+	const [ bio, setBio ] = useInputState(curBio);
 
 	// MUTATION ON FORM SUBMIT
 	const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO);
@@ -34,18 +36,6 @@ const EditBio = ({ curBio }) => {
 	//   }
 	// });
 
-	// initialize form state from props
-	useEffect(
-		() => {
-			setFormState(curBio);
-		},
-		[ curBio ]
-	);
-
-	const handleChange = (e) => {
-		setFormState(e.target.value);
-	};
-
 	// currently this is successfully mutating the data in db but not causing re-render in parent CreatrDash component to reflect the update.  new dispatch?
 	const handleFormSubmit = async (e) => {
 		// close modal
@@ -55,7 +45,7 @@ const EditBio = ({ curBio }) => {
 		try {
 			const mutationResponse = await updateCreatorBio({
 				variables : {
-					bio : formState
+					bio
 				}
 			});
 			// const updatedCreatr = mutationResponse.data.updateCreatorBio;
@@ -70,8 +60,8 @@ const EditBio = ({ curBio }) => {
 	};
 
 	// MODAL DISPLAY
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	const handleClose = () => toggleShow();
+	const handleShow = () => toggleShow();
 
 	return (
 		<React.Fragment>
@@ -100,9 +90,9 @@ const EditBio = ({ curBio }) => {
 							rows="5"
 							as="textarea"
 							aria-label="With textarea"
-							onChange={handleChange}
-							value={formState}
-							placeholder={formState}
+							onChange={setBio}
+							value={bio}
+							placeholder={curBio}
 						/>
 						<Button
 							className="mt-3"

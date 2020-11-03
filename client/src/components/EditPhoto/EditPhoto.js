@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+
+import useToggle from '../../hooks/useToggle';
+
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -6,10 +9,12 @@ import Form from 'react-bootstrap/Form';
 import './EditPhoto.css';
 
 const EditPhoto = () => {
-	const [ show, setShow ] = useState(false);
+	// MODAL TOGGLE
+	const [ show, toggleShow ] = useToggle(false);
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	const handleClose = () => toggleShow();
+	const handleShow = () => toggleShow();
+
 	return (
 		<React.Fragment>
 			<Button
