@@ -53,6 +53,7 @@ client/src/components/CreatrGrid/
 client/src/components/CreatrTile/
 client/src/components/EditBio/
 client/src/components/EditLoc/
+
 client/src/components/EditPhoto/
 client/src/components/EditStageName/
 client/src/components/EditTunes/
