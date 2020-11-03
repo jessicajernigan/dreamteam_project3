@@ -17,25 +17,25 @@ const Navigation = () => {
 		if (Auth.loggedIn()) {
 			const creatorId = Auth.getCreatorId();
 			return (
-				<React.Fragment>
+				<>
 					<NavLink to={`/creator/${creatorId}`} className="mr-3">
 						Dashboard
 					</NavLink>
 					<a href="/" className="mr-3" onClick={() => Auth.logout()}>
 						Logout
 					</a>
-				</React.Fragment>
+				</>
 			);
 		} else {
 			return (
-				<React.Fragment>
+				<>
 					<NavLink exact to="/about" activeStyle={activeStyle} className="mr-3">
 						About Us
 					</NavLink>
 					<NavLink exact to="/login" activeStyle={activeStyle} className="mr-3">
 						Login
 					</NavLink>
-				</React.Fragment>
+				</>
 			);
 		}
 	};

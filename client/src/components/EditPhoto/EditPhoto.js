@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import useToggle from '../../hooks/useToggle';
+import { useToggle } from '../../hooks'
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -16,7 +16,7 @@ const EditPhoto = () => {
 	const handleShow = () => toggleShow();
 
 	return (
-		<React.Fragment>
+		<>
 			<Button
 				className="w-50 btn-sm bskr-btn-purple"
 				variant="primary"
@@ -51,7 +51,7 @@ const EditPhoto = () => {
 					</Button>
 				</Modal.Footer>
 			</Modal>
-		</React.Fragment>
+		</>
 	);
 };
 

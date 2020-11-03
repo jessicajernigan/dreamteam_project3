@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 
-import useToggle from '../../hooks/useToggle'
+import { useToggle } from '../../hooks'
 import { QUERY_VIBES } from '../../utils/queries';
 import { UPDATE_CREATOR_VIBES } from '../../utils/mutations';
 
@@ -14,8 +14,8 @@ import spinner from '../../assets/loading-spinner.gif';
 
 // destructure vibe objects of current creator from props
 const EditVibes = ({ curVibes }) => {
-  	// MODAL TOGGLE
-    const [ show, toggleShow ] = useToggle(false);
+  // MODAL TOGGLE
+  const [ show, toggleShow ] = useToggle(false);
 
 	const [ allVibes, setAllVibes ] = useState([]);
 
@@ -71,9 +71,9 @@ const EditVibes = ({ curVibes }) => {
 	};
 
 	return (
-		<React.Fragment>
+		<>
 			{allVibes ? (
-				<React.Fragment>
+				<>
 					<Button
 						className="w-50 btn-sm bskr-btn-purple"
 						variant="primary"
@@ -117,10 +117,10 @@ const EditVibes = ({ curVibes }) => {
 							</Form>
 						</Modal.Body>
 					</Modal>
-				</React.Fragment>
+				</>
 			) : null}
 			{loading ? <img src={spinner} alt="loading" /> : null}
-		</React.Fragment>
+		</>
 	);
 };
 

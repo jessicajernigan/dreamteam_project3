@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
 
 import { useToggle, useInputState } from '../../hooks'
-// import useInputState from '../../hooks/useInputState'
 import { UPDATE_CREATOR_BIO } from '../../utils/mutations';
 
 // import { QUERY_CREATORS } from '../../utils/queries';
@@ -64,7 +63,7 @@ const EditBio = ({ curBio }) => {
 	const handleShow = () => toggleShow();
 
 	return (
-		<React.Fragment>
+		<>
 			<Button
 				className="w-50 btn-sm bskr-btn-purple"
 				variant="primary"
@@ -104,7 +103,7 @@ const EditBio = ({ curBio }) => {
 					</Form>
 				</Modal.Body>
 			</Modal>
-		</React.Fragment>
+		</>
 	);
 };
 
