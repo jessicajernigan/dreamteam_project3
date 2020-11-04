@@ -113,7 +113,12 @@ const resolvers = {
 					.populate('vibes')
 					.populate('songs');
 			}
-		}
+    }, 
+    uploadTune: async (parent, { file }, context) => {
+      if (context.creator) {
+        // configure file and send to s3 here.  get url location in response and add to db
+      }
+    }
 	}
 };
 

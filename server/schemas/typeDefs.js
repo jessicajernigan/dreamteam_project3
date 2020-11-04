@@ -46,8 +46,14 @@ const typeDefs = gql`
 		updateCreatorBio(bio: String!): Creator
 		updateCreatorVibes(vibes: [ID]!): Creator
 		updateCreatorStageName(stageName: String!): Creator
-		updateCreatorLocation(location: String!): Creator
-	}
+    updateCreatorLocation(location: String!): Creator
+    uploadTune(file: Upload!): Creator
+  }
 `;
+
+// type Mutation {
+//   singleUploadStream(file: Upload!): File!
+// }
+
 
 module.exports = typeDefs;
