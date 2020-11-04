@@ -33,9 +33,9 @@ const resolvers = {
 		// 	const token = signToken(creator);
 
 		// 	return { token, creator };
-    // },
-    
-    addCreator: async (parent, args) => {
+		// },
+
+		addCreator             : async (parent, args) => {
 			const creator = await Creator.create(args);
 			const token = signToken(creator);
 			const creatrDirKey = args.username + '/';
@@ -113,13 +113,76 @@ const resolvers = {
 					.populate('vibes')
 					.populate('songs');
 			}
-    }, 
-    uploadTune: async (parent, { file }, context) => {
-      if (context.creator) {
-        // configure file and send to s3 here.  get url location in response and add to db
-      }
-    }
+
+			throw new AuthenticationError('Not logged in CreatorTune');
+    },
+    
+		uploadTune             : async (parent, { file }, context) => {
+			if (context.creator) {
+				// configure file and send to s3 here.  get url location in response and add to db
+				// s3 stuff
+
+				const args = { title: '', url: '' };
+				// instantiate new Song from s3 response data
+				const song = new Song(args);
+				const createTuneResponse = await Creator.findByIdAndUpdate(
+					context.creator._id,
+					{ $push: { songs: song } },
+					// { safe: true, upsert: true, new: true }
+					{ new: true }
+				)
+					.populate('vibes')
+					.populate('songs');
+
+				console.log('createTuneResponse: ', createTuneResponse);
+				return createTuneResponse;
+			}
+
+			throw new AuthenticationError('Not logged in CreatorTune');
+		}
 	}
 };
 
-module.exports = resolvers;
+updateCreatorTune: async (parent, args, context) => {
+	if (context.creator) {
+		console.log('context.creator: ', context.creator);
+		console.log('args from resolver: ', args);
+
+		const song = new Song(args);
+		console.log('new song object with args: ', song);
+
+		// put back after testing
+		// return await Creator.findByIdAndUpdate(
+		const createTuneResponse = await Creator.findByIdAndUpdate(
+			context.creator._id,
+			{ $push: { songs: song } },
+			// { safe: true, upsert: true, new: true }
+			{ new: true }
+		)
+			.populate('vibes')
+			.populate('songs');
+
+		console.log('createTuneResponse: ', createTuneResponse);
+		return createTuneResponse;
+
+		// const newSong = new Song(args);
+		// console.log('new song object with args: ', newSong)
+
+		// let newSongs = await Creator.findById(
+		//   context.creator._id,
+		//   { new: true }
+		// ).populate('songs')
+		// console.log('newSongs: ', newSongs)
+
+		// newSongs.songs.push(newSong)
+		// console.log('newSongs: ', newSongs)
+
+		// return await Creator.findByIdAndUpdate(	context.creator._id,
+		//   	{ songs: newSongs },
+		//   	{ new: true }
+		//   ).populate('vibes').populate('songs')
+	}
+
+	throw new AuthenticationError('Not logged in CreatorTune');
+},
+	(module.exports = resolvers);

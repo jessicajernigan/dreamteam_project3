@@ -68,6 +68,7 @@ IV. As a **music fan**, I don't just want to access the same old favorites, so I
       @testing-library/user-event
       apollo-boost
       apollo-link-context
+      apollo-upload-client
       graphql
       graphql-tag
       jwt-decode

@@ -1,6 +1,8 @@
 import React from 'react';
+import { useMutation } from '@apollo/react-hooks';
 
-import { useToggle } from '../../hooks'
+import { UPLOAD_TUNE } from '../../utils/mutations';
+import { useToggle } from '../../hooks';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -10,11 +12,31 @@ import './EditTunes.css';
 
 const EditTunes = () => {
 	// MODAL TOGGLE
-  const [ show, toggleShow ] = useToggle(false);
+	const [ show, toggleShow ] = useToggle(false);
 
 	const handleClose = () => toggleShow();
-  const handleShow = () => toggleShow();
-  
+	const handleShow = () => toggleShow();
+
+	const [ uploadTune ] = useMutation(UPLOAD_TUNE);
+
+	const handleFileUpload = async (e) => {
+		const [ file ] = e.target.files;
+
+		try {
+			const mutationResponse = await uploadTune({
+				variables : {
+					file
+				}
+			});
+			console.log('mutationResponse', mutationResponse);
+
+			// reload window until cache update works to cause rerender with updated data
+			window.location.reload();
+		} catch (err) {
+			console.error(err);
+		}
+	};
+
 	return (
 		<>
 			<Button
@@ -36,20 +58,19 @@ const EditTunes = () => {
 					<Modal.Title>edit your tunes</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<Form className="m-2">
+					<Form className="m-2" onSubmit={handleFileUpload}>
 						<Form.Group>
 							<Form.File className="text-center" id="TunesUpload" />
 						</Form.Group>
+						<Button
+							type="submit"
+							variant="primary btn-sm bskr-btn-purple"
+							onClick={handleClose}
+						>
+							save
+						</Button>
 					</Form>
 				</Modal.Body>
-				<Modal.Footer>
-					<Button
-						variant="primary btn-sm bskr-btn-purple"
-						onClick={handleClose}
-					>
-						save
-					</Button>
-				</Modal.Footer>
 			</Modal>
 		</>
 	);

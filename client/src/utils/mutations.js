@@ -105,3 +105,26 @@ export const UPDATE_CREATOR_VIBES = gql`
 		}
 	}
 `;
+
+export const UPLOAD_TUNE = gql`
+	mutation uploadTune($file: Upload!) {
+		uploadTune(file: $file) {
+			_id
+			username
+			email
+			stageName
+			imgUrl
+			location
+			bio
+			vibes {
+				_id
+				name
+			}
+			songs {
+				_id
+				title
+				songUrl
+			}
+		}
+	}
+`;

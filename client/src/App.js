@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
+import {ApolloClient, InMemoryCache} from 'apollo-boost';
+import { createUploadLink } from "apollo-upload-client";
 import { Provider } from 'react-redux';
 
 // import Components
@@ -16,6 +17,9 @@ import About from './pages/About/About';
 import store from './utils/store';
 // console.log("Redux store in App.js: ", store.getState());
 
+
+const cache = new InMemoryCache();
+const link = createUploadLink({ uri: '/graphql' });
 const client = new ApolloClient({
 	request : (operation) => {
 		const token = localStorage.getItem('id_token');
@@ -25,7 +29,8 @@ const client = new ApolloClient({
 			}
 		});
 	},
-	uri     : '/graphql'
+  cache,
+  link
 });
 
 function App() {
