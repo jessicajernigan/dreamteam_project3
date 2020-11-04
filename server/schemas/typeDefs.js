@@ -22,7 +22,13 @@ const typeDefs = gql`
 		_id: ID
 		title: String
 		songUrl: String
-	}
+  }
+  
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+  }
 
 	type Auth {
 		token: ID

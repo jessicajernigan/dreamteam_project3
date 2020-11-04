@@ -2,6 +2,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const { Creator, Vibe } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const { awsSignup } = require('../utils/AWS');
 
 const resolvers = {
 	Query    : {
@@ -27,10 +28,18 @@ const resolvers = {
 		}
 	},
 	Mutation : {
-		addCreator             : async (parent, args) => {
+		// addCreator             : async (parent, args) => {
+		// 	const creator = await Creator.create(args);
+		// 	const token = signToken(creator);
+
+		// 	return { token, creator };
+    // },
+    
+    addCreator: async (parent, args) => {
 			const creator = await Creator.create(args);
 			const token = signToken(creator);
-
+			const creatrDirKey = args.username + '/';
+			awsSignup(creatrDirKey);
 			return { token, creator };
 		},
 
