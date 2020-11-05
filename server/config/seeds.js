@@ -173,13 +173,12 @@ db.once('open', async () => {
 
 	// need to .create() one at a time instead of .insertMany() or password validation does not work
 	// all creators get vibes[0]._id ('All') so All filter will work
-	const rtx = await Creator.create({
-		username  : 'Royal Trux',
-		email     : 'test1@gmail.com',
+	const testCreator = await Creator.create({
+		username  : 'test',
+		email     : 'test@gmail.com',
 		password  : 'password123',
-		stageName : 'Thee Royal Trax',
-		imgUrl    : 'https://i.ytimg.com/vi/TtsbkrzSZ08/maxresdefault.jpg',
-		// imgUrl: 'https://source.unsplash.com/300x300/?musician',
+		stageName : 'test',
+		imgUrl: 'https://source.unsplash.com/300x300/?musician',
 		location  : 'Virginia',
 		bio       :
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, doloremque? Doloribus quidem facere, non natus quas optio obcaecati distinctio amet aliquam magni expedita soluta iure neque! Voluptas excepturi beatae hic dolorum laborum ad consectetur deserunt modi enim eum assumenda, nihil quia eveniet? Ducimus dicta porro ab totam eum iusto et.',
@@ -190,7 +189,7 @@ db.once('open', async () => {
 			vibes[5]._id,
 			vibes[8]._id
 		],
-		songs     : [ songs[0], songs[1] ]
+		songs     : []
 	});
 
 	await Creator.create({
@@ -422,7 +421,7 @@ db.once('open', async () => {
 		songs     : [ songs[28] ]
 	});
 
-	console.log('creators seeded.  rtx example: ', rtx);
+	console.log('creators seeded.  test example: ', testCreator);
 
 	process.exit();
 });

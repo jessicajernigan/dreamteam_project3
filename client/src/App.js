@@ -19,17 +19,6 @@ import store from './utils/store';
 
 const token = localStorage.getItem('id_token');
 
-// https://courses.bootcampspot.com/courses/161/pages/21-dot-1-3-set-up-the-project?module_item_id=58149
-
-// With MERN-stack applications, we need to work with two servers while we're in development. We'll run a back-end server to host our database and API, and we need a separate server for React development.
-
-// Why do we use a server for React development?
-
-// We need to use webpack to transpile our JSX and components into browser-ready code. Create React App sets this up for us.
-
-// https://courses.bootcampspot.com/courses/161/pages/21-dot-3-4-install-and-set-up-apollo-client?module_item_id=58219
-
-// https://courses.bootcampspot.com/courses/161/pages/21-dot-3-6-set-up-full-stack-structure-with-client-side-react-app?module_item_id=58225
 
 const client = new ApolloClient({
   link: createUploadLink({

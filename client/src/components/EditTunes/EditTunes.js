@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import './EditTunes.css';
+import spinner from '../../assets/loading-spinner.gif';
 
 const EditTunes = () => {
 	// MODAL TOGGLE
@@ -17,20 +18,20 @@ const EditTunes = () => {
 	const handleClose = () => toggleShow();
 	const handleShow = () => toggleShow();
 
-	const [ uploadTune ] = useMutation(UPLOAD_TUNE);
+	const [ uploadTune, { loading } ] = useMutation(UPLOAD_TUNE);
 
 	const handleFileUpload = async (e) => {
-    e.preventDefault();
-    var files = document.getElementById("tunesupload").files;
+		e.preventDefault();
+		var files = document.getElementById('tunesupload').files;
 
-    // console.log('target: ', e.target)
+		// console.log('target: ', e.target)
 
-    handleClose();
+		handleClose();
 
 		const file = files[0];
 
 		try {
-			const mutationResponse = await uploadTune({
+			const mutationResponse= await uploadTune({
 				variables : {
 					file
 				}
@@ -46,6 +47,7 @@ const EditTunes = () => {
 
 	return (
 		<>
+      {loading ? <img src={spinner} alt="loading" /> : null}
 			<Button
 				className="w-50 btn-sm mb-5 bskr-btn-purple"
 				variant="primary"
@@ -69,10 +71,7 @@ const EditTunes = () => {
 						<Form.Group>
 							<Form.File className="text-center" id="tunesupload" />
 						</Form.Group>
-						<Button
-							type="submit"
-							variant="primary btn-sm bskr-btn-purple"
-						>
+						<Button type="submit" variant="primary btn-sm bskr-btn-purple">
 							save
 						</Button>
 					</Form>
