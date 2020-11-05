@@ -159,9 +159,36 @@ const resolvers = {
 				//   [0]   Key: 'Group_Doueh_-_06.mp3',
 				//   [0]   ETag: '"f877359777159cf7a4aab4f6a0251bb1-4"'
 				//   [0] }
-				// return file;
+        // return file;
+
+        // FRONT-END VERSION
+        // var promise = upload.promise();
+        // promise.then(
+        //   async function (data) {
+        //     console.log('data: ', data)
+        //     // alert("Successfully uploaded tune.");
+        //     const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/'
+                
+        //     const newTuneUrl= `${cloudfrontUrlPrefix}${data.Key}`
+        //     console.log('data.Key ', data.Key)
+    
+        //     const newTuneTitle = data.Key
+        //     console.log('newTuneUrl: ', newTuneUrl)
+        //     console.log('newTuneTitle: ', newTuneTitle)
+    
+        //     try {
+        //       const mutationResponse = await updateCreatorTune({
+        //         variables : {
+        //           songUrl : newTuneUrl,
+        //           title: newTuneTitle
+        //         }
+        //       });
+
+        const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/'
+        const newTuneUrl= `${cloudfrontUrlPrefix}${result.Key}`
+
 				const title = result.Key;
-				const songUrl = result.Location;
+				const songUrl = newTuneUrl;
 				const tuneArgs = { title, songUrl };
 
 				// **********************************************
