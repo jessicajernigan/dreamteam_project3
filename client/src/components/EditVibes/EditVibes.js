@@ -119,7 +119,7 @@ const EditVibes = ({ curVibes }) => {
 					</Modal>
 				</>
 			) : null}
-			{loading ? <img src={spinner} alt="loading" /> : null}
+			{/* {loading ? <img src={spinner} alt="loading" /> : null} */}
 		</>
 	);
 };
