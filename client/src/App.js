@@ -21,7 +21,7 @@ const token = localStorage.getItem('id_token');
 
 const client = new ApolloClient({
   link: createUploadLink({
-    uri: 'http://localhost:3001/graphql',
+    uri: '/graphql',
     headers: {
       authorization : token ? `Bearer ${token}` : ''
     }
