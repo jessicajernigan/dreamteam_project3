@@ -126,7 +126,7 @@ const resolvers = {
 				// configure file and send to s3 here.  get url location in response and add to db
 				// s3 stuff
 
-				const args = { title: '', url: '' };
+				const args = { title: 'Song Test', songUrl: 'http://test.com' };
 				// instantiate new Song from s3 response data
         const song = new Song(args);
         console.log('song: ', song)
