@@ -22,17 +22,21 @@ module.exports = {
 		s3.headObject({ Key: creatrDirKey }, function (err, data) {
 			console.log('inside signUp headObject');
 			if (!err) {
-				return alert("A creator with this username already exists.");
+				// return alert("A creator with this username already exists.");
+				console.log("A creator with this username already exists.");
 			}
 			if (err.code !== "NotFound") {
-				return alert("There was an error creating your content directory: " + err.message);
+				// return alert("There was an error creating your content directory: " + err.message);
+				console.log("There was an error creating your content directory: " + err.message);
 			}
 			s3.putObject({ Key: creatrDirKey }, function (err, data) {
 				console.log('inside signUp put');
 				if (err) {
-					return alert("There was an error creating your content directory: " + err.message);
+					// return alert("There was an error creating your content directory: " + err.message);
+					console.log("There was an error creating your content directory: " + err.message);
 				}
-				alert("Successfully created content directory.");
+				// alert("Successfully created content directory.");
+				console.log("Successfully created content directory.");
 			});
 		});
 	},
@@ -49,7 +53,8 @@ module.exports = {
 	awsDelete(photoKey) {
 		s3.deleteObject({ Key: photoKey }, function (err, data) {
 			if (err) {
-				return alert("There was an error deleting your photo: ", err.message);
+				// return alert("There was an error deleting your photo: ", err.message);
+				console.log("There was an error deleting your photo: ", err.message);
 			}
 			// alert("Successfully deleted photo.");
 		});
