@@ -1,9 +1,11 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Creator, Vibe } = require('../models');
+const { Creator, Vibe, Song } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const { awsSignup } = require('../utils/AWS');
-const Song = require('../models/Song');
+// const Song = require('../models/Song');
+
+const bucketName = process.env.BUCKET_NAME;
 
 // TEST
 const s3 = require('../utils/AWS').returnS3Instance();
@@ -11,7 +13,7 @@ const s3 = require('../utils/AWS').returnS3Instance();
 // const s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
 const resolvers = {
-	Query    : {
+	Query       : {
 		vibes    : async () => {
 			return await Vibe.find();
 		},
@@ -33,7 +35,7 @@ const resolvers = {
 			return await Creator.find(params).populate('vibes').populate('songs');
 		}
 	},
-	Mutation : {
+	Mutation    : {
 		// addCreator             : async (parent, args) => {
 		// 	const creator = await Creator.create(args);
 		// 	const token = signToken(creator);
@@ -127,7 +129,7 @@ const resolvers = {
 		uploadTune             : async (parent, args, context) => {
 			console.log('inside uploadTune resolver');
 			// console.log('file: ', file)
-			console.log('context.creator: ', context.creator)
+			console.log('context.creator: ', context.creator);
 			if (context.creator) {
 				// configure file and send to s3 here.  get url location in response and add to db
 				// hardcode test
@@ -143,10 +145,10 @@ const resolvers = {
 				const tuneKey = CreatrTuneKey + filename;
 
 				const uploadParams = {
-					Bucket: 'buskr-data',
+					Bucket : bucketName,
 					// Key: filename,
-					Key: tuneKey,
-					Body: fileStream
+					Key    : tuneKey,
+					Body   : fileStream
 				};
 				const result = await s3.upload(uploadParams).promise();
 				// console.log('s3 result: ', result);
@@ -159,33 +161,33 @@ const resolvers = {
 				//   [0]   Key: 'Group_Doueh_-_06.mp3',
 				//   [0]   ETag: '"f877359777159cf7a4aab4f6a0251bb1-4"'
 				//   [0] }
-        // return file;
+				// return file;
 
-        // FRONT-END VERSION
-        // var promise = upload.promise();
-        // promise.then(
-        //   async function (data) {
-        //     console.log('data: ', data)
-        //     // alert("Successfully uploaded tune.");
-        //     const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/'
-                
-        //     const newTuneUrl= `${cloudfrontUrlPrefix}${data.Key}`
-        //     console.log('data.Key ', data.Key)
-    
-        //     const newTuneTitle = data.Key
-        //     console.log('newTuneUrl: ', newTuneUrl)
-        //     console.log('newTuneTitle: ', newTuneTitle)
-    
-        //     try {
-        //       const mutationResponse = await updateCreatorTune({
-        //         variables : {
-        //           songUrl : newTuneUrl,
-        //           title: newTuneTitle
-        //         }
-        //       });
+				// FRONT-END VERSION
+				// var promise = upload.promise();
+				// promise.then(
+				//   async function (data) {
+				//     console.log('data: ', data)
+				//     // alert("Successfully uploaded tune.");
+				//     const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/'
 
-        const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/'
-        const newTuneUrl= `${cloudfrontUrlPrefix}${result.Key}`
+				//     const newTuneUrl= `${cloudfrontUrlPrefix}${data.Key}`
+				//     console.log('data.Key ', data.Key)
+
+				//     const newTuneTitle = data.Key
+				//     console.log('newTuneUrl: ', newTuneUrl)
+				//     console.log('newTuneTitle: ', newTuneTitle)
+
+				//     try {
+				//       const mutationResponse = await updateCreatorTune({
+				//         variables : {
+				//           songUrl : newTuneUrl,
+				//           title: newTuneTitle
+				//         }
+				//       });
+
+				const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/';
+				const newTuneUrl = `${cloudfrontUrlPrefix}${result.Key}`;
 
 				const title = result.Key;
 				const songUrl = newTuneUrl;
@@ -200,7 +202,6 @@ const resolvers = {
 				const createTuneResponse = await Creator.findByIdAndUpdate(
 					context.creator._id,
 					{ $push: { songs: song } },
-					// { safe: true, upsert: true, new: true }
 					{ new: true }
 				)
 					.populate('vibes')
@@ -211,35 +212,54 @@ const resolvers = {
 			}
 
 			throw new AuthenticationError('Not logged in uploadTune');
-		}
-  },
-  uploadPhoto(){}
+    },
+    uploadPhoto : async (parent, args, context) => {
+      console.log('inside uploadPhoto resolver');
+      // console.log('file: ', file)
+      console.log('context.creator: ', context.creator);
+      if (context.creator) {
+        // s3 stuff
+        const file = await args.file;
+        const { createReadStream, filename, mimetype } = file;
+        const fileStream = createReadStream();
+  
+        const username = context.creator.username;
+        const CreatrPhotoKey = encodeURIComponent(username) + '/';
+        const photoKey = CreatrPhotoKey + filename;
+  
+        const uploadParams = {
+          Bucket : bucketName,
+          // Bucket: 'buskr-data',
+          Key    : photoKey,
+          Body   : fileStream
+        };
+        const result = await s3.upload(uploadParams).promise();
+  
+        const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/';
+        const newPhotoUrl = `${cloudfrontUrlPrefix}${result.Key}`;
+  
+        // const title = result.Key;
+        // const imgUrl = newPhotoUrl;
+  
+        // **********************************************
+  
+        const createPhotoResponse = await Creator.findByIdAndUpdate(
+          context.creator._id,
+          { imgUrl: newPhotoUrl },
+          { new: true }
+        )
+          .populate('vibes')
+          .populate('songs');
+  
+        console.log('createPhotoResponse: ', createPhotoResponse);
+        return createPhotoResponse;
+      }
+  
+      throw new AuthenticationError('Not logged in uploadPhoto');
+    }
+  }
+  
+ 
 };
-
-// updateCreatorTune: async (parent, args, context) => {
-// 	if (context.creator) {
-// 		console.log('context.creator: ', context.creator);
-// 		console.log('args from resolver: ', args);
-
-// 		const song = new Song(args);
-// 		console.log('new song object with args: ', song);
-
-// 		// put back after testing
-// 		// return await Creator.findByIdAndUpdate(
-// 		const createTuneResponse = await Creator.findByIdAndUpdate(
-// 			context.creator._id,
-// 			{ $push: { songs: song } },
-// 			// { safe: true, upsert: true, new: true }
-// 			{ new: true }
-// 		)
-// 			.populate('vibes')
-// 			.populate('songs');
-
-// 		console.log('createTuneResponse: ', createTuneResponse);
-// 		return createTuneResponse;
-// 	}
-
-// 	throw new AuthenticationError('Not logged in CreatorTune');
-// }
 
 module.exports = resolvers;

@@ -47,8 +47,8 @@ const typeDefs = gql`
 		updateCreatorVibes(vibes: [ID]!): Creator
 		updateCreatorStageName(stageName: String!): Creator
     updateCreatorLocation(location: String!): Creator
-    uploadTune(file: Upload!): Creator
     uploadPhoto(file: Upload!): Creator
+    uploadTune(file: Upload!): Creator
   }
 `;
 

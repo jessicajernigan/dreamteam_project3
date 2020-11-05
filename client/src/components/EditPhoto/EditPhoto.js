@@ -1,5 +1,7 @@
 import React from 'react';
+import { useMutation } from '@apollo/react-hooks';
 
+import { UPLOAD_PHOTO } from '../../utils/mutations';
 import { useToggle } from '../../hooks'
 
 import Modal from 'react-bootstrap/Modal';
@@ -13,7 +15,35 @@ const EditPhoto = () => {
 	const [ show, toggleShow ] = useToggle(false);
 
 	const handleClose = () => toggleShow();
-	const handleShow = () => toggleShow();
+  const handleShow = () => toggleShow();
+  
+  const [ uploadPhoto ] = useMutation(UPLOAD_PHOTO);
+
+	const handleFileUpload = async (e) => {
+    console.log('photo file received')
+    e.preventDefault();
+    var files = document.getElementById("photoupload").files;
+
+    // console.log('target: ', e.target)
+
+    handleClose();
+
+		const file = files[0];
+
+		try {
+			const mutationResponse = await uploadPhoto({
+				variables : {
+					file
+				}
+			});
+			console.log('mutationResponse', mutationResponse);
+
+			// reload window until cache update works to cause rerender with updated data
+			window.location.reload();
+		} catch (err) {
+			console.error(err);
+		}
+	};
 
 	return (
 		<>
@@ -36,20 +66,18 @@ const EditPhoto = () => {
 					<Modal.Title>edit your profile photo</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<Form className="m-2">
+					<Form className="m-2" onSubmit={handleFileUpload}>
 						<Form.Group>
-							<Form.File className="text-center" id="PhotoUpload" />
+							<Form.File className="text-center" id="photoupload" />
 						</Form.Group>
-					</Form>
-				</Modal.Body>
-				<Modal.Footer>
-					<Button
+            <Button
+            type="submit"
 						variant="primary btn-sm bskr-btn-purple"
-						onClick={handleClose}
 					>
 						save
 					</Button>
-				</Modal.Footer>
+					</Form>
+				</Modal.Body>
 			</Modal>
 		</>
 	);

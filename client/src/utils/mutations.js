@@ -128,3 +128,26 @@ export const UPLOAD_TUNE = gql`
 		}
 	}
 `;
+
+export const UPLOAD_PHOTO = gql`
+	mutation uploadPhoto($file: Upload!) {
+		uploadPhoto(file: $file) {
+			_id
+			username
+			email
+			stageName
+			imgUrl
+			location
+			bio
+			vibes {
+				_id
+				name
+			}
+			songs {
+				_id
+				title
+				songUrl
+			}
+		}
+	}
+`;
