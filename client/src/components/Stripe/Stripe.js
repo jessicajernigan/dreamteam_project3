@@ -27,7 +27,8 @@ export default class TakeMoney extends React.Component {
 	// ...
   onClose = () => {
 
-    alert('donation successful')
+    // https://www.npmjs.com/package/react-stripe-checkout
+    // alert('donation successful')
     //what kind of feedback to render here?
     // return <Success />
   }
