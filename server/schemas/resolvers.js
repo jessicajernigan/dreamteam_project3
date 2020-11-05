@@ -3,6 +3,7 @@ const { Creator, Vibe } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const { awsSignup } = require('../utils/AWS');
+const Song = require('../models/Song') 
 
 const resolvers = {
 	Query    : {
@@ -118,13 +119,18 @@ const resolvers = {
     },
     
 		uploadTune             : async (parent, { file }, context) => {
-			if (context.creator) {
+      console.log('inside uploadTune resolver')
+      console.log('file: ', file)
+      // console.log('context.creator: ', context.creator)
+			// if (context.creator) {
 				// configure file and send to s3 here.  get url location in response and add to db
 				// s3 stuff
 
 				const args = { title: '', url: '' };
 				// instantiate new Song from s3 response data
-				const song = new Song(args);
+        const song = new Song(args);
+        console.log('song: ', song)
+
 				const createTuneResponse = await Creator.findByIdAndUpdate(
 					context.creator._id,
 					{ $push: { songs: song } },
@@ -136,53 +142,37 @@ const resolvers = {
 
 				console.log('createTuneResponse: ', createTuneResponse);
 				return createTuneResponse;
-			}
+			// }
 
-			throw new AuthenticationError('Not logged in CreatorTune');
+			// throw new AuthenticationError('Not logged in uploadTune');
 		}
 	}
 };
 
-updateCreatorTune: async (parent, args, context) => {
-	if (context.creator) {
-		console.log('context.creator: ', context.creator);
-		console.log('args from resolver: ', args);
+// updateCreatorTune: async (parent, args, context) => {
+// 	if (context.creator) {
+// 		console.log('context.creator: ', context.creator);
+// 		console.log('args from resolver: ', args);
 
-		const song = new Song(args);
-		console.log('new song object with args: ', song);
+// 		const song = new Song(args);
+// 		console.log('new song object with args: ', song);
 
-		// put back after testing
-		// return await Creator.findByIdAndUpdate(
-		const createTuneResponse = await Creator.findByIdAndUpdate(
-			context.creator._id,
-			{ $push: { songs: song } },
-			// { safe: true, upsert: true, new: true }
-			{ new: true }
-		)
-			.populate('vibes')
-			.populate('songs');
+// 		// put back after testing
+// 		// return await Creator.findByIdAndUpdate(
+// 		const createTuneResponse = await Creator.findByIdAndUpdate(
+// 			context.creator._id,
+// 			{ $push: { songs: song } },
+// 			// { safe: true, upsert: true, new: true }
+// 			{ new: true }
+// 		)
+// 			.populate('vibes')
+// 			.populate('songs');
 
-		console.log('createTuneResponse: ', createTuneResponse);
-		return createTuneResponse;
+// 		console.log('createTuneResponse: ', createTuneResponse);
+// 		return createTuneResponse;
+// 	}
 
-		// const newSong = new Song(args);
-		// console.log('new song object with args: ', newSong)
+// 	throw new AuthenticationError('Not logged in CreatorTune');
+// }
 
-		// let newSongs = await Creator.findById(
-		//   context.creator._id,
-		//   { new: true }
-		// ).populate('songs')
-		// console.log('newSongs: ', newSongs)
-
-		// newSongs.songs.push(newSong)
-		// console.log('newSongs: ', newSongs)
-
-		// return await Creator.findByIdAndUpdate(	context.creator._id,
-		//   	{ songs: newSongs },
-		//   	{ new: true }
-		//   ).populate('vibes').populate('songs')
-	}
-
-	throw new AuthenticationError('Not logged in CreatorTune');
-},
-	(module.exports = resolvers);
+module.exports = resolvers;

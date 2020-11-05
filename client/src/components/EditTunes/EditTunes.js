@@ -20,7 +20,14 @@ const EditTunes = () => {
 	const [ uploadTune ] = useMutation(UPLOAD_TUNE);
 
 	const handleFileUpload = async (e) => {
-		const [ file ] = e.target.files;
+    e.preventDefault();
+    var files = document.getElementById("tunesupload").files;
+
+    console.log('target: ', e.target)
+
+    handleClose();
+
+		const file = files[0];
 
 		try {
 			const mutationResponse = await uploadTune({
@@ -60,12 +67,11 @@ const EditTunes = () => {
 				<Modal.Body>
 					<Form className="m-2" onSubmit={handleFileUpload}>
 						<Form.Group>
-							<Form.File className="text-center" id="TunesUpload" />
+							<Form.File className="text-center" id="tunesupload" />
 						</Form.Group>
 						<Button
 							type="submit"
 							variant="primary btn-sm bskr-btn-purple"
-							onClick={handleClose}
 						>
 							save
 						</Button>

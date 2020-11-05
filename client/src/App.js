@@ -17,21 +17,17 @@ import About from './pages/About/About';
 import store from './utils/store';
 // console.log("Redux store in App.js: ", store.getState());
 
+const token = localStorage.getItem('id_token');
 
-const cache = new InMemoryCache();
-const link = createUploadLink({ uri: '/graphql' });
 const client = new ApolloClient({
-	request : (operation) => {
-		const token = localStorage.getItem('id_token');
-		operation.setContext({
-			headers : {
-				authorization : token ? `Bearer ${token}` : ''
-			}
-		});
-	},
-  cache,
-  link
-});
+  link: createUploadLink({
+    uri: 'http://localhost:3001/graphql',
+    headers: {
+      authorization : token ? `Bearer ${token}` : ''
+    }
+  }),
+  cache: new InMemoryCache()
+})
 
 function App() {
 	return (
