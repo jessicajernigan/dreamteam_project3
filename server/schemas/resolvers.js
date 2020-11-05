@@ -212,7 +212,8 @@ const resolvers = {
 
 			throw new AuthenticationError('Not logged in uploadTune');
 		}
-	}
+  },
+  uploadPhoto(){}
 };
 
 // updateCreatorTune: async (parent, args, context) => {
