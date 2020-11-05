@@ -25,6 +25,15 @@ export default class TakeMoney extends React.Component {
 	};
 
 	// ...
+  onClose = () => {
+
+    alert('donation successful')
+    //what kind of feedback to render here?
+    // return <Success />
+  }
+
+
+
 
 	render() {
 		return (
@@ -34,8 +43,12 @@ export default class TakeMoney extends React.Component {
 				token={handleToken}
 				stripeKey="pk_test_51HhIATKzbiTfOHlAPGr5hBe93NaRX36cCUlefbd2B372BBCtZZZ5xIpc9SHEkt4PuZCJZP08LZkGbyq2S3s0owR000bga50gZJ"
 				label="Donate with Stripe"
-				amount={199}
+        amount={199}
+        closed={this.onClose}
 			/>
+      // token={this.onToken} // submit callback
+      // opened={this.onOpened} // called when the checkout popin is opened (no IE6/7)
+      // closed={this.onClosed} // called when the checkout popin is closed (no IE6/7)
 		);
 	}
 }
