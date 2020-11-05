@@ -23,7 +23,7 @@ const EditTunes = () => {
     e.preventDefault();
     var files = document.getElementById("tunesupload").files;
 
-    console.log('target: ', e.target)
+    // console.log('target: ', e.target)
 
     handleClose();
 

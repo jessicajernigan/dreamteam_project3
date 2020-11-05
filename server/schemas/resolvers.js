@@ -3,7 +3,12 @@ const { Creator, Vibe } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const { awsSignup } = require('../utils/AWS');
-const Song = require('../models/Song') 
+const Song = require('../models/Song');
+
+// TEST
+const s3 = require('../utils/AWS').returnS3Instance();
+// const AWS = require('aws-sdk')
+// const s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
 const resolvers = {
 	Query    : {
@@ -116,20 +121,54 @@ const resolvers = {
 			}
 
 			throw new AuthenticationError('Not logged in CreatorTune');
-    },
-    
-		uploadTune             : async (parent, { file }, context) => {
-      console.log('inside uploadTune resolver')
-      console.log('file: ', file)
-      // console.log('context.creator: ', context.creator)
-			// if (context.creator) {
-				// configure file and send to s3 here.  get url location in response and add to db
-				// s3 stuff
+		},
 
-				const args = { title: 'Song Test', songUrl: 'http://test.com' };
+		// uploadTune             : async (parent, { file }, context) => {
+		uploadTune             : async (parent, args, context) => {
+			console.log('inside uploadTune resolver');
+			// console.log('file: ', file)
+			console.log('context.creator: ', context.creator)
+			if (context.creator) {
+				// configure file and send to s3 here.  get url location in response and add to db
+				// hardcode test
+				// const args = { title: 'Song Test', songUrl: 'http://test.com' };
+
+				// s3 stuff
+				const file = await args.file;
+				const { createReadStream, filename, mimetype } = file;
+				const fileStream = createReadStream();
+
+				const username = context.creator.username;
+				const CreatrTuneKey = encodeURIComponent(username) + '/';
+				const tuneKey = CreatrTuneKey + filename;
+
+				const uploadParams = {
+					Bucket: 'buskr-data',
+					// Key: filename,
+					Key: tuneKey,
+					Body: fileStream
+				};
+				const result = await s3.upload(uploadParams).promise();
+				// console.log('s3 result: ', result);
+
+				// result of console.log...
+				// 0] s3 result:  {
+				//   [0]   VersionId: 'civLpmWJGyjh8LUH_L6ce6nl5zU2BMqR',
+				//   [0]   Location: 'https://buskr-data.s3.us-east-2.amazonaws.com/Group_Doueh_-_06.mp3',
+				//   [0]   Bucket: 'buskr-data',
+				//   [0]   Key: 'Group_Doueh_-_06.mp3',
+				//   [0]   ETag: '"f877359777159cf7a4aab4f6a0251bb1-4"'
+				//   [0] }
+				// return file;
+				const title = result.Key;
+				const songUrl = result.Location;
+				const tuneArgs = { title, songUrl };
+
+				// **********************************************
+
 				// instantiate new Song from s3 response data
-        const song = new Song(args);
-        console.log('song: ', song)
+				const song = new Song(tuneArgs);
+				console.log('song: ', song);
 
 				const createTuneResponse = await Creator.findByIdAndUpdate(
 					context.creator._id,
@@ -142,9 +181,9 @@ const resolvers = {
 
 				console.log('createTuneResponse: ', createTuneResponse);
 				return createTuneResponse;
-			// }
+			}
 
-			// throw new AuthenticationError('Not logged in uploadTune');
+			throw new AuthenticationError('Not logged in uploadTune');
 		}
 	}
 };

@@ -12,12 +12,17 @@ const s3 = new AWS.S3({
 	apiVersion: '2006-03-01',
 	params: { Bucket: bucketName }
 });
+
 // this is where we create a class with methods to perform crud operations with AWS database
 
 // only have worked with the awsSignup so far, so discount the other functions
 
 
 module.exports = { 
+  returnS3Instance() {
+    // console.log('returning s3 instance from AWS', s3)
+    return s3;
+  }, 
 	awsSignup(creatrDirKey) {
 		s3.headObject({ Key: creatrDirKey }, function (err, data) {
 			console.log('inside signUp headObject');
