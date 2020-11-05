@@ -3,56 +3,56 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
+
+const Song = require('./Song');
+
 const creatorSchema = new Schema({
-	username  : {
-		type     : String,
-		required : true,
-		trim     : true
-	},
-	email     : {
-		type     : String,
-		required : true,
-		unique   : true,
-		match    : [ /.+@.+\..+/, 'Must match an email address!' ]
-	},
-	password  : {
-		type      : String,
-		required  : true,
-		minlength : 5
-	},
-	stageName : {
-		type : String,
-		// required: true,
-		trim : true
-	},
-	imgUrl    : {
-		type : String,
-		// required: true,
-		trim : true
-	},
-	location  : {
-		type : String,
-		// required: true,
-		trim : true
-	},
-	bio       : {
-		type : String,
-		// required: true,
-		trim : true
-	},
-	vibes     : [
-		{
-			type : Schema.Types.ObjectId,
-			ref  : 'Vibe'
-		}
-	],
-	songs     : [
-		{
-			type : Schema.Types.ObjectId,
-			ref  : 'Song'
-		}
-	]
+  username: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    match: [/.+@.+\..+/, 'Must match an email address!']
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 5
+  },
+  stageName: {
+    type: String,
+    // required: true,
+    trim: true
+  },
+  imgUrl: {
+    type: String,
+    // required: true,
+    trim: true
+  },
+  location: {
+    type: String,
+    // required: true,
+    trim: true
+  },
+  bio: {
+    type: String,
+    // required: true,
+    trim: true
+  },
+  vibes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Vibe'
+    }
+  ],
+  songs: [Song.schema]
 });
+
+
 
 // set up pre-save middleware to create password
 creatorSchema.pre('save', async function(next) {

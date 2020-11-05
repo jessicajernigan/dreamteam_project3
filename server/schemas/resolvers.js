@@ -1,7 +1,13 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Creator, Vibe } = require('../models');
+const { Creator, Vibe, Song } = require('../models');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+// const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const { awsSignup } = require('../utils/AWS');
+const s3 = require('../utils/AWS').returnS3Instance();
+
+const bucketName = process.env.BUCKET_NAME;
+
+
 
 const resolvers = {
 	Query    : {
@@ -27,10 +33,18 @@ const resolvers = {
 		}
 	},
 	Mutation : {
+		// addCreator             : async (parent, args) => {
+		// 	const creator = await Creator.create(args);
+		// 	const token = signToken(creator);
+
+		// 	return { token, creator };
+		// },
+
 		addCreator             : async (parent, args) => {
 			const creator = await Creator.create(args);
 			const token = signToken(creator);
-
+			const creatrDirKey = args.username + '/';
+			awsSignup(creatrDirKey);
 			return { token, creator };
 		},
 
@@ -104,6 +118,98 @@ const resolvers = {
 					.populate('vibes')
 					.populate('songs');
 			}
+
+			throw new AuthenticationError('Not logged in CreatorTune');
+		},
+
+		uploadTune             : async (parent, args, context) => {
+			console.log('inside uploadTune resolver');
+			console.log('context.creator: ', context.creator);
+			if (context.creator) {
+				// configure file and send to s3 here.  get url location in response and add to db
+				// hardcode test
+				// const args = { title: 'Song Test', songUrl: 'http://test.com' };
+
+				// s3 stuff
+				const file = await args.file;
+				const { createReadStream, filename, mimetype } = file;
+				const fileStream = createReadStream();
+
+				const username = context.creator.username;
+				const CreatrTuneKey = encodeURIComponent(username) + '/';
+				const tuneKey = CreatrTuneKey + filename;
+
+				const uploadParams = {
+					Bucket : bucketName,
+					// Key: filename,
+					Key    : tuneKey,
+					Body   : fileStream
+				};
+				const result = await s3.upload(uploadParams).promise();
+				// console.log('s3 result: ', result);
+
+				const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/';
+				const newTuneUrl = `${cloudfrontUrlPrefix}${result.Key}`;
+
+				const title = result.Key;
+				const songUrl = newTuneUrl;
+        const tuneArgs = { title, songUrl };
+        
+				// instantiate new Song from s3 response data
+				const song = new Song(tuneArgs);
+				console.log('song: ', song);
+
+				const createTuneResponse = await Creator.findByIdAndUpdate(
+					context.creator._id,
+					{ $push: { songs: song } },
+					{ new: true }
+				)
+					.populate('vibes')
+					.populate('songs');
+
+				console.log('createTuneResponse: ', createTuneResponse);
+				return createTuneResponse;
+			}
+
+			throw new AuthenticationError('Not logged in uploadTune');
+    },
+    
+		uploadPhoto            : async (parent, args, context) => {
+			console.log('inside uploadPhoto resolver');
+			console.log('context.creator: ', context.creator);
+			if (context.creator) {
+				// s3 stuff
+				const file = await args.file;
+				const { createReadStream, filename, mimetype } = file;
+				const fileStream = createReadStream();
+
+				const username = context.creator.username;
+				const CreatrPhotoKey = encodeURIComponent(username) + '/';
+				const photoKey = CreatrPhotoKey + filename;
+
+				const uploadParams = {
+					Bucket : bucketName,
+					Key    : photoKey,
+					Body   : fileStream
+				};
+				const result = await s3.upload(uploadParams).promise();
+
+				const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/';
+				const newPhotoUrl = `${cloudfrontUrlPrefix}${result.Key}`;
+
+				const createPhotoResponse = await Creator.findByIdAndUpdate(
+					context.creator._id,
+					{ imgUrl: newPhotoUrl },
+					{ new: true }
+				)
+					.populate('vibes')
+					.populate('songs');
+
+				console.log('createPhotoResponse: ', createPhotoResponse);
+				return createPhotoResponse;
+			}
+
+			throw new AuthenticationError('Not logged in uploadPhoto');
 		}
 	}
 };
