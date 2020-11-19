@@ -36,10 +36,7 @@ const EditTunes = () => {
 					file
 				}
 			});
-			console.log('mutationResponse', mutationResponse);
 
-			// reload window until cache update works to cause rerender with updated data
-			// window.location.reload();
 		} catch (err) {
 			console.error(err);
 		}
