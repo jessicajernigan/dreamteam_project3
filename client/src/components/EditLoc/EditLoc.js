@@ -34,7 +34,7 @@ const EditLoc = ({ curLoc }) => {
 			});
 			console.log('mutationResponse', mutationResponse);
 
-			window.location.reload();
+			// window.location.reload();
 		} catch (err) {
 			console.error(err);
 		}
@@ -73,7 +73,7 @@ const EditLoc = ({ curLoc }) => {
 							name="loc"
 							aria-label="With input"
 							onChange={setLocation}
-							value={location}
+							value={location || ''}
 							placeholder={curLoc}
 						/>
 						<Button

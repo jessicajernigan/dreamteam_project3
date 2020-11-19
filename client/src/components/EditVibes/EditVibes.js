@@ -64,7 +64,7 @@ const EditVibes = ({ curVibes }) => {
 			});
       console.log('mutationResponse', mutationResponse);
 
-			window.location.reload()
+			// window.location.reload()
 		} catch (err) {
 			console.error(err);
 		}    

@@ -40,11 +40,33 @@ const CreatrDash = () => {
 
 	const { loading, data } = useQuery(QUERY_CREATORS);
 
-	useEffect(
+	// useEffect(
+	// 	() => {
+	// 		if (creators.length) {
+	// 			setCurCreatr(creators.find((creator) => creator._id === id));
+	// 		} else if (data) {
+	// 			dispatch(updateCreators(data.creators));
+
+	// 			data.creators.forEach((creator) => {
+	// 				idbPromise('creators', 'put', creator);
+	// 			});
+	// 		} else if (!loading) {
+	// 			idbPromise('creators', 'get').then((indexedCreators) => {
+	// 				dispatch(updateCreators(indexedCreators));
+	// 			});
+	// 		}
+	// 	},
+	// 	[ creators, data, loading, dispatch, id ]
+  // );
+
+    // *********************************************************************
+  // NOTE...re-rendering works in CreatrDash using basic mutation in forms (without having to update the cache!).  the thing that was blocking it was that in CreatrDash, the Redux store was the first value being checked in the useEffect, so the Apollo query was not being made if there was something already in the store.  I removed the if block that checks the redux creator.length and refactored to use the results of the apollo query to set the current creator.  need to go back over module and see why they were using the redux check in the first place to determine if this is a stable solution. 
+  // *********************************************************************
+  
+  useEffect(
 		() => {
-			if (creators.length) {
-				setCurCreatr(creators.find((creator) => creator._id === id));
-			} else if (data) {
+		if (data) {
+      setCurCreatr(data.creators.find((creator) => creator._id === id));
 				dispatch(updateCreators(data.creators));
 
 				data.creators.forEach((creator) => {
@@ -116,7 +138,7 @@ const CreatrDash = () => {
 								) : (
 									<p className="mb-3">{bioDefault}</p>
 								)}
-								<EditBio curBio={curCreatr.bio} />
+								<EditBio curId={curCreatr._id} curBio={curCreatr.bio} />
 							</div>
 
 						</Col>

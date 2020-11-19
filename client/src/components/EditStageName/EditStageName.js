@@ -33,7 +33,7 @@ const EditStageName = ({ curStageName }) => {
 			});
 			console.log('mutationResponse', mutationResponse);
 
-			window.location.reload();
+			// window.location.reload();
 		} catch (err) {
 			console.error(err);
 		}
@@ -69,7 +69,7 @@ const EditStageName = ({ curStageName }) => {
 							name="loc"
 							aria-label="With input"
 							onChange={setStageName}
-							value={stageName}
+							value={stageName || ''}
 							placeholder={curStageName}
 						/>
 						<Button
