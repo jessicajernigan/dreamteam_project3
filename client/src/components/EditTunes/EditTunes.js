@@ -41,7 +41,17 @@ const EditTunes = () => {
 	return (
 		<React.Fragment>
 			{loading ? (
-				<Spinner animation='border' role='status'>
+				<Spinner
+					animation='border'
+					role='status'
+					style={{
+						width        : '75px',
+						height       : '75px',
+						margin       : 'auto',
+						marginBottom : '2rem',
+						display      : 'block'
+					}}
+				>
 					<span className='sr-only'>Loading...</span>
 				</Spinner>
 			) : null}

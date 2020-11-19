@@ -13,8 +13,6 @@ import Spinner from 'react-bootstrap/Spinner'
 
 import './CreatrGrid.css'
 
-// SEE COMMENT IN EditBio.js CONCERNING ALL THE MODAL FORM UPDATE COMPONENTS RENDERED AS CHILDREN OF THIS COMPONENT
-
 const CreatrGrid = () => {
 	// query db for creators
 	const { loading, data } = useQuery(QUERY_CREATORS)
@@ -73,7 +71,11 @@ const CreatrGrid = () => {
 	return (
 		<Col lg={12} className='CreatrGrid'>
 			{loading ? (
-				<Spinner animation='border' role='status'>
+				<Spinner
+					animation='border'
+					role='status'
+					style={{ width: '100px', height: '100px', margin: 'auto', display: 'block' }}
+				>
 					<span className='sr-only'>Loading...</span>
 				</Spinner>
 			) : (
