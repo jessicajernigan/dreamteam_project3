@@ -27,14 +27,11 @@ const EditLoc = ({ curLoc }) => {
 
 		// update database with new location
 		try {
-			const mutationResponse = await updateCreatorLocation({
+			await updateCreatorLocation({
 				variables : {
 					location
 				}
 			});
-			console.log('mutationResponse', mutationResponse);
-
-			// window.location.reload();
 		} catch (err) {
 			console.error(err);
 		}

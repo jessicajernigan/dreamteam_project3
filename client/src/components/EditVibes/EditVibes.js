@@ -10,7 +10,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import './EditVibes.css';
-import spinner from '../../assets/loading-spinner.gif';
 
 // destructure vibe objects of current creator from props
 const EditVibes = ({ curVibes }) => {
@@ -119,7 +118,6 @@ const EditVibes = ({ curVibes }) => {
 					</Modal>
 				</>
 			) : null}
-			{/* {loading ? <img src={spinner} alt="loading" /> : null} */}
 		</>
 	);
 };

@@ -26,14 +26,11 @@ const EditStageName = ({ curStageName }) => {
 		e.preventDefault();
 
 		try {
-			const mutationResponse = await updateCreatorStageName({
+			await updateCreatorStageName({
 				variables : {
 					stageName
 				}
 			});
-			console.log('mutationResponse', mutationResponse);
-
-			// window.location.reload();
 		} catch (err) {
 			console.error(err);
 		}
