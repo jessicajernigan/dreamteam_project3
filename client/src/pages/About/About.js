@@ -18,7 +18,7 @@ const About = () => {
 					<p>
 						Buskr provides a platform for musicians to showcase their songs to
 						music fans who are interested in breaking free from the global
-						trendscape in order to discover local acts performing nearby.
+						trendscape in order to discover local acts performing nearby. 
 						<br />
 						<br />
 						Have a particular musical style or genre in mind? Filter creators
