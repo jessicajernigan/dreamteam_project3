@@ -33,14 +33,14 @@ const resolvers = {
 		}
 	},
 	Mutation : {
-		// addCreator             : async (parent, args) => {
-		// 	const creator = await Creator.create(args);
-		// 	const token = signToken(creator);
-
-		// 	return { token, creator };
-		// },
-
 		addCreator             : async (parent, args) => {
+      const { email } = args
+      const userExists = await Creator.findOne({ email })
+      if (userExists) {
+        throw new AuthenticationError('User already exists');
+      }
+
+
 			const creator = await Creator.create(args);
 			const token = signToken(creator);
 			const creatrDirKey = args.username + '/';

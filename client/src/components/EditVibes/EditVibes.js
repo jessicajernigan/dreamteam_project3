@@ -98,7 +98,8 @@ const EditVibes = ({ curVibes }) => {
 									{allVibes.vibes?.map((vibe) => (
 									<div key={vibe._id} className="mb-3">
 										<Form.Check
-											// type="checkbox"
+                      // type="checkbox"
+                      disabled={vibe.name === 'All'}
 											name="updatedVibes"
 											label={vibe.name}
 											value={vibe._id}

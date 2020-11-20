@@ -11,6 +11,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import Spinner from 'react-bootstrap/Spinner'
+import Alert from 'react-bootstrap/Alert'
 
 import Stripe from '../../components/Stripe/Stripe'
 
@@ -34,6 +35,8 @@ const CreatrProf = () => {
 
 	// initiate component level state to keep track of current creator
 	const [ curCreatr, setCurCreatr ] = useState({})
+
+	const [ showAlert, setShowAlert ] = useState(false)
 
 	// make db query to get all creators, in case page is refreshed or user has not first visited landing page to initiate redux store from db
 	const { loading, data } = useQuery(QUERY_CREATORS)
@@ -140,13 +143,24 @@ const CreatrProf = () => {
 										<p className='donate-text text-dark mb-1'>
 											Please consider donating to the buskr while enjoying their tunes!
 										</p>
-										<Stripe />
+										<Stripe setShowAlert={setShowAlert} />
+										{showAlert ? (
+											<Alert
+												className='w-100'
+												variant='success'
+												dismissible
+												onClose={() => setShowAlert(false)}
+											>
+												Cheers friend, your donation was well-received!
+											</Alert>
+										) : null}
+
 										<ul className='w-100'>
 											{curCreatr.songs &&
 												curCreatr.songs.map((song) => (
 													<li
 														key={song._id}
-														className='bskr-bg-search w-100 m-2 p-2 rounded text-dark'
+														className='bskr-bg-search w-100 my-2 py-2 rounded text-dark'
 													>
 														<BiPlay
 															className='fs-3'
