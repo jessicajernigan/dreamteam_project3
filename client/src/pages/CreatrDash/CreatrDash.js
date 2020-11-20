@@ -66,7 +66,7 @@ const CreatrDash = () => {
 	}
 
 	return (
-		<React.Fragment>
+		<>
 			{loading ? (
 				<Spinner
 					animation='border'
@@ -82,7 +82,7 @@ const CreatrDash = () => {
 					<span className='sr-only'>Loading...</span>
 				</Spinner>
 			) : (
-				<React.Fragment>
+				<>
 					{curCreatr ? (
 						<div className='CreatrDash vh-100'>
 							<h1 className='w-100 my-5 text-center'>{curCreatr.stageName}</h1>
@@ -94,7 +94,7 @@ const CreatrDash = () => {
 									<div className='w-100 bskr-bg-secondary pt-2 mb-2 rounded'>
 										<Card className='w-75 mx-auto bskr-bg-secondary'>
 											{curCreatr.imgUrl ? (
-												<React.Fragment>
+												<>
 													<Card.Img
 														variant='top'
 														className='w-75 mx-auto rounded'
@@ -103,7 +103,7 @@ const CreatrDash = () => {
 													<Card.Body className='text-center'>
 														<EditPhoto />
 													</Card.Body>
-												</React.Fragment>
+												</>
 											) : (
 												<Card.Body className='text-center'>
 													<p className='text-center'>{imgDefault}</p>
@@ -194,9 +194,9 @@ const CreatrDash = () => {
 							</Row>
 						</div>
 					) : null}
-				</React.Fragment>
+				</>
 			)}
-		</React.Fragment>
+		</>
 	)
 }
 

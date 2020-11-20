@@ -39,7 +39,7 @@ const EditTunes = () => {
 	}
 
 	return (
-		<React.Fragment>
+		<>
 			{loading ? (
 				<Spinner
 					animation='border'
@@ -84,7 +84,7 @@ const EditTunes = () => {
 					</Form>
 				</Modal.Body>
 			</Modal>
-		</React.Fragment>
+		</>
 	)
 }
 

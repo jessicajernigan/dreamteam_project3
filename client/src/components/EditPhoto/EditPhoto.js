@@ -41,7 +41,7 @@ const EditPhoto = () => {
 	}
 
 	return (
-		<React.Fragment>
+		<>
 			{loading ? (
 				<Spinner
 					animation='border'
@@ -86,7 +86,7 @@ const EditPhoto = () => {
 					</Form>
 				</Modal.Body>
 			</Modal>
-		</React.Fragment>
+		</>
 	)
 }
 

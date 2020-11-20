@@ -47,7 +47,7 @@ const Login = () => {
 	}
 
 	return (
-		<React.Fragment>
+		<>
 			<main className='Login vh-100 d-flex flex-column align-items-center mt-5 pt-5'>
 				<h3 className='mb-5'>Login</h3>
 				<Form className='Login-form' onSubmit={handleFormSubmit}>
@@ -90,7 +90,7 @@ const Login = () => {
 					) : null}
 				</Form>
 			</main>
-		</React.Fragment>
+		</>
 	)
 }
 

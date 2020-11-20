@@ -73,7 +73,7 @@ const CreatrProf = () => {
 	}
 
 	return (
-		<React.Fragment>
+		<>
 			{loading ? (
 				<Spinner
 					animation='border'
@@ -89,7 +89,7 @@ const CreatrProf = () => {
 					<span className='sr-only'>Loading...</span>
 				</Spinner>
 			) : (
-				<React.Fragment>
+				<>
 					{curCreatr ? (
 						<div className='CreatrProf vh-100'>
 							<h1 className='w-100 my-5 text-center'>{curCreatr.stageName}</h1>
@@ -180,9 +180,9 @@ const CreatrProf = () => {
 							</Row>
 						</div>
 					) : null}
-				</React.Fragment>
+				</>
 			)}
-		</React.Fragment>
+		</>
 	)
 }
 

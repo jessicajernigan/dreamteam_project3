@@ -1,69 +1,66 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { Creator, Vibe, Song } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require('apollo-server-express')
+const { Creator, Vibe, Song } = require('../models')
+const { signToken } = require('../utils/auth')
 // const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
-const { awsSignup } = require('../utils/AWS');
-const s3 = require('../utils/AWS').returnS3Instance();
+const { awsSignup } = require('../utils/AWS')
+const s3 = require('../utils/AWS').returnS3Instance()
 
-const bucketName = process.env.BUCKET_NAME;
-
-
+const bucketName = process.env.BUCKET_NAME
 
 const resolvers = {
 	Query    : {
 		vibes    : async () => {
-			return await Vibe.find();
+			return await Vibe.find()
 		},
 
 		// optional parameters for search, otherwise return all
 		creators : async (parent, { vibes, username }) => {
-			const params = {};
+			const params = {}
 
 			if (vibes) {
-				params.vibes = vibes;
+				params.vibes = vibes
 			}
 
 			if (username) {
 				params.username = {
 					$regex : username
-				};
+				}
 			}
 
-			return await Creator.find(params).populate('vibes').populate('songs');
+			return await Creator.find(params).populate('vibes').populate('songs')
 		}
 	},
 	Mutation : {
 		addCreator             : async (parent, args) => {
-      const { email } = args
-      const userExists = await Creator.findOne({ email })
-      if (userExists) {
-        throw new AuthenticationError('User already exists');
-      }
+			const { email } = args
+			const userExists = await Creator.findOne({ email })
+			if (userExists) {
+				throw new AuthenticationError('User already exists')
+			}
 
-
-			const creator = await Creator.create(args);
-			const token = signToken(creator);
-			const creatrDirKey = args.username + '/';
-			awsSignup(creatrDirKey);
-			return { token, creator };
+			const creator = await Creator.create(args)
+			const token = signToken(creator)
+			const creatrDirKey = args.username + '/'
+			awsSignup(creatrDirKey)
+			return { token, creator }
 		},
 
 		login                  : async (parent, { email, password }) => {
-			const creator = await Creator.findOne({ email });
+			const creator = await Creator.findOne({ email })
 
 			if (!creator) {
-				throw new AuthenticationError('Can not find creator');
+				throw new AuthenticationError('Can not find creator')
 			}
 
-			const correctPw = await creator.isCorrectPassword(password);
+			const correctPw = await creator.isCorrectPassword(password)
 
 			if (!correctPw) {
-				throw new AuthenticationError('Sorry, incorrect credentials');
+				throw new AuthenticationError('Sorry, incorrect credentials')
 			}
 
-			const token = signToken(creator);
+			const token = signToken(creator)
 
-			return { token, creator };
+			return { token, creator }
 		},
 
 		updateCreatorBio       : async (parent, { bio }, context) => {
@@ -74,10 +71,10 @@ const resolvers = {
 					{ new: true }
 				)
 					.populate('vibes')
-					.populate('songs');
+					.populate('songs')
 			}
 
-			throw new AuthenticationError('Not logged in');
+			throw new AuthenticationError('Not logged in')
 		},
 
 		updateCreatorStageName : async (parent, { stageName }, context) => {
@@ -88,10 +85,10 @@ const resolvers = {
 					{ new: true }
 				)
 					.populate('vibes')
-					.populate('songs');
+					.populate('songs')
 			}
 
-			throw new AuthenticationError('Not logged in');
+			throw new AuthenticationError('Not logged in')
 		},
 
 		updateCreatorLocation  : async (parent, { location }, context) => {
@@ -102,10 +99,10 @@ const resolvers = {
 					{ new: true }
 				)
 					.populate('vibes')
-					.populate('songs');
+					.populate('songs')
 			}
 
-			throw new AuthenticationError('Not logged in');
+			throw new AuthenticationError('Not logged in')
 		},
 
 		updateCreatorVibes     : async (parent, { vibes }, context) => {
@@ -116,48 +113,46 @@ const resolvers = {
 					{ new: true }
 				)
 					.populate('vibes')
-					.populate('songs');
+					.populate('songs')
 			}
 
-			throw new AuthenticationError('Not logged in CreatorTune');
+			throw new AuthenticationError('Not logged in CreatorTune')
 		},
 
 		uploadTune             : async (parent, args, context) => {
-			console.log('inside uploadTune resolver');
-			console.log('context.creator: ', context.creator);
 			if (context.creator) {
 				// configure file and send to s3 here.  get url location in response and add to db
 				// hardcode test
 				// const args = { title: 'Song Test', songUrl: 'http://test.com' };
 
 				// s3 stuff
-				const file = await args.file;
-				const { createReadStream, filename, mimetype } = file;
-				const fileStream = createReadStream();
+				const file = await args.file
+				const { createReadStream, filename, mimetype } = file
+				const fileStream = createReadStream()
 
-				const username = context.creator.username;
-				const CreatrTuneKey = encodeURIComponent(username) + '/';
-				const tuneKey = CreatrTuneKey + filename;
+				const username = context.creator.username
+				const CreatrTuneKey = encodeURIComponent(username) + '/'
+				const tuneKey = CreatrTuneKey + filename
 
 				const uploadParams = {
 					Bucket : bucketName,
 					// Key: filename,
 					Key    : tuneKey,
 					Body   : fileStream
-				};
-				const result = await s3.upload(uploadParams).promise();
+				}
+				const result = await s3.upload(uploadParams).promise()
 				// console.log('s3 result: ', result);
 
-				const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/';
-				const newTuneUrl = `${cloudfrontUrlPrefix}${result.Key}`;
+				const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/'
+				const newTuneUrl = `${cloudfrontUrlPrefix}${result.Key}`
 
-				const title = result.Key;
-				const songUrl = newTuneUrl;
-        const tuneArgs = { title, songUrl };
-        
+				const title = result.Key
+				const songUrl = newTuneUrl
+				const tuneArgs = { title, songUrl }
+
 				// instantiate new Song from s3 response data
-				const song = new Song(tuneArgs);
-				console.log('song: ', song);
+				const song = new Song(tuneArgs)
+				console.log('song: ', song)
 
 				const createTuneResponse = await Creator.findByIdAndUpdate(
 					context.creator._id,
@@ -165,37 +160,35 @@ const resolvers = {
 					{ new: true }
 				)
 					.populate('vibes')
-					.populate('songs');
+					.populate('songs')
 
-				console.log('createTuneResponse: ', createTuneResponse);
-				return createTuneResponse;
+				console.log('createTuneResponse: ', createTuneResponse)
+				return createTuneResponse
 			}
 
-			throw new AuthenticationError('Not logged in uploadTune');
-    },
-    
+			throw new AuthenticationError('Not logged in uploadTune')
+		},
+
 		uploadPhoto            : async (parent, args, context) => {
-			console.log('inside uploadPhoto resolver');
-			console.log('context.creator: ', context.creator);
 			if (context.creator) {
 				// s3 stuff
-				const file = await args.file;
-				const { createReadStream, filename, mimetype } = file;
-				const fileStream = createReadStream();
+				const file = await args.file
+				const { createReadStream, filename, mimetype } = file
+				const fileStream = createReadStream()
 
-				const username = context.creator.username;
-				const CreatrPhotoKey = encodeURIComponent(username) + '/';
-				const photoKey = CreatrPhotoKey + filename;
+				const username = context.creator.username
+				const CreatrPhotoKey = encodeURIComponent(username) + '/'
+				const photoKey = CreatrPhotoKey + filename
 
 				const uploadParams = {
 					Bucket : bucketName,
 					Key    : photoKey,
 					Body   : fileStream
-				};
-				const result = await s3.upload(uploadParams).promise();
+				}
+				const result = await s3.upload(uploadParams).promise()
 
-				const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/';
-				const newPhotoUrl = `${cloudfrontUrlPrefix}${result.Key}`;
+				const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/'
+				const newPhotoUrl = `${cloudfrontUrlPrefix}${result.Key}`
 
 				const createPhotoResponse = await Creator.findByIdAndUpdate(
 					context.creator._id,
@@ -203,15 +196,15 @@ const resolvers = {
 					{ new: true }
 				)
 					.populate('vibes')
-					.populate('songs');
+					.populate('songs')
 
-				console.log('createPhotoResponse: ', createPhotoResponse);
-				return createPhotoResponse;
+				console.log('createPhotoResponse: ', createPhotoResponse)
+				return createPhotoResponse
 			}
 
-			throw new AuthenticationError('Not logged in uploadPhoto');
+			throw new AuthenticationError('Not logged in uploadPhoto')
 		}
 	}
-};
+}
 
-module.exports = resolvers;
+module.exports = resolvers

@@ -37,14 +37,14 @@ const VibeMenu = () => {
 	)
 
 	return (
-		<React.Fragment>
+		<>
 			{loading ? null : (
 				<div className='VibeMenu m-2'>
 					<h5 className='text-center'>Choose your vibe</h5>
 					{vibes.map((vibe) => <VibeBtn key={vibe._id} vibe={vibe} />)}
 				</div>
 			)}
-		</React.Fragment>
+		</>
 	)
 }
 

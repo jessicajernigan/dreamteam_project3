@@ -48,7 +48,7 @@ const Signup = () => {
 	}
 
 	return (
-		<React.Fragment>
+		<>
 			<main className='Signup vh-100 d-flex flex-column align-items-center mt-5 pt-5'>
 				<h3 className='mb-5'>Signup</h3>
 				<Form className='signup-form d-flex flex-column' onSubmit={handleFormSubmit}>
@@ -98,7 +98,7 @@ const Signup = () => {
 					</div>
 				) : null}
 			</main>
-		</React.Fragment>
+		</>
 	)
 }
 
