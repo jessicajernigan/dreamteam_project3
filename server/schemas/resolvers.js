@@ -198,7 +198,6 @@ const resolvers = {
 					.populate('vibes')
 					.populate('songs')
 
-				console.log('createPhotoResponse: ', createPhotoResponse)
 				return createPhotoResponse
 			}
 
