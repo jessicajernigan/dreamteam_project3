@@ -16,18 +16,17 @@ const Login = () => {
 
 	const handleFormSubmit = async (e) => {
 		e.preventDefault()
-			try {
-				const mutationResponse = await login({
-          
-          variables: { email: formState.email, password: formState.password }
-				})
-				const token = mutationResponse.data.login.token
-				const creatorId = mutationResponse.data.login.creator._id
-				// store creator id in LS also so we have it available as param and filter for dashboard
-				Auth.login(creatorId, token)
-			} catch (e) {
-				console.log(e)
-			}
+		try {
+			const mutationResponse = await login({
+				variables : { email: formState.email, password: formState.password }
+			})
+			const token = mutationResponse.data.login.token
+			const creatorId = mutationResponse.data.login.creator._id
+			// store creator id in LS also so we have it available as param and filter for dashboard
+			Auth.login(creatorId, token)
+		} catch (e) {
+			console.log(e)
+		}
 	}
 
 	const handleChange = (event) => {
@@ -39,13 +38,19 @@ const Login = () => {
 	}
 
 	return (
-		<>
+		<React.Fragment>
 			<main className='Login vh-100 d-flex flex-column align-items-center mt-5 pt-5'>
 				<h3 className='mb-5'>Login</h3>
 				<Form className='Login-form' onSubmit={handleFormSubmit}>
 					<Form.Group controlId='Login-email-input'>
 						<Form.Label>Email</Form.Label>
-						<Form.Control name='email' placeholder='' value={formState.email} required onChange={handleChange} />
+						<Form.Control
+							name='email'
+							type='email'
+							value={formState.email}
+							required
+							onChange={handleChange}
+						/>
 					</Form.Group>
 
 					<Form.Group controlId='Login-password-input'>
@@ -53,8 +58,7 @@ const Login = () => {
 						<Form.Control
 							name='password'
 							type='password'
-              placeholder=''
-              value={formState.password}
+							value={formState.password}
 							required
 							onChange={handleChange}
 						/>
@@ -79,7 +83,7 @@ const Login = () => {
 					) : null}
 				</Form>
 			</main>
-		</>
+		</React.Fragment>
 	)
 }
 
