@@ -12,18 +12,14 @@ import './Login.css'
 
 const Login = () => {
 	const [ formState, setFormState ] = useState({ email: '', password: '' })
-	const [ showErrMsg, setShowErrMsg ] = useState(false)
 	const [ login, { error } ] = useMutation(LOGIN)
 
 	const handleFormSubmit = async (e) => {
 		e.preventDefault()
-		const { email, password } = formState
-
-		if (email !== '' && password !== '') {
-			// handle login auth
 			try {
 				const mutationResponse = await login({
-					variables : { email, password }
+          
+          variables: { email: formState.email, password: formState.password }
 				})
 				const token = mutationResponse.data.login.token
 				const creatorId = mutationResponse.data.login.creator._id
@@ -32,13 +28,9 @@ const Login = () => {
 			} catch (e) {
 				console.log(e)
 			}
-		} else {
-			setShowErrMsg(true)
-		}
 	}
 
 	const handleChange = (event) => {
-		setShowErrMsg(false)
 		const { name, value } = event.target
 		setFormState({
 			...formState,
@@ -53,7 +45,7 @@ const Login = () => {
 				<Form className='Login-form' onSubmit={handleFormSubmit}>
 					<Form.Group controlId='Login-email-input'>
 						<Form.Label>Email</Form.Label>
-						<Form.Control name='email' placeholder='' onChange={handleChange} />
+						<Form.Control name='email' placeholder='' value={formState.email} required onChange={handleChange} />
 					</Form.Group>
 
 					<Form.Group controlId='Login-password-input'>
@@ -61,7 +53,9 @@ const Login = () => {
 						<Form.Control
 							name='password'
 							type='password'
-							placeholder=''
+              placeholder=''
+              value={formState.password}
+							required
 							onChange={handleChange}
 						/>
 					</Form.Group>
@@ -81,11 +75,6 @@ const Login = () => {
 					{error ? (
 						<div>
 							<p className='text-danger'>Sorry, incorrect credentials</p>
-						</div>
-					) : null}
-					{showErrMsg && !error ? (
-						<div>
-							<p className='mt-2 text-danger'>Please fill out all fields</p>
 						</div>
 					) : null}
 				</Form>

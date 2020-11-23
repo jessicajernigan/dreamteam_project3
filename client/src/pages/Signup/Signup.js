@@ -11,35 +11,28 @@ import './Signup.css'
 
 const Signup = () => {
 	const [ formState, setFormState ] = useState({ username: '', email: '', password: '' })
-	const [ showErrMsg, setShowErrMsg ] = useState(false)
 	const [ addCreator, { error } ] = useMutation(ADD_CREATOR)
 
 	const handleFormSubmit = async (e) => {
 		e.preventDefault()
-		const { username, email, password } = formState
 		// handle signup auth
-		if (username !== '' && email !== '' && password !== '') {
-			try {
-				const mutationResponse = await addCreator({
-					variables : {
-						username,
-						email,
-						password
-					}
-				})
-				const token = mutationResponse.data.addCreator.token
-				const creatorId = mutationResponse.data.addCreator.creator._id
-				Auth.login(creatorId, token)
-			} catch (err) {
-				console.log(err)
-			}
-		} else {
-			setShowErrMsg(true)
+		try {
+			const mutationResponse = await addCreator({
+				variables : {
+					username : formState.username,
+					email    : formState.email,
+					password : formState.password
+				}
+			})
+			const token = mutationResponse.data.addCreator.token
+			const creatorId = mutationResponse.data.addCreator.creator._id
+			Auth.login(creatorId, token)
+		} catch (err) {
+			console.log(err)
 		}
 	}
 
 	const handleChange = (event) => {
-    setShowErrMsg(false)
 		const { name, value } = event.target
 		setFormState({
 			...formState,
@@ -54,7 +47,12 @@ const Signup = () => {
 				<Form className='signup-form d-flex flex-column' onSubmit={handleFormSubmit}>
 					<Form.Group controlId='Signup-username-input'>
 						<Form.Label>Username</Form.Label>
-						<Form.Control name='username' placeholder='' onChange={handleChange} />
+						<Form.Control
+							name='username'
+							value={formState.username}
+							required
+							onChange={handleChange}
+						/>
 					</Form.Group>
 
 					<Form.Group controlId='Signup-email-input'>
@@ -62,7 +60,8 @@ const Signup = () => {
 						<Form.Control
 							type='email'
 							name='email'
-							placeholder=''
+							value={formState.email}
+							required
 							onChange={handleChange}
 						/>
 					</Form.Group>
@@ -72,7 +71,8 @@ const Signup = () => {
 						<Form.Control
 							type='password'
 							name='password'
-							placeholder=''
+							required
+							value={formState.password}
 							onChange={handleChange}
 						/>
 					</Form.Group>
@@ -90,11 +90,6 @@ const Signup = () => {
 						<p className='mt-2 text-danger'>
 							Oops, try again...a user already exists with that email
 						</p>
-					</div>
-				) : null}
-				{showErrMsg ? (
-					<div>
-						<p className='mt-2 text-danger'>Please fill out all fields</p>
 					</div>
 				) : null}
 			</main>
