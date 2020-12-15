@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button'
 import './Signup.css'
 
 const Signup = () => {
+  // component level state to control form
 	const [ formState, setFormState ] = useState({ username: '', email: '', password: '' })
 	const [ addCreator, { error } ] = useMutation(ADD_CREATOR)
 
@@ -23,9 +24,11 @@ const Signup = () => {
 					email    : formState.email,
 					password : formState.password
 				}
-			})
+      })
+      // get token and id from mutation response
 			const token = mutationResponse.data.addCreator.token
-			const creatorId = mutationResponse.data.addCreator.creator._id
+      const creatorId = mutationResponse.data.addCreator.creator._id
+      // pass token and id to login utility to add to LS and load dashboard
 			Auth.login(creatorId, token)
 		} catch (err) {
 			console.log(err)

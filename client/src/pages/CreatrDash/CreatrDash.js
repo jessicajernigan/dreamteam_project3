@@ -36,13 +36,21 @@ const CreatrDash = () => {
 	// get current creator's id from url
 	const { id } = useParams()
 
+  // component level state for current creator
 	const [ curCreatr, setCurCreatr ] = useState({})
 
+  // get all creators
 	const { loading, data } = useQuery(QUERY_CREATORS)
+  
+  // refactor to pass id as variable and write new query to return only the current creator instead of all creators
+  // const { loading, data } = useQuery(QUERY_CURRENT_CREATOR, {
+  //   variables: { id },
+  // })
 
 	useEffect(
 		() => {
 			if (data) {
+        // find current creator from creators with id from url
 				setCurCreatr(data.creators.find((creator) => creator._id === id))
 				dispatch(updateCreators(data.creators))
 
@@ -131,6 +139,7 @@ const CreatrDash = () => {
 										) : (
 											<p className='mb-3'>{bioDefault}</p>
 										)}
+                    {/* pass current bio to populate form */}
 										<EditBio curBio={curCreatr.bio} />
 									</div>
 								</Col>
@@ -158,7 +167,6 @@ const CreatrDash = () => {
 										) : (
 											<p>{vibesDefault}</p>
 										)}
-
 										<EditVibes curVibes={curCreatr.vibes} />
 									</div>
 									<div className='bskr-bg-secondary w-100 p-5 d-flex flex-column align-items-center rounded'>

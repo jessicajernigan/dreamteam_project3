@@ -9,10 +9,13 @@ const bucketName = process.env.BUCKET_NAME
 
 const resolvers = {
 	Query    : {
+ 
+    // ../../client\src\components\VibeMenu\VibeMenu.js
 		vibes    : async () => {
 			return await Vibe.find()
 		},
 
+    // ../../client\src\components\CreatrGrid\CreatrGrid, CreatrDash, CreatrProf
 		// optional parameters for search, otherwise return all
 		creators : async (parent, { vibes, username }) => {
 			const params = {}
@@ -31,39 +34,45 @@ const resolvers = {
 		}
 	},
 	Mutation : {
+    // ../../client\src\pages\Signup\Signup.js
 		addCreator             : async (parent, args) => {
+      // check for unique email before creating new Creator
 			const { email } = args
 			const userExists = await Creator.findOne({ email })
 			if (userExists) {
 				throw new AuthenticationError('User already exists')
 			}
-
-			const creator = await Creator.create(args)
-			const token = signToken(creator)
+      // create new Creator
+      const creator = await Creator.create(args)
+      // create token passing creator object
+      const token = signToken(creator)
+      // create s3 folder name and create folder for new creator
 			const creatrDirKey = args.username + '/'
 			awsSignup(creatrDirKey)
 			return { token, creator }
 		},
 
 		login                  : async (parent, { email, password }) => {
+      // find creator by email
 			const creator = await Creator.findOne({ email })
 
 			if (!creator) {
 				throw new AuthenticationError('Can not find creator')
 			}
-
+      // call custom method on model to verify password
 			const correctPw = await creator.isCorrectPassword(password)
 
 			if (!correctPw) {
 				throw new AuthenticationError('Sorry, incorrect credentials')
 			}
-
+      // create new token for logged in creator
 			const token = signToken(creator)
 
 			return { token, creator }
 		},
 
 		updateCreatorBio       : async (parent, { bio }, context) => {
+      // check for authorized creator.  Apollo Server adds context parameter which will have creator object via authMiddleware, if the creator has a verified token.  therefore if the creator object exists, creator is authorized.  Find creator by the _id and update bio field with passed in arg
 			if (context.creator) {
 				return await Creator.findByIdAndUpdate(
 					context.creator._id,
@@ -78,6 +87,7 @@ const resolvers = {
 		},
 
 		updateCreatorStageName : async (parent, { stageName }, context) => {
+      // see updateCreatorBio
 			if (context.creator) {
 				return await Creator.findByIdAndUpdate(
 					context.creator._id,
@@ -92,6 +102,7 @@ const resolvers = {
 		},
 
 		updateCreatorLocation  : async (parent, { location }, context) => {
+      // see updateCreatorBio
 			if (context.creator) {
 				return await Creator.findByIdAndUpdate(
 					context.creator._id,
@@ -106,6 +117,7 @@ const resolvers = {
 		},
 
 		updateCreatorVibes     : async (parent, { vibes }, context) => {
+      // see updateCreatorBio
 			if (context.creator) {
 				return await Creator.findByIdAndUpdate(
 					context.creator._id,
@@ -125,24 +137,30 @@ const resolvers = {
 				// hardcode test
 				// const args = { title: 'Song Test', songUrl: 'http://test.com' };
 
-				// s3 stuff
-				const file = await args.file
+        // s3 stuff
+        // get file object from args.  apollo-upload-client handles multipart form data on front end
+        const file = await args.file
+        // https://github.com/jaydenseric/graphql-upload#type-fileupload
+        // File upload details that are only available after the file’s field in the GraphQL multipart request has begun streaming in.
 				const { createReadStream, filename, mimetype } = file
+        // Creates a Node.js readable stream of the file’s contents, for processing and storage.
 				const fileStream = createReadStream()
 
+        // derive name of tune from username and filename
 				const username = context.creator.username
 				const CreatrTuneKey = encodeURIComponent(username) + '/'
 				const tuneKey = CreatrTuneKey + filename
 
+        // configure s3 upload params
 				const uploadParams = {
 					Bucket : bucketName,
-					// Key: filename,
 					Key    : tuneKey,
 					Body   : fileStream
 				}
 				const result = await s3.upload(uploadParams).promise()
 				// console.log('s3 result: ', result);
 
+        // configure cloudfront url to store in db
 				const cloudfrontUrlPrefix = 'http://d28dtfvuvlqgls.cloudfront.net/'
 				const newTuneUrl = `${cloudfrontUrlPrefix}${result.Key}`
 
@@ -150,10 +168,11 @@ const resolvers = {
 				const songUrl = newTuneUrl
 				const tuneArgs = { title, songUrl }
 
-				// instantiate new Song from s3 response data
+				// instantiate new Song from s3 response data...title and url
 				const song = new Song(tuneArgs)
-				console.log('song: ', song)
+				// console.log('song: ', song)
 
+        // update creator's songs array with newly instantiated song
 				const createTuneResponse = await Creator.findByIdAndUpdate(
 					context.creator._id,
 					{ $push: { songs: song } },
@@ -162,13 +181,14 @@ const resolvers = {
 					.populate('vibes')
 					.populate('songs')
 
-				console.log('createTuneResponse: ', createTuneResponse)
+				// console.log('createTuneResponse: ', createTuneResponse)
 				return createTuneResponse
 			}
 
 			throw new AuthenticationError('Not logged in uploadTune')
 		},
 
+    // see uploadTune above
 		uploadPhoto            : async (parent, args, context) => {
 			if (context.creator) {
 				// s3 stuff
@@ -206,4 +226,5 @@ const resolvers = {
 	}
 }
 
+// imported by ./index.js
 module.exports = resolvers

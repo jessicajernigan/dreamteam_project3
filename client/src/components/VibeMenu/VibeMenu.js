@@ -13,6 +13,7 @@ const VibeMenu = () => {
 	// get data from DB with Apollo
 	const { loading, data: vibeData } = useQuery(QUERY_VIBES)
 
+  // pull in vibes from global state
 	const { vibes } = useSelector((state) => state)
 	const dispatch = useDispatch()
 
@@ -22,7 +23,7 @@ const VibeMenu = () => {
 			if (vibeData) {
 				// execute our dispatch function with our action object indicating the type of action and the data to set our state for vibes to
 				dispatch(hydrateVibes(vibeData.vibes))
-				// also write to IndexedDB
+				// also write to IndexedDB for offline access
 				vibeData.vibes.forEach((vibe) => {
 					idbPromise('vibes', 'put', vibe)
 				})

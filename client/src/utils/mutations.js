@@ -22,25 +22,12 @@ export const ADD_CREATOR = gql`
 	}
 `;
 
+// need to include _id or cache does not update
 export const UPDATE_CREATOR_BIO = gql`
 	mutation updateCreatorBio($bio: String!) {
 		updateCreatorBio(bio: $bio) {
 			_id
-			username
-			email
-			stageName
-			imgUrl
-			location
 			bio
-			vibes {
-				_id
-				name
-			}
-			songs {
-				_id
-				title
-				songUrl
-			}
 		}
 	}
 `;
@@ -49,21 +36,7 @@ export const UPDATE_CREATOR_STAGE_NAME = gql`
 	mutation updateCreatorStageName($stageName: String!) {
 		updateCreatorStageName(stageName: $stageName) {
 			_id
-			username
-			email
 			stageName
-			imgUrl
-			location
-			bio
-			vibes {
-				_id
-				name
-			}
-			songs {
-				_id
-				title
-				songUrl
-			}
 		}
 	}
 `;
@@ -72,21 +45,7 @@ export const UPDATE_CREATOR_LOCATION = gql`
 	mutation updateCreatorLocation($location: String!) {
 		updateCreatorLocation(location: $location) {
 			_id
-			username
-			email
-			stageName
-			imgUrl
 			location
-			bio
-			vibes {
-				_id
-				name
-			}
-			songs {
-				_id
-				title
-				songUrl
-			}
 		}
 	}
 `;
@@ -95,9 +54,6 @@ export const UPDATE_CREATOR_VIBES = gql`
 	mutation updateCreatorVibes($vibes: [ID]!) {
 		updateCreatorVibes(vibes: $vibes) {
 			_id
-			username
-			email
-			bio
 			vibes {
 				_id
 				name
@@ -110,16 +66,6 @@ export const UPLOAD_TUNE = gql`
 	mutation uploadTune($file: Upload!) {
 		uploadTune(file: $file) {
 			_id
-			username
-			email
-			stageName
-			imgUrl
-			location
-			bio
-			vibes {
-				_id
-				name
-			}
 			songs {
 				_id
 				title
@@ -133,21 +79,123 @@ export const UPLOAD_PHOTO = gql`
 	mutation uploadPhoto($file: Upload!) {
 		uploadPhoto(file: $file) {
 			_id
-			username
-			email
-			stageName
 			imgUrl
-			location
-			bio
-			vibes {
-				_id
-				name
-			}
-			songs {
-				_id
-				title
-				songUrl
-			}
 		}
 	}
 `;
+
+// // need to include all fields or cache does not update
+// export const UPDATE_CREATOR_BIO = gql`
+// 	mutation updateCreatorBio($bio: String!) {
+// 		updateCreatorBio(bio: $bio) {
+// 			_id
+// 			username
+// 			email
+// 			stageName
+// 			imgUrl
+// 			location
+// 			bio
+// 			vibes {
+// 				_id
+// 				name
+// 			}
+// 			songs {
+// 				_id
+// 				title
+// 				songUrl
+// 			}
+// 		}
+// 	}
+// `;
+
+// export const UPDATE_CREATOR_STAGE_NAME = gql`
+// 	mutation updateCreatorStageName($stageName: String!) {
+// 		updateCreatorStageName(stageName: $stageName) {
+// 			_id
+// 			username
+// 			email
+// 			stageName
+// 			imgUrl
+// 			location
+// 			bio
+// 			vibes {
+// 				_id
+// 				name
+// 			}
+// 			songs {
+// 				_id
+// 				title
+// 				songUrl
+// 			}
+// 		}
+// 	}
+// `;
+
+// export const UPDATE_CREATOR_LOCATION = gql`
+// 	mutation updateCreatorLocation($location: String!) {
+// 		updateCreatorLocation(location: $location) {
+// 			_id
+// 			username
+// 			email
+// 			stageName
+// 			imgUrl
+// 			location
+// 			bio
+// 			vibes {
+// 				_id
+// 				name
+// 			}
+// 			songs {
+// 				_id
+// 				title
+// 				songUrl
+// 			}
+// 		}
+// 	}
+// `;
+
+// export const UPLOAD_TUNE = gql`
+// 	mutation uploadTune($file: Upload!) {
+// 		uploadTune(file: $file) {
+// 			_id
+// 			username
+// 			email
+// 			stageName
+// 			imgUrl
+// 			location
+// 			bio
+// 			vibes {
+// 				_id
+// 				name
+// 			}
+// 			songs {
+// 				_id
+// 				title
+// 				songUrl
+// 			}
+// 		}
+// 	}
+// `;
+
+// export const UPLOAD_PHOTO = gql`
+// 	mutation uploadPhoto($file: Upload!) {
+// 		uploadPhoto(file: $file) {
+// 			_id
+// 			username
+// 			email
+// 			stageName
+// 			imgUrl
+// 			location
+// 			bio
+// 			vibes {
+// 				_id
+// 				name
+// 			}
+// 			songs {
+// 				_id
+// 				title
+// 				songUrl
+// 			}
+// 		}
+// 	}
+// `;

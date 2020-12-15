@@ -22,22 +22,23 @@ const EditPhoto = () => {
 
 	const handleFileUpload = async (e) => {
 		console.log('photo file received')
-		e.preventDefault()
+    e.preventDefault()
+    // File input types have a field called files. This field contains an array of files. It is possible to upload more than one file at once. Since we are only uploading one file at a time are using array destructuring to obtain the first file from the array.
 		var files = document.getElementById('photoupload').files
 
-		handleClose()
-
+    
 		const file = files[0]
-
+    
 		try {
-			await uploadPhoto({
-				variables : {
-					file
+      await uploadPhoto({
+        variables : {
+          file
 				}
 			})
 		} catch (err) {
-			console.error(err)
+      console.error(err)
 		}
+    handleClose()
 	}
 
 	return (

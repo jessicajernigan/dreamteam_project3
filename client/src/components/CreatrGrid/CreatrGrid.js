@@ -45,8 +45,9 @@ const CreatrGrid = () => {
 		[ data, loading, dispatch ]
 	)
 
+  // filter creators by vibe
 	function filterCreators() {
-		// filter out creators who have not posted a song.  **keep in place until we refactor User from Creator models
+		// filter out creators who have not posted a song yet, so they will not display on grid.  **keep in place until we refactor User from Creator models
 		const actualCreators = creators.filter((creator) => creator.songs.length > 0)
 
 		// if (!currentVibe) {
@@ -89,13 +90,6 @@ const CreatrGrid = () => {
 					)}
 				</div>
 			)}
-			{/* <div className='CreatrGrid-tiles-container d-flex justify-content-center flex-wrap mx-auto'>
-				{creators.length ? (
-					filterCreators().map((creator) => <CreatrTile {...creator} key={creator._id} />)
-				) : (
-					<h3>No Creators yet...</h3>
-				)}
-			</div> */}
 		</Col>
 	)
 }

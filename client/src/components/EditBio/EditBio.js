@@ -14,15 +14,13 @@ import './EditBio.css'
 const EditBio = ({ curBio }) => {
 	// MODAL TOGGLE
 	const [ show, toggleShow ] = useToggle(false)
-	// custom hook for controlling form
+	// custom hook for controlling input
 	const [ bio, setBio ] = useInputState(curBio)
 
 	// MUTATION ON FORM SUBMIT
 	const [ updateCreatorBio ] = useMutation(UPDATE_CREATOR_BIO)
 
 	const handleFormSubmit = async (e) => {
-		// close modal
-		handleClose()
 		e.preventDefault()
 
 		try {
@@ -33,7 +31,10 @@ const EditBio = ({ curBio }) => {
 			})
 		} catch (err) {
 			console.error(err)
-		}
+    }
+    
+    // close modal
+    handleClose()
 	}
 
 	// MODAL DISPLAY

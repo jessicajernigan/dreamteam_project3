@@ -17,4 +17,5 @@ const songSchema = new Schema({
 
 const Song = mongoose.model('Song', songSchema);
 
+// imported by ./index.js and ./Creator.js
 module.exports = Song;

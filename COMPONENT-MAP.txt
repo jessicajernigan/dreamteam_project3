@@ -1,0 +1,34 @@
+App 
+
+  Navigation
+
+  --
+  Home
+    Hero
+    SidebarTop
+      VibeMenu
+        VibeBtn
+    CreatrGrid
+      CreatrTile
+
+  --
+  CreatrProf
+    Stripe
+
+  --
+  Signup --> CreatrDash
+  --
+  Login --> CreatrDash
+
+  --
+  CreatrDash
+    EditPhoto
+    EditBio
+    EditVibes
+    EditLoc
+    EditStageName
+    EditTunes
+
+  --
+  About
+

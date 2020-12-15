@@ -27,7 +27,7 @@ const CreatrProf = () => {
 	// cache redux method to update store
 	const dispatch = useDispatch()
 
-	// get creatpr id from url which was appended by Link wrapping CreatrTile components
+	// get creator id from url which was appended by Link wrapping CreatrTile components
 	const { id } = useParams()
 
 	// initialize ref to audio player
@@ -35,11 +35,15 @@ const CreatrProf = () => {
 
 	// initiate component level state to keep track of current creator
 	const [ curCreatr, setCurCreatr ] = useState({})
-
+  // ...and display state for payment alert
 	const [ showAlert, setShowAlert ] = useState(false)
 
 	// make db query to get all creators, in case page is refreshed or user has not first visited landing page to initiate redux store from db
-	const { loading, data } = useQuery(QUERY_CREATORS)
+  const { loading, data } = useQuery(QUERY_CREATORS)
+  // refactor to pass id as variable and write new query to return only the current creator instead of all creators
+  // const { loading, data } = useQuery(QUERY_CURRENT_CREATOR, {
+  //   variables: { id },
+  // })
 
 	// this will be called after initial render and each time one of the values in the dependency array (creators, data, loading, dispatch, id, curCreatr) changes. checking the redux store first
 	useEffect(
@@ -126,7 +130,8 @@ const CreatrProf = () => {
 										<ul>
 											{curCreatr.vibes &&
 												// curCreatr.vibes.map((vibe) => (
-												curCreatr.vibes
+                        curCreatr.vibes
+                          // don't show All vibe 
 													.filter((vibe) => vibe.name !== 'All')
 													.map((vibe) => (
 														<span
@@ -143,7 +148,9 @@ const CreatrProf = () => {
 										<p className='donate-text text-dark mb-1'>
 											Please consider donating to the buskr while enjoying their tunes!
 										</p>
+                    {/* pass state update function as prop */}
 										<Stripe setShowAlert={setShowAlert} />
+                    {/* display donation success message */}
 										{showAlert ? (
 											<Alert
 												className='w-100'

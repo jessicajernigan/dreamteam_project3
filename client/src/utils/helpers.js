@@ -13,7 +13,7 @@ export function idbPromise(storeName, method, object) {
 		// create variables to hold reference to the database, transaction (tx), and object store
 		let db, tx, store;
 
-		// if version has changed (or if this is the first time using the database), run this method and create the three object stores
+		// if version has changed (or if this is the first time using the database), run this method and create the object stores
 		request.onupgradeneeded = function(e) {
 			const db = request.result;
 			// create object store for each type of data and set 'primary' key index to be the '_id' of the data

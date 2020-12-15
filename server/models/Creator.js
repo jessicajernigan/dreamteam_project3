@@ -54,7 +54,7 @@ const creatorSchema = new Schema({
 
 
 
-// set up pre-save middleware to create password
+// set up pre-save middleware to create password hash
 creatorSchema.pre('save', async function(next) {
 	if (this.isNew || this.isModified('password')) {
 		const saltRounds = 10;
@@ -64,11 +64,12 @@ creatorSchema.pre('save', async function(next) {
 	next();
 });
 
-// compare the incoming password with the hashed password
+// define method to compare the incoming password with the hashed password
 creatorSchema.methods.isCorrectPassword = async function(password) {
 	return await bcrypt.compare(password, this.password);
 };
 
 const Creator = mongoose.model('Creator', creatorSchema);
 
+// imported by ./index.js
 module.exports = Creator;

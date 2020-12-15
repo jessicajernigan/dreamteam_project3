@@ -8,6 +8,7 @@ import './VibeBtn.css';
 const VibeBtn = ({ vibe }) => {
 	const dispatch = useDispatch();
 
+  // set clicked on vibe to be current vibe in global state
 	const handleClick = (id) => {
 		dispatch(updateCurrentVibe(id));
 	};

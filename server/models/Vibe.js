@@ -12,4 +12,5 @@ const vibeSchema = new Schema({
 
 const Vibe = mongoose.model('Vibe', vibeSchema);
 
+// imported by ./index.js
 module.exports = Vibe;

@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server-express');
 
+// define the types of data we will be interacting with, and the query and mutation functions with the type of data they will be returning
 const typeDefs = gql`
 	type Vibe {
 		_id: ID
@@ -52,9 +53,6 @@ const typeDefs = gql`
   }
 `;
 
-// type Mutation {
-//   singleUploadStream(file: Upload!): File!
-// }
 
-
+// imported by ./index.js
 module.exports = typeDefs;

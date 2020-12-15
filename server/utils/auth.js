@@ -10,17 +10,21 @@ module.exports = {
 		// allows token to be sent via req.body, req.query, or headers
 		let token = req.body.token || req.query.token || req.headers.authorization;
 
-		// ["Bearer", "<tokenvalue>"]
+    // ["Bearer", "<tokenvalue>"]
+    // separate "Bearer" from "<tokenvalue>"
 		if (req.headers.authorization) {
 			token = token.split(' ').pop().trim();
 		}
 
+     // if no token, return request object as is
 		if (!token) {
 			return req;
 		}
 
 		try {
-			const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      // if token is verified, add creator object with the decoded token data to the req object
+      const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      // creator will have the username, email, and _id
 			req.creator = data;
 		} catch (err) {
 			console.log('Invalid token', err);
