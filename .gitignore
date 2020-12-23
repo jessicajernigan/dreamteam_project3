@@ -4,8 +4,9 @@ debug.log
 .env
 NOTES.txt
 .vscode/
-NOTES-AND-QUESTIONS.txt
+NOTES_AND_QUESTIONS.txt
 CreatrProf-withQuery.js
 CreatrProfTest/
 EditPhotoFrontVer.js
-
+COMPONENTMAP.txt
+PRESENTATION.txt
